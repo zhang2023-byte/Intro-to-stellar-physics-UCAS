@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+stellar_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+cd "$stellar_root"
+if [ -n "${STELLAR_NODE:-}" ]; then
+  stellar_node=$STELLAR_NODE
+elif command -v node >/dev/null 2>&1; then
+  stellar_node=$(command -v node)
+else
+  stellar_node="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+fi
+if [ ! -x "$stellar_node" ]; then
+  echo '需要 Node.js 20 或更高版本；可通过 STELLAR_NODE 指定可执行文件。' >&2
+  exit 1
+fi
+case "${1:-}" in
+  test) exec "$stellar_node" --test tools/tests.mjs ;;
+  browser-test) exec "$stellar_node" tools/browser-test.mjs ;;
+  *) exec "$stellar_node" tools/build.mjs "$@" ;;
+esac

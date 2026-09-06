@@ -1,0 +1,30 @@
+[
+  {
+    "name": "姓名",
+    "type": "text"
+  },
+  {
+    "name": "反馈",
+    "type": "text"
+  },
+  {
+    "name": "课程位置",
+    "type": "text"
+  },
+  {
+    "name": "参考来源",
+    "type": "text"
+  },
+  {
+    "name": "是否已解决",
+    "type": "checkbox"
+  },
+  {
+    "name": "处理说明",
+    "type": "text"
+  },
+  {
+    "name": "提交时间",
+    "type": "created_at"
+  }
+]

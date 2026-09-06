@@ -1,0 +1,30 @@
+# Local books and full translations
+/library/
+**/MinerU_outputs/
+**/translated_outputs/
+*.pdf
+# Historical copyrighted media and local verification evidence
+/archive/translation/output/
+/archive/translation/assets/
+/archive/*.local.json
+# Private/local data
+.env
+.env.*
+!.env.example
+.venv*/
+**/feedback-raw/
+*.local.json
+*.local.md
+# Rebuildable files
+/tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+node_modules/
+
+/archive/skill-updates.local/
+
+# Machine configuration and local historical archive
+/.codex/
+/archive/
