@@ -27,4 +27,5 @@ node_modules/
 
 # Machine configuration and local historical archive
 /.codex/
+/.mimosa/
 /archive/
