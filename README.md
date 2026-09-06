@@ -2,7 +2,7 @@
 
 全书粗对应，逐课精核实。每个指定学习范围是一份独立、自包含的中文自习 HTML，用交互建立直觉，再回到教材和概念自测。
 
-**先打开 [课程首页](site/index.html) 或 [Volume2 第1章自习网页](site/lessons/v2-ch01.html)。** 当前三章是本次指定的试做范围。当前尚未发布到互联网。
+**先打开 [课程首页](site/index.html) 或 [Volume2 第1章自习网页](site/lessons/v2-ch01.html)。** 当前三章是本次指定的试做范围。在线地址：https://zhang2023-byte.github.io/Intro-to-stellar-physics-UCAS/ 。
 
 ## 日常只需关注三个地方
 
@@ -56,7 +56,7 @@ python3 tools/audit.py
 
 项目源码通过 Git 保存到 GitHub；提交、推送与网站发布分别按明确授权执行。`.codex/`、`archive/`、教材、完整译文、MinerU、出版 PDF、原始反馈和凭据均被排除；项目 skill 位于 `.agents/skills/`，纳入 Git。**Git 不备份这些本地资料，请另行备份 `library/`、`archive/` 和本机 `.codex/` 配置。**
 
-将来 GitHub Pages 只发布 `site/` 中经过检查的文件，不能发布项目根目录。首页链接使用相对路径，适合项目子路径；不提供离线下载入口。部署配置与远程操作留待明确授权，当前没有自动发布工作流。
+GitHub Pages 通过 `.github/workflows/pages.yml` 仅发布 `site/`。推送到 `main` 的 `site/` 或发布工作流变更会触发部署，也可手动运行。修改课件后先重建和检查，再按授权提交、推送；部署成功后确认线上版本。首页使用相对链接，不提供离线下载入口。
 
 初始化证据与已知边界见 本地 `archive/initialization-report.md`。
 
