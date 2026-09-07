@@ -8,6 +8,11 @@ const StellarPhysics=(()=>{
  const luminosity=(R,T)=>R*R*(T/5800)**4;
  const color=(T)=>magnitude((planck(440,T)/planck(550,T))/(planck(440,10000)/planck(550,10000)));
  const hydrogen=(T,ne)=>{const excited=4*Math.exp(-10.2*1.602176634e-19/(k*T));/* Z_I=2(1+excited), Z_II=1; the leading Saha factor 2 cancels the ground-state weight 2. */const ratio=(2*Math.PI*9.1093837e-31*k*T/(h*h))**1.5/ne*Math.exp(-13.6*1.602176634e-19/(k*T))/(1+excited);return {neutral:1/(1+ratio),excited:excited/(1+excited),lower:excited/(1+excited)/(1+ratio)};};
- return {hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ const slab=(I0,S,tau)=>({transmitted:I0*Math.exp(-tau),emitted:S*(-Math.expm1(-tau)),total:I0*Math.exp(-tau)+S*(-Math.expm1(-tau))});
+ const lineTau=(x,tc,tl)=>tc+tl*Math.exp(-x*x/2);
+ // z increases inward, total continuum depth 8; S(z)=1+g(z/8-1/2).
+ // Constant source within each cell, exact formal propagation from back to front.
+ const stratified=(factor,g,N=240)=>{let I=1+g/2;const dt=8*factor/N;for(let i=N-1;i>=0;i--){const z=(i+.5)/N;I=slab(I,1+g*(z-.5),dt).total;}return I;};
+ return {slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;
