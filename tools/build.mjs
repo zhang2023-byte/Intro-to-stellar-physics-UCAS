@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
 import {dependency} from './deps.mjs';
 import {activityTypes,explorerHTML} from './explorers.mjs';
+import {books,siteTitle} from './books.mjs';
 const {marked}=await dependency('marked');
 export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const validID=/^[A-Za-z][A-Za-z0-9_-]*$/;
@@ -66,11 +67,14 @@ const styles=()=>fs.readFileSync(path.join(ROOT,'tools/lesson.css'),'utf8');
 function documentHTML(title,body,script=''){return `<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHTML(title)}</title><style>${styles()}</style></head><body>${body}${script}</body></html>\n`;}
 export function renderLesson(data,sourceDir){
  const {meta,sections,quizzes,activities}=data;
+ if(meta.updated)need(/^\d{4}-\d{2}-\d{2}$/.test(meta.updated),'更新日期格式须为 YYYY-MM-DD');
+ const book=books.find(b=>meta.id.startsWith(b.prefix+'-'));
+ const directory=book?'../'+book.id+'.html':'../index.html';
  let content=sections.map((s,i)=>`<section class="lesson-section" id="${s.id}"><div class="section-heading"><span class="section-number">${String(i+1).padStart(2,'0')}</span><h2>${escapeHTML(s.title)}</h2>${feedbackButton(s.id,s.title)}</div>${embedImages(marked.parse(s.body),sourceDir)}</section>`).join('\n');
  content=content.replace(/<div data-quiz-slot="(\d+):(\d+)"><\/div>/g,(_,start,count)=>quizHTML(quizzes.slice(Number(start),Number(start)+Number(count))));
  for(const a of activities)content=content.replace(`<div data-activity-slot="${a.id}"></div>`,activityHTML(a));
  need(!/data-(?:quiz|activity)-slot/.test(content),'结构化区块未渲染');
- const body=`<a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">恒星物理</a><span>v${meta.version}</span></header><div class="page-grid"><aside class="sidebar"><nav aria-label="章节">${sections.map((s,i)=>`<a href="#${s.id}"><small>${String(i+1).padStart(2,'0')}</small>${escapeHTML(s.title)}</a>`).join('')}</nav></aside><main id="main"><header class="hero"><h1>${escapeHTML(meta.title)}</h1><p class="lead">${escapeHTML(meta.summary)}</p><div class="hero-meta"><span>${escapeHTML(meta.scope)}</span></div></header>${content}<footer class="sources"><h2>教材定位</h2><ul>${meta.sources.map(s=>`<li>${escapeHTML(s)}</li>`).join('')}</ul><p>版本 ${meta.version}</p><a href="../index.html">返回课程首页 ↗</a></footer></main></div><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog>`;
+ const body=`<a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">${siteTitle}</a><span>${meta.updated?"更新于 "+escapeHTML(meta.updated):""}</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="${directory}">← ${book?book.volume+"目录":"课程目录"}</a><p class="nav-heading">本章目录</p><nav aria-label="章节">${sections.map((s,i)=>`<a href="#${s.id}"><small>${String(i+1).padStart(2,'0')}</small>${escapeHTML(s.title)}</a>`).join('')}</nav></aside><main id="main"><header class="hero"><h1>${escapeHTML(meta.title)}</h1><p class="lead">${escapeHTML(meta.summary)}</p><div class="hero-meta"><span>${escapeHTML(meta.scope)}</span></div></header>${content}<footer class="sources"><h2>教材定位</h2><ul>${meta.sources.map(s=>`<li>${escapeHTML(s)}</li>`).join('')}</ul><a href="${directory}">返回${book?book.volume:"课程"}目录 ↑</a></footer></main></div><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog>`;
  const feedback=JSON.parse(fs.readFileSync(path.join(ROOT,'tools/feedback.json'),'utf8'));
  need(Object.keys(feedback).every(k=>k==='formUrl'),'公开反馈配置只允许问卷URL');
  if(feedback.formUrl){const u=new URL(feedback.formUrl);need(u.protocol==='https:'&&['feishu.cn','larkoffice.com','larksuite.com'].some(d=>u.hostname===d||u.hostname.endsWith('.'+d))&&!u.username&&!u.password,'反馈地址必须是飞书公开问卷的HTTPS链接');}
@@ -91,18 +95,37 @@ export function build(id){
  need(validID.test(id),'无效课程 ID');const file=path.join(ROOT,'lessons',id+'.md');const source=fs.readFileSync(file,'utf8');const data=parseLesson(source);need(data.meta.id===id,'课程 ID 必须与文件名一致');
  const html=renderLesson(data,path.dirname(file));validateHTML(html);const out=path.join(ROOT,'site/lessons',id+'.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,html);return {id,version:data.meta.version,bytes:Buffer.byteLength(html),sourceHash:data.sourceHash};
 }
-export function buildIndex(){
+function coverHTML(book){
+ const image=fs.readFileSync(path.join(ROOT,'assets/covers',book.cover)).toString('base64');
+ return `<div class="book-cover"><img src="data:image/png;base64,${image}" alt="" width="1055" height="1491"><div class="cover-title"><span>恒星天体物理学导论</span><strong>${book.title}</strong><span class="cover-volume">${book.volume}</span></div><span class="cover-author">Erika Böhm-Vitense 著</span></div>`;
+}
+export function renderNavigation(){
  const entries=fs.readdirSync(path.join(ROOT,'lessons')).filter(n=>n.endsWith('.md')&&!n.endsWith('.local.md')).sort().map(n=>parseLesson(fs.readFileSync(path.join(ROOT,'lessons',n),'utf8')).meta);
- const cards=entries.filter(m=>fs.existsSync(path.join(ROOT,'site/lessons',m.id+'.html'))).map(m=>`<article class="course-card"><h2><a href="lessons/${m.id}.html">${escapeHTML(m.title)} ↗</a></h2><p>${escapeHTML(m.summary)}</p><p class="caption">${escapeHTML(m.scope)}</p></article>`).join('');
- const body=`<header class="topbar"><span>恒星物理</span></header><main class="home"><header class="hero"><h1>恒星物理</h1></header><div class="course-list">${cards}</div></main>`;
- const html=documentHTML('恒星物理 · 自习与探索',body);validateHTML(html);fs.mkdirSync(path.join(ROOT,'site'),{recursive:true});fs.writeFileSync(path.join(ROOT,'site/index.html'),html);
+ const pages=new Map();
+ const covers=books.map(b=>`<article class="book-entry"><a class="book-link" href="${b.id}.html" aria-label="打开《恒星天体物理学导论》${b.volume}《${b.title}》目录">${coverHTML(b)}</a><div class="book-description"><h2>${b.volume} · ${b.title}</h2><p>${b.summary}</p><a class="catalog-link" href="${b.id}.html">阅读目录 <span aria-hidden="true">→</span></a></div></article>`).join('');
+ const body=`<a class="skip" href="#main">跳到正文</a><header class="topbar"><span>UCAS · 自学课程</span><span>恒星天体物理学导论</span></header><main id="main" class="library-home"><header class="library-heading"><p class="library-kicker">中国科学院大学 · 自学课程</p><h1>恒星内部结构<br>与演化</h1><p class="library-intro">以《恒星天体物理学导论》的恒星大气、恒星结构与演化两卷为主线，从观测辐射逐步走向恒星内部。</p></header><div class="bookshelf">${covers}</div><footer class="library-footer"><h2>教材与学习内容</h2><p>主线教材由 Erika Böhm-Vitense 编写，成书较早。课件采用 Carroll 与 Ostlie《当代天体物理学导论》（原书第二版）的相关内容补充解释与推导，并在“教材补充与更新”中注明来源。需要进一步查证的问题列为“拓展调研”。</p></footer></main>`;
+ pages.set('index.html',documentHTML(siteTitle+' · 自学课程',body));
+ for(const b of books){
+  const rows=b.chapters.map(([title,summary],i)=>{
+   const id=b.prefix+'-ch'+String(i+1).padStart(2,'0');
+   const m=entries.find(m=>m.id===id&&fs.existsSync(path.join(ROOT,'site/lessons',id+'.html')));
+   return `<li class="chapter-row${m?' available':''}" id="chapter-${i+1}"><span class="chapter-number">${String(i+1).padStart(2,'0')}</span><div><h2>${escapeHTML(m?.title??title)}</h2><p>${escapeHTML(m?.summary??summary)}</p></div>${m?`<a class="start-learning" href="lessons/${id}.html" aria-label="开始学习：${escapeHTML(m.title)}">开始学习 <span aria-hidden="true">↗</span></a>`:'<span class="chapter-pending">待制作</span>'}</li>`;
+  }).join('');
+  const body=`<a class="skip" href="#chapters">跳到目录</a><header class="topbar"><a href="index.html">${siteTitle}</a><a href="index.html">返回首页</a></header><main class="volume-layout"><aside class="volume-book">${coverHTML(b)}<p>《恒星天体物理学导论》${b.volume}</p></aside><div class="volume-content"><header class="volume-heading"><p class="library-kicker">${b.volume} · 课程目录</p><h1>${b.title}</h1><p>${b.summary}</p></header><ol id="chapters" class="chapter-list">${rows}</ol><footer class="sources"><p>目录按《恒星天体物理学导论》${b.volume}编排。标有“开始学习”的章节可进入课件。</p><a href="index.html">返回首页 ↑</a></footer></div></main>`;
+  pages.set(b.id+'.html',documentHTML(b.title+' · '+siteTitle,body));
+ }
+ return pages;
+}
+export function buildIndex(){
+ fs.mkdirSync(path.join(ROOT,'site'),{recursive:true});
+ for(const [name,html] of renderNavigation()){validateHTML(html);fs.writeFileSync(path.join(ROOT,'site',name),html);}
 }
 export function checkAll(){
  const reports=[];
  for(const file of fs.readdirSync(path.join(ROOT,'lessons')).filter(n=>n.endsWith('.md')&&!n.endsWith('.local.md'))){
   const data=parseLesson(fs.readFileSync(path.join(ROOT,'lessons',file),'utf8'));const p=path.join(ROOT,'site/lessons',data.meta.id+'.html');const actual=fs.readFileSync(p,'utf8');validateHTML(actual);need(actual===renderLesson(data,path.join(ROOT,'lessons')),`${file} 的 HTML 未重新构建`);reports.push({id:data.meta.id,version:data.meta.version,questions:data.quizzes.length,bytes:Buffer.byteLength(actual)});
  }
- const index=fs.readFileSync(path.join(ROOT,'site/index.html'),'utf8');validateHTML(index);for(const m of index.matchAll(/href="(lessons\/[^"#]+)"/g))need(fs.existsSync(path.join(ROOT,'site',m[1])),'首页链接无目标');
+ for(const [name,expected] of renderNavigation()){const actual=fs.readFileSync(path.join(ROOT,'site',name),'utf8');validateHTML(actual);need(actual===expected,`${name} 未重新构建`);for(const m of actual.matchAll(/href="([^"#]+\.html)"/g))need(fs.existsSync(path.join(ROOT,'site',m[1])),`${name} 链接无目标：${m[1]}`);}
  return reports;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
