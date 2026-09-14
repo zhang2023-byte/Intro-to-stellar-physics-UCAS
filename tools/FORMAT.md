@@ -34,6 +34,8 @@ ID 以英文字母起始，仅含字母、数字、下划线或连字符，须�
 
 `choice` 为单选，至少两个选项；`truefalse` 为判断，恰好两个选项。answer 引用唯一选项 ID；concept 引用本课正文 ID。仅一个正确答案，不以未解决的前沿争议作单一标准答案。选择改变后重新判题；浏览器进度按课程、版本、题目指纹隔离。
 
+点击“回看相关概念”后，页面记住出发题目，并在原题离开视野时显示右下角“返回课后题”按钮。按钮返回该题并恢复键盘焦点，保留本次已选答案与判题结果；原题进入视野时隐藏。概念紧邻习题区时，仍可直接返回原题。回看链接只占文字及必要触控留白，避免整行空白触发跳转。
+
 ## 内置活动
 
 `activity` JSON 代码块支持 brightness、color、airmass、cmd、spectra、hydrogen、blackbody、temperature；范围、物理假设和模型限制由共用组件固定说明。历史活动支持 `{"id":"parallax-lab","type":"parallax"}`。它展示圆形地球轨道、黄道极方向、小角度关系，不能挪用于任意观测几何。辐射转移活动支持 projection（投影面积）、transfer（常源函数气层）、lineformation（窄带谱线）、stratification（分层源函数）。其数值模型位于 `physics.js`，假设随活动展示；包含 transfer 的课件额外内嵌 `radiative-transfer.css`。其他活动须实现后才能使用，构建会拒绝未知类型。
