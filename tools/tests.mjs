@@ -64,3 +64,19 @@ test('题目数学排版保留符号，分数及下标可读且拒绝注入HTML'
   for(const q of d.quizzes)assert.doesNotMatch(q.explanation,/判断正确|判断错误/);
  }
 });
+
+test('新大气模型：形式积分、角通量、灰边界及氢阈值',()=>{
+ // Independent midpoint quadrature in x=t/mu, including the quadratic term.
+ for(const mu of [.05,.3,1])for(const q of [0,.2,.5]){
+  let integral=0;const dx=.001;
+  for(let i=0;i<30000;i++){const x=(i+.5)*dx,t=mu*x;integral+=(.4+.8*t+q*t*t)*Math.exp(-x)*dx;}
+  assert.ok(Math.abs(integral-physics.limb(mu,.4,.8,q))<2e-7);
+ }
+ let fluxOverPi=0;for(let i=0;i<10000;i++){const mu=(i+.5)/10000;fluxOverPi+=2*physics.limb(mu,.4,.8,.2)*mu/10000;}
+ assert.ok(Math.abs(fluxOverPi-(.4+2*.8/3+.2))<1e-8);
+ assert.equal(physics.grey(2/3,6000),6000);
+ assert.ok(Math.abs((physics.grey(0,6000)/6000)**4-.5)<1e-12);
+ assert.ok(physics.grey(5,6000)>physics.grey(1,6000));
+ assert.ok(Math.abs(physics.hydrogenEdge(1)-91.165)<.01);
+ assert.ok(Math.abs(physics.hydrogenEdge(2)/physics.hydrogenEdge(1)-4)<1e-12);
+});
