@@ -29,3 +29,6 @@ node_modules/
 /.codex/
 /.mimosa/
 /archive/
+
+# Local textbook revisions and publishing materials
+/textbooks/

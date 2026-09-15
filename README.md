@@ -23,3 +23,5 @@
 - [GitHub Pages 发布工作流](.github/workflows/pages.yml)
 
 教材全文、完整译文、原始学生反馈、凭据及本地工作记录不纳入公开仓库或网站，需另行保管与备份。
+
+本机课本修订资料集中在 `textbooks/`：`pdf/` 存放三卷中文课本，`publishing/` 保存出版工具与素材；资料说明见本机 `textbooks/README.md`。原文和译文基线保留在 `library/`。这两个目录均由 Git 忽略。
