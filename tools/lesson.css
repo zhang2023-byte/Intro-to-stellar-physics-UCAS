@@ -31,3 +31,10 @@ math[display="block"]{display:block;max-width:100%;overflow-x:auto;font-size:1.1
 @media(prefers-reduced-motion:reduce){.book-link{transition:none}}
 
 .topbar .github-project{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-shrink:0;min-height:44px;padding:8px 14px;border:1px solid #24292f;border-radius:8px;background:#24292f;color:#fff;font-size:13px;font-weight:600;line-height:1.5;text-decoration:none}.github-project svg{flex-shrink:0}.topbar .github-project:hover{background:#414851;border-color:#414851}.topbar .github-project:focus-visible{outline:3px solid #a88048;outline-offset:4px}
+
+/* Keep scientific symbols legible in prose, tables and exercises. */
+math{font-family:"STIX Two Math","Cambria Math",math;line-height:1.5}
+td math,.quiz-card math{font-size:1.08em}
+td math{white-space:nowrap}
+.answer-note strong{display:block;margin-bottom:.35em}
+@media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}

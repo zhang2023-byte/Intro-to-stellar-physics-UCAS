@@ -15,7 +15,7 @@ const physics=vm.runInNewContext(fs.readFileSync(`${ROOT}/tools/physics.js`,'utf
 test('定量活动满足距离、星等、颜色与温度比例关系',()=>{assert.equal(physics.apparent(2,10),2);assert.equal(physics.apparent(2,100),7);assert.equal(physics.magnitude(100),-5);assert.ok(Math.abs(physics.color(10000))<1e-12);assert.ok(physics.color(4000)>physics.color(12000));assert.equal(physics.luminosity(2,5800),4);assert.equal(physics.luminosity(1,11600),16);});
 test('Planck谱密度变换、数值峰值与全谱积分保持物理一致',()=>{const c=299792458,T=6000,nm=500,l=nm*1e-9;assert.ok(Math.abs(physics.planckNu(c/l,T)/(physics.planck(nm,T)*l*l/c)-1)<1e-12);let peakL=0,maxL=0,peakN=0,maxN=0;for(let x=100;x<2000;x+=.5){const a=physics.planck(x,T),b=physics.planckNu(x*1e12,T);if(a>maxL){maxL=a;peakL=x;}if(b>maxN){maxN=b;peakN=x;}}assert.ok(Math.abs(peakL*T/2.897771955e6-1)<.002);assert.ok(Math.abs(peakN*1e12/T/5.87892576e10-1)<.002);assert.ok(Math.abs(peakL*1e-9*peakN*1e12/c-1)>.3);let integral=0;const dlog=Math.log(1e6)/20000;for(let i=0;i<20000;i++){const nm=Math.exp((i+.5)*dlog);integral+=physics.planck(nm,T)*nm*1e-9*dlog;}assert.ok(Math.abs(Math.PI*integral/(physics.sigma*T**4)-1)<.0001);});
 test('氢的两道门产生内部峰值，电子密度影响电离',()=>{const low=physics.hydrogen(4000,1e20),mid=physics.hydrogen(10000,1e20),hot=physics.hydrogen(25000,1e20);assert.ok(mid.lower>low.lower&&mid.lower>hot.lower);assert.ok(physics.hydrogen(12000,1e22).neutral>physics.hydrogen(12000,1e18).neutral);for(const x of [low,mid,hot])assert.ok(x.lower>=0&&x.lower<=x.neutral&&x.neutral<=1);});
-test('三章覆盖19题8项活动，教材补充与更新保持可折叠',()=>{let questions=0,activities=0;for(const id of ['v2-ch01','v2-ch02','v2-ch03']){const source=fs.readFileSync(`${ROOT}/lessons/${id}.md`,'utf8'),d=parseLesson(source);assert.equal(d.meta.study,true);questions+=d.quizzes.length;activities+=d.activities.length;const html=renderLesson(d,`${ROOT}/lessons`);assert.ok(html.includes('<details><summary>教材补充与更新'));assert.ok(!html.includes('data-quiz-slot'));}assert.equal(questions,19);assert.equal(activities,8);});
+test('三章覆盖21题8项活动，教材补充与更新保持可折叠',()=>{let questions=0,activities=0;for(const id of ['v2-ch01','v2-ch02','v2-ch03']){const source=fs.readFileSync(`${ROOT}/lessons/${id}.md`,'utf8'),d=parseLesson(source);assert.equal(d.meta.study,true);questions+=d.quizzes.length;activities+=d.activities.length;const html=renderLesson(d,`${ROOT}/lessons`);assert.ok(html.includes('<details><summary>教材补充与更新'));assert.ok(!html.includes('data-quiz-slot'));}assert.equal(questions,21);assert.equal(activities,8);});
 
 test('常源函数：边界、收支、薄厚极限及分层合成一致',()=>{
  for(const I0 of [0,.2,1,2])for(const S of [0,.4,1,2]){
@@ -48,7 +48,19 @@ test('分层模型与线性源函数的解析积分对照，含有限底边界',
 });
 test('第四章覆盖四项交互及全部核心概念，公式均带无障碍说明',()=>{
  const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch04.md`,'utf8'));
- assert.equal(d.activities.length,4);assert.equal(d.quizzes.length,12);
+ assert.equal(d.activities.length,4);assert.equal(d.quizzes.length,13);
  for(const concept of ['intensity','balance','optical-depth','formal-solution','limits-lte','spectral-lines','stratified-atmosphere'])assert.ok(d.quizzes.some(q=>q.concept===concept));
  const h=renderLesson(d,`${ROOT}/lessons`);validateHTML(h);for(const tag of h.match(/<math[^>]*>/g))assert.match(tag,/aria-label=/);
+});
+
+import {mathText} from './math-text.mjs';
+test('题目数学排版保留符号，分数及下标可读且拒绝注入HTML',()=>{
+ const out=mathText('Bν=Bλ λ²/c；λ_pν_p=c；N_II/N_I；<img src=x onerror=alert(1)>');
+ assert.match(out,/<mfrac>/);assert.match(out,/<msub><mi>λ<\/mi><mi>p<\/mi>/);
+ assert.ok(!out.includes('<img'));assert.ok(out.includes('&lt;img'));
+ assert.equal(mathText('a < b & c'), 'a &lt; b &amp; c');
+ for(const id of ['v2-ch01','v2-ch02','v2-ch03','v2-ch04']){
+  const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/${id}.md`,'utf8'));
+  for(const q of d.quizzes)assert.doesNotMatch(q.explanation,/判断正确|判断错误/);
+ }
 });
