@@ -38,7 +38,7 @@ ID 以英文字母起始，仅含字母、数字、下划线或连字符，须�
 
 ## 内置活动
 
-`activity` JSON 代码块支持 brightness、color、airmass、cmd、spectra、hydrogen、blackbody、temperature；范围、物理假设和模型限制由共用组件固定说明。历史活动支持 `{"id":"parallax-lab","type":"parallax"}`。它展示圆形地球轨道、黄道极方向、小角度关系，不能挪用于任意观测几何。辐射转移活动支持 projection（投影面积）、transfer（常源函数气层）、lineformation（窄带谱线）、stratification（分层源函数）。其数值模型位于 `physics.js`，假设随活动展示；包含 transfer 的课件额外内嵌 `radiative-transfer.css`。其他活动须实现后才能使用，构建会拒绝未知类型。
+`activity` JSON 代码块支持 brightness、color、airmass、cmd、spectra、hydrogen、blackbody、temperature；范围、物理假设和模型限制由共用组件固定说明。历史活动支持 `{"id":"parallax-lab","type":"parallax"}`。它展示圆形地球轨道、黄道极方向、小角度关系，不能挪用于任意观测几何。辐射转移活动支持 projection（投影面积）、transfer（常源函数气层）、lineformation（窄带谱线）、stratification（分层源函数）。其数值模型位于 `physics.js`，假设随活动展示；包含 transfer 的课件额外内嵌 `radiative-transfer.css`。大气活动另支持 limb（线性及二次源函数的出射角分布）、grey（Eddington 灰大气温度律）、edges（氢束缚—自由能量阈值）；相应数值关系位于 `physics.js`，活动旁注明假设与归一化。其他活动须实现后才能使用，构建会拒绝未知类型。
 
 ## 反馈和修订
 

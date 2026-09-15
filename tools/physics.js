@@ -13,6 +13,9 @@ const StellarPhysics=(()=>{
  // z increases inward, total continuum depth 8; S(z)=1+g(z/8-1/2).
  // Constant source within each cell, exact formal propagation from back to front.
  const stratified=(factor,g,N=240)=>{let I=1+g/2;const dt=8*factor/N;for(let i=N-1;i>=0;i--){const z=(i+.5)/N;I=slab(I,1+g*(z-.5),dt).total;}return I;};
- return {slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ const limb=(mu,a,b,q=0)=>a+b*mu+2*q*mu*mu;
+ const grey=(tau,Teff)=>Teff*(.75*(tau+2/3))**.25;
+ const hydrogenEdge=n=>h*c/(13.6*1.602176634e-19/(n*n))*1e9;
+ return {limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;

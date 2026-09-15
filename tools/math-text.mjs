@@ -3,7 +3,7 @@ const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const sub=(base,index)=>`<msub><mi>${base}</mi><mi>${index}</mi></msub>`;
 const atoms=new Map([
  ['λ_p',sub('λ','p')],['ν_p',sub('ν','p')],['T_eff',sub('T','eff')],
- ...['I','B','F','κ','ε','τ','S'].flatMap(x=>['λ','ν'].map(y=>[x+y,sub(x,y)])),
+ ...['I','B','F','κ','ε','τ','S','J','u','α','σ','χ','s'].flatMap(x=>['λ','ν'].map(y=>[x+y,sub(x,y)])),
  ...['B','V'].flatMap(y=>['f','Z'].map(x=>[x+'_'+y,sub(x,y)])),
  ['N_II',sub('N','II')],['N_I',sub('N','I')],['nₑ',sub('n','e')]
 ]);

@@ -287,7 +287,10 @@ const StellarPhysics=(()=>{
  // z increases inward, total continuum depth 8; S(z)=1+g(z/8-1/2).
  // Constant source within each cell, exact formal propagation from back to front.
  const stratified=(factor,g,N=240)=>{let I=1+g/2;const dt=8*factor/N;for(let i=N-1;i>=0;i--){const z=(i+.5)/N;I=slab(I,1+g*(z-.5),dt).total;}return I;};
- return {slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ const limb=(mu,a,b,q=0)=>a+b*mu+2*q*mu*mu;
+ const grey=(tau,Teff)=>Teff*(.75*(tau+2/3))**.25;
+ const hydrogenEdge=n=>h*c/(13.6*1.602176634e-19/(n*n))*1e9;
+ return {limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;
 
@@ -306,6 +309,9 @@ if(typeof module!=='undefined')module.exports=StellarPhysics;
    const v={};for(const input of lab.querySelectorAll('[data-param]')){v[input.dataset.param]=input.tagName==='SELECT'?input.value:Number(input.value);const out=lab.querySelector(`[data-out="${input.dataset.param}"]`);if(out)out.textContent=input.value+(input.dataset.param==='T'?' K':input.dataset.param==='d'?' pc':input.dataset.param==='R'?' R☉':'');}
    svg.replaceChildren();let text='';
    switch(lab.dataset.explorer){
+    case 'limb':{const a=axes(svg,'方向余弦 μ（近边缘 → 中心）','强度 / Iᵣ',1,3.5);for(const x of [0,.2,.4,.6,.8,1])label(svg,a.x(x),322,x,{'text-anchor':'middle'});for(const y of [0,1,2,3])label(svg,55,a.y(y)+5,y,{'text-anchor':'end'});curve(svg,Array.from({length:101},(_,i)=>[a.x(i/100),a.y(P.limb(i/100,.4,v.b,v.q))]));curve(svg,Array.from({length:101},(_,i)=>{const m=i/100;return[a.x(m),a.y(.4+v.b*m+v.q*m*m)];}),'#8ccac8',true);const I=P.limb(v.mu,.4,v.b,v.q);node(svg,'circle',{cx:a.x(v.mu),cy:a.y(I),r:6,fill:'#fff1c9'});text=`μ=${fmt(v.mu)}，出射 I/Iᵣ=${fmt(I,3)}；S(τ=μ)/Iᵣ=${fmt(.4+v.b*v.mu+v.q*v.mu*v.mu,3)}。差值 qμ²=${fmt(v.q*v.mu*v.mu,3)}；F/(πIᵣ)=${fmt(.4+2*v.b/3+v.q,3)}。`;break;}
+    case 'grey':{const a=axes(svg,'向内光学深度 τ','温度 / K',5,15000);for(const t of [0,1,2,3,4,5])label(svg,a.x(t),322,t,{'text-anchor':'middle'});for(const y of [0,5000,10000,15000])label(svg,58,a.y(y)+5,y,{'text-anchor':'end'});for(const [T,col,dash]of [[6000,'#8ccac8',true],[v.T,'#eab76f',false]])curve(svg,Array.from({length:201},(_,i)=>[a.x(i/40),a.y(P.grey(i/40,T))]),col,dash);line(svg,a.x(2/3),40,a.x(2/3),300,'#edf0e9',{'stroke-dasharray':'2 5'});node(svg,'circle',{cx:a.x(v.tau),cy:a.y(P.grey(v.tau,v.T)),r:6,fill:'#fff1c9'});text=`τ=${fmt(v.tau)}：T=${fmt(P.grey(v.tau,v.T),0)} K；T / 有效温度 =${fmt(P.grey(v.tau,1),3)}。表面 T(0)=${fmt(P.grey(0,v.T),0)} K；每层净通量 F=${scientific(P.sigma*v.T**4)} W m⁻²。`;break;}
+    case 'edges':{const E=1239.841984/v.wave,threshold=13.6/v.n**2,y=e=>290-e/26*240;line(svg,110,290,640,290);for(const [e,name,col,dash]of [[threshold,'电离阈值','#8ccac8','8 5'],[E,'光子能量','#eab76f','']]){line(svg,120,y(e),620,y(e),col,{'stroke-dasharray':dash});label(svg,130,name==='电离阈值'?35:65,`${name} ${fmt(e,4)} eV`);}label(svg,110,335,'能量向上增大；实线为光子，虚线为电离阈值');text=`n=${v.n}，阈值波长 ${fmt(P.hydrogenEdge(v.n),1)} nm；当前光子 ${fmt(E,4)} eV：${E>=threshold?'能量足以电离，超出的能量可成为电子动能':'能量不足以从此能级电离'}。初始能级的粒子数仍决定吸收贡献。`;break;}
     case 'projection':{const c=Math.cos(v.theta*Math.PI/180),sn=Math.sin(v.theta*Math.PI/180),len=72*v.area,cx=355,cy=172;
  for(const y of [100,140,180,220,260]){line(svg,55,y,200,y,'#eab76f');node(svg,'path',{d:`M190 ${y-5} L200 ${y} L190 ${y+5}`,fill:'none',stroke:'#eab76f'});}
  line(svg,cx-sn*len,cy+c*len,cx+sn*len,cy-c*len,'#c9e4e1',{'stroke-width':7});line(svg,cx,cy,cx+105*c,cy+105*sn,'#91aaa8',{'stroke-dasharray':'5 5'});
