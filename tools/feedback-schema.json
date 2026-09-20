@@ -63,7 +63,8 @@
       "未开始",
       "修改中",
       "待审核",
-      "已完成"
+      "已完成",
+      "已停滞"
     ]
   },
   {
@@ -74,11 +75,6 @@
   {
     "name": "处理说明",
     "type": "text",
-    "group_editable": true
-  },
-  {
-    "name": "是否已解决",
-    "type": "checkbox",
     "group_editable": true
   }
 ]
