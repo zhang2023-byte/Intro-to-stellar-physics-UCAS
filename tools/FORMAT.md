@@ -2,6 +2,32 @@
 
 一课一份 `lessons/<ID>.md`。用 `./tools/course build <ID>` 构建本课并更新首页；`all` 构建全部；`index` 只更新首页；`check` 核对源码与输出；`test` 跑工具测试。在项目根执行。
 
+## 安装与本地预览
+
+首次配置和克隆步骤见 [README](../README.md#新成员开始)。在项目根目录执行 `npm --prefix tools ci` 安装锁定依赖；Node.js 最低版本为 20，自动检查配置使用 24。
+
+npm 命令适用于 macOS、Linux 和 Windows PowerShell；Windows 若拦截 `npm.ps1`，可使用 `npm.cmd` 执行同样参数。`./tools/course` 是 macOS/Linux/Git Bash 的便利入口，PowerShell 使用 npm 或以下 Node 命令。
+
+修改后构建、验证（在仓库根目录执行，将课程 ID 替换为目标课程）：
+
+```sh
+node tools/build.mjs build v2-ch04
+npm --prefix tools run check
+npm --prefix tools test
+```
+
+共用样式、交互或构建器变化时，使用 `npm --prefix tools run build` 全站重建。只查看或审核 PR 时先执行 check，不要先构建来掩盖作者漏提交生成网页的问题。
+
+本地预览只提供 `site/`。有 Python 3 时，在仓库根执行 macOS/Linux 的 `python3 -m http.server 8000 --bind 127.0.0.1 --directory site`，Windows 执行 `py -3 -m http.server 8000 --bind 127.0.0.1 --directory site`，然后打开 `http://127.0.0.1:8000/`；按 Ctrl+C 停止。缺少 Python 或端口占用时，让 Agent 配置仅服务 `site/` 的等效本地预览或换端口，不要把含私有教材的仓库根目录作为服务目录。
+
+首次运行浏览器回归前，进入 `tools/` 执行 `npx playwright install chromium`（Linux 如缺系统库，按 Playwright 提示安装，CI 可用 `npx playwright install --with-deps chromium`），再回到仓库根执行 `npm --prefix tools run browser-test`。测试覆盖范围以实际输出为准；人工还需查看受影响公式、全部相关题目、手机宽度与交互。飞书入口检查不等于真实问卷提交。
+
+## 自动检查与部署
+
+`.github/workflows/course-check.yml` 定义 Ubuntu/Windows 的源码输出一致性检查和工具测试，不包含浏览器回归。文件推送并触发后才能取得远端结果；是否为合并必需检查以 GitHub 当前配置为准。自动检查不能替代科学判断。
+
+`.github/workflows/pages.yml` 在 main 的 site/ 或发布工作流变化后部署；上传已生成的 site/，不在发布时构建。部署是否成功须核对本次提交的实际运行结果。分支交付、人工审核和反馈收尾按网页修订 skill。
+
 ## 元数据
 
 文件从一个 `lesson` 代码块开始，内容为 JSON，不使用 YAML 依赖：
@@ -10,7 +36,7 @@
 {"id":"example","version":"1.0.0","updated":"2026-09-07","title":"课程标题","summary":"一句话导读","scope":"教材范围","demo":false,"sources":["书名、版本、小节、已确认页码"]}
 ```
 
-ID 以英文字母起始，仅含字母、数字、下划线或连字符，须与文件名一致。元数据用于页面展示和反馈定位；`sources` 只放人能阅读的书目定位，不写私有路径。版本使用三段数字，仅供内部答题进度隔离。`updated` 使用 YYYY-MM-DD；学生页面显示更新日期，不显示版本号或版本记录。反馈以更新日期及内容指纹定位。
+ID 以英文字母起始，仅含字母、数字、下划线或连字符，须与文件名一致。元数据用于页面展示和反馈定位；`sources` 只放人能阅读的书目定位，不写私有路径。版本使用三段数字，供内部答题进度隔离；措辞/显示修正增加 patch，影响理解、题干或答案的修订增加 minor。`updated` 使用 YYYY-MM-DD；学生页面显示更新日期，不显示版本号或版本记录。反馈以更新日期及内容指纹定位。脱敏改动依据写在 PR，具体反馈结论写在内部表，不要求新增学生可见的维护日志。
 
 正文从 `## 小节标题 {#stable-id}` 开始，每个二级标题都要有全课唯一 ID。三级标题可以不带 ID。稳定 ID 与题目、活动共用命名空间。支持普通 Markdown、表格、原生 MathML 和自制内联 SVG；禁止正文脚本、内联事件、样式和手写 HTML ID。需要新交互时修改共用工具并测试。
 
@@ -36,22 +62,18 @@ ID 以英文字母起始，仅含字母、数字、下划线或连字符，须�
 
 点击“回看相关概念”后，页面记住出发题目，并在原题离开视野时显示右下角“返回课后题”按钮。按钮返回该题并恢复键盘焦点，保留本次已选答案与判题结果；原题进入视野时隐藏。概念紧邻习题区时，仍可直接返回原题。回看链接只占文字及必要触控留白，避免整行空白触发跳转。
 
+题干、选项和解析仍用纯文本。构建器通过 `tools/math-text.mjs` 将受支持的物理量下标与分数排为 MathML，其他内容统一转义；不能在题目 JSON 中写 HTML。新增符号格式需扩展此映射并验证。答题结果与命题本身的真假分开表达，解析用“该说法成立／不成立”，避免“回答正确。判断错误。”。
+
 ## 内置活动
 
 `activity` JSON 代码块支持 brightness、color、airmass、cmd、spectra、hydrogen、blackbody、temperature；范围、物理假设和模型限制由共用组件固定说明。历史活动支持 `{"id":"parallax-lab","type":"parallax"}`。它展示圆形地球轨道、黄道极方向、小角度关系，不能挪用于任意观测几何。辐射转移活动支持 projection（投影面积）、transfer（常源函数气层）、lineformation（窄带谱线）、stratification（分层源函数）。其数值模型位于 `physics.js`，假设随活动展示；包含 transfer 的课件额外内嵌 `radiative-transfer.css`。大气活动另支持 limb（线性及二次源函数的出射角分布）、grey（Eddington 灰大气温度律）、edges（氢束缚—自由能量阈值）；相应数值关系位于 `physics.js`，活动旁注明假设与归一化。其他活动须实现后才能使用，构建会拒绝未知类型。
 
 ## 反馈和修订
 
-通过飞书问卷收集，公开配置 `tools/feedback.json` 仅包含 `formUrl`。未开通时为 null，不生成假链接。页面提供课程ID、版本、正文/题目ID、标签及内容指纹，学生复制到问卷的“课程位置”。实际预填能力需验证后接入，不臆造参数。
+通过飞书问卷收集，公开配置 `tools/feedback.json` 仅包含 `formUrl`。未开通时为 null，不生成假链接。页面提供课程ID、更新日期、正文/题目ID、标签及内容指纹，学生复制到问卷的“反馈位置”（底层表字段为“课程位置”）。旧反馈若携带 version，先比较对应版本与现版。实际预填能力需验证后接入，不臆造参数。
 
-飞书多维表格字段预案见 `tools/feedback-schema.json`：姓名、反馈、课程位置、参考来源、是否已解决、处理说明、提交时间。姓名、反馈和课程位置必填；是否已解决和处理说明仅教师管理，表单不展示。默认不向学生开放表格。密钥、表格管理坐标和原始记录留本地忽略文件，不进入网页或Git。
-
-## 自习组织
-
-主线连续下拉；不设置逐步模式、上下步按钮或离线下载入口。深入解释和“教材补充与更新”用 details/summary，可包含公式及交互。所有习题放在最后。删去操作口号和装饰性短句，保留实际物理内容、假设、坐标、单位和阅读定位。
+多维表格字段说明见 `feedback-schema.json`；它是字段参考，`group_editable` 表示协作约定，不是权限配置，也不会自动修改远端表。公开问卷的姓名、反馈对象、反馈位置、反馈为必填；补充材料与邮箱选填。字段操作权限见 AGENTS，工作状态和关闭语义统一见网页修订 skill。
 
 ## 首页与分卷目录
 
 `tools/books.mjs` 维护两卷的章节顺序、标题和范围概要。已有课程的标题、概要取自课程元数据；未生成课件的章节标为待制作。`./tools/course index` 生成首页和两卷目录。教师指定的中文封面背景存于 `assets/covers/`，构建时内嵌。
-
-题干、选项和解析仍用纯文本。构建器通过 `tools/math-text.mjs` 将受支持的物理量下标与分数排为 MathML，其他内容统一转义；不能在题目 JSON 中写 HTML。新增符号格式需扩展此映射并验证。答题结果与命题本身的真假分开表达，解析用“该说法成立／不成立”，避免“回答正确。判断错误。”。

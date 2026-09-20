@@ -19,7 +19,7 @@ def main():
   report['migration_verified_files']=len(m['files']);report['removed_tmp_bytes']=m['removed_tmp_bytes']
  report['tmp_removed']=not (ROOT/'tmp').exists()
  refs=0;missing=[]
- for md in (ROOT/'library').glob('Volume*/translated_outputs/*.md'):
+ for md in (ROOT/'archive/library').glob('Volume*/translated_outputs/*.md'):
   text=md.read_text()
   images=re.findall(r'!\[[^\]]*\]\(([^)]+)\)',text)+re.findall(r'<img\b[^>]*src=["\']([^"\']+)',text)
   for image in images:
@@ -55,7 +55,7 @@ def main():
  banned=[];large=[]
  for s in candidates:
   p=Path(s)
-  if p.parts[0]=='library' or 'MinerU_outputs' in p.parts or 'translated_outputs' in p.parts or 'feedback-raw' in p.parts or '.local.' in p.name or p.suffix.lower()=='.pdf' or p.name=='.env' or p.name.startswith('.env.') and p.name!='.env.example':banned.append(s)
+  if p.parts[0] in {'library','archive'} or 'MinerU_outputs' in p.parts or 'translated_outputs' in p.parts or 'feedback-raw' in p.parts or '.local.' in p.name or p.suffix.lower()=='.pdf' or p.name=='.env' or p.name.startswith('.env.') and p.name!='.env.example':banned.append(s)
   if (ROOT/p).is_file() and (ROOT/p).stat().st_size>5*1024*1024:large.append(s)
  assert not banned, f'不应进入Git：{banned}'
  assert not large, f'异常大文件：{large}'

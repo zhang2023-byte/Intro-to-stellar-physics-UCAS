@@ -1,0 +1,2 @@
+# Keep source fingerprints and generated HTML identical across operating systems.
+* text=auto eol=lf

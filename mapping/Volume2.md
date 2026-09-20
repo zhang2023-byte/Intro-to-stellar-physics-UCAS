@@ -1,5 +1,7 @@
 # Volume2《Stellar Atmospheres》与 Ref 的粗对应
 
+> 历史翻译对应资料；日常制课与修订请直接读取 [教材 PDF](../textbooks/pdf/README.md)，无需维护本表。
+
 本文件只做 Volume2 16 个正文编号章节与 Ref 的主题级导航。Volume2 章节名称、MinerU 小节和 Ref 章节入口均以 [mapping/catalog.md](catalog.md) 为定位索引；调研不联网，候选关系不等于全书逐式核实；后续第1–3章的具体核实另记在下方。旧书范围保留 Volume2 的原小节编号，表中的主题是对内容的原创概括。
 
 状态约定：

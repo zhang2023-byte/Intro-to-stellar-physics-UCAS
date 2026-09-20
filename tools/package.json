@@ -1,1 +1,14 @@
-{"name":"stellar-course-tools","private":true,"type":"module","scripts":{"build":"node build.mjs all","check":"node build.mjs check","test":"node --test tests.mjs"},"dependencies":{"marked":"17.0.5"},"devDependencies":{"playwright":"1.62.1"}}
+{
+  "name": "stellar-course-tools",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "build": "node build.mjs all",
+    "check": "node build.mjs check",
+    "test": "node --test tests.mjs",
+    "browser-test": "node browser-test.mjs"
+  },
+  "dependencies": {"marked": "17.0.5"},
+  "devDependencies": {"playwright": "1.62.1"}
+}

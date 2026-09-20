@@ -1,5 +1,7 @@
 # 四书目录与本地阅读入口
 
+> 历史翻译对应资料；日常制课与修订请直接读取 [教材 PDF](../textbooks/pdf/README.md)，无需维护本表。
+
 本文件是导航，不是正文核实报告。小节标题来自 MinerU 正文及目录，可能含 OCR 误差。
 
 页码约定：拆分清单的“原书页码”字段实际记整卷 PDF 的 1 基页序，并非印刷页码；下文统一称整卷 PDF 页序。印刷页码须在使用时查看 PDF。
@@ -12,14 +14,14 @@
 
 ## Volume1（19 个正文编号章节）
 
-[整卷 PDF](../library/Volume1/Introduction%20to%20Stellar%20Astrophysics%20Basic%20stellar%20observations%20and%20data%20%28E.%20Bo%CC%88hm-Vitense%29%20%28z-library.sk%2C%201lib.sk%2C%20z-lib.sk%29.pdf) · [拆分清单](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
+[整卷 PDF](../textbooks/pdf/originals/Stellar_Astrophysics_Volume_1.en.pdf) · [拆分清单](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
 
 原始 PDF SHA-256：`4e02eb4d74eb32d1d04c3429076a577aaaf0e02e5ae59369f8d0a9fd2547b59d`
 
 <a id="volume1-ch01"></a>
 ### 第 1 章 Positions of stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/004__04_1%20Positions%20of%20stars/04_1%20Positions%20of%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Positions%20of%20stars.pdf) · 整卷 PDF 页序 12-17
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/004__04_1%20Positions%20of%20stars/04_1%20Positions%20of%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Positions%20of%20stars.pdf) · 整卷 PDF 页序 12-17
 
 正文小节：
 - 1.1 The coordinate system（Markdown 第 3 行）
@@ -35,14 +37,14 @@
 <a id="volume1-ch02"></a>
 ### 第 2 章 Proper motions of stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/005__05_2%20Proper%20motions%20of%20stars/05_2%20Proper%20motions%20of%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Proper%20motions%20of%20stars.pdf) · 整卷 PDF 页序 18-19
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/005__05_2%20Proper%20motions%20of%20stars/05_2%20Proper%20motions%20of%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Proper%20motions%20of%20stars.pdf) · 整卷 PDF 页序 18-19
 
 - 未提取到编号小节，按章阅读。
 
 <a id="volume1-ch03"></a>
 ### 第 3 章 Distances of nearby stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/006__06_3%20Distances%20of%20nearby%20stars/06_3%20Distances%20of%20nearby%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Distances%20of%20nearby%20stars.pdf) · 整卷 PDF 页序 20-23
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/006__06_3%20Distances%20of%20nearby%20stars/06_3%20Distances%20of%20nearby%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Distances%20of%20nearby%20stars.pdf) · 整卷 PDF 页序 20-23
 
 正文小节：
 - 3.1 The distance of the sun（Markdown 第 3 行）
@@ -55,7 +57,7 @@
 <a id="volume1-ch04"></a>
 ### 第 4 章 The brightnesses of the stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/007__07_4%20The%20brightnesses%20of%20the%20stars/07_4%20The%20brightnesses%20of%20the%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20The%20brightnesses%20of%20the%20stars.pdf) · 整卷 PDF 页序 24-41
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/007__07_4%20The%20brightnesses%20of%20the%20stars/07_4%20The%20brightnesses%20of%20the%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20The%20brightnesses%20of%20the%20stars.pdf) · 整卷 PDF 页序 24-41
 
 正文小节：
 - 4.1 The apparent magnitudes（Markdown 第 3 行）
@@ -81,7 +83,7 @@
 <a id="volume1-ch05"></a>
 ### 第 5 章 Color magnitude diagrams
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/008__08_5%20Color%20magnitude%20diagrams/08_5%20Color%20magnitude%20diagrams.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Color%20magnitude%20diagrams.pdf) · 整卷 PDF 页序 42-51
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/008__08_5%20Color%20magnitude%20diagrams/08_5%20Color%20magnitude%20diagrams.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Color%20magnitude%20diagrams.pdf) · 整卷 PDF 页序 42-51
 
 正文小节：
 - 5.1 Color magnitude diagrams of nearby stars（Markdown 第 3 行）
@@ -101,7 +103,7 @@
 <a id="volume1-ch06"></a>
 ### 第 6 章 The luminosities of the stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/009__09_6%20The%20luminosities%20of%20the%20stars/09_6%20The%20luminosities%20of%20the%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20The%20luminosities%20of%20the%20stars.pdf) · 整卷 PDF 页序 52-59
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/009__09_6%20The%20luminosities%20of%20the%20stars/09_6%20The%20luminosities%20of%20the%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20The%20luminosities%20of%20the%20stars.pdf) · 整卷 PDF 页序 52-59
 
 正文小节：
 - 6.1 Fluxes, luminosities and angular radii（Markdown 第 3 行）
@@ -116,7 +118,7 @@
 <a id="volume1-ch07"></a>
 ### 第 7 章 Angular radii of stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/010__10_7%20Angular%20radii%20of%20stars/10_7%20Angular%20radii%20of%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20Angular%20radii%20of%20stars.pdf) · 整卷 PDF 页序 60-73
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/010__10_7%20Angular%20radii%20of%20stars/10_7%20Angular%20radii%20of%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20Angular%20radii%20of%20stars.pdf) · 整卷 PDF 页序 60-73
 
 正文小节：
 - 7.1 The problem（Markdown 第 3 行）
@@ -133,7 +135,7 @@
 <a id="volume1-ch08"></a>
 ### 第 8 章 Effective temperatures of stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/011__11_8%20Effective%20temperatures%20of%20stars/11_8%20Effective%20temperatures%20of%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20Effective%20temperatures%20of%20stars.pdf) · 整卷 PDF 页序 74-77
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/011__11_8%20Effective%20temperatures%20of%20stars/11_8%20Effective%20temperatures%20of%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20Effective%20temperatures%20of%20stars.pdf) · 整卷 PDF 页序 74-77
 
 正文小节：
 - 8.1 General discussion（Markdown 第 3 行）
@@ -148,7 +150,7 @@
 <a id="volume1-ch09"></a>
 ### 第 9 章 Masses and radii of stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/012__12_9%20Masses%20and%20radii%20of%20stars/12_9%20Masses%20and%20radii%20of%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20Masses%20and%20radii%20of%20stars.pdf) · 整卷 PDF 页序 78-99
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/012__12_9%20Masses%20and%20radii%20of%20stars/12_9%20Masses%20and%20radii%20of%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20Masses%20and%20radii%20of%20stars.pdf) · 整卷 PDF 页序 78-99
 
 正文小节：
 - 9.1 General discussion of binaries（Markdown 第 3 行）
@@ -174,7 +176,7 @@
 <a id="volume1-ch10"></a>
 ### 第 10 章 Spectral classification
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/013__13_10%20Spectral%20classification/13_10%20Spectral%20classification.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Spectral%20classification.pdf) · 整卷 PDF 页序 100-109
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/013__13_10%20Spectral%20classification/13_10%20Spectral%20classification.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Spectral%20classification.pdf) · 整卷 PDF 页序 100-109
 
 正文小节：
 - 10.1 The spectral sequence（Markdown 第 3 行）
@@ -189,7 +191,7 @@
 <a id="volume1-ch11"></a>
 ### 第 11 章 Understanding stellar spectra
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/014__14_11%20Understanding%20stellar%20spectra/14_11%20Understanding%20stellar%20spectra.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20Understanding%20stellar%20spectra.pdf) · 整卷 PDF 页序 110-117
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/014__14_11%20Understanding%20stellar%20spectra/14_11%20Understanding%20stellar%20spectra.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20Understanding%20stellar%20spectra.pdf) · 整卷 PDF 页序 110-117
 
 正文小节：
 - 11.1 The solar spectrum（Markdown 第 3 行）
@@ -209,21 +211,21 @@
 <a id="volume1-ch12"></a>
 ### 第 12 章 Population II stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/015__15_12%20Population%20II%20stars/15_12%20Population%20II%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Population%20II%20stars.pdf) · 整卷 PDF 页序 118-121
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/015__15_12%20Population%20II%20stars/15_12%20Population%20II%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Population%20II%20stars.pdf) · 整卷 PDF 页序 118-121
 
 - 未提取到编号小节，按章阅读。
 
 <a id="volume1-ch13"></a>
 ### 第 13 章 Stellar rotation
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/016__16_13%20Stellar%20rotation/16_13%20Stellar%20rotation.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Stellar%20rotation.pdf) · 整卷 PDF 页序 122-127
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/016__16_13%20Stellar%20rotation/16_13%20Stellar%20rotation.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Stellar%20rotation.pdf) · 整卷 PDF 页序 122-127
 
 - 未提取到编号小节，按章阅读。
 
 <a id="volume1-ch14"></a>
 ### 第 14 章 Stellar magnetic fields
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/017__17_14%20Stellar%20magnetic%20fields/17_14%20Stellar%20magnetic%20fields.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20Stellar%20magnetic%20fields.pdf) · 整卷 PDF 页序 128-137
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/017__17_14%20Stellar%20magnetic%20fields/17_14%20Stellar%20magnetic%20fields.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20Stellar%20magnetic%20fields.pdf) · 整卷 PDF 页序 128-137
 
 正文小节：
 - 14.1 General discussion（Markdown 第 3 行）
@@ -236,7 +238,7 @@
 <a id="volume1-ch15"></a>
 ### 第 15 章 Stars with peculiar spectra
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/018__18_15%20Stars%20with%20peculiar%20spectra/18_15%20Stars%20with%20peculiar%20spectra.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Stars%20with%20peculiar%20spectra.pdf) · 整卷 PDF 页序 138-163
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/018__18_15%20Stars%20with%20peculiar%20spectra/18_15%20Stars%20with%20peculiar%20spectra.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Stars%20with%20peculiar%20spectra.pdf) · 整卷 PDF 页序 138-163
 
 正文小节：
 - 15.1 General discussion（Markdown 第 3 行）
@@ -261,7 +263,7 @@
 <a id="volume1-ch16"></a>
 ### 第 16 章 Pulsating stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/019__19_16%20Pulsating%20stars/19_16%20Pulsating%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Pulsating%20stars.pdf) · 整卷 PDF 页序 164-175
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/019__19_16%20Pulsating%20stars/19_16%20Pulsating%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Pulsating%20stars.pdf) · 整卷 PDF 页序 164-175
 
 正文小节：
 - 16.1 The different types of pulsating stars（Markdown 第 3 行）
@@ -278,7 +280,7 @@
 <a id="volume1-ch17"></a>
 ### 第 17 章 Explosive stars
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/020__20_17%20Explosive%20stars/20_17%20Explosive%20stars.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_17%20Explosive%20stars.pdf) · 整卷 PDF 页序 176-203
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/020__20_17%20Explosive%20stars/20_17%20Explosive%20stars.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_17%20Explosive%20stars.pdf) · 整卷 PDF 页序 176-203
 
 正文小节：
 - 17.1 Supernovae（Markdown 第 3 行）
@@ -300,7 +302,7 @@
 <a id="volume1-ch18"></a>
 ### 第 18 章 Our sun
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/021__21_18%20Our%20sun/21_18%20Our%20sun.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_18%20Our%20sun.pdf) · 整卷 PDF 页序 204-223
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/021__21_18%20Our%20sun/21_18%20Our%20sun.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_18%20Our%20sun.pdf) · 整卷 PDF 页序 204-223
 
 正文小节：
 - 18.1 Introduction（Markdown 第 5 行）
@@ -327,7 +329,7 @@
 <a id="volume1-ch19"></a>
 ### 第 19 章 Interstellar absorption
 
-[MinerU 正文](../library/Volume1/MinerU_outputs/022__22_19%20Interstellar%20absorption/22_19%20Interstellar%20absorption.md) · [拆分 PDF](../library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_19%20Interstellar%20absorption.pdf) · 整卷 PDF 页序 224-249
+[MinerU 正文](../archive/library/Volume1/MinerU_outputs/022__22_19%20Interstellar%20absorption/22_19%20Interstellar%20absorption.md) · [拆分 PDF](../archive/library/Volume1/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_19%20Interstellar%20absorption.pdf) · 整卷 PDF 页序 224-249
 
 正文小节：
 - 19.1 Introduction（Markdown 第 3 行）
@@ -347,29 +349,29 @@
 
 ### 辅助资料（仅登记）
 
-- [01_封面与版权信息](../library/Volume1/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
-- [02_Contents](../library/Volume1/MinerU_outputs/002__02_Contents/02_Contents.md)
-- [03_Preface](../library/Volume1/MinerU_outputs/003__03_Preface/03_Preface.md)
-- [23_References](../library/Volume1/MinerU_outputs/023__23_References/23_References.md)
-- [24_Index (Volume 1)](../library/Volume1/MinerU_outputs/024__24_Index%20%28Volume%201%29/24_Index%20%28Volume%201%29.md)
+- [01_封面与版权信息](../archive/library/Volume1/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
+- [02_Contents](../archive/library/Volume1/MinerU_outputs/002__02_Contents/02_Contents.md)
+- [03_Preface](../archive/library/Volume1/MinerU_outputs/003__03_Preface/03_Preface.md)
+- [23_References](../archive/library/Volume1/MinerU_outputs/023__23_References/23_References.md)
+- [24_Index (Volume 1)](../archive/library/Volume1/MinerU_outputs/024__24_Index%20%28Volume%201%29/24_Index%20%28Volume%201%29.md)
 
 人工补充拆分（用于处理原拆分边界）：
-- [00_Preface.pdf](../library/Volume1/supplemental_sources/00_Preface.pdf)
-- [19_Interstellar_absorption_body.pdf](../library/Volume1/supplemental_sources/19_Interstellar_absorption_body.pdf)
-- [20_Appendix_A_Problems.pdf](../library/Volume1/supplemental_sources/20_Appendix_A_Problems.pdf)
-- [21_Appendix_B_Important_Astronomical_Quantities.pdf](../library/Volume1/supplemental_sources/21_Appendix_B_Important_Astronomical_Quantities.pdf)
-- [22_References.pdf](../library/Volume1/supplemental_sources/22_References.pdf)
+- [00_Preface.pdf](../archive/library/Volume1/supplemental_sources/00_Preface.pdf)
+- [19_Interstellar_absorption_body.pdf](../archive/library/Volume1/supplemental_sources/19_Interstellar_absorption_body.pdf)
+- [20_Appendix_A_Problems.pdf](../archive/library/Volume1/supplemental_sources/20_Appendix_A_Problems.pdf)
+- [21_Appendix_B_Important_Astronomical_Quantities.pdf](../archive/library/Volume1/supplemental_sources/21_Appendix_B_Important_Astronomical_Quantities.pdf)
+- [22_References.pdf](../archive/library/Volume1/supplemental_sources/22_References.pdf)
 
 ## Volume2（16 个正文编号章节）
 
-[整卷 PDF](../library/Volume2/Introduction%20to%20Stellar%20Astrophysics%2C%20Volume%202%20Stellar%20Atmospheres%20%28Erika%20Bo%CC%88hm-Vitense%29%20%28z-library.sk%2C%201lib.sk%2C%20z-lib.sk%29.pdf) · [拆分清单](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
+[整卷 PDF](../textbooks/pdf/originals/Stellar_Astrophysics_Volume_2.en.pdf) · [拆分清单](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
 
 原始 PDF SHA-256：`c6fc34f02ad98d73d01e3fe583e34b91ec915e4a392d1ad263c2db5d47e3f6c3`
 
 <a id="volume2-ch01"></a>
 ### 第 1 章 Stellar magnitudes and stellar colors
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/004__04_1%20Stellar%20magnitudes%20and%20stellar%20colors/04_1%20Stellar%20magnitudes%20and%20stellar%20colors.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Stellar%20magnitudes%20and%20stellar%20colors.pdf) · 整卷 PDF 页序 14-27
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/004__04_1%20Stellar%20magnitudes%20and%20stellar%20colors/04_1%20Stellar%20magnitudes%20and%20stellar%20colors.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Stellar%20magnitudes%20and%20stellar%20colors.pdf) · 整卷 PDF 页序 14-27
 
 正文小节：
 - 1.1 The apparent magnitudes（Markdown 第 3 行）
@@ -394,7 +396,7 @@
 <a id="volume2-ch02"></a>
 ### 第 2 章 Stellar spectra
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/005__05_2%20Stellar%20spectra/05_2%20Stellar%20spectra.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Stellar%20spectra.pdf) · 整卷 PDF 页序 28-30
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/005__05_2%20Stellar%20spectra/05_2%20Stellar%20spectra.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Stellar%20spectra.pdf) · 整卷 PDF 页序 28-30
 
 正文小节：
 - 2.1 The spectral sequence（Markdown 第 3 行）
@@ -406,7 +408,7 @@
 <a id="volume2-ch03"></a>
 ### 第 3 章 Temperature estimates for stars
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/006__06_3%20Temperature%20estimates%20for%20stars/06_3%20Temperature%20estimates%20for%20stars.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Temperature%20estimates%20for%20stars.pdf) · 整卷 PDF 页序 31-38
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/006__06_3%20Temperature%20estimates%20for%20stars/06_3%20Temperature%20estimates%20for%20stars.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Temperature%20estimates%20for%20stars.pdf) · 整卷 PDF 页序 31-38
 
 正文小节：
 - 3.1 The black body（Markdown 第 3 行）
@@ -427,7 +429,7 @@
 <a id="volume2-ch04"></a>
 ### 第 4 章 Basics about radiative transfer
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/007__07_4%20Basics%20about%20radiative%20transfer/07_4%20Basics%20about%20radiative%20transfer.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20Basics%20about%20radiative%20transfer.pdf) · 整卷 PDF 页序 39-51
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/007__07_4%20Basics%20about%20radiative%20transfer/07_4%20Basics%20about%20radiative%20transfer.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20Basics%20about%20radiative%20transfer.pdf) · 整卷 PDF 页序 39-51
 
 正文小节：
 - 4.1 Definition of the intensity $I_{\lambda}$（Markdown 第 3 行）
@@ -449,7 +451,7 @@
 <a id="volume2-ch05"></a>
 ### 第 5 章 Radiative transfer in stellar atmospheres
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/008__08_5%20Radiative%20transfer%20in%20stellar%20atmospheres/08_5%20Radiative%20transfer%20in%20stellar%20atmospheres.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Radiative%20transfer%20in%20stellar%20atmospheres.pdf) · 整卷 PDF 页序 52-63
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/008__08_5%20Radiative%20transfer%20in%20stellar%20atmospheres/08_5%20Radiative%20transfer%20in%20stellar%20atmospheres.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Radiative%20transfer%20in%20stellar%20atmospheres.pdf) · 整卷 PDF 页序 52-63
 
 正文小节：
 - 5.1 The radiative transfer equation（Markdown 第 3 行）
@@ -474,7 +476,7 @@
 <a id="volume2-ch06"></a>
 ### 第 6 章 The depth dependence of the source function
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/009__09_6%20The%20depth%20dependence%20of%20the%20source%20function/09_6%20The%20depth%20dependence%20of%20the%20source%20function.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20The%20depth%20dependence%20of%20the%20source%20function.pdf) · 整卷 PDF 页序 64-80
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/009__09_6%20The%20depth%20dependence%20of%20the%20source%20function/09_6%20The%20depth%20dependence%20of%20the%20source%20function.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20The%20depth%20dependence%20of%20the%20source%20function.pdf) · 整卷 PDF 页序 64-80
 
 正文小节：
 - 6.1 Empirical determination of the depth dependence of the source function for the sun（Markdown 第 3 行）
@@ -498,7 +500,7 @@
 <a id="volume2-ch07"></a>
 ### 第 7 章 The continuous absorption coefficient
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/010__10_7%20The%20continuous%20absorption%20coefficient/10_7%20The%20continuous%20absorption%20coefficient.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20The%20continuous%20absorption%20coefficient.pdf) · 整卷 PDF 页序 81-99
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/010__10_7%20The%20continuous%20absorption%20coefficient/10_7%20The%20continuous%20absorption%20coefficient.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20The%20continuous%20absorption%20coefficient.pdf) · 整卷 PDF 页序 81-99
 
 正文小节：
 - 7.1 The different absorption processes for hydrogen（Markdown 第 3 行）
@@ -532,7 +534,7 @@
 <a id="volume2-ch08"></a>
 ### 第 8 章 The influence of the non-greyness of the absorption coefficient
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/011__11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient/11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient.pdf) · 整卷 PDF 页序 100-113
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/011__11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient/11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20The%20influence%20of%20the%20non-greyness%20of%20the%20absorption%20coefficient.pdf) · 整卷 PDF 页序 100-113
 
 正文小节：
 - 8.1 The continuum energy distribution（Markdown 第 3 行）
@@ -553,7 +555,7 @@
 <a id="volume2-ch09"></a>
 ### 第 9 章 The pressure stratification
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/012__12_9%20The%20pressure%20stratification/12_9%20The%20pressure%20stratification.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20The%20pressure%20stratification.pdf) · 整卷 PDF 页序 114-126
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/012__12_9%20The%20pressure%20stratification/12_9%20The%20pressure%20stratification.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20The%20pressure%20stratification.pdf) · 整卷 PDF 页序 114-126
 
 正文小节：
 - 9.1 The hydrostatic equilibrium equation（Markdown 第 3 行）
@@ -578,7 +580,7 @@
 <a id="volume2-ch10"></a>
 ### 第 10 章 Theory of line formation
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/013__13_10%20Theory%20of%20line%20formation/13_10%20Theory%20of%20line%20formation.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Theory%20of%20line%20formation.pdf) · 整卷 PDF 页序 127-148
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/013__13_10%20Theory%20of%20line%20formation/13_10%20Theory%20of%20line%20formation.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Theory%20of%20line%20formation.pdf) · 整卷 PDF 页序 127-148
 
 正文小节：
 - 10.1 Formation of optically thin lines（Markdown 第 3 行）
@@ -615,14 +617,14 @@
 <a id="volume2-ch11"></a>
 ### 第 11 章 The hydrogen lines
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/014__14_11%20The%20hydrogen%20lines/14_11%20The%20hydrogen%20lines.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20The%20hydrogen%20lines.pdf) · 整卷 PDF 页序 149-152
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/014__14_11%20The%20hydrogen%20lines/14_11%20The%20hydrogen%20lines.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20The%20hydrogen%20lines.pdf) · 整卷 PDF 页序 149-152
 
 - 未提取到编号小节，按章阅读。
 
 <a id="volume2-ch12"></a>
 ### 第 12 章 Spectrum analysis
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/015__15_12%20Spectrum%20analysis/15_12%20Spectrum%20analysis.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Spectrum%20analysis.pdf) · 整卷 PDF 页序 153-175
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/015__15_12%20Spectrum%20analysis/15_12%20Spectrum%20analysis.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Spectrum%20analysis.pdf) · 整卷 PDF 页序 153-175
 
 正文小节：
 - 12.1 The Balmer jump and the hydrogen lines（Markdown 第 3 行）
@@ -659,7 +661,7 @@
 <a id="volume2-ch13"></a>
 ### 第 13 章 Basics about non-local thermodynamic equilibrium
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/016__16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium/16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium.pdf) · 整卷 PDF 页序 176-186
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/016__16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium/16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Basics%20about%20non-local%20thermodynamic%20equilibrium.pdf) · 整卷 PDF 页序 176-186
 
 正文小节：
 - 13.1 Einstein transition probabilities（Markdown 第 3 行）
@@ -685,7 +687,7 @@
 <a id="volume2-ch14"></a>
 ### 第 14 章 The hydrogen convection zone
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/017__17_14%20The%20hydrogen%20convection%20zone/17_14%20The%20hydrogen%20convection%20zone.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20The%20hydrogen%20convection%20zone.pdf) · 整卷 PDF 页序 187-202
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/017__17_14%20The%20hydrogen%20convection%20zone/17_14%20The%20hydrogen%20convection%20zone.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20The%20hydrogen%20convection%20zone.pdf) · 整卷 PDF 页序 187-202
 
 正文小节：
 - 14.1 Introduction（Markdown 第 3 行）
@@ -712,7 +714,7 @@
 <a id="volume2-ch15"></a>
 ### 第 15 章 Stellar chromospheres, transition layers, and coronae
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/018__18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae/18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae.pdf) · 整卷 PDF 页序 203-227
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/018__18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae/18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Stellar%20chromospheres%2C%20transition%20layers%2C%20and%20coronae.pdf) · 整卷 PDF 页序 203-227
 
 正文小节：
 - 15.1 Solar observations（Markdown 第 3 行）
@@ -745,7 +747,7 @@
 <a id="volume2-ch16"></a>
 ### 第 16 章 Stellar winds
 
-[MinerU 正文](../library/Volume2/MinerU_outputs/019__19_16%20Stellar%20winds/19_16%20Stellar%20winds.md) · [拆分 PDF](../library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Stellar%20winds.pdf) · 整卷 PDF 页序 228-243
+[MinerU 正文](../archive/library/Volume2/MinerU_outputs/019__19_16%20Stellar%20winds/19_16%20Stellar%20winds.md) · [拆分 PDF](../archive/library/Volume2/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Stellar%20winds.pdf) · 整卷 PDF 页序 228-243
 
 正文小节：
 - 16.1 Observations of stellar winds（Markdown 第 3 行）
@@ -774,30 +776,30 @@
 
 ### 辅助资料（仅登记）
 
-- [01_封面与版权信息](../library/Volume2/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
-- [02_Contents](../library/Volume2/MinerU_outputs/002__02_Contents/02_Contents.md)
-- [03_Preface](../library/Volume2/MinerU_outputs/003__03_Preface/03_Preface.md)
-- [20_Problems](../library/Volume2/MinerU_outputs/020__20_Problems/20_Problems.md)
-- [21_Appendix LTE model stellar atmospheres](../library/Volume2/MinerU_outputs/021__21_Appendix%20LTE%20model%20stellar%20atmospheres/21_Appendix%20LTE%20model%20stellar%20atmospheres.md)
-- [22_References](../library/Volume2/MinerU_outputs/022__22_References/22_References.md)
-- [23_Index](../library/Volume2/MinerU_outputs/023__23_Index/23_Index.md)
+- [01_封面与版权信息](../archive/library/Volume2/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
+- [02_Contents](../archive/library/Volume2/MinerU_outputs/002__02_Contents/02_Contents.md)
+- [03_Preface](../archive/library/Volume2/MinerU_outputs/003__03_Preface/03_Preface.md)
+- [20_Problems](../archive/library/Volume2/MinerU_outputs/020__20_Problems/20_Problems.md)
+- [21_Appendix LTE model stellar atmospheres](../archive/library/Volume2/MinerU_outputs/021__21_Appendix%20LTE%20model%20stellar%20atmospheres/21_Appendix%20LTE%20model%20stellar%20atmospheres.md)
+- [22_References](../archive/library/Volume2/MinerU_outputs/022__22_References/22_References.md)
+- [23_Index](../archive/library/Volume2/MinerU_outputs/023__23_Index/23_Index.md)
 
 人工补充拆分（用于处理原拆分边界）：
-- [00_Preface.pdf](../library/Volume2/supplemental_sources/00_Preface.pdf)
-- [17_Problems.pdf](../library/Volume2/supplemental_sources/17_Problems.pdf)
-- [18_Appendix_LTE_Model_Stellar_Atmospheres.pdf](../library/Volume2/supplemental_sources/18_Appendix_LTE_Model_Stellar_Atmospheres.pdf)
-- [19_References.pdf](../library/Volume2/supplemental_sources/19_References.pdf)
+- [00_Preface.pdf](../archive/library/Volume2/supplemental_sources/00_Preface.pdf)
+- [17_Problems.pdf](../archive/library/Volume2/supplemental_sources/17_Problems.pdf)
+- [18_Appendix_LTE_Model_Stellar_Atmospheres.pdf](../archive/library/Volume2/supplemental_sources/18_Appendix_LTE_Model_Stellar_Atmospheres.pdf)
+- [19_References.pdf](../archive/library/Volume2/supplemental_sources/19_References.pdf)
 
 ## Volume3（20 个正文编号章节）
 
-[整卷 PDF](../library/Volume3/Introduction%20to%20Stellar%20Astrophysics%2C%20Volume%203%20Stellar%20structure%20and%20evolution%20%28Bo%CC%88hm-Vitense%20E.%29%20%28z-library.sk%2C%201lib.sk%2C%20z-lib.sk%29.pdf) · [拆分清单](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
+[整卷 PDF](../textbooks/pdf/originals/Stellar_Astrophysics_Volume_3.en.pdf) · [拆分清单](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
 
 原始 PDF SHA-256：`7804861e5ccb125bfa2fef2f34c69cf0f1b0cde10d11f6a6e1e4ca25993d9b7d`
 
 <a id="volume3-ch01"></a>
 ### 第 1 章 Introduction
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/004__04_1%20Introduction/04_1%20Introduction.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Introduction.pdf) · 整卷 PDF 页序 18-37
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/004__04_1%20Introduction/04_1%20Introduction.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/04_1%20Introduction.pdf) · 整卷 PDF 页序 18-37
 
 正文小节：
 - 1.1 Color magnitude diagrams（Markdown 第 3 行）
@@ -827,7 +829,7 @@
 <a id="volume3-ch02"></a>
 ### 第 2 章 Hydrostatic equilibrium
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/005__05_2%20Hydrostatic%20equilibrium/05_2%20Hydrostatic%20equilibrium.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Hydrostatic%20equilibrium.pdf) · 整卷 PDF 页序 38-48
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/005__05_2%20Hydrostatic%20equilibrium/05_2%20Hydrostatic%20equilibrium.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/05_2%20Hydrostatic%20equilibrium.pdf) · 整卷 PDF 页序 38-48
 
 正文小节：
 - 2.1 The hydrostatic equilibrium equation（Markdown 第 3 行）
@@ -846,7 +848,7 @@
 <a id="volume3-ch03"></a>
 ### 第 3 章 Thermal equilibrium
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/006__06_3%20Thermal%20equilibrium/06_3%20Thermal%20equilibrium.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Thermal%20equilibrium.pdf) · 整卷 PDF 页序 49-58
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/006__06_3%20Thermal%20equilibrium/06_3%20Thermal%20equilibrium.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/06_3%20Thermal%20equilibrium.pdf) · 整卷 PDF 页序 49-58
 
 正文小节：
 - 3.1 Definition and consequences of thermal equilibrium（Markdown 第 3 行）
@@ -863,7 +865,7 @@
 <a id="volume3-ch04"></a>
 ### 第 4 章 The opacities
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/007__07_4%20The%20opacities/07_4%20The%20opacities.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20The%20opacities.pdf) · 整卷 PDF 页序 59-67
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/007__07_4%20The%20opacities/07_4%20The%20opacities.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_4%20The%20opacities.pdf) · 整卷 PDF 页序 59-67
 
 正文小节：
 - 4.1 Bound-free and free-free absorption coefficients（Markdown 第 3 行）
@@ -879,7 +881,7 @@
 <a id="volume3-ch05"></a>
 ### 第 5 章 Convective instability
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/008__08_5%20Convective%20instability/08_5%20Convective%20instability.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Convective%20instability.pdf) · 整卷 PDF 页序 68-77
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/008__08_5%20Convective%20instability/08_5%20Convective%20instability.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_5%20Convective%20instability.pdf) · 整卷 PDF 页序 68-77
 
 正文小节：
 - 5.1 General discussion（Markdown 第 3 行）
@@ -901,7 +903,7 @@
 <a id="volume3-ch06"></a>
 ### 第 6 章 Theory of convective energy transport
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/009__09_6%20Theory%20of%20convective%20energy%20transport/09_6%20Theory%20of%20convective%20energy%20transport.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20Theory%20of%20convective%20energy%20transport.pdf) · 整卷 PDF 页序 78-95
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/009__09_6%20Theory%20of%20convective%20energy%20transport/09_6%20Theory%20of%20convective%20energy%20transport.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_6%20Theory%20of%20convective%20energy%20transport.pdf) · 整卷 PDF 页序 78-95
 
 正文小节：
 - 6.1 Basic equations for convective energy transport（Markdown 第 3 行）
@@ -931,7 +933,7 @@
 <a id="volume3-ch07"></a>
 ### 第 7 章 Depths of the outer convection zones
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/010__10_7%20Depths%20of%20the%20outer%20convection%20zones/10_7%20Depths%20of%20the%20outer%20convection%20zones.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20Depths%20of%20the%20outer%20convection%20zones.pdf) · 整卷 PDF 页序 96-102
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/010__10_7%20Depths%20of%20the%20outer%20convection%20zones/10_7%20Depths%20of%20the%20outer%20convection%20zones.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_7%20Depths%20of%20the%20outer%20convection%20zones.pdf) · 整卷 PDF 页序 96-102
 
 正文小节：
 - 7.1 General discussion（Markdown 第 3 行）
@@ -948,7 +950,7 @@
 <a id="volume3-ch08"></a>
 ### 第 8 章 Energy generation in stars
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/011__11_8%20Energy%20generation%20in%20stars/11_8%20Energy%20generation%20in%20stars.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20Energy%20generation%20in%20stars.pdf) · 整卷 PDF 页序 103-122
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/011__11_8%20Energy%20generation%20in%20stars/11_8%20Energy%20generation%20in%20stars.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_8%20Energy%20generation%20in%20stars.pdf) · 整卷 PDF 页序 103-122
 
 正文小节：
 - 8.1 Available energy sources（Markdown 第 3 行）
@@ -977,7 +979,7 @@
 <a id="volume3-ch09"></a>
 ### 第 9 章 Basic stellar structure equations
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/012__12_9%20Basic%20stellar%20structure%20equations/12_9%20Basic%20stellar%20structure%20equations.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20Basic%20stellar%20structure%20equations.pdf) · 整卷 PDF 页序 123-129
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/012__12_9%20Basic%20stellar%20structure%20equations/12_9%20Basic%20stellar%20structure%20equations.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_9%20Basic%20stellar%20structure%20equations.pdf) · 整卷 PDF 页序 123-129
 
 正文小节：
 - 9.1 The temperature gradient（Markdown 第 3 行）
@@ -994,7 +996,7 @@
 <a id="volume3-ch10"></a>
 ### 第 10 章 Homologous stars in radiative equilibrium
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/013__13_10%20Homologous%20stars%20in%20radiative%20equilibrium/13_10%20Homologous%20stars%20in%20radiative%20equilibrium.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Homologous%20stars%20in%20radiative%20equilibrium.pdf) · 整卷 PDF 页序 130-146
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/013__13_10%20Homologous%20stars%20in%20radiative%20equilibrium/13_10%20Homologous%20stars%20in%20radiative%20equilibrium.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/13_10%20Homologous%20stars%20in%20radiative%20equilibrium.pdf) · 整卷 PDF 页序 130-146
 
 正文小节：
 - 10.1 The dependence of stellar parameters on mass（Markdown 第 3 行）
@@ -1013,7 +1015,7 @@
 <a id="volume3-ch11"></a>
 ### 第 11 章 Influence of convection zones on stellar structure
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/014__14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure/14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure.pdf) · 整卷 PDF 页序 147-157
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/014__14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure/14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_11%20Influence%20of%20convection%20zones%20on%20stellar%20structure.pdf) · 整卷 PDF 页序 147-157
 
 正文小节：
 - 11.1 Changes in radius, luminosity and effective temperature（Markdown 第 3 行）
@@ -1030,7 +1032,7 @@
 <a id="volume3-ch12"></a>
 ### 第 12 章 Calculation of stellar models
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/015__15_12%20Calculation%20of%20stellar%20models/15_12%20Calculation%20of%20stellar%20models.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Calculation%20of%20stellar%20models.pdf) · 整卷 PDF 页序 158-171
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/015__15_12%20Calculation%20of%20stellar%20models/15_12%20Calculation%20of%20stellar%20models.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_12%20Calculation%20of%20stellar%20models.pdf) · 整卷 PDF 页序 158-171
 
 正文小节：
 - 12.1 Schwarzschild's method（Markdown 第 3 行）
@@ -1053,7 +1055,7 @@
 <a id="volume3-ch13"></a>
 ### 第 13 章 Models for main sequence stars
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/016__16_13%20Models%20for%20main%20sequence%20stars/16_13%20Models%20for%20main%20sequence%20stars.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Models%20for%20main%20sequence%20stars.pdf) · 整卷 PDF 页序 172-188
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/016__16_13%20Models%20for%20main%20sequence%20stars/16_13%20Models%20for%20main%20sequence%20stars.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_13%20Models%20for%20main%20sequence%20stars.pdf) · 整卷 PDF 页序 172-188
 
 正文小节：
 - 13.1 Solar models（Markdown 第 3 行）
@@ -1074,7 +1076,7 @@
 <a id="volume3-ch14"></a>
 ### 第 14 章 Evolution of low mass stars
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/017__17_14%20Evolution%20of%20low%20mass%20stars/17_14%20Evolution%20of%20low%20mass%20stars.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20Evolution%20of%20low%20mass%20stars.pdf) · 整卷 PDF 页序 189-213
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/017__17_14%20Evolution%20of%20low%20mass%20stars/17_14%20Evolution%20of%20low%20mass%20stars.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_14%20Evolution%20of%20low%20mass%20stars.pdf) · 整卷 PDF 页序 189-213
 
 正文小节：
 - 14.1 Evolution along the subgiant branch（Markdown 第 3 行）
@@ -1101,7 +1103,7 @@
 <a id="volume3-ch15"></a>
 ### 第 15 章 Evolution of massive stars
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/018__18_15%20Evolution%20of%20massive%20stars/18_15%20Evolution%20of%20massive%20stars.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Evolution%20of%20massive%20stars.pdf) · 整卷 PDF 页序 214-222
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/018__18_15%20Evolution%20of%20massive%20stars/18_15%20Evolution%20of%20massive%20stars.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_15%20Evolution%20of%20massive%20stars.pdf) · 整卷 PDF 页序 214-222
 
 正文小节：
 - 15.1 Evolution along the giant branch（Markdown 第 3 行）
@@ -1124,7 +1126,7 @@
 <a id="volume3-ch16"></a>
 ### 第 16 章 Late stages of stellar evolution
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/019__19_16%20Late%20stages%20of%20stellar%20evolution/19_16%20Late%20stages%20of%20stellar%20evolution.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Late%20stages%20of%20stellar%20evolution.pdf) · 整卷 PDF 页序 223-229
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/019__19_16%20Late%20stages%20of%20stellar%20evolution/19_16%20Late%20stages%20of%20stellar%20evolution.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_16%20Late%20stages%20of%20stellar%20evolution.pdf) · 整卷 PDF 页序 223-229
 
 正文小节：
 - 16.1 Completely degenerate stars, white dwarfs（Markdown 第 3 行）
@@ -1137,7 +1139,7 @@
 <a id="volume3-ch17"></a>
 ### 第 17 章 Observational tests of stellar evolution theory
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/020__20_17%20Observational%20tests%20of%20stellar%20evolution%20theory/20_17%20Observational%20tests%20of%20stellar%20evolution%20theory.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_17%20Observational%20tests%20of%20stellar%20evolution%20theory.pdf) · 整卷 PDF 页序 230-238
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/020__20_17%20Observational%20tests%20of%20stellar%20evolution%20theory/20_17%20Observational%20tests%20of%20stellar%20evolution%20theory.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_17%20Observational%20tests%20of%20stellar%20evolution%20theory.pdf) · 整卷 PDF 页序 230-238
 
 正文小节：
 - 17.1 Color magnitude diagrams for globular clusters（Markdown 第 3 行）
@@ -1156,7 +1158,7 @@
 <a id="volume3-ch18"></a>
 ### 第 18 章 Pulsating stars
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/021__21_18%20Pulsating%20stars/21_18%20Pulsating%20stars.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_18%20Pulsating%20stars.pdf) · 整卷 PDF 页序 239-254
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/021__21_18%20Pulsating%20stars/21_18%20Pulsating%20stars.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_18%20Pulsating%20stars.pdf) · 整卷 PDF 页序 239-254
 
 正文小节：
 - 18.1 Period-density relation（Markdown 第 3 行）
@@ -1183,7 +1185,7 @@
 <a id="volume3-ch19"></a>
 ### 第 19 章 The Cepheid mass problem
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/022__22_19%20The%20Cepheid%20mass%20problem/22_19%20The%20Cepheid%20mass%20problem.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_19%20The%20Cepheid%20mass%20problem.pdf) · 整卷 PDF 页序 255-261
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/022__22_19%20The%20Cepheid%20mass%20problem/22_19%20The%20Cepheid%20mass%20problem.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_19%20The%20Cepheid%20mass%20problem.pdf) · 整卷 PDF 页序 255-261
 
 正文小节：
 - 19.1 Importance of Cepheid mass determinations（Markdown 第 3 行）
@@ -1208,7 +1210,7 @@
 <a id="volume3-ch20"></a>
 ### 第 20 章 Star formation
 
-[MinerU 正文](../library/Volume3/MinerU_outputs/023__23_20%20Star%20formation/23_20%20Star%20formation.md) · [拆分 PDF](../library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/23_20%20Star%20formation.pdf) · 整卷 PDF 页序 262-282
+[MinerU 正文](../archive/library/Volume3/MinerU_outputs/023__23_20%20Star%20formation/23_20%20Star%20formation.md) · [拆分 PDF](../archive/library/Volume3/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/23_20%20Star%20formation.pdf) · 整卷 PDF 页序 262-282
 
 正文小节：
 - 20.1 Introduction（Markdown 第 3 行）
@@ -1242,30 +1244,30 @@
 
 ### 辅助资料（仅登记）
 
-- [01_封面与版权信息](../library/Volume3/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
-- [02_Contents](../library/Volume3/MinerU_outputs/002__02_Contents/02_Contents.md)
-- [03_Preface](../library/Volume3/MinerU_outputs/003__03_Preface/03_Preface.md)
-- [24_Appendix Radiative energy transport in stars](../library/Volume3/MinerU_outputs/024__24_Appendix%20Radiative%20energy%20transport%20in%20stars/24_Appendix%20Radiative%20energy%20transport%20in%20stars.md)
-- [25_Problems](../library/Volume3/MinerU_outputs/025__25_Problems/25_Problems.md)
-- [26_References](../library/Volume3/MinerU_outputs/026__26_References/26_References.md)
-- [27_Index](../library/Volume3/MinerU_outputs/027__27_Index/27_Index.md)
+- [01_封面与版权信息](../archive/library/Volume3/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF/01_%E5%B0%81%E9%9D%A2%E4%B8%8E%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF.md)
+- [02_Contents](../archive/library/Volume3/MinerU_outputs/002__02_Contents/02_Contents.md)
+- [03_Preface](../archive/library/Volume3/MinerU_outputs/003__03_Preface/03_Preface.md)
+- [24_Appendix Radiative energy transport in stars](../archive/library/Volume3/MinerU_outputs/024__24_Appendix%20Radiative%20energy%20transport%20in%20stars/24_Appendix%20Radiative%20energy%20transport%20in%20stars.md)
+- [25_Problems](../archive/library/Volume3/MinerU_outputs/025__25_Problems/25_Problems.md)
+- [26_References](../archive/library/Volume3/MinerU_outputs/026__26_References/26_References.md)
+- [27_Index](../archive/library/Volume3/MinerU_outputs/027__27_Index/27_Index.md)
 
 人工补充拆分（用于处理原拆分边界）：
-- [00_Preface.pdf](../library/Volume3/supplemental_sources/00_Preface.pdf)
-- [21_Appendix_Radiative_Energy_Transport.pdf](../library/Volume3/supplemental_sources/21_Appendix_Radiative_Energy_Transport.pdf)
-- [22_Problems.pdf](../library/Volume3/supplemental_sources/22_Problems.pdf)
-- [23_References.pdf](../library/Volume3/supplemental_sources/23_References.pdf)
+- [00_Preface.pdf](../archive/library/Volume3/supplemental_sources/00_Preface.pdf)
+- [21_Appendix_Radiative_Energy_Transport.pdf](../archive/library/Volume3/supplemental_sources/21_Appendix_Radiative_Energy_Transport.pdf)
+- [22_Problems.pdf](../archive/library/Volume3/supplemental_sources/22_Problems.pdf)
+- [23_References.pdf](../archive/library/Volume3/supplemental_sources/23_References.pdf)
 
 ## Ref（30 个正文编号章节）
 
-[整卷 PDF](../library/Ref/%E5%BD%93%E4%BB%A3%E5%A4%A9%E4%BD%93%E7%89%A9%E7%90%86%E5%AD%A6%E5%AF%BC%E8%AE%BA%20%EF%BC%88%E5%8E%9F%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89%EF%BC%88%E5%B8%A6%E7%9B%AE%E5%BD%95%EF%BC%89%20%28Bradley%20W.%20Carroll%2C%20Dale%20A.%20Ostlie%29%20%28z-library.sk%2C%201lib.sk%2C%20z-lib.sk%29.pdf) · [拆分清单](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
+[整卷 PDF](../textbooks/pdf/Contemporary_Astrophysics_2e.zh-CN.pdf) · [拆分清单](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/%E6%8B%86%E5%88%86%E6%B8%85%E5%8D%95.json)
 
 原始 PDF SHA-256：`716f66c8ce373c45c17833bb4598b9c52f17dfbfa2d6f4f99ebe0410d7dc089f`
 
 <a id="ref-ch01"></a>
 ### 第 1 章 天球
 
-[MinerU 正文](../library/Ref/MinerU_outputs/007__07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83/07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83.pdf) · 整卷 PDF 页序 21-37
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/007__07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83/07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/07_%E7%AC%AC%201%20%E7%AB%A0%20%E5%A4%A9%E7%90%83.pdf) · 整卷 PDF 页序 21-37
 
 正文小节：
 - 1.1 希腊传统（Markdown 第 3 行）
@@ -1294,7 +1296,7 @@
 <a id="ref-ch02"></a>
 ### 第 2 章 天体力学
 
-[MinerU 正文](../library/Ref/MinerU_outputs/008__08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6/08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6.pdf) · 整卷 PDF 页序 38-66
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/008__08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6/08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/08_%E7%AC%AC%202%20%E7%AB%A0%20%E5%A4%A9%E4%BD%93%E5%8A%9B%E5%AD%A6.pdf) · 整卷 PDF 页序 38-66
 
 正文小节：
 - 2.1 椭圆轨道（Markdown 第 3 行）
@@ -1323,7 +1325,7 @@
 <a id="ref-ch03"></a>
 ### 第 3 章 光的连续谱
 
-[MinerU 正文](../library/Ref/MinerU_outputs/009__09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1/09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1.pdf) · 整卷 PDF 页序 67-88
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/009__09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1/09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/09_%E7%AC%AC%203%20%E7%AB%A0%20%E5%85%89%E7%9A%84%E8%BF%9E%E7%BB%AD%E8%B0%B1.pdf) · 整卷 PDF 页序 67-88
 
 正文小节：
 - 3.1 恒星视差（Markdown 第 3 行）
@@ -1361,7 +1363,7 @@
 <a id="ref-ch04"></a>
 ### 第 4 章 狭义相对论
 
-[MinerU 正文](../library/Ref/MinerU_outputs/010__10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA.pdf) · 整卷 PDF 页序 89-110
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/010__10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA/10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/10_%E7%AC%AC%204%20%E7%AB%A0%20%E7%8B%AD%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA.pdf) · 整卷 PDF 页序 89-110
 
 正文小节：
 - 4.1 伽利略变换的失败（Markdown 第 3 行）
@@ -1390,7 +1392,7 @@
 <a id="ref-ch05"></a>
 ### 第 5 章 光与物质的相互作用
 
-[MinerU 正文](../library/Ref/MinerU_outputs/011__11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8.pdf) · 整卷 PDF 页序 111-134
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/011__11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/11_%E7%AC%AC%205%20%E7%AB%A0%20%E5%85%89%E4%B8%8E%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8.pdf) · 整卷 PDF 页序 111-134
 
 正文小节：
 - 5.1 谱线（Markdown 第 3 行）
@@ -1421,7 +1423,7 @@
 <a id="ref-ch06"></a>
 ### 第 6 章 望远镜
 
-[MinerU 正文](../library/Ref/MinerU_outputs/012__12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C/12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C.pdf) · 整卷 PDF 页序 135-164
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/012__12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C/12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/12_%E7%AC%AC%206%20%E7%AB%A0%20%E6%9C%9B%E8%BF%9C%E9%95%9C.pdf) · 整卷 PDF 页序 135-164
 
 正文小节：
 - 6.1 基础光学（Markdown 第 3 行）
@@ -1457,7 +1459,7 @@
 <a id="ref-ch07"></a>
 ### 第 7 章 双星系统和恒星参数
 
-[MinerU 正文](../library/Ref/MinerU_outputs/014__14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0/14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0.pdf) · 整卷 PDF 页序 167-185
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/014__14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0/14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/14_%E7%AC%AC%207%20%E7%AB%A0%20%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%81%92%E6%98%9F%E5%8F%82%E6%95%B0.pdf) · 整卷 PDF 页序 167-185
 
 正文小节：
 - 7.1 双星的分类（Markdown 第 3 行）
@@ -1478,7 +1480,7 @@
 <a id="ref-ch08"></a>
 ### 第 8 章 恒星光谱分类
 
-[MinerU 正文](../library/Ref/MinerU_outputs/015__15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB/15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB.pdf) · 整卷 PDF 页序 186-208
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/015__15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB/15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/15_%E7%AC%AC%208%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%85%89%E8%B0%B1%E5%88%86%E7%B1%BB.pdf) · 整卷 PDF 页序 186-208
 
 正文小节：
 - 8.1 谱线的形成（Markdown 第 3 行）
@@ -1498,7 +1500,7 @@
 <a id="ref-ch09"></a>
 ### 第 9 章 恒星大气
 
-[MinerU 正文](../library/Ref/MinerU_outputs/016__16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94/16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94.pdf) · 整卷 PDF 页序 209-251
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/016__16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94/16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/16_%E7%AC%AC%209%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%A4%A7%E6%B0%94.pdf) · 整卷 PDF 页序 209-251
 
 正文小节：
 - 9.1 辐射场的描述（Markdown 第 3 行）
@@ -1542,7 +1544,7 @@
 <a id="ref-ch10"></a>
 ### 第 10 章 恒星内部
 
-[MinerU 正文](../library/Ref/MinerU_outputs/017__17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8/17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8.pdf) · 整卷 PDF 页序 252-305
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/017__17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8/17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/17_%E7%AC%AC%2010%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E5%86%85%E9%83%A8.pdf) · 整卷 PDF 页序 252-305
 
 正文小节：
 - 10.1 流体静力学平衡（Markdown 第 5 行）
@@ -1604,7 +1606,7 @@
 <a id="ref-ch11"></a>
 ### 第 11 章 太阳
 
-[MinerU 正文](../library/Ref/MinerU_outputs/018__18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3/18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3.pdf) · 整卷 PDF 页序 306-344
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/018__18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3/18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/18_%E7%AC%AC%2011%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3.pdf) · 整卷 PDF 页序 306-344
 
 正文小节：
 - 11.1 太阳内部（Markdown 第 3 行）
@@ -1641,7 +1643,7 @@
 <a id="ref-ch12"></a>
 ### 第 12 章 星际介质和恒星形成
 
-[MinerU 正文](../library/Ref/MinerU_outputs/019__19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90/19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90.pdf) · 整卷 PDF 页序 345-382
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/019__19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90/19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/19_%E7%AC%AC%2012%20%E7%AB%A0%20%E6%98%9F%E9%99%85%E4%BB%8B%E8%B4%A8%E5%92%8C%E6%81%92%E6%98%9F%E5%BD%A2%E6%88%90.pdf) · 整卷 PDF 页序 345-382
 
 正文小节：
 - 12.1 星际尘埃和气体（Markdown 第 3 行）
@@ -1690,7 +1692,7 @@
 <a id="ref-ch13"></a>
 ### 第 13 章 主序和主序后恒星的演化
 
-[MinerU 正文](../library/Ref/MinerU_outputs/020__20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96/20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96.pdf) · 整卷 PDF 页序 383-412
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/020__20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96/20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/20_%E7%AC%AC%2013%20%E7%AB%A0%20%E4%B8%BB%E5%BA%8F%E5%92%8C%E4%B8%BB%E5%BA%8F%E5%90%8E%E6%81%92%E6%98%9F%E7%9A%84%E6%BC%94%E5%8C%96.pdf) · 整卷 PDF 页序 383-412
 
 正文小节：
 - 13.1 主序星的演化（Markdown 第 5 行）
@@ -1734,7 +1736,7 @@
 <a id="ref-ch14"></a>
 ### 第 14 章 恒星脉动
 
-[MinerU 正文](../library/Ref/MinerU_outputs/021__21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8/21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8.pdf) · 整卷 PDF 页序 413-440
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/021__21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8/21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/21_%E7%AC%AC%2014%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E8%84%89%E5%8A%A8.pdf) · 整卷 PDF 页序 413-440
 
 正文小节：
 - 14.1 脉动恒星的观测（Markdown 第 3 行）
@@ -1781,7 +1783,7 @@
 <a id="ref-ch15"></a>
 ### 第 15 章 大质量恒星的命运
 
-[MinerU 正文](../library/Ref/MinerU_outputs/022__22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90/22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90.pdf) · 整卷 PDF 页序 441-472
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/022__22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90/22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/22_%E7%AC%AC%2015%20%E7%AB%A0%20%E5%A4%A7%E8%B4%A8%E9%87%8F%E6%81%92%E6%98%9F%E7%9A%84%E5%91%BD%E8%BF%90.pdf) · 整卷 PDF 页序 441-472
 
 正文小节：
 - 15.1 大质量恒星的主序后演化（Markdown 第 3 行）
@@ -1819,7 +1821,7 @@
 <a id="ref-ch16"></a>
 ### 第 16 章 恒星的简并遗迹
 
-[MinerU 正文](../library/Ref/MinerU_outputs/023__23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9/23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9.pdf) · 整卷 PDF 页序 473-514
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/023__23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9/23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/23_%E7%AC%AC%2016%20%E7%AB%A0%20%E6%81%92%E6%98%9F%E7%9A%84%E7%AE%80%E5%B9%B6%E9%81%97%E8%BF%B9.pdf) · 整卷 PDF 页序 473-514
 
 正文小节：
 - 16.1 天狼星 B 的发现（Markdown 第 3 行）
@@ -1878,7 +1880,7 @@
 <a id="ref-ch17"></a>
 ### 第 17 章 广义相对论和黑洞
 
-[MinerU 正文](../library/Ref/MinerU_outputs/024__24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E/24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E.pdf) · 整卷 PDF 页序 515-550
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/024__24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E/24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/24_%E7%AC%AC%2017%20%E7%AB%A0%20%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E5%92%8C%E9%BB%91%E6%B4%9E.pdf) · 整卷 PDF 页序 515-550
 
 正文小节：
 - 17.1 广义相对论（Markdown 第 3 行）
@@ -1910,7 +1912,7 @@
 <a id="ref-ch18"></a>
 ### 第 18 章 密近双星系统
 
-[MinerU 正文](../library/Ref/MinerU_outputs/025__25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F/25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F.pdf) · 整卷 PDF 页序 551-596
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/025__25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F/25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/25_%E7%AC%AC%2018%20%E7%AB%A0%20%E5%AF%86%E8%BF%91%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F.pdf) · 整卷 PDF 页序 551-596
 
 正文小节：
 - 18.1 密近双星系统的引力（Markdown 第 3 行）
@@ -1960,7 +1962,7 @@
 <a id="ref-ch19"></a>
 ### 第 19 章 太阳系中的物理过程
 
-[MinerU 正文](../library/Ref/MinerU_outputs/027__27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B/27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B.pdf) · 整卷 PDF 页序 599-617
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/027__27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B/27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/27_%E7%AC%AC%2019%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%87%E7%A8%8B.pdf) · 整卷 PDF 页序 599-617
 
 正文小节：
 - 19.1.1 行星的一般特征（Markdown 第 7 行）
@@ -1991,7 +1993,7 @@
 <a id="ref-ch20"></a>
 ### 第 20 章 类地行星
 
-[MinerU 正文](../library/Ref/MinerU_outputs/028__28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F/28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F.pdf) · 整卷 PDF 页序 618-648
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/028__28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F/28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/28_%E7%AC%AC%2020%20%E7%AB%A0%20%E7%B1%BB%E5%9C%B0%E8%A1%8C%E6%98%9F.pdf) · 整卷 PDF 页序 618-648
 
 正文小节：
 - 20.1 水星（Markdown 第 3 行）
@@ -2040,7 +2042,7 @@
 <a id="ref-ch21"></a>
 ### 第 21 章 巨行星的王国
 
-[MinerU 正文](../library/Ref/MinerU_outputs/029__29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD/29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD.pdf) · 整卷 PDF 页序 649-679
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/029__29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD/29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/29_%E7%AC%AC%2021%20%E7%AB%A0%20%E5%B7%A8%E8%A1%8C%E6%98%9F%E7%9A%84%E7%8E%8B%E5%9B%BD.pdf) · 整卷 PDF 页序 649-679
 
 正文小节：
 - 21.1 巨行星（Markdown 第 3 行）
@@ -2086,7 +2088,7 @@
 <a id="ref-ch22"></a>
 ### 第 22 章 太阳系小天体
 
-[MinerU 正文](../library/Ref/MinerU_outputs/030__30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93/30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93.pdf) · 整卷 PDF 页序 680-708
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/030__30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93/30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/30_%E7%AC%AC%2022%20%E7%AB%A0%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%B0%8F%E5%A4%A9%E4%BD%93.pdf) · 整卷 PDF 页序 680-708
 
 正文小节：
 - 22.1 冥王星和冥卫一卡戎（Markdown 第 3 行）
@@ -2135,7 +2137,7 @@
 <a id="ref-ch23"></a>
 ### 第 23 章 行星系统的形成
 
-[MinerU 正文](../library/Ref/MinerU_outputs/031__31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90/31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90.pdf) · 整卷 PDF 页序 709-728
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/031__31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90/31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/31_%E7%AC%AC%2023%20%E7%AB%A0%20%E8%A1%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BD%A2%E6%88%90.pdf) · 整卷 PDF 页序 709-728
 
 正文小节：
 - 23.1 太阳系外行星系统的特征（Markdown 第 3 行）
@@ -2174,7 +2176,7 @@
 <a id="ref-ch24"></a>
 ### 第 24 章 银河系
 
-[MinerU 正文](../library/Ref/MinerU_outputs/033__33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB/33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB.pdf) · 整卷 PDF 页序 731-784
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/033__33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB/33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/33_%E7%AC%AC%2024%20%E7%AB%A0%20%E9%93%B6%E6%B2%B3%E7%B3%BB.pdf) · 整卷 PDF 页序 731-784
 
 正文小节：
 - 24.1 数天上的星（Markdown 第 3 行）
@@ -2221,7 +2223,7 @@
 <a id="ref-ch25"></a>
 ### 第 25 章 星系的性质
 
-[MinerU 正文](../library/Ref/MinerU_outputs/034__34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8/34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8.pdf) · 整卷 PDF 页序 785-832
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/034__34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8/34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/34_%E7%AC%AC%2025%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8.pdf) · 整卷 PDF 页序 785-832
 
 正文小节：
 - 25.1 哈勃序列（Markdown 第 3 行）
@@ -2271,7 +2273,7 @@
 <a id="ref-ch26"></a>
 ### 第 26 章 星系演化
 
-[MinerU 正文](../library/Ref/MinerU_outputs/035__35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96/35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96.pdf) · 整卷 PDF 页序 833-863
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/035__35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96/35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/35_%E7%AC%AC%2026%20%E7%AB%A0%20%E6%98%9F%E7%B3%BB%E6%BC%94%E5%8C%96.pdf) · 整卷 PDF 页序 833-863
 
 正文小节：
 - 26.1 星系的相互作用（Markdown 第 3 行）
@@ -2303,7 +2305,7 @@
 <a id="ref-ch27"></a>
 ### 第 27 章 宇宙的结构
 
-[MinerU 正文](../library/Ref/MinerU_outputs/036__36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84/36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84.pdf) · 整卷 PDF 页序 864-902
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/036__36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84/36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/36_%E7%AC%AC%2027%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E7%9A%84%E7%BB%93%E6%9E%84.pdf) · 整卷 PDF 页序 864-902
 
 正文小节：
 - 27.1 河外距离标度（Markdown 第 3 行）
@@ -2350,7 +2352,7 @@
 <a id="ref-ch28"></a>
 ### 第 28 章 活动星系
 
-[MinerU 正文](../library/Ref/MinerU_outputs/037__37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB/37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB.pdf) · 整卷 PDF 页序 903-952
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/037__37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB/37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/37_%E7%AC%AC%2028%20%E7%AB%A0%20%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB.pdf) · 整卷 PDF 页序 903-952
 
 正文小节：
 - 28.1 活动星系的观测（Markdown 第 3 行）
@@ -2412,7 +2414,7 @@
 <a id="ref-ch29"></a>
 ### 第 29 章 宇宙学
 
-[MinerU 正文](../library/Ref/MinerU_outputs/038__38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6/38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6.pdf) · 整卷 PDF 页序 953-1027
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/038__38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6/38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/38_%E7%AC%AC%2029%20%E7%AB%A0%20%E5%AE%87%E5%AE%99%E5%AD%A6.pdf) · 整卷 PDF 页序 953-1027
 
 正文小节：
 - 29.1 牛顿宇宙学（Markdown 第 3 行）
@@ -2472,7 +2474,7 @@
 <a id="ref-ch30"></a>
 ### 第 30 章 早期宇宙
 
-[MinerU 正文](../library/Ref/MinerU_outputs/039__39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99/39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99.md) · [拆分 PDF](../library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99.pdf) · 整卷 PDF 页序 1028-1068
+[MinerU 正文](../archive/library/Ref/MinerU_outputs/039__39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99/39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99.md) · [拆分 PDF](../archive/library/Ref/%E6%8C%89%E4%B9%A6%E7%AD%BE%E6%8B%86%E5%88%86/39_%E7%AC%AC%2030%20%E7%AB%A0%20%E6%97%A9%E6%9C%9F%E5%AE%87%E5%AE%99.pdf) · 整卷 PDF 页序 1028-1068
 
 正文小节：
 - 30.1 极早期宇宙与暴胀（Markdown 第 3 行）
@@ -2513,27 +2515,27 @@
 
 ### 辅助资料（仅登记）
 
-- [01_封面](../library/Ref/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2/01_%E5%B0%81%E9%9D%A2.md)
-- [02_版权页](../library/Ref/MinerU_outputs/002__02_%E7%89%88%E6%9D%83%E9%A1%B5/02_%E7%89%88%E6%9D%83%E9%A1%B5.md)
-- [03_译者的话](../library/Ref/MinerU_outputs/003__03_%E8%AF%91%E8%80%85%E7%9A%84%E8%AF%9D/03_%E8%AF%91%E8%80%85%E7%9A%84%E8%AF%9D.md)
-- [04_原书前言](../library/Ref/MinerU_outputs/004__04_%E5%8E%9F%E4%B9%A6%E5%89%8D%E8%A8%80/04_%E5%8E%9F%E4%B9%A6%E5%89%8D%E8%A8%80.md)
-- [05_目录](../library/Ref/MinerU_outputs/005__05_%E7%9B%AE%E5%BD%95/05_%E7%9B%AE%E5%BD%95.md)
-- [06_第一部分 天文学的工具](../library/Ref/MinerU_outputs/006__06_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E5%A4%A9%E6%96%87%E5%AD%A6%E7%9A%84%E5%B7%A5%E5%85%B7/06_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E5%A4%A9%E6%96%87%E5%AD%A6%E7%9A%84%E5%B7%A5%E5%85%B7.md)
-- [13_第二部分 恒星的性质](../library/Ref/MinerU_outputs/013__13_%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E6%81%92%E6%98%9F%E7%9A%84%E6%80%A7%E8%B4%A8/13_%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E6%81%92%E6%98%9F%E7%9A%84%E6%80%A7%E8%B4%A8.md)
-- [26_第三部分 太阳系](../library/Ref/MinerU_outputs/026__26_%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E5%A4%AA%E9%98%B3%E7%B3%BB/26_%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E5%A4%AA%E9%98%B3%E7%B3%BB.md)
-- [32_第四部分 宇宙中的星系](../library/Ref/MinerU_outputs/032__32_%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%20%E5%AE%87%E5%AE%99%E4%B8%AD%E7%9A%84%E6%98%9F%E7%B3%BB/32_%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%20%E5%AE%87%E5%AE%99%E4%B8%AD%E7%9A%84%E6%98%9F%E7%B3%BB.md)
-- [40_附录 A 天文学和物理学常数](../library/Ref/MinerU_outputs/040__40_%E9%99%84%E5%BD%95%20A%20%E5%A4%A9%E6%96%87%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AD%A6%E5%B8%B8%E6%95%B0/40_%E9%99%84%E5%BD%95%20A%20%E5%A4%A9%E6%96%87%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AD%A6%E5%B8%B8%E6%95%B0.md)
-- [41_附录 B 单位转换](../library/Ref/MinerU_outputs/041__41_%E9%99%84%E5%BD%95%20B%20%E5%8D%95%E4%BD%8D%E8%BD%AC%E6%8D%A2/41_%E9%99%84%E5%BD%95%20B%20%E5%8D%95%E4%BD%8D%E8%BD%AC%E6%8D%A2.md)
-- [42_附录 C 太阳系数据](../library/Ref/MinerU_outputs/042__42_%E9%99%84%E5%BD%95%20C%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E6%95%B0%E6%8D%AE/42_%E9%99%84%E5%BD%95%20C%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E6%95%B0%E6%8D%AE.md)
-- [43_附录 D 星座](../library/Ref/MinerU_outputs/043__43_%E9%99%84%E5%BD%95%20D%20%E6%98%9F%E5%BA%A7/43_%E9%99%84%E5%BD%95%20D%20%E6%98%9F%E5%BA%A7.md)
-- [44_附录 E 最亮的恒星](../library/Ref/MinerU_outputs/044__44_%E9%99%84%E5%BD%95%20E%20%E6%9C%80%E4%BA%AE%E7%9A%84%E6%81%92%E6%98%9F/44_%E9%99%84%E5%BD%95%20E%20%E6%9C%80%E4%BA%AE%E7%9A%84%E6%81%92%E6%98%9F.md)
-- [45_附录 F 最近的恒星](../library/Ref/MinerU_outputs/045__45_%E9%99%84%E5%BD%95%20F%20%E6%9C%80%E8%BF%91%E7%9A%84%E6%81%92%E6%98%9F/45_%E9%99%84%E5%BD%95%20F%20%E6%9C%80%E8%BF%91%E7%9A%84%E6%81%92%E6%98%9F.md)
-- [46_附录 G 恒星数据](../library/Ref/MinerU_outputs/046__46_%E9%99%84%E5%BD%95%20G%20%E6%81%92%E6%98%9F%E6%95%B0%E6%8D%AE/46_%E9%99%84%E5%BD%95%20G%20%E6%81%92%E6%98%9F%E6%95%B0%E6%8D%AE.md)
-- [47_附录 H 梅西叶星云星团表](../library/Ref/MinerU_outputs/047__47_%E9%99%84%E5%BD%95%20H%20%E6%A2%85%E8%A5%BF%E5%8F%B6%E6%98%9F%E4%BA%91%E6%98%9F%E5%9B%A2%E8%A1%A8/47_%E9%99%84%E5%BD%95%20H%20%E6%A2%85%E8%A5%BF%E5%8F%B6%E6%98%9F%E4%BA%91%E6%98%9F%E5%9B%A2%E8%A1%A8.md)
-- [48_附录 工 程序模块 Constants](../library/Ref/MinerU_outputs/048__48_%E9%99%84%E5%BD%95%20%E5%B7%A5%20%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%20Constants/48_%E9%99%84%E5%BD%95%20%E5%B7%A5%20%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%20Constants.md)
-- [49_附录 J 行星轨道代码 Orbit](../library/Ref/MinerU_outputs/049__49_%E9%99%84%E5%BD%95%20J%20%E8%A1%8C%E6%98%9F%E8%BD%A8%E9%81%93%E4%BB%A3%E7%A0%81%20Orbit/49_%E9%99%84%E5%BD%95%20J%20%E8%A1%8C%E6%98%9F%E8%BD%A8%E9%81%93%E4%BB%A3%E7%A0%81%20Orbit.md)
-- [50_附录 K 一个双星系统的计算程序 TwoStars](../library/Ref/MinerU_outputs/050__50_%E9%99%84%E5%BD%95%20K%20%E4%B8%80%E4%B8%AA%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20TwoStars/50_%E9%99%84%E5%BD%95%20K%20%E4%B8%80%E4%B8%AA%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20TwoStars.md)
-- [51_附录 L 恒星结构的计算程序 StatStar](../library/Ref/MinerU_outputs/051__51_%E9%99%84%E5%BD%95%20L%20%E6%81%92%E6%98%9F%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20StatStar/51_%E9%99%84%E5%BD%95%20L%20%E6%81%92%E6%98%9F%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20StatStar.md)
-- [52_附录 M 一个潮汐交互作用的计算程序 Galaxy](../library/Ref/MinerU_outputs/052__52_%E9%99%84%E5%BD%95%20M%20%E4%B8%80%E4%B8%AA%E6%BD%AE%E6%B1%90%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20Galaxy/52_%E9%99%84%E5%BD%95%20M%20%E4%B8%80%E4%B8%AA%E6%BD%AE%E6%B1%90%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20Galaxy.md)
-- [53_附录 N WMAP 数据](../library/Ref/MinerU_outputs/053__53_%E9%99%84%E5%BD%95%20N%20WMAP%20%E6%95%B0%E6%8D%AE/53_%E9%99%84%E5%BD%95%20N%20WMAP%20%E6%95%B0%E6%8D%AE.md)
-- [54_索引](../library/Ref/MinerU_outputs/054__54_%E7%B4%A2%E5%BC%95/54_%E7%B4%A2%E5%BC%95.md)
+- [01_封面](../archive/library/Ref/MinerU_outputs/001__01_%E5%B0%81%E9%9D%A2/01_%E5%B0%81%E9%9D%A2.md)
+- [02_版权页](../archive/library/Ref/MinerU_outputs/002__02_%E7%89%88%E6%9D%83%E9%A1%B5/02_%E7%89%88%E6%9D%83%E9%A1%B5.md)
+- [03_译者的话](../archive/library/Ref/MinerU_outputs/003__03_%E8%AF%91%E8%80%85%E7%9A%84%E8%AF%9D/03_%E8%AF%91%E8%80%85%E7%9A%84%E8%AF%9D.md)
+- [04_原书前言](../archive/library/Ref/MinerU_outputs/004__04_%E5%8E%9F%E4%B9%A6%E5%89%8D%E8%A8%80/04_%E5%8E%9F%E4%B9%A6%E5%89%8D%E8%A8%80.md)
+- [05_目录](../archive/library/Ref/MinerU_outputs/005__05_%E7%9B%AE%E5%BD%95/05_%E7%9B%AE%E5%BD%95.md)
+- [06_第一部分 天文学的工具](../archive/library/Ref/MinerU_outputs/006__06_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E5%A4%A9%E6%96%87%E5%AD%A6%E7%9A%84%E5%B7%A5%E5%85%B7/06_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%20%E5%A4%A9%E6%96%87%E5%AD%A6%E7%9A%84%E5%B7%A5%E5%85%B7.md)
+- [13_第二部分 恒星的性质](../archive/library/Ref/MinerU_outputs/013__13_%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E6%81%92%E6%98%9F%E7%9A%84%E6%80%A7%E8%B4%A8/13_%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%20%E6%81%92%E6%98%9F%E7%9A%84%E6%80%A7%E8%B4%A8.md)
+- [26_第三部分 太阳系](../archive/library/Ref/MinerU_outputs/026__26_%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E5%A4%AA%E9%98%B3%E7%B3%BB/26_%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E5%A4%AA%E9%98%B3%E7%B3%BB.md)
+- [32_第四部分 宇宙中的星系](../archive/library/Ref/MinerU_outputs/032__32_%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%20%E5%AE%87%E5%AE%99%E4%B8%AD%E7%9A%84%E6%98%9F%E7%B3%BB/32_%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%20%E5%AE%87%E5%AE%99%E4%B8%AD%E7%9A%84%E6%98%9F%E7%B3%BB.md)
+- [40_附录 A 天文学和物理学常数](../archive/library/Ref/MinerU_outputs/040__40_%E9%99%84%E5%BD%95%20A%20%E5%A4%A9%E6%96%87%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AD%A6%E5%B8%B8%E6%95%B0/40_%E9%99%84%E5%BD%95%20A%20%E5%A4%A9%E6%96%87%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AD%A6%E5%B8%B8%E6%95%B0.md)
+- [41_附录 B 单位转换](../archive/library/Ref/MinerU_outputs/041__41_%E9%99%84%E5%BD%95%20B%20%E5%8D%95%E4%BD%8D%E8%BD%AC%E6%8D%A2/41_%E9%99%84%E5%BD%95%20B%20%E5%8D%95%E4%BD%8D%E8%BD%AC%E6%8D%A2.md)
+- [42_附录 C 太阳系数据](../archive/library/Ref/MinerU_outputs/042__42_%E9%99%84%E5%BD%95%20C%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E6%95%B0%E6%8D%AE/42_%E9%99%84%E5%BD%95%20C%20%E5%A4%AA%E9%98%B3%E7%B3%BB%E6%95%B0%E6%8D%AE.md)
+- [43_附录 D 星座](../archive/library/Ref/MinerU_outputs/043__43_%E9%99%84%E5%BD%95%20D%20%E6%98%9F%E5%BA%A7/43_%E9%99%84%E5%BD%95%20D%20%E6%98%9F%E5%BA%A7.md)
+- [44_附录 E 最亮的恒星](../archive/library/Ref/MinerU_outputs/044__44_%E9%99%84%E5%BD%95%20E%20%E6%9C%80%E4%BA%AE%E7%9A%84%E6%81%92%E6%98%9F/44_%E9%99%84%E5%BD%95%20E%20%E6%9C%80%E4%BA%AE%E7%9A%84%E6%81%92%E6%98%9F.md)
+- [45_附录 F 最近的恒星](../archive/library/Ref/MinerU_outputs/045__45_%E9%99%84%E5%BD%95%20F%20%E6%9C%80%E8%BF%91%E7%9A%84%E6%81%92%E6%98%9F/45_%E9%99%84%E5%BD%95%20F%20%E6%9C%80%E8%BF%91%E7%9A%84%E6%81%92%E6%98%9F.md)
+- [46_附录 G 恒星数据](../archive/library/Ref/MinerU_outputs/046__46_%E9%99%84%E5%BD%95%20G%20%E6%81%92%E6%98%9F%E6%95%B0%E6%8D%AE/46_%E9%99%84%E5%BD%95%20G%20%E6%81%92%E6%98%9F%E6%95%B0%E6%8D%AE.md)
+- [47_附录 H 梅西叶星云星团表](../archive/library/Ref/MinerU_outputs/047__47_%E9%99%84%E5%BD%95%20H%20%E6%A2%85%E8%A5%BF%E5%8F%B6%E6%98%9F%E4%BA%91%E6%98%9F%E5%9B%A2%E8%A1%A8/47_%E9%99%84%E5%BD%95%20H%20%E6%A2%85%E8%A5%BF%E5%8F%B6%E6%98%9F%E4%BA%91%E6%98%9F%E5%9B%A2%E8%A1%A8.md)
+- [48_附录 工 程序模块 Constants](../archive/library/Ref/MinerU_outputs/048__48_%E9%99%84%E5%BD%95%20%E5%B7%A5%20%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%20Constants/48_%E9%99%84%E5%BD%95%20%E5%B7%A5%20%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%20Constants.md)
+- [49_附录 J 行星轨道代码 Orbit](../archive/library/Ref/MinerU_outputs/049__49_%E9%99%84%E5%BD%95%20J%20%E8%A1%8C%E6%98%9F%E8%BD%A8%E9%81%93%E4%BB%A3%E7%A0%81%20Orbit/49_%E9%99%84%E5%BD%95%20J%20%E8%A1%8C%E6%98%9F%E8%BD%A8%E9%81%93%E4%BB%A3%E7%A0%81%20Orbit.md)
+- [50_附录 K 一个双星系统的计算程序 TwoStars](../archive/library/Ref/MinerU_outputs/050__50_%E9%99%84%E5%BD%95%20K%20%E4%B8%80%E4%B8%AA%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20TwoStars/50_%E9%99%84%E5%BD%95%20K%20%E4%B8%80%E4%B8%AA%E5%8F%8C%E6%98%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20TwoStars.md)
+- [51_附录 L 恒星结构的计算程序 StatStar](../archive/library/Ref/MinerU_outputs/051__51_%E9%99%84%E5%BD%95%20L%20%E6%81%92%E6%98%9F%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20StatStar/51_%E9%99%84%E5%BD%95%20L%20%E6%81%92%E6%98%9F%E7%BB%93%E6%9E%84%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20StatStar.md)
+- [52_附录 M 一个潮汐交互作用的计算程序 Galaxy](../archive/library/Ref/MinerU_outputs/052__52_%E9%99%84%E5%BD%95%20M%20%E4%B8%80%E4%B8%AA%E6%BD%AE%E6%B1%90%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20Galaxy/52_%E9%99%84%E5%BD%95%20M%20%E4%B8%80%E4%B8%AA%E6%BD%AE%E6%B1%90%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%20Galaxy.md)
+- [53_附录 N WMAP 数据](../archive/library/Ref/MinerU_outputs/053__53_%E9%99%84%E5%BD%95%20N%20WMAP%20%E6%95%B0%E6%8D%AE/53_%E9%99%84%E5%BD%95%20N%20WMAP%20%E6%95%B0%E6%8D%AE.md)
+- [54_索引](../archive/library/Ref/MinerU_outputs/054__54_%E7%B4%A2%E5%BC%95/54_%E7%B4%A2%E5%BC%95.md)
