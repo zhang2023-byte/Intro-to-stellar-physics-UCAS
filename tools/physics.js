@@ -16,6 +16,12 @@ const StellarPhysics=(()=>{
  const limb=(mu,a,b,q=0)=>a+b*mu+2*q*mu*mu;
  const grey=(tau,Teff)=>Teff*(.75*(tau+2/3))**.25;
  const hydrogenEdge=n=>h*c/(13.6*1.602176634e-19/(n*n))*1e9;
- return {limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ // Fixed grey background; Eddington-Barbier estimate only, no equilibrium iteration.
+ const formation=(r,T,wave)=>{const tau=2/(3*r),temp=grey(tau,T);return {tau,temp,ratio:planck(wave,temp)/planck(wave,T)};};
+ const rosselandTwo=(a,b,w)=>1/(w/a+(1-w)/b);
+ const scaleHeight=(T,g,mu)=>k*T/(mu*1.6735575e-27*g);
+ // kappa = kappa0 * (P/P0)^n; surface P=0, tau=0.
+ const pressure=(tau,g,n,kappa0=.01,P0=10000)=>P0*((n+1)*g*tau/(kappa0*P0))**(1/(n+1));
+ return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;

@@ -5,6 +5,7 @@ const atoms=new Map([
  ['λ_p',sub('λ','p')],['ν_p',sub('ν','p')],['T_eff',sub('T','eff')],
  ...['I','B','F','κ','ε','τ','S','J','u','α','σ','χ','s'].flatMap(x=>['λ','ν'].map(y=>[x+y,sub(x,y)])),
  ...['B','V'].flatMap(y=>['f','Z'].map(x=>[x+'_'+y,sub(x,y)])),
+ ['κR',sub('κ','R')],['τR',sub('τ','R')],['κF',sub('κ','F')],['Pₜ',sub('P','t')],['m₍c₎',sub('m','c')],['mH',sub('m','H')],
  ['N_II',sub('N','II')],['N_I',sub('N','I')],['nₑ',sub('n','e')]
 ]);
 const specials=new Map([

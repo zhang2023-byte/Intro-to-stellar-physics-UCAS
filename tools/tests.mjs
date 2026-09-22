@@ -59,6 +59,7 @@ test('题目数学排版保留符号，分数及下标可读且拒绝注入HTML'
  assert.match(out,/<mfrac>/);assert.match(out,/<msub><mi>λ<\/mi><mi>p<\/mi>/);
  assert.ok(!out.includes('<img'));assert.ok(out.includes('&lt;img'));
  assert.equal(mathText('a < b & c'), 'a &lt; b &amp; c');
+ for(const [token,base,index] of [['κR','κ','R'],['τR','τ','R'],['κF','κ','F'],['Pₜ','P','t'],['m₍c₎','m','c'],['mH','m','H']])assert.ok(mathText(token).includes(`<msub><mi>${base}</mi><mi>${index}</mi></msub>`));
  for(const id of ['v2-ch01','v2-ch02','v2-ch03','v2-ch04']){
   const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/${id}.md`,'utf8'));
   for(const q of d.quizzes)assert.doesNotMatch(q.explanation,/判断正确|判断错误/);
@@ -79,4 +80,29 @@ test('新大气模型：形式积分、角通量、灰边界及氢阈值',()=>{
  assert.ok(physics.grey(5,6000)>physics.grey(1,6000));
  assert.ok(Math.abs(physics.hydrogenEdge(1)-91.165)<.01);
  assert.ok(Math.abs(physics.hydrogenEdge(2)/physics.hydrogenEdge(1)-4)<1e-12);
+});
+
+test('非灰教学模型的灰极限、窗口输运与压强解析关系',()=>{
+ for(const T of [5000,8000,12000])for(const nm of [300,500,800]){
+  assert.equal(physics.formation(1,T,nm).temp,T);
+  assert.equal(physics.formation(1,T,nm).ratio,1);
+  assert.ok(physics.formation(2,T,nm).ratio<1);
+  assert.ok(physics.formation(.5,T,nm).ratio>1);
+ }
+ for(const w of [.05,.5,.95]){
+  assert.ok(Math.abs(physics.rosselandTwo(3,3,w)-3)<1e-12);
+  const R=physics.rosselandTwo(2,8,w);
+  assert.ok(R>=2&&R<=8&&R<=w*2+(1-w)*8);
+  assert.ok(Math.abs((w/2+(1-w)/8)*R-1)<1e-12);
+ }
+ assert.equal(physics.rosselandTwo(2,8,.5),3.2);
+ assert.ok(Math.abs(physics.scaleHeight(6000,270,1.3)/1000-141)<.2);
+ assert.equal(physics.scaleHeight(6000,200,1),physics.scaleHeight(6000,100,1)/2);
+ for(const n of [0,1,2])for(const tau of [.1,.6,2]){
+  const g=170,p=physics.pressure(tau,g,n),eps=1e-6;
+  const slope=(physics.pressure(tau+eps,g,n)-physics.pressure(tau-eps,g,n))/(2*eps);
+  const kappa=.01*(p/10000)**n;
+  assert.ok(Math.abs(slope*kappa/g-1)<1e-8,'满足静力微分方程');
+  assert.ok(Math.abs(physics.pressure(tau,8*g,n)/p-8**(1/(n+1)))<1e-12);
+ }
 });
