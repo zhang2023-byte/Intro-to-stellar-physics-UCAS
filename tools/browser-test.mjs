@@ -106,12 +106,53 @@ try{
   await page.locator('[data-highlight-add]').click();
   assert.equal(await page.locator('mark.stellar-highlight').count(),1);
   assert.match(await page.locator('[data-highlight-status]').textContent(),/已保存 1 条高亮/);
-  await page.reload();assert.equal(await page.locator('mark.stellar-highlight').count(),1);
+  await page.locator('[data-highlight-mode-toggle]').waitFor({state:'visible'});
+  assert.match(await page.locator('[data-highlight-status]').textContent(),/连续高亮已开启/);
+  const secondParagraph=page.locator('#intensity > p').nth(1);
+  assert.ok(await secondParagraph.count(),'高亮连续模式测试需要第二个正文段落');
+  assert.ok(await secondParagraph.evaluate(element=>{
+   const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);let node;
+   while(node=walker.nextNode()){
+    const start=node.nodeValue.search(/\S/);if(start<0||node.nodeValue.length-start<10)continue;
+    const range=document.createRange();range.setStart(node,start);range.setEnd(node,Math.min(node.nodeValue.length,start+10));
+    const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));return true;
+   }
+   return false;
+  }));
+  await page.waitForFunction(()=>document.querySelectorAll('mark.stellar-highlight').length===2);
+  await page.locator('[data-highlight-mode-toggle]').click();
+  await page.locator('[data-highlight-mode-toggle]').waitFor({state:'hidden'});
+  await page.evaluate(()=>{
+   window.print=()=>{document.body.dataset.pdfTitle=document.title;document.body.dataset.pdfDetails=[...document.querySelectorAll('details')].every(detail=>detail.open)?'open':'closed';};
+  });
+  await page.locator('[data-pdf-export]').click();
+  assert.match(await page.locator('body').getAttribute('data-pdf-title'),/^第4章_/);
+  assert.equal(await page.locator('body').getAttribute('data-pdf-details'),'open');
+  await page.reload();assert.equal(await page.locator('mark.stellar-highlight').count(),2);
+  await page.locator('mark.stellar-highlight').first().evaluate(element=>{
+   const range=document.createRange();range.selectNodeContents(element);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
+  });
+  await page.locator('[data-highlight-remove]').click();
+  assert.equal(await page.locator('mark.stellar-highlight').count(),1);
   await page.locator('mark.stellar-highlight').first().evaluate(element=>{
    const range=document.createRange();range.selectNodeContents(element);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
   });
   await page.locator('[data-highlight-remove]').click();
   assert.equal(await page.locator('mark.stellar-highlight').count(),0);
+  await page.setViewportSize({width:390,height:844});
+  await page.evaluate(()=>localStorage.removeItem('stellar:highlights:v2-ch04'));
+  await page.reload();
+  await page.locator('#intensity > p').first().evaluate(element=>{
+   const node=[...element.childNodes].find(child=>child.nodeType===Node.TEXT_NODE&&child.nodeValue.trim());
+   const range=document.createRange(),length=Math.min(10,node.nodeValue.length);
+   range.setStart(node,0);range.setEnd(node,length);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
+  });
+  await page.locator('[data-highlight-add]').click();
+  const mobilePen=page.locator('[data-highlight-mode-toggle]');await mobilePen.waitFor({state:'visible'});
+  const penBox=await mobilePen.boundingBox(),mobileViewport=page.viewportSize();
+  assert.ok(penBox.x>=0&&penBox.y>=0&&penBox.x+penBox.width<=mobileViewport.width&&penBox.y+penBox.height<=mobileViewport.height,'手机高亮按钮位于屏幕内');
+  await mobilePen.click();await mobilePen.waitFor({state:'hidden'});
+  await page.setViewportSize({width:1440,height:1000});
  }
  }
  const noJS=await browser.newContext({javaScriptEnabled:false});const plain=await noJS.newPage();

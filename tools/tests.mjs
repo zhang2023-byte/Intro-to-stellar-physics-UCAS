@@ -117,6 +117,13 @@ test('课程页提供本机高亮工具并使用课程级存储键',()=>{
  const h=renderLesson(d,`${ROOT}/lessons`);
  assert.match(h,/data-highlight-add/);
  assert.match(h,/data-highlight-import/);
+ assert.match(h,/data-highlight-mode-toggle/);
+ assert.match(h,/data-pdf-export/);
+ assert.match(h,/window\.print\(\)/);
+ assert.match(h,/data-highlight-add[^>]*title="进入连续高亮模式"/);
+ assert.match(h,/清空高亮/);
+ assert.match(h,/导出 PDF/);
+ assert.ok(h.indexOf('data-highlight-export')<h.indexOf('data-highlight-import'));
  assert.match(h,/stellar:highlights:/);
  assert.match(h,/mark\.stellar-highlight/);
 });

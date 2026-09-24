@@ -17,13 +17,17 @@ if(highlightTools){
  const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
  const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
  const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
  const importHighlights=highlightTools.querySelector('[data-highlight-import]');
  const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
  const blockSelector='p,li,blockquote,td';
  const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
  const maxHighlights=500;
  let storageAvailable=true;
  let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
  let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
  function cleanHighlight(item){
   if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
@@ -132,32 +136,61 @@ if(highlightTools){
   }
   highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
  }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  addHighlight.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+  addHighlight.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  refreshHighlightUI();
+ }
  function refreshHighlightUI(){
   const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
   clearHighlights.disabled=highlightState.items.length===0;
   if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
-  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}`:'暂无高亮';
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
  }
  function updateHighlightSelection(){
   const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
-  addHighlight.disabled=!info||ids.length>0;
+  addHighlight.disabled=false;
   removeHighlight.hidden=ids.length===0;
   removeHighlight.disabled=ids.length===0;
  }
- function clearSelection(){window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return false;
+  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
  document.addEventListener('selectionchange',()=>{
   const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
-  if(range&&!range.collapsed)pendingRange=range.cloneRange();
-  else if(!highlightTools.contains(document.activeElement))pendingRange=null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
   updateHighlightSelection();
  });
- for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights])button.addEventListener('pointerdown',event=>event.preventDefault());
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
  addHighlight.addEventListener('click',()=>{
-  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return;
-  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return;
-  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
-  saveHighlights();clearSelection();refreshHighlightUI();
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
  });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
  removeHighlight.addEventListener('click',()=>{
   const ids=marksFor(pendingRange);if(!ids.length)return;
   for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
@@ -170,6 +203,25 @@ if(highlightTools){
   const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
   const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
   link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
  });
  importHighlights.addEventListener('change',async()=>{
   const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
