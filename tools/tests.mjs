@@ -111,3 +111,12 @@ test('第六章保留可调非灰形成深度活动',()=>{
  const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch06.md`,'utf8'));
  assert.ok(d.activities.some(a=>a.id==='opacity-depth-lab'&&a.type==='nongrey'));
 });
+
+test('课程页提供本机高亮工具并使用课程级存储键',()=>{
+ const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch04.md`,'utf8'));
+ const h=renderLesson(d,`${ROOT}/lessons`);
+ assert.match(h,/data-highlight-add/);
+ assert.match(h,/data-highlight-import/);
+ assert.match(h,/stellar:highlights:/);
+ assert.match(h,/mark\.stellar-highlight/);
+});

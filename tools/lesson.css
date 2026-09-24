@@ -38,3 +38,13 @@ td math,.quiz-card math{font-size:1.08em}
 td math{white-space:nowrap}
 .answer-note strong{display:block;margin-bottom:.35em}
 @media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
+
+.highlight-tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px 10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}}

@@ -95,6 +95,24 @@ try{
  await verifyQuizReturn(page,data,0,{keyboard:true,capture:id+'-return-zoom200'});
  await page.evaluate(()=>document.documentElement.style.zoom='');
  await page.setViewportSize({width:390,height:844});await page.goto(origin+'/stellar-course/lessons/'+id+'.html');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:path.join(scratch,id+'-mobile.png')});await page.locator('#exercises').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(scratch,id+'-quiz-mobile.png')});await verifyQuizReturn(page,data,data.quizzes.length-1,{capture:id+'-return-mobile'});for(const lab of await page.locator('[data-explorer]').all()){await lab.screenshot({path:path.join(scratch,id+'-'+await lab.getAttribute('id')+'-mobile.png')});}await page.setViewportSize({width:1440,height:1000});
+ if(id==='v2-ch04'){
+  await page.evaluate(()=>localStorage.removeItem('stellar:highlights:v2-ch04'));
+  await page.reload();
+  await page.locator('#intensity > p').first().evaluate(element=>{
+   const node=[...element.childNodes].find(child=>child.nodeType===Node.TEXT_NODE&&child.nodeValue.trim());
+   const range=document.createRange(),length=Math.min(10,node.nodeValue.length);
+   range.setStart(node,0);range.setEnd(node,length);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
+  });
+  await page.locator('[data-highlight-add]').click();
+  assert.equal(await page.locator('mark.stellar-highlight').count(),1);
+  assert.match(await page.locator('[data-highlight-status]').textContent(),/已保存 1 条高亮/);
+  await page.reload();assert.equal(await page.locator('mark.stellar-highlight').count(),1);
+  await page.locator('mark.stellar-highlight').first().evaluate(element=>{
+   const range=document.createRange();range.selectNodeContents(element);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
+  });
+  await page.locator('[data-highlight-remove]').click();
+  assert.equal(await page.locator('mark.stellar-highlight').count(),0);
+ }
  }
  const noJS=await browser.newContext({javaScriptEnabled:false});const plain=await noJS.newPage();
  await plain.goto(origin+'/stellar-course/lessons/'+ids[0]+'.html');const plainLink=plain.locator('.concept-link').first();const target=await plainLink.getAttribute('href');await plainLink.click();assert.equal(new URL(plain.url()).hash,target);assert.equal(await plain.locator('[data-return-to-quiz]').isVisible(),false);await noJS.close();
