@@ -106,3 +106,8 @@ test('非灰教学模型的灰极限、窗口输运与压强解析关系',()=>{
   assert.ok(Math.abs(physics.pressure(tau,8*g,n)/p-8**(1/(n+1)))<1e-12);
  }
 });
+
+test('第六章保留可调非灰形成深度活动',()=>{
+ const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch06.md`,'utf8'));
+ assert.ok(d.activities.some(a=>a.id==='opacity-depth-lab'&&a.type==='nongrey'));
+});
