@@ -39,7 +39,35 @@ td math,.quiz-card math{font-size:1.08em}
 td math{white-space:nowrap}
 .answer-note strong{display:block;margin-bottom:.35em}
 @media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
-</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-20</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>本章内容</a><a href="#sequence"><small>02</small>连续谱与光谱型序列</a><a href="#population"><small>03</small>激发、电离与巴耳末线</a><a href="#inference"><small>04</small>谱线强度与元素丰度</a><a href="#finish"><small>05</small>光谱分类与温度估计</a><a href="#exercises"><small>06</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>恒星光谱</h1><p class="lead">认识光谱型序列，用激发和电离解释谱线变化，明确由谱线推断元素丰度的条件。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 2 章 · 恒星光谱</span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>本章内容</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="本章内容">反馈</button></div><!-- 修订 1.3.0（2026-09-15）：教师批准的课程反馈修订；解释激发、电离、光度级与展宽，补充跨章概念题，统一公式与判题提示。原有正文、活动和题目 ID 保留。 -->
+
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
+.highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch;flex-wrap:wrap}.highlight-actions{flex-wrap:wrap}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}.highlight-add-button{width:46px}}
+
+.highlight-mode-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:25;width:52px;height:52px;padding:0;border:1px solid #9b681f;border-radius:50%;background:#f2cf72;color:#39280f;box-shadow:0 5px 18px #39280f3d;font-size:30px;line-height:1}
+.highlight-mode-toggle span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-mode-toggle:hover{background:#eab65b;border-color:#80551e}
+.highlight-mode-toggle:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+.highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
+@media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
+
+@media print{
+ .highlight-tools,.highlight-mode-toggle{display:none!important}
+ .lesson-section details:not([open]){display:block}
+ .lesson-section details{break-inside:avoid}
+ mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-20</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>本章内容</a><a href="#sequence"><small>02</small>连续谱与光谱型序列</a><a href="#population"><small>03</small>激发、电离与巴耳末线</a><a href="#inference"><small>04</small>谱线强度与元素丰度</a><a href="#finish"><small>05</small>光谱分类与温度估计</a><a href="#exercises"><small>06</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>恒星光谱</h1><p class="lead">认识光谱型序列，用激发和电离解释谱线变化，明确由谱线推断元素丰度的条件。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 2 章 · 恒星光谱</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button></div><span data-highlight-status role="status" aria-live="polite"></span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>本章内容</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="本章内容">反馈</button></div><!-- 修订 1.3.0（2026-09-15）：教师批准的课程反馈修订；解释激发、电离、光度级与展宽，补充跨章概念题，统一公式与判题提示。原有正文、活动和题目 ID 保留。 -->
 
 <!-- 修订 1.2.3（2026-09-14）：依据教师批准的交互反馈，共用组件新增返回出发题目的浮动按钮，收窄回看链接点击范围；正文和题目 ID、题干、答案不变。 -->
 
@@ -131,7 +159,7 @@ td math{white-space:nowrap}
 <p>第 3 章将讨论温度的测量定义：用总辐射、谱峰或颜色估计温度时，各自需要哪些观测量，所得温度又代表什么。</p>
 <p><a href="v2-ch03.html">第 3 章：恒星温度的估计</a> · <a href="v2-ch01.html">第 1 章：恒星星等与颜色</a></p>
 </section>
-<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">06</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-sequence" data-question="q-sequence"><fieldset><legend><span class="eyebrow">01 / 单选</span>巴耳末线沿 OBAFGKM 序列的典型变化是？</legend><label class="option"><input type="radio" name="q-sequence" value="A" required><span>从 O 到 M 持续增强</span></label><label class="option"><input type="radio" name="q-sequence" value="B" required><span>在 A 型附近最强，两端较弱</span></label><label class="option"><input type="radio" name="q-sequence" value="C" required><span>只在最热的 O 型中存在</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-sequence" data-label="巴耳末线沿 OBAFGKM 序列的典型变化是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-early" data-question="q-early"><fieldset><legend><span class="eyebrow">02 / 判断</span>“早型星”是恒星演化早期的另一种叫法。</legend><label class="option"><input type="radio" name="q-early" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-early" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-early" data-label="“早型星”是恒星演化早期的另一种叫法。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-hydrogen" data-question="q-hydrogen"><fieldset><legend><span class="eyebrow">03 / 单选</span>在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？</legend><label class="option"><input type="radio" name="q-hydrogen" value="A" required><span>总氢丰度下降，但电离比例不变</span></label><label class="option"><input type="radio" name="q-hydrogen" value="B" required><span>电离使可提供 n=2 的中性氢减少</span></label><label class="option"><input type="radio" name="q-hydrogen" value="C" required><span>中性氢比例不变，但 n=2 激发比例降低</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-hydrogen" data-label="在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#population">回看相关概念 ↑</a></form><form class="quiz-card" id="q-density" data-question="q-density"><fieldset><legend><span class="eyebrow">04 / 判断</span>在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。</legend><label class="option"><input type="radio" name="q-density" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-density" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-density" data-label="在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#population">回看相关概念 ↑</a></form><form class="quiz-card" id="q-abundance" data-question="q-abundance"><fieldset><legend><span class="eyebrow">05 / 单选</span>两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？</legend><label class="option"><input type="radio" name="q-abundance" value="A" required><span>线更深的星铁丰度必然更高</span></label><label class="option"><input type="radio" name="q-abundance" value="B" required><span>先检查温度、电离、重力和线形成条件，再讨论丰度</span></label><label class="option"><input type="radio" name="q-abundance" value="C" required><span>只要颜色接近，就能由单条线深确定丰度</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-abundance" data-label="两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#inference">回看相关概念 ↑</a></form><form class="quiz-card" id="q-metals" data-question="q-metals"><fieldset><legend><span class="eyebrow">06 / 判断</span>天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。</legend><label class="option"><input type="radio" name="q-metals" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-metals" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-metals" data-label="天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-review-color-abundance" data-question="q-review-color-abundance"><fieldset><legend><span class="eyebrow">07 / 单选</span>两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？</legend><label class="option"><input type="radio" name="q-review-color-abundance" value="A" required><span>铁线更深的一颗必定铁丰度更高</span></label><label class="option"><input type="radio" name="q-review-color-abundance" value="B" required><span>相同色指数还不足以排除密度、大气结构和展宽等影响</span></label><label class="option"><input type="radio" name="q-review-color-abundance" value="C" required><span>两颗恒星的全部光谱必定相同</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-review-color-abundance" data-label="两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#inference">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 2 章“恒星光谱”，§2.1。</li><li>Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§5.1、§5.3；§8.1.1、§§8.1.3–8.1.5；§8.2。</li></ul><a href="../volume2.html">返回第二卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v2-ch02","version":"1.3.1","updated":"2026-09-20","title":"恒星光谱","summary":"认识光谱型序列，用激发和电离解释谱线变化，明确由谱线推断元素丰度的条件。","scope":"《恒星天体物理学导论》第二卷《恒星大气》 · 第 2 章 · 恒星光谱","demo":false,"study":true,"sources":["Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 2 章“恒星光谱”，§2.1。","Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§5.1、§5.3；§8.1.1、§§8.1.3–8.1.5；§8.2。"]},"quizzes":[{"id":"q-sequence","type":"choice","question":"巴耳末线沿 OBAFGKM 序列的典型变化是？","options":[{"id":"A","text":"从 O 到 M 持续增强"},{"id":"B","text":"在 A 型附近最强，两端较弱"},{"id":"C","text":"只在最热的 O 型中存在"}],"answer":"B","explanation":"选 B。巴耳末线在 A 型附近最显著。A 忽略冷端的激发不足，把线强误认为沿序列单调增加；C 忽略最热端的电离作用。线强取决于参与吸收的 n=2 中性氢数量。","concept":"sequence","explanationHTML":"选 B。巴耳末线在 A 型附近最显著。A 忽略冷端的激发不足，把线强误认为沿序列单调增加；C 忽略最热端的电离作用。线强取决于参与吸收的 n=2 中性氢数量。"},{"id":"q-early","type":"truefalse","question":"“早型星”是恒星演化早期的另一种叫法。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。“早型”表示光谱序列偏热的一端，“晚型”表示偏冷的一端。谱型名称不直接给出演化阶段；将“早”理解为年轻，会混淆经验分类和演化信息。","concept":"sequence","explanationHTML":"该说法不成立。“早型”表示光谱序列偏热的一端，“晚型”表示偏冷的一端。谱型名称不直接给出演化阶段；将“早”理解为年轻，会混淆经验分类和演化信息。"},{"id":"q-hydrogen","type":"choice","question":"在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？","options":[{"id":"A","text":"总氢丰度下降，但电离比例不变"},{"id":"B","text":"电离使可提供 n=2 的中性氢减少"},{"id":"C","text":"中性氢比例不变，但 n=2 激发比例降低"}],"answer":"B","explanation":"选 B。高温促进电离，使可处于 n=2 的中性氢减少。A 在没有依据时假定总丰度改变；C 漏掉电离，并把升温对中性氢激发比例的作用方向写反。","concept":"population","explanationHTML":"选 B。高温促进电离，使可处于 n=2 的中性氢减少。A 在没有依据时假定总丰度改变；C 漏掉电离，并把升温对中性氢激发比例的作用方向写反。"},{"id":"q-density","type":"truefalse","question":"在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。萨哈关系的电离级比含有 1/nₑ 因子。固定温度及配分函数时，nₑ 增大使 N_II/N_I 减小。认为只由温度决定，等于遗漏了电子密度这一变量。","concept":"population","explanationHTML":"该说法不成立。萨哈关系的电离级比含有 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"1/nₑ\">\u003cmfrac>\u003cmn>1\u003c/mn>\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math> 因子。固定温度及配分函数时，\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math> 增大使 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"N_II/N_I\">\u003cmfrac>\u003cmsub>\u003cmi>N\u003c/mi>\u003cmi>II\u003c/mi>\u003c/msub>\u003cmsub>\u003cmi>N\u003c/mi>\u003cmi>I\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math> 减小。认为只由温度决定，等于遗漏了电子密度这一变量。"},{"id":"q-abundance","type":"choice","question":"两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？","options":[{"id":"A","text":"线更深的星铁丰度必然更高"},{"id":"B","text":"先检查温度、电离、重力和线形成条件，再讨论丰度"},{"id":"C","text":"只要颜色接近，就能由单条线深确定丰度"}],"answer":"B","explanation":"选 B。温度、粒子状态、大气结构和展宽都能改变线深，必须在约束这些条件后推断丰度。A 将多种影响归结为元素总量；C 将颜色接近当成大气条件全部一致，忽略重力、密度和线形成的影响。","concept":"inference","explanationHTML":"选 B。温度、粒子状态、大气结构和展宽都能改变线深，必须在约束这些条件后推断丰度。A 将多种影响归结为元素总量；C 将颜色接近当成大气条件全部一致，忽略重力、密度和线形成的影响。"},{"id":"q-metals","type":"truefalse","question":"天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"T","explanation":"该说法成立。天文学的“金属”通常指比氦重的元素，所以包括碳和氧。按化学中金属与非金属的划分回答，会误解这里的术语。","concept":"sequence","explanationHTML":"该说法成立。天文学的“金属”通常指比氦重的元素，所以包括碳和氧。按化学中金属与非金属的划分回答，会误解这里的术语。"},{"id":"q-review-color-abundance","type":"choice","question":"两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？","options":[{"id":"A","text":"铁线更深的一颗必定铁丰度更高"},{"id":"B","text":"相同色指数还不足以排除密度、大气结构和展宽等影响"},{"id":"C","text":"两颗恒星的全部光谱必定相同"}],"answer":"B","explanation":"色指数约束两个波段的相对辐射，不能确定全部大气条件。推断丰度还需约束粒子状态、大气结构及展宽；A 把线深唯一归因于丰度，C 把两个波段的信息当成完整光谱。","concept":"inference","explanationHTML":"色指数约束两个波段的相对辐射，不能确定全部大气条件。推断丰度还需约束粒子状态、大气结构及展宽；A 把线深唯一归因于丰度，C 把两个波段的信息当成完整光谱。"}],"quizHash":"d183632ba7439f0db975be56a1d349f72161665bd557a7278a152aaffdbeb076","sourceHash":"6c1d37b3c7f7775ba71bdbbdc0f4e5f4110cd15c981a5a859a673150d81ecb85","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
+<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">06</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-sequence" data-question="q-sequence"><fieldset><legend><span class="eyebrow">01 / 单选</span>巴耳末线沿 OBAFGKM 序列的典型变化是？</legend><label class="option"><input type="radio" name="q-sequence" value="A" required><span>从 O 到 M 持续增强</span></label><label class="option"><input type="radio" name="q-sequence" value="B" required><span>在 A 型附近最强，两端较弱</span></label><label class="option"><input type="radio" name="q-sequence" value="C" required><span>只在最热的 O 型中存在</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-sequence" data-label="巴耳末线沿 OBAFGKM 序列的典型变化是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-early" data-question="q-early"><fieldset><legend><span class="eyebrow">02 / 判断</span>“早型星”是恒星演化早期的另一种叫法。</legend><label class="option"><input type="radio" name="q-early" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-early" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-early" data-label="“早型星”是恒星演化早期的另一种叫法。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-hydrogen" data-question="q-hydrogen"><fieldset><legend><span class="eyebrow">03 / 单选</span>在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？</legend><label class="option"><input type="radio" name="q-hydrogen" value="A" required><span>总氢丰度下降，但电离比例不变</span></label><label class="option"><input type="radio" name="q-hydrogen" value="B" required><span>电离使可提供 n=2 的中性氢减少</span></label><label class="option"><input type="radio" name="q-hydrogen" value="C" required><span>中性氢比例不变，但 n=2 激发比例降低</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-hydrogen" data-label="在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#population">回看相关概念 ↑</a></form><form class="quiz-card" id="q-density" data-question="q-density"><fieldset><legend><span class="eyebrow">04 / 判断</span>在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。</legend><label class="option"><input type="radio" name="q-density" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-density" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-density" data-label="在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#population">回看相关概念 ↑</a></form><form class="quiz-card" id="q-abundance" data-question="q-abundance"><fieldset><legend><span class="eyebrow">05 / 单选</span>两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？</legend><label class="option"><input type="radio" name="q-abundance" value="A" required><span>线更深的星铁丰度必然更高</span></label><label class="option"><input type="radio" name="q-abundance" value="B" required><span>先检查温度、电离、重力和线形成条件，再讨论丰度</span></label><label class="option"><input type="radio" name="q-abundance" value="C" required><span>只要颜色接近，就能由单条线深确定丰度</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-abundance" data-label="两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#inference">回看相关概念 ↑</a></form><form class="quiz-card" id="q-metals" data-question="q-metals"><fieldset><legend><span class="eyebrow">06 / 判断</span>天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。</legend><label class="option"><input type="radio" name="q-metals" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-metals" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-metals" data-label="天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#sequence">回看相关概念 ↑</a></form><form class="quiz-card" id="q-review-color-abundance" data-question="q-review-color-abundance"><fieldset><legend><span class="eyebrow">07 / 单选</span>两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？</legend><label class="option"><input type="radio" name="q-review-color-abundance" value="A" required><span>铁线更深的一颗必定铁丰度更高</span></label><label class="option"><input type="radio" name="q-review-color-abundance" value="B" required><span>相同色指数还不足以排除密度、大气结构和展宽等影响</span></label><label class="option"><input type="radio" name="q-review-color-abundance" value="C" required><span>两颗恒星的全部光谱必定相同</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-review-color-abundance" data-label="两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#inference">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 2 章“恒星光谱”，§2.1。</li><li>Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§5.1、§5.3；§8.1.1、§§8.1.3–8.1.5；§8.2。</li></ul><a href="../volume2.html">返回第二卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><button class="highlight-mode-toggle" type="button" data-highlight-mode-toggle hidden aria-label="退出连续高亮模式" title="退出连续高亮模式"><span aria-hidden="true">✎</span></button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v2-ch02","version":"1.3.1","updated":"2026-09-20","title":"恒星光谱","summary":"认识光谱型序列，用激发和电离解释谱线变化，明确由谱线推断元素丰度的条件。","scope":"《恒星天体物理学导论》第二卷《恒星大气》 · 第 2 章 · 恒星光谱","demo":false,"study":true,"sources":["Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 2 章“恒星光谱”，§2.1。","Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§5.1、§5.3；§8.1.1、§§8.1.3–8.1.5；§8.2。"]},"quizzes":[{"id":"q-sequence","type":"choice","question":"巴耳末线沿 OBAFGKM 序列的典型变化是？","options":[{"id":"A","text":"从 O 到 M 持续增强"},{"id":"B","text":"在 A 型附近最强，两端较弱"},{"id":"C","text":"只在最热的 O 型中存在"}],"answer":"B","explanation":"选 B。巴耳末线在 A 型附近最显著。A 忽略冷端的激发不足，把线强误认为沿序列单调增加；C 忽略最热端的电离作用。线强取决于参与吸收的 n=2 中性氢数量。","concept":"sequence","explanationHTML":"选 B。巴耳末线在 A 型附近最显著。A 忽略冷端的激发不足，把线强误认为沿序列单调增加；C 忽略最热端的电离作用。线强取决于参与吸收的 n=2 中性氢数量。"},{"id":"q-early","type":"truefalse","question":"“早型星”是恒星演化早期的另一种叫法。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。“早型”表示光谱序列偏热的一端，“晚型”表示偏冷的一端。谱型名称不直接给出演化阶段；将“早”理解为年轻，会混淆经验分类和演化信息。","concept":"sequence","explanationHTML":"该说法不成立。“早型”表示光谱序列偏热的一端，“晚型”表示偏冷的一端。谱型名称不直接给出演化阶段；将“早”理解为年轻，会混淆经验分类和演化信息。"},{"id":"q-hydrogen","type":"choice","question":"在高温端，中性氢巴耳末线可以变弱，最直接的占据数解释是什么？","options":[{"id":"A","text":"总氢丰度下降，但电离比例不变"},{"id":"B","text":"电离使可提供 n=2 的中性氢减少"},{"id":"C","text":"中性氢比例不变，但 n=2 激发比例降低"}],"answer":"B","explanation":"选 B。高温促进电离，使可处于 n=2 的中性氢减少。A 在没有依据时假定总丰度改变；C 漏掉电离，并把升温对中性氢激发比例的作用方向写反。","concept":"population","explanationHTML":"选 B。高温促进电离，使可处于 n=2 的中性氢减少。A 在没有依据时假定总丰度改变；C 漏掉电离，并把升温对中性氢激发比例的作用方向写反。"},{"id":"q-density","type":"truefalse","question":"在 LTE 近似下，温度固定后，氢的电离级比例就与电子密度无关。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。萨哈关系的电离级比含有 1/nₑ 因子。固定温度及配分函数时，nₑ 增大使 N_II/N_I 减小。认为只由温度决定，等于遗漏了电子密度这一变量。","concept":"population","explanationHTML":"该说法不成立。萨哈关系的电离级比含有 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"1/nₑ\">\u003cmfrac>\u003cmn>1\u003c/mn>\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math> 因子。固定温度及配分函数时，\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math> 增大使 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"N_II/N_I\">\u003cmfrac>\u003cmsub>\u003cmi>N\u003c/mi>\u003cmi>II\u003c/mi>\u003c/msub>\u003cmsub>\u003cmi>N\u003c/mi>\u003cmi>I\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math> 减小。认为只由温度决定，等于遗漏了电子密度这一变量。"},{"id":"q-abundance","type":"choice","question":"两颗星一条铁吸收线的深度不同。仅凭这一点，哪种结论最稳妥？","options":[{"id":"A","text":"线更深的星铁丰度必然更高"},{"id":"B","text":"先检查温度、电离、重力和线形成条件，再讨论丰度"},{"id":"C","text":"只要颜色接近，就能由单条线深确定丰度"}],"answer":"B","explanation":"选 B。温度、粒子状态、大气结构和展宽都能改变线深，必须在约束这些条件后推断丰度。A 将多种影响归结为元素总量；C 将颜色接近当成大气条件全部一致，忽略重力、密度和线形成的影响。","concept":"inference","explanationHTML":"选 B。温度、粒子状态、大气结构和展宽都能改变线深，必须在约束这些条件后推断丰度。A 将多种影响归结为元素总量；C 将颜色接近当成大气条件全部一致，忽略重力、密度和线形成的影响。"},{"id":"q-metals","type":"truefalse","question":"天文学中说“金属丰度”时，通常把碳、氧也归入金属元素。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"T","explanation":"该说法成立。天文学的“金属”通常指比氦重的元素，所以包括碳和氧。按化学中金属与非金属的划分回答，会误解这里的术语。","concept":"sequence","explanationHTML":"该说法成立。天文学的“金属”通常指比氦重的元素，所以包括碳和氧。按化学中金属与非金属的划分回答，会误解这里的术语。"},{"id":"q-review-color-abundance","type":"choice","question":"两颗恒星经消光改正后的 B−V 相同，其中一颗铁线更深。结合第一章和本章，能得出什么结论？","options":[{"id":"A","text":"铁线更深的一颗必定铁丰度更高"},{"id":"B","text":"相同色指数还不足以排除密度、大气结构和展宽等影响"},{"id":"C","text":"两颗恒星的全部光谱必定相同"}],"answer":"B","explanation":"色指数约束两个波段的相对辐射，不能确定全部大气条件。推断丰度还需约束粒子状态、大气结构及展宽；A 把线深唯一归因于丰度，C 把两个波段的信息当成完整光谱。","concept":"inference","explanationHTML":"色指数约束两个波段的相对辐射，不能确定全部大气条件。推断丰度还需约束粒子状态、大气结构及展宽；A 把线深唯一归因于丰度，C 把两个波段的信息当成完整光谱。"}],"quizHash":"d183632ba7439f0db975be56a1d349f72161665bd557a7278a152aaffdbeb076","sourceHash":"6c1d37b3c7f7775ba71bdbbdc0f4e5f4110cd15c981a5a859a673150d81ecb85","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
 'use strict';
 const data=JSON.parse(document.getElementById('lesson-data').textContent);
 const storageKey=`stellar:${data.meta.id}:${data.meta.version}:${data.quizHash}`;
@@ -143,6 +171,231 @@ function showAnswer(form,q,value){const note=form.querySelector('.answer-note');
 for(const q of data.quizzes){const form=document.getElementById(q.id);const value=answers[q.id];if(q.options.some(o=>o.id===value)){form.querySelector(`input[value="${value}"]`).checked=true;showAnswer(form,q,value);}form.addEventListener('submit',event=>{event.preventDefault();const value=new FormData(form).get(q.id);if(!q.options.some(o=>o.id===value))return;answers[q.id]=value;save();showAnswer(form,q,value);stats();});form.addEventListener('change',()=>{delete answers[q.id];form.querySelector('.answer-note').hidden=true;save();stats();});}
 stats();
 for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEventListener('click',()=>{answers={};save();for(const form of document.querySelectorAll('[data-question]')){form.reset();form.querySelector('.answer-note').hidden=true;}stats();});
+const highlightTools=document.querySelector('.highlight-tools');
+if(highlightTools){
+ const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const addHighlight=highlightTools.querySelector('[data-highlight-add]');
+ const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
+ const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
+ const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
+ const importHighlights=highlightTools.querySelector('[data-highlight-import]');
+ const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
+ const blockSelector='p,li,blockquote,td';
+ const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
+ const maxHighlights=500;
+ let storageAvailable=true;
+ let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
+ let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
+ function cleanHighlight(item){
+  if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
+  if(!item.quote.trim()||item.quote.length>10000)return null;
+  return {id:item.id.slice(0,100),sectionId:item.sectionId.slice(0,200),quote:item.quote,blockText:typeof item.blockText==='string'?item.blockText.slice(0,30000):'',start:Number.isInteger(item.start)?item.start:null,end:Number.isInteger(item.end)?item.end:null,prefix:typeof item.prefix==='string'?item.prefix.slice(-160):'',suffix:typeof item.suffix==='string'?item.suffix.slice(0,160):'',version:typeof item.version==='string'?item.version:'',sourceHash:typeof item.sourceHash==='string'?item.sourceHash:'',createdAt:typeof item.createdAt==='string'?item.createdAt:new Date().toISOString(),status:'stale'};
+ }
+ try{
+  const stored=JSON.parse(localStorage.getItem(highlightKey)||'null');
+  const items=Array.isArray(stored)?stored:stored?.lessonId===data.meta.id?stored.items:[];
+  if(Array.isArray(items))highlightState.items=items.map(cleanHighlight).filter(Boolean).slice(0,maxHighlights);
+ }catch{storageAvailable=false;}
+ function saveHighlights(){
+  try{localStorage.setItem(highlightKey,JSON.stringify(highlightState));return true;}
+  catch{storageAvailable=false;return false;}
+ }
+ function nodeElement(node){return node?.nodeType===Node.ELEMENT_NODE?node:node?.parentElement;}
+ function blockFor(node){
+  const block=nodeElement(node)?.closest(blockSelector);
+  return block&&!block.closest(excludedSelector)&&block.closest('.lesson-section')?block:null;
+ }
+ function intersects(range,node){try{return range.intersectsNode(node);}catch{return false;}}
+ function marksFor(range){
+  if(!range)return[];
+  const ids=new Set();
+  for(const mark of document.querySelectorAll('mark.stellar-highlight[data-highlight-id]'))if(intersects(range,mark))ids.add(mark.dataset.highlightId);
+  return [...ids];
+ }
+ function selectionInfo(range){
+  if(!range||range.collapsed)return null;
+  const block=blockFor(range.startContainer);
+  if(!block||blockFor(range.endContainer)!==block||!range.toString().trim())return null;
+  for(const node of block.querySelectorAll('math,a,code,pre'))if(intersects(range,node))return null;
+  return {block,range};
+ }
+ function boundaryOffset(block,container,offset){
+  const before=document.createRange();
+  before.selectNodeContents(block);
+  try{before.setEnd(container,offset);return before.toString().length;}catch{return -1;}
+ }
+ function makeHighlight(info){
+  const {block,range}=info,start=boundaryOffset(block,range.startContainer,range.startOffset),end=boundaryOffset(block,range.endContainer,range.endOffset),blockText=block.textContent||'',quote=blockText.slice(start,end);
+  if(start<0||end<=start||!quote.trim())return null;
+  const section=block.closest('.lesson-section');
+  return {id:typeof crypto?.randomUUID==='function'?crypto.randomUUID():`h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,sectionId:section.id,quote,blockText,start,end,prefix:blockText.slice(Math.max(0,start-160),start),suffix:blockText.slice(end,end+160),version:data.meta.version,sourceHash:data.sourceHash,createdAt:new Date().toISOString(),status:'active'};
+ }
+ function selectableTextNodes(block){
+  const walker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while(node=walker.nextNode())nodes.push(node);
+  return nodes;
+ }
+ function wrapOffsets(block,start,end,id){
+  const nodes=selectableTextNodes(block),ranges=[];
+  let cursor=0;
+  for(const node of nodes){
+   const length=node.nodeValue.length,nodeStart=cursor,nodeEnd=cursor+length;cursor=nodeEnd;
+   const localStart=Math.max(start-nodeStart,0),localEnd=Math.min(end-nodeStart,length);
+   if(localEnd<=localStart||node.parentElement?.closest('mark,a,code,pre,math'))continue;
+   ranges.push({node,localStart,localEnd});
+  }
+  if(!ranges.length)return false;
+  for(let i=ranges.length-1;i>=0;i--){
+   const part=ranges[i],range=document.createRange();range.setStart(part.node,part.localStart);range.setEnd(part.node,part.localEnd);
+   const mark=document.createElement('mark');mark.className='stellar-highlight';mark.dataset.highlightId=id;mark.title='选择后可取消高亮';
+   mark.append(range.extractContents());range.insertNode(mark);
+  }
+  return true;
+ }
+ function unwrapHighlight(id){
+  for(const mark of [...document.querySelectorAll('mark.stellar-highlight[data-highlight-id]')].filter(mark=>mark.dataset.highlightId===id))mark.replaceWith(...mark.childNodes);
+ }
+ function clearRenderedHighlights(){for(const mark of [...document.querySelectorAll('mark.stellar-highlight')])mark.replaceWith(...mark.childNodes);}
+ function findPositions(text,quote){
+  const positions=[];let from=0;
+  while(quote&&from<=text.length){const position=text.indexOf(quote,from);if(position<0)break;positions.push(position);from=position+Math.max(quote.length,1);}
+  return positions;
+ }
+ function contextMatches(text,start,item){
+  return (!item.prefix||text.slice(Math.max(0,start-item.prefix.length),start).endsWith(item.prefix))&&(!item.suffix||text.slice(start+item.quote.length,start+item.quote.length+item.suffix.length).startsWith(item.suffix));
+ }
+ function locateHighlight(item){
+  const section=document.getElementById(item.sectionId);if(!section)return null;
+  let blocks=[...section.querySelectorAll(blockSelector)].filter(block=>!block.closest(excludedSelector));
+  const exact=item.blockText?blocks.filter(block=>block.textContent===item.blockText):[];
+  if(exact.length)blocks=exact;
+  const matches=[];
+  for(const block of blocks){
+   const text=block.textContent||'',positions=findPositions(text,item.quote);
+   for(const start of positions)if(contextMatches(text,start,item))matches.push({block,start,end:start+item.quote.length});
+  }
+  if(matches.length===1)return matches[0];
+  if(Number.isInteger(item.start)&&Number.isInteger(item.end)){
+   const exactPosition=matches.find(match=>match.start===item.start&&match.end===item.end);
+   if(exactPosition)return exactPosition;
+  }
+  return null;
+ }
+ function restoreHighlights(){
+  clearRenderedHighlights();
+  const applied=[];
+  for(const item of highlightState.items){
+   const match=locateHighlight(item);
+   const overlaps=match&&applied.some(previous=>previous.block===match.block&&match.start<previous.end&&previous.start<match.end);
+   if(!match||overlaps||!wrapOffsets(match.block,match.start,match.end,item.id)){item.status='stale';continue;}
+   item.status='active';item.version=data.meta.version;item.sourceHash=data.sourceHash;applied.push(match);
+  }
+  highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
+ }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  addHighlight.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+  addHighlight.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  refreshHighlightUI();
+ }
+ function refreshHighlightUI(){
+  const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
+  clearHighlights.disabled=highlightState.items.length===0;
+  if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
+ }
+ function updateHighlightSelection(){
+  const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
+  addHighlight.disabled=false;
+  removeHighlight.hidden=ids.length===0;
+  removeHighlight.disabled=ids.length===0;
+ }
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return false;
+  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
+ document.addEventListener('selectionchange',()=>{
+  const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
+  updateHighlightSelection();
+ });
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
+ addHighlight.addEventListener('click',()=>{
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
+ });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
+ removeHighlight.addEventListener('click',()=>{
+  const ids=marksFor(pendingRange);if(!ids.length)return;
+  for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
+  saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ clearHighlights.addEventListener('click',()=>{
+  clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ exportHighlights.addEventListener('click',()=>{
+  const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+ });
+ importHighlights.addEventListener('change',async()=>{
+  const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
+  try{
+   const payload=JSON.parse(await file.text());
+   if(payload?.lessonId!==data.meta.id||!Array.isArray(payload.items))throw Error('课程不匹配或文件格式不正确');
+   const merged=new Map(highlightState.items.map(item=>[item.id,item]));
+   for(const item of payload.items.map(cleanHighlight).filter(Boolean))merged.set(item.id,item);
+   highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
+  }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
+ });
+ restoreHighlights();
+}
 const quizReturn=document.querySelector('[data-return-to-quiz]');
 let reviewForm=null;
 const visibleQuestions=new Set();

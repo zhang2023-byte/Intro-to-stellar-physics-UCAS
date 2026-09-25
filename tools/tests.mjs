@@ -106,3 +106,24 @@ test('非灰教学模型的灰极限、窗口输运与压强解析关系',()=>{
   assert.ok(Math.abs(physics.pressure(tau,8*g,n)/p-8**(1/(n+1)))<1e-12);
  }
 });
+
+test('第六章保留可调非灰形成深度活动',()=>{
+ const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch06.md`,'utf8'));
+ assert.ok(d.activities.some(a=>a.id==='opacity-depth-lab'&&a.type==='nongrey'));
+});
+
+test('课程页提供本机高亮工具并使用课程级存储键',()=>{
+ const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch04.md`,'utf8'));
+ const h=renderLesson(d,`${ROOT}/lessons`);
+ assert.match(h,/data-highlight-add/);
+ assert.match(h,/data-highlight-import/);
+ assert.match(h,/data-highlight-mode-toggle/);
+ assert.match(h,/data-pdf-export/);
+ assert.match(h,/window\.print\(\)/);
+ assert.match(h,/data-highlight-add[^>]*title="进入连续高亮模式"/);
+ assert.match(h,/清空高亮/);
+ assert.match(h,/导出 PDF/);
+ assert.ok(h.indexOf('data-highlight-export')<h.indexOf('data-highlight-import'));
+ assert.match(h,/stellar:highlights:/);
+ assert.match(h,/mark\.stellar-highlight/);
+});

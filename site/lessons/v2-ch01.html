@@ -39,7 +39,35 @@ td math,.quiz-card math{font-size:1.08em}
 td math{white-space:nowrap}
 .answer-note strong{display:block;margin-bottom:.35em}
 @media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
-</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-20</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>本章内容</a><a href="#brightness"><small>02</small>辐射通量与视星等</a><a href="#color"><small>03</small>滤光片与色指数</a><a href="#atmosphere"><small>04</small>地球大气消光</a><a href="#absolute"><small>05</small>绝对星等、光度与热改正</a><a href="#diagram"><small>06</small>颜色—星等图</a><a href="#finish"><small>07</small>测光与后续光谱分析</a><a href="#exercises"><small>08</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>恒星星等与颜色</h1><p class="lead">从接收辐射通量出发，理解视星等、色指数、消光改正、绝对星等和颜色—星等图。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 1 章 · 恒星星等与颜色</span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>本章内容</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="本章内容">反馈</button></div><!-- 修订 1.3.0（2026-09-15）：教师批准的课程反馈修订；补充英文术语、标准星零点及标定算例，统一题目数学排版与判题提示。原有正文、活动和题目 ID 保留。 -->
+
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
+.highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch;flex-wrap:wrap}.highlight-actions{flex-wrap:wrap}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}.highlight-add-button{width:46px}}
+
+.highlight-mode-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:25;width:52px;height:52px;padding:0;border:1px solid #9b681f;border-radius:50%;background:#f2cf72;color:#39280f;box-shadow:0 5px 18px #39280f3d;font-size:30px;line-height:1}
+.highlight-mode-toggle span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-mode-toggle:hover{background:#eab65b;border-color:#80551e}
+.highlight-mode-toggle:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+.highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
+@media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
+
+@media print{
+ .highlight-tools,.highlight-mode-toggle{display:none!important}
+ .lesson-section details:not([open]){display:block}
+ .lesson-section details{break-inside:avoid}
+ mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-20</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>本章内容</a><a href="#brightness"><small>02</small>辐射通量与视星等</a><a href="#color"><small>03</small>滤光片与色指数</a><a href="#atmosphere"><small>04</small>地球大气消光</a><a href="#absolute"><small>05</small>绝对星等、光度与热改正</a><a href="#diagram"><small>06</small>颜色—星等图</a><a href="#finish"><small>07</small>测光与后续光谱分析</a><a href="#exercises"><small>08</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>恒星星等与颜色</h1><p class="lead">从接收辐射通量出发，理解视星等、色指数、消光改正、绝对星等和颜色—星等图。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 1 章 · 恒星星等与颜色</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button></div><span data-highlight-status role="status" aria-live="polite"></span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>本章内容</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="本章内容">反馈</button></div><!-- 修订 1.3.0（2026-09-15）：教师批准的课程反馈修订；补充英文术语、标准星零点及标定算例，统一题目数学排版与判题提示。原有正文、活动和题目 ID 保留。 -->
 
 <!-- 修订 1.2.3（2026-09-14）：依据教师批准的交互反馈，共用组件新增返回出发题目的浮动按钮，收窄回看链接点击范围；正文和题目 ID、题干、答案不变。 -->
 
@@ -151,7 +179,7 @@ td math{white-space:nowrap}
 <p>宽带测光保留了光谱的整体分布，窄小的吸收结构需要更高的波长分辨率才能看清。下一章介绍这些谱线特征，以及它们与恒星大气状态的关系。</p>
 <p><a href="v2-ch02.html">第 2 章：恒星光谱</a></p>
 </section>
-<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">08</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-distance" data-question="q-distance"><fieldset><legend><span class="eyebrow">01 / 单选</span>同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？</legend><label class="option"><input type="radio" name="q-distance" value="A" required><span>增大 1.5 等</span></label><label class="option"><input type="radio" name="q-distance" value="B" required><span>不变</span></label><label class="option"><input type="radio" name="q-distance" value="C" required><span>减小 1.5 等</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-distance" data-label="同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#brightness">回看相关概念 ↑</a></form><form class="quiz-card" id="q-color-distance" data-question="q-color-distance"><fieldset><legend><span class="eyebrow">02 / 判断</span>忽略消光，对同一颗不变星仅改变距离，B−V 不变。</legend><label class="option"><input type="radio" name="q-color-distance" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-color-distance" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-color-distance" data-label="忽略消光，对同一颗不变星仅改变距离，B−V 不变。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#color">回看相关概念 ↑</a></form><form class="quiz-card" id="q-zero" data-question="q-zero"><fieldset><legend><span class="eyebrow">03 / 判断</span>在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。</legend><label class="option"><input type="radio" name="q-zero" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-zero" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-zero" data-label="在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#color">回看相关概念 ↑</a></form><form class="quiz-card" id="q-airmass" data-question="q-airmass"><fieldset><legend><span class="eyebrow">04 / 单选</span>在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？</legend><label class="option"><input type="radio" name="q-airmass" value="A" required><span>天顶 X=1 的直接读数</span></label><label class="option"><input type="radio" name="q-airmass" value="B" required><span>向 X=0 外推的大气外星等</span></label><label class="option"><input type="radio" name="q-airmass" value="C" required><span>地平线上的星等</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-airmass" data-label="在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#atmosphere">回看相关概念 ↑</a></form><form class="quiz-card" id="q-absolute" data-question="q-absolute"><fieldset><legend><span class="eyebrow">05 / 单选</span>同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？</legend><label class="option"><input type="radio" name="q-absolute" value="A" required><span>m_V 增大 5 等，M_V 不变</span></label><label class="option"><input type="radio" name="q-absolute" value="B" required><span>m_V 与 M_V 都增大 5 等</span></label><label class="option"><input type="radio" name="q-absolute" value="C" required><span>M_V 增大 5 等，m_V 不变</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-absolute" data-label="同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#absolute">回看相关概念 ↑</a></form><form class="quiz-card" id="q-bolometric" data-question="q-bolometric"><fieldset><legend><span class="eyebrow">06 / 判断</span>两颗星的 M_V 相同，就一定具有相同的总光度。</legend><label class="option"><input type="radio" name="q-bolometric" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-bolometric" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-bolometric" data-label="两颗星的 M_V 相同，就一定具有相同的总光度。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#absolute">回看相关概念 ↑</a></form><form class="quiz-card" id="q-cmd" data-question="q-cmd"><fieldset><legend><span class="eyebrow">07 / 单选</span>在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？</legend><label class="option"><input type="radio" name="q-cmd" value="A" required><span>它一定离我们更近</span></label><label class="option"><input type="radio" name="q-cmd" value="B" required><span>它的辐射表面积更大</span></label><label class="option"><input type="radio" name="q-cmd" value="C" required><span>它的颜色一定更蓝</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-cmd" data-label="在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#diagram">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 1 章“恒星星等和恒星颜色”，§§1.1–1.6。</li><li>Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§3.2、§3.6、§8.2；§9.2.3，例 9.2.3。</li></ul><a href="../volume2.html">返回第二卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v2-ch01","version":"1.3.1","updated":"2026-09-20","title":"恒星星等与颜色","summary":"从接收辐射通量出发，理解视星等、色指数、消光改正、绝对星等和颜色—星等图。","scope":"《恒星天体物理学导论》第二卷《恒星大气》 · 第 1 章 · 恒星星等与颜色","demo":false,"study":true,"sources":["Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 1 章“恒星星等和恒星颜色”，§§1.1–1.6。","Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§3.2、§3.6、§8.2；§9.2.3，例 9.2.3。"]},"quizzes":[{"id":"q-distance","type":"choice","question":"同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？","options":[{"id":"A","text":"增大 1.5 等"},{"id":"B","text":"不变"},{"id":"C","text":"减小 1.5 等"}],"answer":"B","explanation":"由 f∝L/d²，通量比为 4/2²=1，因此选 B。A 只计入距离增加、漏掉光度增加；C 也未同时计入两个变化。通量不变时，同一系统的视星等不变。","concept":"brightness","explanationHTML":"由 f∝L/d²，通量比为 4/2²=1，因此选 B。A 只计入距离增加、漏掉光度增加；C 也未同时计入两个变化。通量不变时，同一系统的视星等不变。"},{"id":"q-color-distance","type":"truefalse","question":"忽略消光，对同一颗不变星仅改变距离，B−V 不变。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"T","explanation":"该说法成立。f_B 与 f_V 都按 d⁻² 改变，比值不变，所以 B−V 不变。把视星等随距离变化直接套到色指数上，会漏掉两个波段共同因子的抵消；波长相关消光变化不满足题设。","concept":"color","explanationHTML":"该说法成立。\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_B\">\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003c/math> 与 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_V\">\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/math> 都按 d⁻² 改变，比值不变，所以 B−V 不变。把视星等随距离变化直接套到色指数上，会漏掉两个波段共同因子的抵消；波长相关消光变化不满足题设。"},{"id":"q-zero","type":"truefalse","question":"在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。B−V=−2.5 log₁₀(f_B/f_V)+(Z_B−Z_V)。零色指数表示两个星等相等；只有零点差满足相应条件时，才可进一步推得通量相等。忽略零点会把标定约定误当成通量相等。","concept":"color","explanationHTML":"该说法不成立。B−V=−2.5 log₁₀(\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_B/f_V\">\u003cmfrac>\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math>)+(\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"Z_B\">\u003cmsub>\u003cmi>Z\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003c/math>−\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"Z_V\">\u003cmsub>\u003cmi>Z\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/math>)。零色指数表示两个星等相等；只有零点差满足相应条件时，才可进一步推得通量相等。忽略零点会把标定约定误当成通量相等。"},{"id":"q-airmass","type":"choice","question":"在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？","options":[{"id":"A","text":"天顶 X=1 的直接读数"},{"id":"B","text":"向 X=0 外推的大气外星等"},{"id":"C","text":"地平线上的星等"}],"answer":"B","explanation":"选 B。令 X=0 得到截距 m₀，它是外推的大气外星等。A 的天顶仍有 X≈1，读数为 m₀+k；C 的地平线方向经过更多大气，且简单 sec z 近似不适用。","concept":"atmosphere","explanationHTML":"选 B。令 X=0 得到截距 m₀，它是外推的大气外星等。A 的天顶仍有 X≈1，读数为 m₀+k；C 的地平线方向经过更多大气，且简单 sec z 近似不适用。"},{"id":"q-absolute","type":"choice","question":"同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？","options":[{"id":"A","text":"m_V 增大 5 等，M_V 不变"},{"id":"B","text":"m_V 与 M_V 都增大 5 等"},{"id":"C","text":"M_V 增大 5 等，m_V 不变"}],"answer":"A","explanation":"选 A。距离变为十倍使通量降为百分之一，m_V 增加 5 等；M_V 按固定 10 pc 定义，恒星自身不变时它不变。B 把实际距离影响也加到 M_V；C 则颠倒了两个量的含义。","concept":"absolute","explanationHTML":"选 A。距离变为十倍使通量降为百分之一，m_V 增加 5 等；M_V 按固定 10 pc 定义，恒星自身不变时它不变。B 把实际距离影响也加到 M_V；C 则颠倒了两个量的含义。"},{"id":"q-bolometric","type":"truefalse","question":"两颗星的 M_V 相同，就一定具有相同的总光度。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。相同 M_V 约束 V 波段发光能力；若谱形不同，热改正不同，M_bol 和总光度就可以不同。直接认定总光度相同，等于忽略 V 波段外的辐射。","concept":"absolute","explanationHTML":"该说法不成立。相同 M_V 约束 V 波段发光能力；若谱形不同，热改正不同，M_bol 和总光度就可以不同。直接认定总光度相同，等于忽略 V 波段外的辐射。"},{"id":"q-cmd","type":"choice","question":"在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？","options":[{"id":"A","text":"它一定离我们更近"},{"id":"B","text":"它的辐射表面积更大"},{"id":"C","text":"它的颜色一定更蓝"}],"answer":"B","explanation":"选 B。在表面辐射特性近似相同的条件下，每单位表面积的波段辐射近似相同，更大的总辐射来自更大的表面积。A 忽略了绝对星等已统一距离；C 的颜色变化不由亮度差单独决定。","concept":"diagram","explanationHTML":"选 B。在表面辐射特性近似相同的条件下，每单位表面积的波段辐射近似相同，更大的总辐射来自更大的表面积。A 忽略了绝对星等已统一距离；C 的颜色变化不由亮度差单独决定。"}],"quizHash":"127cff0f510f8832b3d701374fa9063eef15c8746099f6d353c0935381c23a36","sourceHash":"5465eeaf5865cabf9f999058d359b9b0c6c897342278259219605e04fa84f661","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
+<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">08</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-distance" data-question="q-distance"><fieldset><legend><span class="eyebrow">01 / 单选</span>同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？</legend><label class="option"><input type="radio" name="q-distance" value="A" required><span>增大 1.5 等</span></label><label class="option"><input type="radio" name="q-distance" value="B" required><span>不变</span></label><label class="option"><input type="radio" name="q-distance" value="C" required><span>减小 1.5 等</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-distance" data-label="同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#brightness">回看相关概念 ↑</a></form><form class="quiz-card" id="q-color-distance" data-question="q-color-distance"><fieldset><legend><span class="eyebrow">02 / 判断</span>忽略消光，对同一颗不变星仅改变距离，B−V 不变。</legend><label class="option"><input type="radio" name="q-color-distance" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-color-distance" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-color-distance" data-label="忽略消光，对同一颗不变星仅改变距离，B−V 不变。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#color">回看相关概念 ↑</a></form><form class="quiz-card" id="q-zero" data-question="q-zero"><fieldset><legend><span class="eyebrow">03 / 判断</span>在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。</legend><label class="option"><input type="radio" name="q-zero" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-zero" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-zero" data-label="在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#color">回看相关概念 ↑</a></form><form class="quiz-card" id="q-airmass" data-question="q-airmass"><fieldset><legend><span class="eyebrow">04 / 单选</span>在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？</legend><label class="option"><input type="radio" name="q-airmass" value="A" required><span>天顶 X=1 的直接读数</span></label><label class="option"><input type="radio" name="q-airmass" value="B" required><span>向 X=0 外推的大气外星等</span></label><label class="option"><input type="radio" name="q-airmass" value="C" required><span>地平线上的星等</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-airmass" data-label="在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#atmosphere">回看相关概念 ↑</a></form><form class="quiz-card" id="q-absolute" data-question="q-absolute"><fieldset><legend><span class="eyebrow">05 / 单选</span>同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？</legend><label class="option"><input type="radio" name="q-absolute" value="A" required><span>m_V 增大 5 等，M_V 不变</span></label><label class="option"><input type="radio" name="q-absolute" value="B" required><span>m_V 与 M_V 都增大 5 等</span></label><label class="option"><input type="radio" name="q-absolute" value="C" required><span>M_V 增大 5 等，m_V 不变</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-absolute" data-label="同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#absolute">回看相关概念 ↑</a></form><form class="quiz-card" id="q-bolometric" data-question="q-bolometric"><fieldset><legend><span class="eyebrow">06 / 判断</span>两颗星的 M_V 相同，就一定具有相同的总光度。</legend><label class="option"><input type="radio" name="q-bolometric" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-bolometric" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-bolometric" data-label="两颗星的 M_V 相同，就一定具有相同的总光度。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#absolute">回看相关概念 ↑</a></form><form class="quiz-card" id="q-cmd" data-question="q-cmd"><fieldset><legend><span class="eyebrow">07 / 单选</span>在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？</legend><label class="option"><input type="radio" name="q-cmd" value="A" required><span>它一定离我们更近</span></label><label class="option"><input type="radio" name="q-cmd" value="B" required><span>它的辐射表面积更大</span></label><label class="option"><input type="radio" name="q-cmd" value="C" required><span>它的颜色一定更蓝</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-cmd" data-label="在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#diagram">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 1 章“恒星星等和恒星颜色”，§§1.1–1.6。</li><li>Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§3.2、§3.6、§8.2；§9.2.3，例 9.2.3。</li></ul><a href="../volume2.html">返回第二卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><button class="highlight-mode-toggle" type="button" data-highlight-mode-toggle hidden aria-label="退出连续高亮模式" title="退出连续高亮模式"><span aria-hidden="true">✎</span></button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v2-ch01","version":"1.3.1","updated":"2026-09-20","title":"恒星星等与颜色","summary":"从接收辐射通量出发，理解视星等、色指数、消光改正、绝对星等和颜色—星等图。","scope":"《恒星天体物理学导论》第二卷《恒星大气》 · 第 1 章 · 恒星星等与颜色","demo":false,"study":true,"sources":["Erika Böhm-Vitense，《恒星天体物理学导论》第二卷《恒星大气》（原书 1989 年初版，现用中文译本），第 1 章“恒星星等和恒星颜色”，§§1.1–1.6。","Carroll 与 Ostlie，《当代天体物理学导论》（原书第二版，中文本 2023 年），§3.2、§3.6、§8.2；§9.2.3，例 9.2.3。"]},"quizzes":[{"id":"q-distance","type":"choice","question":"同一波段、忽略消光。把一颗星的距离变为原来的 2 倍、光度变为 4 倍，其视星等怎样变？","options":[{"id":"A","text":"增大 1.5 等"},{"id":"B","text":"不变"},{"id":"C","text":"减小 1.5 等"}],"answer":"B","explanation":"由 f∝L/d²，通量比为 4/2²=1，因此选 B。A 只计入距离增加、漏掉光度增加；C 也未同时计入两个变化。通量不变时，同一系统的视星等不变。","concept":"brightness","explanationHTML":"由 f∝L/d²，通量比为 4/2²=1，因此选 B。A 只计入距离增加、漏掉光度增加；C 也未同时计入两个变化。通量不变时，同一系统的视星等不变。"},{"id":"q-color-distance","type":"truefalse","question":"忽略消光，对同一颗不变星仅改变距离，B−V 不变。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"T","explanation":"该说法成立。f_B 与 f_V 都按 d⁻² 改变，比值不变，所以 B−V 不变。把视星等随距离变化直接套到色指数上，会漏掉两个波段共同因子的抵消；波长相关消光变化不满足题设。","concept":"color","explanationHTML":"该说法成立。\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_B\">\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003c/math> 与 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_V\">\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/math> 都按 d⁻² 改变，比值不变，所以 B−V 不变。把视星等随距离变化直接套到色指数上，会漏掉两个波段共同因子的抵消；波长相关消光变化不满足题设。"},{"id":"q-zero","type":"truefalse","question":"在任意已标定的星等系统中，B−V=0 都意味着 B、V 波段光流数值相等。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。B−V=−2.5 log₁₀(f_B/f_V)+(Z_B−Z_V)。零色指数表示两个星等相等；只有零点差满足相应条件时，才可进一步推得通量相等。忽略零点会把标定约定误当成通量相等。","concept":"color","explanationHTML":"该说法不成立。B−V=−2.5 log₁₀(\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"f_B/f_V\">\u003cmfrac>\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003cmsub>\u003cmi>f\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/mfrac>\u003c/math>)+(\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"Z_B\">\u003cmsub>\u003cmi>Z\u003c/mi>\u003cmi>B\u003c/mi>\u003c/msub>\u003c/math>−\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"Z_V\">\u003cmsub>\u003cmi>Z\u003c/mi>\u003cmi>V\u003c/mi>\u003c/msub>\u003c/math>)。零色指数表示两个星等相等；只有零点差满足相应条件时，才可进一步推得通量相等。忽略零点会把标定约定误当成通量相等。"},{"id":"q-airmass","type":"choice","question":"在 m=m₀+kX 的地面测光模型中，m₀ 对应哪里？","options":[{"id":"A","text":"天顶 X=1 的直接读数"},{"id":"B","text":"向 X=0 外推的大气外星等"},{"id":"C","text":"地平线上的星等"}],"answer":"B","explanation":"选 B。令 X=0 得到截距 m₀，它是外推的大气外星等。A 的天顶仍有 X≈1，读数为 m₀+k；C 的地平线方向经过更多大气，且简单 sec z 近似不适用。","concept":"atmosphere","explanationHTML":"选 B。令 X=0 得到截距 m₀，它是外推的大气外星等。A 的天顶仍有 X≈1，读数为 m₀+k；C 的地平线方向经过更多大气，且简单 sec z 近似不适用。"},{"id":"q-absolute","type":"choice","question":"同一颗星从 10 pc 移到 100 pc，忽略消光。下面哪项成立？","options":[{"id":"A","text":"m_V 增大 5 等，M_V 不变"},{"id":"B","text":"m_V 与 M_V 都增大 5 等"},{"id":"C","text":"M_V 增大 5 等，m_V 不变"}],"answer":"A","explanation":"选 A。距离变为十倍使通量降为百分之一，m_V 增加 5 等；M_V 按固定 10 pc 定义，恒星自身不变时它不变。B 把实际距离影响也加到 M_V；C 则颠倒了两个量的含义。","concept":"absolute","explanationHTML":"选 A。距离变为十倍使通量降为百分之一，m_V 增加 5 等；M_V 按固定 10 pc 定义，恒星自身不变时它不变。B 把实际距离影响也加到 M_V；C 则颠倒了两个量的含义。"},{"id":"q-bolometric","type":"truefalse","question":"两颗星的 M_V 相同，就一定具有相同的总光度。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。相同 M_V 约束 V 波段发光能力；若谱形不同，热改正不同，M_bol 和总光度就可以不同。直接认定总光度相同，等于忽略 V 波段外的辐射。","concept":"absolute","explanationHTML":"该说法不成立。相同 M_V 约束 V 波段发光能力；若谱形不同，热改正不同，M_bol 和总光度就可以不同。直接认定总光度相同，等于忽略 V 波段外的辐射。"},{"id":"q-cmd","type":"choice","question":"在绝对颜色—星等图上，两个表面辐射特性近似相同的对象，一个显著更亮。最直接的解释是？","options":[{"id":"A","text":"它一定离我们更近"},{"id":"B","text":"它的辐射表面积更大"},{"id":"C","text":"它的颜色一定更蓝"}],"answer":"B","explanation":"选 B。在表面辐射特性近似相同的条件下，每单位表面积的波段辐射近似相同，更大的总辐射来自更大的表面积。A 忽略了绝对星等已统一距离；C 的颜色变化不由亮度差单独决定。","concept":"diagram","explanationHTML":"选 B。在表面辐射特性近似相同的条件下，每单位表面积的波段辐射近似相同，更大的总辐射来自更大的表面积。A 忽略了绝对星等已统一距离；C 的颜色变化不由亮度差单独决定。"}],"quizHash":"127cff0f510f8832b3d701374fa9063eef15c8746099f6d353c0935381c23a36","sourceHash":"5465eeaf5865cabf9f999058d359b9b0c6c897342278259219605e04fa84f661","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
 'use strict';
 const data=JSON.parse(document.getElementById('lesson-data').textContent);
 const storageKey=`stellar:${data.meta.id}:${data.meta.version}:${data.quizHash}`;
@@ -163,6 +191,231 @@ function showAnswer(form,q,value){const note=form.querySelector('.answer-note');
 for(const q of data.quizzes){const form=document.getElementById(q.id);const value=answers[q.id];if(q.options.some(o=>o.id===value)){form.querySelector(`input[value="${value}"]`).checked=true;showAnswer(form,q,value);}form.addEventListener('submit',event=>{event.preventDefault();const value=new FormData(form).get(q.id);if(!q.options.some(o=>o.id===value))return;answers[q.id]=value;save();showAnswer(form,q,value);stats();});form.addEventListener('change',()=>{delete answers[q.id];form.querySelector('.answer-note').hidden=true;save();stats();});}
 stats();
 for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEventListener('click',()=>{answers={};save();for(const form of document.querySelectorAll('[data-question]')){form.reset();form.querySelector('.answer-note').hidden=true;}stats();});
+const highlightTools=document.querySelector('.highlight-tools');
+if(highlightTools){
+ const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const addHighlight=highlightTools.querySelector('[data-highlight-add]');
+ const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
+ const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
+ const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
+ const importHighlights=highlightTools.querySelector('[data-highlight-import]');
+ const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
+ const blockSelector='p,li,blockquote,td';
+ const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
+ const maxHighlights=500;
+ let storageAvailable=true;
+ let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
+ let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
+ function cleanHighlight(item){
+  if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
+  if(!item.quote.trim()||item.quote.length>10000)return null;
+  return {id:item.id.slice(0,100),sectionId:item.sectionId.slice(0,200),quote:item.quote,blockText:typeof item.blockText==='string'?item.blockText.slice(0,30000):'',start:Number.isInteger(item.start)?item.start:null,end:Number.isInteger(item.end)?item.end:null,prefix:typeof item.prefix==='string'?item.prefix.slice(-160):'',suffix:typeof item.suffix==='string'?item.suffix.slice(0,160):'',version:typeof item.version==='string'?item.version:'',sourceHash:typeof item.sourceHash==='string'?item.sourceHash:'',createdAt:typeof item.createdAt==='string'?item.createdAt:new Date().toISOString(),status:'stale'};
+ }
+ try{
+  const stored=JSON.parse(localStorage.getItem(highlightKey)||'null');
+  const items=Array.isArray(stored)?stored:stored?.lessonId===data.meta.id?stored.items:[];
+  if(Array.isArray(items))highlightState.items=items.map(cleanHighlight).filter(Boolean).slice(0,maxHighlights);
+ }catch{storageAvailable=false;}
+ function saveHighlights(){
+  try{localStorage.setItem(highlightKey,JSON.stringify(highlightState));return true;}
+  catch{storageAvailable=false;return false;}
+ }
+ function nodeElement(node){return node?.nodeType===Node.ELEMENT_NODE?node:node?.parentElement;}
+ function blockFor(node){
+  const block=nodeElement(node)?.closest(blockSelector);
+  return block&&!block.closest(excludedSelector)&&block.closest('.lesson-section')?block:null;
+ }
+ function intersects(range,node){try{return range.intersectsNode(node);}catch{return false;}}
+ function marksFor(range){
+  if(!range)return[];
+  const ids=new Set();
+  for(const mark of document.querySelectorAll('mark.stellar-highlight[data-highlight-id]'))if(intersects(range,mark))ids.add(mark.dataset.highlightId);
+  return [...ids];
+ }
+ function selectionInfo(range){
+  if(!range||range.collapsed)return null;
+  const block=blockFor(range.startContainer);
+  if(!block||blockFor(range.endContainer)!==block||!range.toString().trim())return null;
+  for(const node of block.querySelectorAll('math,a,code,pre'))if(intersects(range,node))return null;
+  return {block,range};
+ }
+ function boundaryOffset(block,container,offset){
+  const before=document.createRange();
+  before.selectNodeContents(block);
+  try{before.setEnd(container,offset);return before.toString().length;}catch{return -1;}
+ }
+ function makeHighlight(info){
+  const {block,range}=info,start=boundaryOffset(block,range.startContainer,range.startOffset),end=boundaryOffset(block,range.endContainer,range.endOffset),blockText=block.textContent||'',quote=blockText.slice(start,end);
+  if(start<0||end<=start||!quote.trim())return null;
+  const section=block.closest('.lesson-section');
+  return {id:typeof crypto?.randomUUID==='function'?crypto.randomUUID():`h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,sectionId:section.id,quote,blockText,start,end,prefix:blockText.slice(Math.max(0,start-160),start),suffix:blockText.slice(end,end+160),version:data.meta.version,sourceHash:data.sourceHash,createdAt:new Date().toISOString(),status:'active'};
+ }
+ function selectableTextNodes(block){
+  const walker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while(node=walker.nextNode())nodes.push(node);
+  return nodes;
+ }
+ function wrapOffsets(block,start,end,id){
+  const nodes=selectableTextNodes(block),ranges=[];
+  let cursor=0;
+  for(const node of nodes){
+   const length=node.nodeValue.length,nodeStart=cursor,nodeEnd=cursor+length;cursor=nodeEnd;
+   const localStart=Math.max(start-nodeStart,0),localEnd=Math.min(end-nodeStart,length);
+   if(localEnd<=localStart||node.parentElement?.closest('mark,a,code,pre,math'))continue;
+   ranges.push({node,localStart,localEnd});
+  }
+  if(!ranges.length)return false;
+  for(let i=ranges.length-1;i>=0;i--){
+   const part=ranges[i],range=document.createRange();range.setStart(part.node,part.localStart);range.setEnd(part.node,part.localEnd);
+   const mark=document.createElement('mark');mark.className='stellar-highlight';mark.dataset.highlightId=id;mark.title='选择后可取消高亮';
+   mark.append(range.extractContents());range.insertNode(mark);
+  }
+  return true;
+ }
+ function unwrapHighlight(id){
+  for(const mark of [...document.querySelectorAll('mark.stellar-highlight[data-highlight-id]')].filter(mark=>mark.dataset.highlightId===id))mark.replaceWith(...mark.childNodes);
+ }
+ function clearRenderedHighlights(){for(const mark of [...document.querySelectorAll('mark.stellar-highlight')])mark.replaceWith(...mark.childNodes);}
+ function findPositions(text,quote){
+  const positions=[];let from=0;
+  while(quote&&from<=text.length){const position=text.indexOf(quote,from);if(position<0)break;positions.push(position);from=position+Math.max(quote.length,1);}
+  return positions;
+ }
+ function contextMatches(text,start,item){
+  return (!item.prefix||text.slice(Math.max(0,start-item.prefix.length),start).endsWith(item.prefix))&&(!item.suffix||text.slice(start+item.quote.length,start+item.quote.length+item.suffix.length).startsWith(item.suffix));
+ }
+ function locateHighlight(item){
+  const section=document.getElementById(item.sectionId);if(!section)return null;
+  let blocks=[...section.querySelectorAll(blockSelector)].filter(block=>!block.closest(excludedSelector));
+  const exact=item.blockText?blocks.filter(block=>block.textContent===item.blockText):[];
+  if(exact.length)blocks=exact;
+  const matches=[];
+  for(const block of blocks){
+   const text=block.textContent||'',positions=findPositions(text,item.quote);
+   for(const start of positions)if(contextMatches(text,start,item))matches.push({block,start,end:start+item.quote.length});
+  }
+  if(matches.length===1)return matches[0];
+  if(Number.isInteger(item.start)&&Number.isInteger(item.end)){
+   const exactPosition=matches.find(match=>match.start===item.start&&match.end===item.end);
+   if(exactPosition)return exactPosition;
+  }
+  return null;
+ }
+ function restoreHighlights(){
+  clearRenderedHighlights();
+  const applied=[];
+  for(const item of highlightState.items){
+   const match=locateHighlight(item);
+   const overlaps=match&&applied.some(previous=>previous.block===match.block&&match.start<previous.end&&previous.start<match.end);
+   if(!match||overlaps||!wrapOffsets(match.block,match.start,match.end,item.id)){item.status='stale';continue;}
+   item.status='active';item.version=data.meta.version;item.sourceHash=data.sourceHash;applied.push(match);
+  }
+  highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
+ }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  addHighlight.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+  addHighlight.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  refreshHighlightUI();
+ }
+ function refreshHighlightUI(){
+  const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
+  clearHighlights.disabled=highlightState.items.length===0;
+  if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
+ }
+ function updateHighlightSelection(){
+  const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
+  addHighlight.disabled=false;
+  removeHighlight.hidden=ids.length===0;
+  removeHighlight.disabled=ids.length===0;
+ }
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return false;
+  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
+ document.addEventListener('selectionchange',()=>{
+  const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
+  updateHighlightSelection();
+ });
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
+ addHighlight.addEventListener('click',()=>{
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
+ });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
+ removeHighlight.addEventListener('click',()=>{
+  const ids=marksFor(pendingRange);if(!ids.length)return;
+  for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
+  saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ clearHighlights.addEventListener('click',()=>{
+  clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ exportHighlights.addEventListener('click',()=>{
+  const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+ });
+ importHighlights.addEventListener('change',async()=>{
+  const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
+  try{
+   const payload=JSON.parse(await file.text());
+   if(payload?.lessonId!==data.meta.id||!Array.isArray(payload.items))throw Error('课程不匹配或文件格式不正确');
+   const merged=new Map(highlightState.items.map(item=>[item.id,item]));
+   for(const item of payload.items.map(cleanHighlight).filter(Boolean))merged.set(item.id,item);
+   highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
+  }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
+ });
+ restoreHighlights();
+}
 const quizReturn=document.querySelector('[data-return-to-quiz]');
 let reviewForm=null;
 const visibleQuestions=new Set();
