@@ -22,6 +22,20 @@ const StellarPhysics=(()=>{
  const scaleHeight=(T,g,mu)=>k*T/(mu*1.6735575e-27*g);
  // kappa = kappa0 * (P/P0)^n; surface P=0, tau=0.
  const pressure=(tau,g,n,kappa0=.01,P0=10000)=>P0*((n+1)*g*tau/(kappa0*P0))**(1/(n+1));
- return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ // Illustrative normalized Gaussian core plus Lorentz wing, not an exact Voigt function.
+ const growthShape=(u,wing)=>((1-wing)*Math.exp(-u*u)/Math.sqrt(Math.PI)+wing/(Math.PI*(1+u*u)));
+ const growthResidual=(u,amount,width,wing,limit=.75)=>limit*(-Math.expm1(-amount/width*growthShape(u,wing)));
+ const growthWidth=(amount,width,wing,limit=.75)=>{
+  // Extend the Lorentz tail until its optical depth is below 0.002.
+  // Beyond the endpoint, use the first two optically thin tail terms.
+  const C=amount*wing/(Math.PI*width),end=Math.max(120,Math.sqrt(C/.002));
+  const count=Math.ceil(end/.1),step=end/count;let sum=0;
+  for(let i=0;i<count;i++)sum+=growthResidual((i+.5)*step,amount,width,wing,limit)*step;
+  const a=Math.atan(1/end),b=(a-end/(1+end*end))/2;
+  return 2*width*(sum+limit*(C*a-C*C*b/2));
+ };
+ // Inglis-Teller (original textbook Eq. 11.1): electron density in cm^-3.
+ const inglisTeller=upper=>10**(23.26-7.5*Math.log10(upper));
+ return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,growthShape,growthResidual,growthWidth,inglisTeller,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;

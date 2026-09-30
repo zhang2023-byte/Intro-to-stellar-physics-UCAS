@@ -107,6 +107,20 @@ test('非灰教学模型的灰极限、窗口输运与压强解析关系',()=>{
  }
 });
 
+test('生长曲线数值积分保留远翼，且弱线面积与高阶 Balmer 密度关系合理',()=>{
+ // Independent change of variable u=tan(t) integrates both Lorentz wings to infinity.
+ const reference=(amount,width,wing)=>{const N=40000,dt=Math.PI/(2*N);let sum=0;for(let i=0;i<N;i++){const t=(i+.5)*dt,u=Math.tan(t);sum+=physics.growthResidual(u,amount,width,wing)*dt/(Math.cos(t)**2);}return 2*width*sum;};
+ for(const [amount,width,wing] of [[1e4,.5,.25],[1e4,1,.05],[1e-3,2,.25]]){
+  const got=physics.growthWidth(amount,width,wing),want=reference(amount,width,wing);
+  assert.ok(Math.abs(got/want-1)<2e-5,`远翼积分应收敛：${amount}, ${width}, ${wing}`);
+ }
+ const weak1=physics.growthWidth(.001,.5,.05),weak2=physics.growthWidth(.001,2,.05);
+ assert.ok(Math.abs(weak1/weak2-1)<.001,'弱线面积在轮廓共同缩放下近似不变');
+ assert.ok(physics.growthWidth(1e4,1,.2)>physics.growthWidth(1e4,1,0),'强线的洛伦兹翼增加等值宽度');
+ assert.ok(Math.abs(Math.log10(physics.inglisTeller(10))-15.76)<1e-12);
+ assert.ok(physics.inglisTeller(9)>physics.inglisTeller(12));
+});
+
 test('第六章保留可调非灰形成深度活动',()=>{
  const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/v2-ch06.md`,'utf8'));
  assert.ok(d.activities.some(a=>a.id==='opacity-depth-lab'&&a.type==='nongrey'));

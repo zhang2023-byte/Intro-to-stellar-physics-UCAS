@@ -415,7 +415,21 @@ const StellarPhysics=(()=>{
  const scaleHeight=(T,g,mu)=>k*T/(mu*1.6735575e-27*g);
  // kappa = kappa0 * (P/P0)^n; surface P=0, tau=0.
  const pressure=(tau,g,n,kappa0=.01,P0=10000)=>P0*((n+1)*g*tau/(kappa0*P0))**(1/(n+1));
- return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+ // Illustrative normalized Gaussian core plus Lorentz wing, not an exact Voigt function.
+ const growthShape=(u,wing)=>((1-wing)*Math.exp(-u*u)/Math.sqrt(Math.PI)+wing/(Math.PI*(1+u*u)));
+ const growthResidual=(u,amount,width,wing,limit=.75)=>limit*(-Math.expm1(-amount/width*growthShape(u,wing)));
+ const growthWidth=(amount,width,wing,limit=.75)=>{
+  // Extend the Lorentz tail until its optical depth is below 0.002.
+  // Beyond the endpoint, use the first two optically thin tail terms.
+  const C=amount*wing/(Math.PI*width),end=Math.max(120,Math.sqrt(C/.002));
+  const count=Math.ceil(end/.1),step=end/count;let sum=0;
+  for(let i=0;i<count;i++)sum+=growthResidual((i+.5)*step,amount,width,wing,limit)*step;
+  const a=Math.atan(1/end),b=(a-end/(1+end*end))/2;
+  return 2*width*(sum+limit*(C*a-C*C*b/2));
+ };
+ // Inglis-Teller (original textbook Eq. 11.1): electron density in cm^-3.
+ const inglisTeller=upper=>10**(23.26-7.5*Math.log10(upper));
+ return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,growthShape,growthResidual,growthWidth,inglisTeller,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
 })();
 if(typeof module!=='undefined')module.exports=StellarPhysics;
 
@@ -454,7 +468,20 @@ if(typeof module!=='undefined')module.exports=StellarPhysics;
     case 'lineformation':{const a=axes(svg,'离线心的距离 x / 固定线宽','出射比强度 / Iᵣ',10,2.15);a.x=x=>65+(x+5)*59.5;for(const y of [0,.5,1,1.5,2]){label(svg,55,a.y(y)+5,y,{'text-anchor':'end'});line(svg,65,a.y(y),660,a.y(y),'#34475a',{'stroke-width':1});}for(const x of [-4,-2,0,2,4])label(svg,a.x(x),322,x,{'text-anchor':'middle'});
  const cont=P.slab(v.I0,v.S,v.continuum).total,center=P.slab(v.I0,v.S,v.continuum+v.lineDepth).total;
  line(svg,65,a.y(cont),660,a.y(cont),'#8ccac8',{'stroke-dasharray':'8 6'});curve(svg,Array.from({length:301},(_,i)=>{const x=-5+i/30;return[a.x(x),a.y(P.slab(v.I0,v.S,P.lineTau(x,v.continuum,v.lineDepth)).total)];}));node(svg,'circle',{cx:a.x(0),cy:a.y(center),r:5,fill:'#fff1c9'});
- const diff=center-cont;label(svg,85,50,'实线：含谱线　虚线：连续谱');text=`线心 τ=${fmt(v.continuum+v.lineDepth)}；连续谱 I꜀/Iᵣ=${fmt(cont,3)}，线心 Iₗ/Iᵣ=${fmt(center,3)}。差值 ${diff>=0?'+':''}${fmt(diff,3)}：${Math.abs(diff)<1e-5?'谱线对比消失':diff<0?'吸收线':'发射线'}。`;break;}
+    const diff=center-cont;label(svg,85,50,'实线：含谱线　虚线：连续谱');text=`线心 τ=${fmt(v.continuum+v.lineDepth)}；连续谱 I꜀/Iᵣ=${fmt(cont,3)}，线心 Iₗ/Iᵣ=${fmt(center,3)}。差值 ${diff>=0?'+':''}${fmt(diff,3)}：${Math.abs(diff)<1e-5?'谱线对比消失':diff<0?'吸收线':'发射线'}。`;break;}
+    case 'growth':{const x=q=>65+(q+2)*595/6,y=w=>300-(w+3)*250/5.4;
+     line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,'log₁₀ Q（相对吸收原子数 × f）',{'text-anchor':'middle'});label(svg,65,23,'log₁₀(W / 参考宽度)');
+     for(const q of [-2,-1,0,1,2,3,4])label(svg,x(q),322,q,{'text-anchor':'middle'});for(const w of [-3,-2,-1,0,1,2])label(svg,55,y(w)+5,w,{'text-anchor':'end'});
+     const samples=Array.from({length:81},(_,i)=>{const q=-2+6*i/80;return[x(q),y(Math.log10(P.growthWidth(10**q,v.width,v.wing)))];});curve(svg,samples);
+     curve(svg,Array.from({length:40},(_,i)=>{const q=-2+3.5*i/39;return[x(q),y(Math.log10(.75*10**q))];}),'#8ccac8',true);
+     const Q=10**v.logAmount,W=P.growthWidth(Q,v.width,v.wing),R=P.growthResidual(0,Q,v.width,v.wing),slope=Math.log(P.growthWidth(Q*1.1,v.width,v.wing)/P.growthWidth(Q/1.1,v.width,v.wing))/Math.log(1.1**2);
+     node(svg,'circle',{cx:x(v.logAmount),cy:y(Math.log10(W)),r:7,fill:'#fff1c9'});label(svg,350,55,'实线：当前模型　虚线：弱线线性参考',{'text-anchor':'middle'});
+     text=`Q=${fmt(Q,Q<1?3:1)}；W/参考宽度=${fmt(W,3)}；中心线深=${fmt(R,3)}（上限 0.75）；局部增长斜率 d log W/d log Q≈${fmt(slope,2)}。在极弱线斜率接近 1，中心饱和后小于 1。`;break;}
+    case 'inglisteller':{const x=n=>65+(n-7)*595/13,y=d=>300-(d-13)*250/5;
+     line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,'最后可分辨线的上能级 nᵤ',{'text-anchor':'middle'});label(svg,65,23,'log₁₀(nₑ / cm⁻³)');
+     for(const n of [7,9,12,15,18,20])label(svg,x(n),322,n,{'text-anchor':'middle'});for(const d of [13,14,15,16,17,18])label(svg,55,y(d)+5,d,{'text-anchor':'end'});
+     curve(svg,Array.from({length:131},(_,i)=>{const n=7+i/10;return[x(n),y(Math.log10(P.inglisTeller(n)))];}));const ne=P.inglisTeller(v.upper);node(svg,'circle',{cx:x(v.upper),cy:y(Math.log10(ne)),r:7,fill:'#fff1c9'});
+     label(svg,355,58,'Hα: n=3   Hβ: n=4   Hγ: n=5',{'text-anchor':'middle'});text=`nᵤ=${v.upper} 时，log₁₀(nₑ/cm⁻³)=${fmt(Math.log10(ne),3)}，nₑ≈${scientific(ne,2)} cm⁻³ = ${scientific(ne*1e6,2)} m⁻³。nᵤ 越大，按此近似推得的电子密度越低。`;break;}
     case 'stratification':{const x=z=>75+z/8*575,y=S=>280-(S-.1)/1.8*205;line(svg,75,280,650,280);line(svg,75,280,75,55);label(svg,75,25,'源函数 S / Iᵣ');label(svg,350,337,'连续谱光深 z（向内增大）',{'text-anchor':'middle'});for(const n of [0,2,4,6,8])label(svg,x(n),305,n,{'text-anchor':'middle'});for(const n of [.5,1,1.5])label(svg,60,y(n)+5,n,{'text-anchor':'end'});
  curve(svg,[[x(0),y(1-v.gradient/2)],[x(8),y(1+v.gradient/2)]],'#eab76f');for(const [z,col,dash,t]of [[1,'#8ccac8','8 5','连续谱 z=1'],[1/v.opacity,'#e49d79','2 5','线心 z=1/r']]){line(svg,x(z),70,x(z),280,col,{'stroke-dasharray':dash});node(svg,'circle',{cx:x(z),cy:y(1+v.gradient*(z/8-.5)),r:5,fill:col});label(svg,345,t.startsWith('连续')?60:86,t,{fill:col});}
  const ic=P.stratified(1,v.gradient),il=P.stratified(v.opacity,v.gradient);text=`连续谱出射 ${fmt(ic,4)}；线心出射 ${fmt(il,4)}（均除以 Iᵣ）。${Math.abs(ic-il)<1e-6?'两者相等，谱线消失。':il<ic?'线心更暗：吸收线。':'线心更亮：发射线。'}竖线仅标记光深为 1 的位置；实际数值累加了全部层的贡献。`;break;}
