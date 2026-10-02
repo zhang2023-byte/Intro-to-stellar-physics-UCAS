@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import './activity-tests.mjs';
 import {parseLesson,renderLesson,validateHTML,checkAll,ROOT} from './build.mjs';
 const text=fs.readFileSync(`${ROOT}/tools/fixtures/demo-parallax.md`,'utf8');
 function source(meta={},question={}){const d=parseLesson(text);Object.assign(d.meta,meta);Object.assign(d.quizzes[0],question);return text.replace(/^```lesson\s*\n[\s\S]*?\n```/,`\`\`\`lesson\n${JSON.stringify(d.meta)}\n\`\`\``).replace(/^```quiz\s*\n[\s\S]*?\n```/m,`\`\`\`quiz\n${JSON.stringify(d.quizzes)}\n\`\`\``);}
@@ -64,6 +65,15 @@ test('题目数学排版保留符号，分数及下标可读且拒绝注入HTML'
   const d=parseLesson(fs.readFileSync(`${ROOT}/lessons/${id}.md`,'utf8'));
   for(const q of d.quizzes)assert.doesNotMatch(q.explanation,/判断正确|判断错误/);
  }
+});
+
+test('声点与爱丁顿下标只识别明确token，不改写英文词及其他标识符',()=>{
+ const html=mathText('当r_c>R时，r_c/R随温度改变；L_Edd/M与κ成反比。');
+ assert.equal((html.match(/<msub><mi>r<\/mi><mi>c<\/mi><\/msub>/g)||[]).length,2);
+ assert.equal((html.match(/<msub><mi>L<\/mi><mi>Edd<\/mi><\/msub>/g)||[]).length,1);
+ assert.match(html,/aria-label="r_c"/);assert.match(html,/aria-label="L_Edd"/);
+ for(const text of ['source rc arc','ar_c r_cold r_c_value r_c2','aL_Edd L_Eddington L_Edd_extra L_Edd2'])assert.equal(mathText(text),text);
+ assert.match(mathText('r_c < L_Edd & <img>'),/&lt;.*&amp;.*&lt;img&gt;/);
 });
 
 test('新大气模型：形式积分、角通量、灰边界及氢阈值',()=>{

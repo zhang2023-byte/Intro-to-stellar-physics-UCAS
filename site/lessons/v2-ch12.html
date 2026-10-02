@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>光谱分析：大气参数、线宽与元素丰度</title><style>:root{--paper:#f7f5ef;--ink:#203635;--muted:#647773;--teal:#176b64;--line:#d9e0d8;--wash:#edf1e8;--warm:#a3572d;--serif:"Iowan Old Style","Palatino Linotype","Songti SC","Noto Serif CJK SC",serif;--sans:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 var(--sans)}button,input,select,textarea{font:inherit}a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:5px}button,a,input,textarea,select{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}button:disabled{cursor:default}.topbar{max-width:1400px;margin:auto;padding:23px 42px;border-bottom:1px solid var(--line);display:flex;gap:16px;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.12em}.topbar a{text-decoration:none}.page-grid{max-width:1350px;margin:auto;padding:0 42px;display:grid;grid-template-columns:205px minmax(0,1fr);gap:60px}.sidebar{position:sticky;top:25px;align-self:start;padding-top:55px}.eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}.sidebar nav{display:flex;flex-direction:column}.sidebar nav a{display:flex;gap:13px;text-decoration:none;padding:10px 0;font-size:13px}.sidebar nav small{color:var(--muted);font-variant-numeric:tabular-nums}.sidebar-note{margin-top:45px;font-size:12px;color:var(--muted)}main{min-width:0}.hero{padding:54px 0 43px;border-bottom:1px solid var(--line)}h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35}h1{font-size:clamp(36px,5vw,66px);letter-spacing:-.045em;margin:18px 0 24px}h2{font-size:28px;margin:0}h3{font-size:21px;margin-top:30px}.lead{font-size:19px;max-width:680px;color:#536a66}.hero-meta{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:25px;font-size:11px;color:var(--muted)}.lesson-section{padding:43px 0;border-bottom:1px solid var(--line)}.section-heading{display:flex;gap:15px;align-items:baseline;margin-bottom:23px}.section-heading h2{flex:1}.section-number{font:italic 20px var(--serif);color:var(--teal)}.feedback-link{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;gap:7px;min-height:44px;padding:8px 15px;border:1px solid #ae762c;border-radius:8px;background:#f2c879;color:#39280f;font-size:14px;font-weight:700;line-height:1.5;white-space:nowrap;text-decoration:none;box-shadow:0 2px 4px #39280f18}.feedback-link::before{content:"";width:16px;height:14px;box-sizing:border-box;border:2px solid currentColor;border-radius:5px 5px 5px 0}.feedback-link:hover{background:#eab65b;border-color:#80551e}.feedback-link:focus-visible{outline:3px solid #986118;outline-offset:4px}.explorer .feedback-link:focus-visible{outline-color:#fff3ce}.lesson-section p{margin:15px 0}.lesson-section li{margin:9px 0}strong{font-weight:650}blockquote{margin:24px 0;padding:13px 23px;background:var(--wash);border-left:3px solid var(--teal)}blockquote p{margin:5px 0!important}table{border-collapse:collapse;width:100%;font-size:14px;margin:23px 0}th,td{border-bottom:1px solid var(--line);padding:14px 12px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}code{font-size:.9em;background:#edf0e9;padding:2px 5px;border-radius:3px}pre{overflow:auto}math[display="block"]{font-size:1.7em;padding:22px 10px;margin:22px 0;background:var(--wash);overflow:auto}img,svg{max-width:100%;height:auto}.activity{background:#e9efea;border:1px solid #d2ded4;padding:23px;border-radius:4px;margin:25px 0}.activity-head{display:flex;justify-content:space-between;gap:15px}.slider-label{display:block;margin-top:20px;font-size:14px}.slider-label output{font-size:26px;color:var(--teal);font-weight:650;margin-left:10px}.slider-label input{display:block;width:100%;accent-color:var(--teal);margin-top:15px;min-height:32px}.activity svg{display:block;width:100%;margin:18px 0 0}.activity svg text{font:13px var(--sans);fill:var(--ink)}.readouts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ccd9ce;padding-top:17px;gap:20px}.readouts span{display:block;font-size:12px;color:var(--muted)}.readouts strong{font:34px var(--serif);font-variant-numeric:tabular-nums}.caption{font-size:12px;color:var(--muted);line-height:1.7}.quiz-summary{font-size:13px;padding:12px 0;color:var(--teal)}.quiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:15px 0 22px}.quiz-card{background:#fffdf8;border:1px solid var(--line);padding:22px;min-width:0}.quiz-card fieldset{border:0;padding:0;margin:0;min-width:0}.quiz-card legend{font-size:16px;font-weight:550;padding:0;margin-bottom:17px}.quiz-card legend .eyebrow{margin-bottom:9px}.option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--paper);margin:7px 0;font-size:14px;cursor:pointer;border:1px solid transparent}.option:has(input:checked){border-color:var(--teal);background:#edf3eb}.option input{accent-color:var(--teal);margin:7px 0 0;flex-shrink:0}.quiz-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin-top:18px}.primary,.secondary{padding:8px 18px;border:1px solid var(--teal);border-radius:2px;font-size:13px}.primary{background:var(--teal);color:white}.primary:hover{background:#10594f}.secondary{background:transparent;color:var(--teal)}.answer-note{font-size:13px;padding:12px 14px;margin:16px 0 8px;border-left:3px solid var(--teal);background:var(--wash)}.answer-note.wrong{border-color:var(--warm);background:#f7ece1}.concept-link{display:block;font-size:11px;margin-top:14px}.sources{padding:32px 0 45px;font-size:12px;color:var(--muted)}.sources h2{font-size:19px}.sources li{margin:12px 0}.sources ul{padding-left:18px}.home{max-width:1080px;padding:0 42px;margin:auto}.home .hero{padding:70px 0 50px}.home h1{font-size:clamp(44px,7vw,86px)}.course-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:25px;margin:35px 0}.course-card{padding:28px;border:1px solid var(--line);border-top:3px solid var(--teal);background:#fffdf8}.course-card h2 a{text-decoration:none}.course-card>p{font-size:15px}.course-card>a{font-size:13px}dialog{border:1px solid var(--line);border-radius:5px;padding:28px;width:min(620px,calc(100% - 24px));max-height:90vh;color:var(--ink);background:var(--paper)}dialog::backdrop{background:#142b29aa}dialog h2{font-size:25px}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.dialog-heading button{border:0;background:transparent;font-size:28px;padding:0 6px}dialog label{display:block;margin:14px 0;font-size:13px}dialog textarea,dialog select{display:block;width:100%;margin-top:6px;border:1px solid #bbc9bc;background:#fffdf8;padding:10px;color:var(--ink);font-size:14px;border-radius:2px}dialog textarea{resize:vertical}.dialog-actions{display:flex;flex-wrap:wrap;gap:12px}dialog [data-feedback-context]{font-size:12px;color:var(--muted);overflow-wrap:anywhere}[data-feedback-status]{font-size:13px}.skip{position:absolute;left:20px;top:-100px;padding:10px;background:white;z-index:5}.skip:focus{top:10px}[hidden]{display:none!important}@media(max-width:1000px){.page-grid{grid-template-columns:155px minmax(0,1fr);gap:30px;padding:0 25px}.quiz-grid{grid-template-columns:1fr}.section-heading{flex-wrap:wrap}.section-heading h2{font-size:25px}}@media(max-width:700px){body{font-size:16px}.topbar{padding:16px 20px;font-size:10px}.page-grid{display:block;padding:0 20px}.sidebar{position:static;padding-top:20px}.sidebar>.eyebrow,.sidebar-note{display:none}.sidebar nav{flex-direction:row;gap:14px;overflow-x:auto;padding-bottom:8px}.sidebar nav a{font-size:11px;white-space:nowrap;padding:5px 0}.sidebar nav small{display:none}.hero{padding:24px 0 30px}.hero-meta{gap:8px 14px}.lead{font-size:17px}.lesson-section{padding:30px 0}.section-heading{gap:10px;margin-bottom:18px}.section-heading h2{font-size:24px}.section-heading>.feedback-link{margin-left:30px}.quiz-card{padding:18px}.activity{padding:15px}.readouts strong{font-size:29px}table{font-size:12px}th,td{padding:9px 6px;overflow-wrap:anywhere}.home{padding:0 20px}.home .hero{padding:45px 0 30px}dialog{padding:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.sidebar,.feedback-link,.quiz-actions,.topbar,.concept-link,[data-reset-quiz]{display:none}.page-grid{display:block;padding:0}.quiz-grid{display:block}.quiz-card{break-inside:avoid;margin:10px 0}body{background:white}.hero{padding:10px 0}dialog{display:none}}
+/* Self-study: warm reading paper, dark instrument panels, no external fonts. */
+:root{--paper:#f4f1e9;--ink:#253443;--teal:#315f78;--muted:#667480;--line:#d7d8d3;--wash:#e9ece9}
+.hero h1{max-width:900px}.hero .eyebrow{color:#9a6936}.hero{padding-bottom:28px}.study-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}.step-pager{display:flex;justify-content:space-between;padding:24px 0}.step-pager button:disabled{opacity:.35}.sidebar nav a[aria-current]{color:#213c51;font-weight:700;border-right:3px solid #b8793e}.lesson-section{padding-top:30px}.lesson-section>p{max-width:780px}.explorer{background:#142538;color:#e2ebef;border:0;border-radius:10px;padding:26px;margin:24px 0}.explorer .eyebrow{color:#e9b770}.explorer h3{font-size:27px;margin:10px 0}.explorer .prediction{color:#d3dfe5;font-size:15px;max-width:680px}.lab-layout{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:center}.lab-plot{min-width:0}.explorer svg text{fill:#c6d4de;font-size:14px}.explorer .caption{color:#a8bac8;font-size:11px}.lab-controls{border-left:1px solid #405165;padding-left:20px}.lab-control{font-size:12px;display:block;margin:15px 0 25px}.lab-control output{display:block;color:#eab76f;font-size:24px;font-variant-numeric:tabular-nums}.lab-control input{display:block;width:100%;accent-color:#eab76f;min-height:32px;margin-top:8px}.lab-control select{background:#24394c;color:#e1e9ef;width:100%;padding:8px 5px;border:1px solid #526575;font-size:12px;margin-top:8px}.lab-result{border-top:1px solid #405165;padding-top:16px;font-size:14px;color:#e9c58d;min-height:65px}.lesson-section details{border:1px solid #c8d3da;border-left:3px solid #537b95;border-radius:5px;padding:16px 20px;background:#f9faf8;margin:22px 0;font-size:15px}.lesson-section summary{font-weight:650;color:#315f78;cursor:pointer;line-height:1.7}.lesson-section details[open] summary{margin-bottom:14px}.lesson-section details p{max-width:760px}.read-book{background:#e9e4d8;border-radius:4px;padding:15px 20px;font-size:14px}.read-book strong{color:#845a32}.takeaway{font-family:var(--serif);font-size:22px;border-left:3px solid #bf8c50;padding:5px 20px;margin:24px 0}.sources{border-top:1px solid var(--line)}.quiz-grid{grid-template-columns:1fr}.quiz-card{border-radius:5px}.quiz-summary{font-size:12px}.hero-meta{font-size:12px}.course-card{border-top-color:#a67b47}.course-card h2{font-size:25px}@media(min-width:1200px){.page-grid{grid-template-columns:185px minmax(0,1fr);gap:45px;max-width:1440px}.hero h1{font-size:58px}}
+@media(max-width:850px){.lab-layout{grid-template-columns:1fr}.lab-controls{border-left:0;border-top:1px solid #405165;padding:10px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}.lab-control{margin:10px 0}.explorer{padding:18px}.lab-result{min-height:0}.explorer svg text{font-size:16px}}
+@media(max-width:700px){.study-controls{font-size:11px;gap:8px}.study-controls button{white-space:nowrap;padding:6px 10px}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #b8793e}.explorer h3{font-size:23px}.explorer .prediction{font-size:14px}.lab-controls{grid-template-columns:1fr}.lab-control output{display:inline;font-size:20px;margin-left:12px}.lesson-section details{padding:13px 15px}.takeaway{font-size:20px}.lab-result{font-size:13px}.hero h1{font-size:36px}}
+@media print{.lesson-section[hidden]{display:block!important}.study-controls,.step-pager{display:none}}
+
+.hero{padding-top:30px}.hero h1{margin:12px 0 16px}.study-controls{padding:12px 0}.explorer svg{margin-top:10px}@media(max-width:700px){.explorer svg text{font-size:23px}.explorer svg{min-height:175px}.hero{padding-top:20px}.hero h1{font-size:34px}math[display="block"]{font-size:1.18em}}
+
+.activity-head{justify-content:flex-end}.dialog-actions a.primary{text-decoration:none;display:inline-block}.hero-meta{margin-top:16px}.home .hero{padding:30px 0}.home h1{font-size:48px}.topbar{letter-spacing:0}.sidebar{padding-top:30px}
+
+/* Reading and keyboard access for lesson revision 1.2.0. */
+summary:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;font-size:1.18em}
+.lesson-section p,.lesson-section li{overflow-wrap:anywhere}
+@media(max-width:700px){math[display="block"]{font-size:1em}}
+
+/* Keep review links compact and offer a direct return to the originating question. */
+.concept-link{display:flex;align-items:center;width:fit-content;max-width:100%;min-height:44px;padding:8px 10px;margin-top:18px;font-size:13px;line-height:1.5;border-radius:4px}
+.concept-link:hover{background:var(--wash)}
+.quiz-return{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:10;max-width:calc(100vw - 32px);min-height:44px;padding:11px 18px;border:1px solid var(--teal);border-radius:8px;background:var(--teal);color:#fff;font-size:14px;font-weight:600;line-height:1.5;box-shadow:0 4px 16px #20363533}
+.quiz-return:hover{background:#10594f}
+.quiz-card:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}
+@media print{.quiz-return,.concept-link{display:none}}
+
+/* Book covers and a quiet, paper-like table of contents. */
+.library-home{max-width:1180px;margin:auto;padding:0 48px}.library-heading{display:grid;grid-template-columns:1.15fr 1fr;column-gap:80px;padding:58px 0 46px;border-bottom:1px solid var(--line)}.library-kicker{font-size:12px;color:#876037;letter-spacing:.12em;margin:0 0 20px}.library-heading .library-kicker{grid-column:1/-1}.library-heading h1{font-size:clamp(40px,5vw,64px);line-height:1.23;letter-spacing:.03em;margin:0}.library-intro{align-self:end;max-width:370px;font-size:16px;color:var(--muted);margin:0 0 6px}.bookshelf{display:grid;grid-template-columns:1fr 1fr;gap:100px;padding:55px 35px 65px}.book-entry{min-width:0}.book-link{display:block;text-decoration:none;max-width:310px;margin:auto}.book-cover{position:relative;isolation:isolate;aspect-ratio:1055/1491;background:#090d12;color:#faf3e7;box-shadow:inset 5px 0 5px #ffffff20,10px 12px 0 -7px #d8d1c3,18px 23px 30px -16px #1c253366;border-radius:2px 5px 5px 2px;overflow:hidden}.book-cover:after{content:"";position:absolute;inset:0;box-shadow:inset 6px 0 8px #ffffff16;pointer-events:none;border-left:3px solid #ffffff17}.book-cover img{display:block;position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}.cover-title{padding:27px 23px 22px;background:linear-gradient(#05090ded,#05090d7a,transparent);line-height:1.5}.cover-title>span:first-child{display:block;font-family:var(--serif);font-size:16px;letter-spacing:.05em}.cover-title strong{display:block;font-family:var(--serif);font-size:29px;font-weight:500;margin:7px 0}.cover-volume{font-size:12px;color:#e9bd7e;letter-spacing:.2em}.cover-author{position:absolute;bottom:0;left:0;right:0;padding:32px 23px 21px;background:linear-gradient(transparent,#05090dcc);font-size:11px;letter-spacing:.03em}.book-link{transition:transform .2s}.book-link:hover{transform:translateY(-5px)}.book-description{max-width:360px;margin:26px auto 0}.book-description h2{font-size:23px}.book-description p{font-size:14px;color:var(--muted);margin:12px 0 16px}.catalog-link{font-size:14px;text-decoration:none;border-bottom:1px solid #a78c6a;padding-bottom:5px}.catalog-link span{margin-left:15px}.library-footer{padding:30px 0 45px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:45px}.library-footer h2{font-size:21px}.library-footer p{font-size:13px;color:var(--muted);margin:0}.volume-layout{max-width:1230px;margin:auto;padding:45px 45px 0;display:grid;grid-template-columns:260px minmax(0,1fr);gap:75px}.volume-book{align-self:start;position:sticky;top:35px}.volume-book>p{font-size:12px;color:var(--muted);margin-top:23px}.volume-book .cover-title{padding:23px 19px}.volume-book .cover-title strong{font-size:25px}.volume-book .cover-title>span:first-child{font-size:14px}.volume-heading{padding:5px 0 25px;border-bottom:2px solid #9c7c54}.volume-heading h1{font-size:44px;margin:0 0 20px;letter-spacing:0}.volume-heading>p:last-child{font-size:15px;color:var(--muted);margin-bottom:0}.chapter-list{list-style:none;margin:0;padding:0}.chapter-row{display:grid;grid-template-columns:36px minmax(0,1fr) 84px;gap:16px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);scroll-margin-top:25px}.chapter-number{font:italic 23px var(--serif);color:#9b8569;align-self:start;line-height:1.4}.chapter-row h2{font-size:21px;line-height:1.5}.chapter-row p{font-size:13px;color:var(--muted);margin:8px 0 0}.start-learning{font-size:12px;text-decoration:none;white-space:nowrap;color:#375d71}.chapter-pending{font-size:12px;color:#77796f;text-align:right}.chapter-row.available{background:linear-gradient(90deg,#e8e6de50,transparent)}.directory-link{display:block;font-size:13px;text-decoration:none;padding:0 0 17px;border-bottom:1px solid var(--line)}.nav-heading{font-size:11px;color:var(--muted);letter-spacing:.12em;margin:20px 0 10px}.sidebar nav a{border-radius:3px;padding:8px 9px;margin:2px 0;line-height:1.55}.sidebar nav a:hover{background:#e7e6df}.sidebar nav a[aria-current]{background:#e8e5da;border-right:3px solid #a88048}.topbar>span:last-child{flex-shrink:0}.topbar{font-size:12px;letter-spacing:0}
+@media(max-width:900px){.bookshelf{gap:55px;padding-left:0;padding-right:0}.library-heading{gap:25px}.volume-layout{grid-template-columns:190px minmax(0,1fr);gap:35px;padding:35px 25px 0}.volume-book .cover-title strong{font-size:21px}.volume-book .cover-title>span:first-child{font-size:11px}.volume-book .cover-title{padding:18px 14px}.chapter-row{grid-template-columns:27px minmax(0,1fr);gap:8px 13px}.start-learning,.chapter-pending{grid-column:2;text-align:left}.volume-heading h1{font-size:35px}}
+@media(max-width:700px){.library-home{padding:0 24px}.library-heading{display:block;padding:35px 0}.library-heading h1{font-size:41px}.library-intro{margin-top:23px;font-size:14px}.bookshelf{grid-template-columns:1fr;gap:48px;padding:35px 6px 45px}.book-link{max-width:280px}.book-description{max-width:300px}.library-footer{display:block;padding-top:25px}.library-footer p{margin-top:14px}.volume-layout{display:block;padding:25px 20px 0}.volume-book{position:static;display:none}.volume-heading h1{font-size:34px}.volume-heading .library-kicker{margin-bottom:12px}.chapter-row{padding:20px 0}.chapter-row h2{font-size:21px}.topbar{padding:16px 20px;gap:15px;align-items:flex-start}.topbar a{line-height:1.5}.topbar span{font-size:10px}.directory-link{padding-bottom:12px}.nav-heading{display:none}.sidebar nav{flex-direction:row;flex-wrap:wrap;gap:4px 8px;overflow:visible;margin-top:12px}.sidebar nav a{white-space:normal;font-size:12px;padding:6px 8px;background:#ece9df}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #a88048}.sidebar{padding-top:20px}.sidebar nav small{display:inline}.library-kicker{letter-spacing:.06em}}
+@media(prefers-reduced-motion:reduce){.book-link{transition:none}}
+
+.topbar .github-project{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-shrink:0;min-height:44px;padding:8px 14px;border:1px solid #24292f;border-radius:8px;background:#24292f;color:#fff;font-size:13px;font-weight:600;line-height:1.5;text-decoration:none}.github-project svg{flex-shrink:0}.topbar .github-project:hover{background:#414851;border-color:#414851}.topbar .github-project:focus-visible{outline:3px solid #a88048;outline-offset:4px}
+
+/* Keep scientific symbols legible in prose, tables and exercises. */
+math{font-family:"STIX Two Math","Cambria Math",math;line-height:1.5}
+td math,.quiz-card math{font-size:1.08em}
+td math{white-space:nowrap}
+.answer-note strong{display:block;margin-bottom:.35em}
+@media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
+
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
+.highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch;flex-wrap:wrap}.highlight-actions{flex-wrap:wrap}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}.highlight-add-button{width:46px}}
+
+.highlight-mode-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:25;width:52px;height:52px;padding:0;border:1px solid #9b681f;border-radius:50%;background:#f2cf72;color:#39280f;box-shadow:0 5px 18px #39280f3d;font-size:30px;line-height:1}
+.highlight-mode-toggle span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-mode-toggle:hover{background:#eab65b;border-color:#80551e}
+.highlight-mode-toggle:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+.highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
+@media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
+
+@media print{
+ .highlight-tools,.highlight-mode-toggle{display:none!important}
+ .lesson-section details:not([open]){display:block}
+ .lesson-section details{break-inside:avoid}
+ mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-10-02</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>光谱约束大气参数的顺序</a><a href="#hydrogen-diagnostics"><small>02</small>Balmer 跳跃与氢线翼的互补诊断</a><a href="#pressure-gravity"><small>03</small>从电子密度到气体压强与重力</a><a href="#stromgren"><small>04</small>Strömgren 颜色指数与窄带信息</a><a href="#identification"><small>05</small>谱线识别与多重线系</a><a href="#curve-fitting"><small>06</small>同一多重线系的生长曲线与多普勒宽度</a><a href="#excitation-ionization"><small>07</small>激发温度与电离温度</a><a href="#kinetic-widths"><small>08</small>原子质量依赖与动理学温度</a><a href="#abundance-feedback"><small>09</small>连续吸收反馈与丰度反演</a><a href="#abundance-scales"><small>10</small>数目丰度、质量分数与星族</a><a href="#exercises"><small>11</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>光谱分析：大气参数、线宽与元素丰度</h1><p class="lead">联立 Balmer 跳跃、氢线翼和金属多重线系，区分温度、电子密度、微湍动与化学丰度的作用。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第12章全章</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button></div><span data-highlight-status role="status" aria-live="polite"></span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>光谱约束大气参数的顺序</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="光谱约束大气参数的顺序">反馈</button></div><!-- 编写提纲：前置第7章Boltzmann/Saha、H−和连续吸收，第8章Balmer跳跃，第9章静力压强，第10章等值宽度/生长曲线，第11章Stark翼。先解释线/连续吸收比→热星与冷星诊断互补→Strömgren指数和标定→识别多重线系→同多重线gf相对位置及弱强线联定布居/Δλ<sub>D</sub>→不同激发多重线求T<sub>exc</sub>→电离两级求T<sub>ion</sub>/ne→不同原子质量宽度求T<sub>kin</sub>/微湍动→连续吸收反馈与丰度→数目/质量/对数丰度、星族历史样本。末尾习题检验每项和跨章应用；NLTE异常衔接第13章。 -->
+
+<p>恒星光谱记录了大气温度、压强、速度场和化学组成共同作用的结果。同一条线变深，既可能是吸收粒子变多，也可能是连续背景变弱；把线深直接当作丰度，会把这些原因混在一起。本章学习<strong>氢跳跃与线翼诊断、Strömgren 颜色指数、谱线识别和多重线系、生长曲线分析、三种光谱温度、元素丰度与星族差异</strong>，目标是解释每一类观测究竟约束什么，以及还需要什么条件。</p>
+<p>第7–11章已经给出所需工具：Boltzmann 关系描述同一电离阶段的激发布居，Saha 关系连接不同电离阶段与电子密度；连续吸收决定背景，辐射转移把吸收系数变成出射谱；谱线饱和和展宽决定等值宽度怎样增长。本章先利用氢得到温度、电子密度的初始约束，再用已识别的金属线分开布居和线宽，最后更新大气模型并推断丰度。所得温度是对不同形成层加权的结果，不自动等于第3章由总通量定义的有效温度。</p>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 410" role="img" aria-label="光谱分析关系示意：氢跳跃和线翼先约束温度密度；谱线识别提供跃迁数据；生长曲线给布居与宽度；激发电离与质量依赖帮助求丰度并回检大气">
+<rect x="22" y="16" width="516" height="72" rx="8" fill="#e9ece9" stroke="#315f78"/><text x="42" y="44" font-size="19" fill="#253443">氢连续跳跃、Balmer 线翼</text><text x="42" y="71" font-size="17" fill="#253443">初始温度 T、电子密度 nₑ → 压强与重力</text>
+<path d="M280 88V115M273 106L280 115L287 106" fill="none" stroke="#315f78" stroke-width="2"/>
+<rect x="22" y="118" width="516" height="72" rx="8" fill="#f9faf8" stroke="#315f78"/><text x="42" y="146" font-size="19" fill="#253443">识别元素、离子及跃迁，查 gf 与激发能</text><text x="42" y="173" font-size="17" fill="#253443">同一多重线系：弱线布居 + 强线宽度</text>
+<path d="M280 190V217M273 208L280 217L287 208" fill="none" stroke="#315f78" stroke-width="2"/>
+<rect x="22" y="220" width="516" height="72" rx="8" fill="#e9ece9" stroke="#315f78"/><text x="42" y="248" font-size="19" fill="#253443">比较激发态、电离态、不同原子质量</text><text x="42" y="275" font-size="17" fill="#253443">Tₑₓ꜀、Tᵢₒₙ、Tₖᵢₙ 与微湍动的一致性</text>
+<path d="M280 292V319M273 310L280 319L287 310" fill="none" stroke="#315f78" stroke-width="2"/>
+<rect x="22" y="322" width="516" height="72" rx="8" fill="#f9faf8" stroke="#315f78"/><text x="42" y="350" font-size="19" fill="#253443">总元素数目 → 丰度 → 更新连续吸收与大气</text><text x="42" y="377" font-size="17" fill="#253443">重新检查所有观测，而非只匹配一条线</text>
+</svg>
+
+<p>图为本课原创的分析关系示意，箭头表示信息依赖，不表示观测数据或唯一的计算算法。</p>
+<p>阅读：第12章全章；需要时回看第7章§7.2–7.4、第10章§10.7–10.9及第11章。</p>
+</section>
+<section class="lesson-section" id="hydrogen-diagnostics"><div class="section-heading"><span class="section-number">02</span><h2>Balmer 跳跃与氢线翼的互补诊断</h2><button class="feedback-link" type="button" data-feedback="hydrogen-diagnostics" data-label="Balmer 跳跃与氢线翼的互补诊断">反馈</button></div><p><strong>Balmer 跳跃</strong>（Balmer discontinuity）是氢 n=2 束缚—自由吸收阈值附近的连续谱变化；原书以约3647 Å定位。跳跃大小取决于两侧连续吸收和形成层，不等于一条 Balmer 吸收线的等值宽度。先回顾第10章的弱线近似：归一化线深 Rλ=1−Fλ/F<sub>c</sub> 取决于线吸收与连续吸收之比，同时还取决于源函数向内增大的程度。原书式(12.2)写为</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="弱线深度近似等于三分之二乘线吸收与连续吸收之比，再乘普朗克函数对连续光学深度的对数梯度"><mrow><msub><mi>R</mi><mi>λ</mi></msub><mo>≈</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mfrac><msub><mi>κ</mi><mi>L</mi></msub><msub><mi>κ</mi><mi>c</mi></msub></mfrac><mfrac><mrow><mi>d</mi><mi>ln</mi><msub><mi>B</mi><mi>λ</mi></msub></mrow><mrow><mi>d</mi><msub><mi>τ</mi><mi>c</mi></msub></mrow></mfrac></mrow></math></p>
+<p>F<sub>c</sub> 是同波长连续谱通量，κL、κc 为同一单位的线、连续吸收系数，τc 是向内的连续光学深度。这里采用平面平行、LTE 热源函数及弱线展开，在代表性的连续谱形成层附近评价梯度；它适用于氢线的弱翼段，不用来计算已饱和的强线心。以下比例还需把比较的波长位移、截面及温度梯度条件固定。</p>
+<h3>热星：跳跃先约束温度，线翼再约束电子密度</h3>
+<p>在原书采用的 B 型星近似中，跳跃短波侧连续吸收来自中性氢 n=2，长波侧主要来自 n=3。因此两侧连续吸收系数之比包含 N₃/N₂；同一中性氢的 Boltzmann 比值主要由温度决定，共同的氢总数因子抵消。于是跳跃提供 T 的约束。Balmer 线吸收从 n=2 出发，其固定波长位移处的 Stark 远翼还与电子密度 nₑ 成正比，故式(12.3)有</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="热星氢线弱翼的归一化深度与二能级中性氢布居乘电子密度除以三能级布居成正比"><mrow><msub><mi>R</mi><mi>λ</mi></msub><mo>∝</mo><mfrac><mrow><msub><mi>N</mi><mn>2</mn></msub><msub><mi>n</mi><mi>e</mi></msub></mrow><msub><mi>N</mi><mn>3</mn></msub></mfrac></mrow></math></p>
+<p>N₂、N₃ 是相应中性氢能级的数密度。已知 T 后，N₂/N₃ 的激发因子被约束，线翼才可用于估计 nₑ。第11章的高阶线汇合也可提供近似 nₑ，但最后可分辨线的上量子数须经过分辨率、信噪比和混线检查。</p>
+<h3>冷星：线翼先约束温度，跳跃再约束电子密度</h3>
+<p>在 H⁻ 主导长波连续吸收的正常冷星中，Saha 平衡给 N(H⁻)∝N₁nₑφ(T)，N₁ 是中性氢基态数密度，φ(T)包含温度依赖和相应单位。Stark 弱翼分子中也有 nₑ，因此原书式(12.8)中共同因子近似抵消：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="冷星氢线弱翼深度与二能级氢布居乘电子密度除以负氢离子布居成正比，等于一能级布居及温度函数形式，其中显式电子密度抵消"><mrow><msub><mi>R</mi><mi>λ</mi></msub><mo>∝</mo><mfrac><mrow><msub><mi>N</mi><mn>2</mn></msub><msub><mi>n</mi><mi>e</mi></msub></mrow><mrow><msub><mi>N</mi><mn>1</mn></msub><msub><mi>n</mi><mi>e</mi></msub><mi>φ</mi><mo>(</mo><mi>T</mi><mo>)</mo></mrow></mfrac><mo>=</mo><mfrac><msub><mi>N</mi><mn>2</mn></msub><mrow><msub><mi>N</mi><mn>1</mn></msub><mi>φ</mi><mo>(</mo><mi>T</mi><mo>)</mo></mrow></mfrac></mrow></math></p>
+<p>所以线翼主要约束 T，跳跃则同时依赖 T 与 nₑ。</p>
+<p><strong>相同的氢线翼信息，在不同连续吸收机制下承担不同的诊断任务。</strong></p>
+<p>原书图12.1用 F 型星说明氢线翼对光度级较不敏感，图12.2总结这组互补关系；这不是“氢翼总是与密度无关”的结论。两项观测约束的是简化大气中的平均状态，精确参数仍需模型与其他诊断共同检验。</p>
+<table>
+<thead>
+<tr>
+<th>教材采用的正常大气近似</th>
+<th>跳跃主要约束</th>
+<th>氢弱翼主要约束</th>
+<th>联立的作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B 型、氢连续吸收占优</td>
+<td>T</td>
+<td>T 与 nₑ</td>
+<td>先约束 T，再求 nₑ</td>
+</tr>
+<tr>
+<td>冷星、H⁻ 长波连续吸收占优</td>
+<td>T 与 nₑ</td>
+<td>T</td>
+<td>先约束 T，再求 nₑ</td>
+</tr>
+</tbody></table>
+<p>O 型星和部分超巨星的电子散射不能忽略；强发射核也提示源函数或大气结构超出这里的近似。此时不能直接套表。下一章将从跃迁概率讨论非局部热力学平衡（NLTE），检查 Sλ=Bλ(T) 和 Boltzmann/Saha 布居何时失效。</p>
+<p>阅读：§12.1.1《Hot stars》、§12.1.2《The cool stars》，式(12.2)–(12.3)、(12.8)，图12.1–12.2。</p>
+</section>
+<section class="lesson-section" id="pressure-gravity"><div class="section-heading"><span class="section-number">03</span><h2>从电子密度到气体压强与重力</h2><button class="feedback-link" type="button" data-feedback="pressure-gravity" data-label="从电子密度到气体压强与重力">反馈</button></div><p>电子密度不是气体总粒子数密度。若在晚 B 型星的教材近似中，氢完全电离、氦保持中性，且明确取 <strong>NHe/NH=0.10</strong>，则每个氢核对应一个质子、一个电子和0.1个氦原子。总粒子数密度 N=2.1nₑ，因而 P<sub>g</sub>=2.1nₑkT，而电子压强 P<sub>e</sub>=nₑkT。系数2.1由电离状态和氦的数目比确定，氦若也电离便必须重数粒子，不能保留这个系数。</p>
+<p>第9章给出静力关系：气体压强抵抗上覆质量的重量。这里原书的 m 应理解为<strong>单位面积的上覆柱质量</strong>，本课记作 m<sub>col</sub>，单位 kg m⁻²；于是 P<sub>g</sub>≈gm<sub>col</sub>，g≈P<sub>g</sub>/m<sub>col</sub> 的单位才是 m s⁻²。要由光谱求 g，还必须知道谱线对应形成层上方有多少柱质量，不能把 P<sub>g</sub> 本身当作 g。</p>
+<details><summary>由连续光深估计柱质量的推导入口</summary>
+<p>原书用 τc≈2/3 的代表层和有效高度 h 简化积分。若 σ₃ 表示每个 n=3 氢原子的连续吸收截面，则 hN₃≈(2/3)/σ₃。hN₃ 是柱数密度，单位 m⁻²。用已经约束的 T 和 nₑ，经 Boltzmann 与 Saha 关系将 hN₃ 换成氢质子柱数密度 hNH⁺；在 NHe/NH=0.10 且忽略金属质量时，m<sub>col</sub>≈1.4mHhNH⁺。1.4来自每氢核质量 mH 加0.1个质量约4mH的氦核。最后取 g≈P<sub>g</sub>/m<sub>col</sub>。这是式(12.4)–(12.7)的单层估计，并非完整分层大气的精确反演；组成既参与质量，也影响连续吸收，所以参数与丰度需要迭代。</p>
+</details>
+
+<p>阅读：§12.1.1，式(12.1)、(12.4)–(12.7)；第9章§9.1–9.4。</p>
+</section>
+<section class="lesson-section" id="stromgren"><div class="section-heading"><span class="section-number">04</span><h2>Strömgren 颜色指数与窄带信息</h2><button class="feedback-link" type="button" data-feedback="stromgren" data-label="Strömgren 颜色指数与窄带信息">反馈</button></div><p><strong>Strömgren 光度系统</strong>用比 UBV 更窄的滤光波段，有针对性地测量跳跃、Hβ 和金属线的综合吸收。窄带保留更多光谱结构，但收到的光子较少：这是物理诊断与暗弱目标测量之间的取舍。原书分别介绍中等带宽 uvby 系统和以 a–f 命名的窄带系统；两个系统中的 b 不是同一滤光片。</p>
+<p>uvby 的 u、v、b、y 中心波长依次约为3500、4110、4670、5470 Å。u 主要采样 Balmer 跳跃的短波侧，v 和 b 提供长波侧的比较。字母在指数公式中表示<strong>经标准系统标定的星等</strong>，不是波长或通量。跳跃指数 c₁比较跨跳跃颜色与长波侧颜色；金属指数 m₁比较短、长波颜色差；b−y 反映较长波段连续谱的颜色趋势。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="跳跃指数c一下标等于u减v再减v减b"><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><mo>(</mo><mi>u</mi><mo>−</mo><mi>v</mi><mo>)</mo><mo>−</mo><mo>(</mo><mi>v</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="金属指数m一下标等于v减b再减b减y"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mo>(</mo><mi>v</mi><mo>−</mo><mi>b</mi><mo>)</mo><mo>−</mo><mo>(</mo><mi>b</mi><mo>−</mo><mi>y</mi><mo>)</mo></mrow></math></p>
+<p>例如在保持 v、b、y 不变的比较中，跳跃短波侧吸收增强会使 u 波段变暗、u 星等增加，从而 c₁增加。这只是符号关系的算例；真实恒星的参数变化往往同时改变多个波段，不能把 c₁的增量无条件解释成一个唯一温度增量。各波段零点来自标准星标定，指数也须进行相应消光与系统改正。</p>
+<p>原书窄带系统用 c=(f−e)−(e−d)测跳跃，用 l=b−(a+c)/2比较 Hβ 内与两侧的星等，用 m=(e−d)−(d−a)比较金属吸收。这里公式中的 a、b、c…均指该窄带系统的星等，c 作为滤光片星等和作为跳跃指数是依上下文区分的历史记法。窄带 b 位于4861 Å附近的 Hβ，a 和 c 位于其两侧；不能代入 uvby 的 b。</p>
+<p>Crawford 的 Hβ 指数 β 改用两个都以 Hβ 为中心的滤光片：一个带宽约15 Å，另一个约150 Å。原书定义</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="贝塔等于十五埃窄带星等减一百五十埃宽带星等"><mrow><mi>β</mi><mo>=</mo><mi>m</mi><mo>(</mo><mn>15</mn><mtext> Å</mtext><mo>)</mo><mo>−</mo><mi>m</mi><mo>(</mo><mn>150</mn><mtext> Å</mtext><mo>)</mo></mrow></math></p>
+<p>窄带主要测线内通量，宽带包含更多两侧背景。固定系统标定及其他谱形时，线吸收增强会让窄带星等相对增加，β也增加。β与 c₁可一起用于上一节的 T、nₑ诊断。m₁反映许多金属线的共同影响，但饱和线也受微湍动、磁场及背景连续吸收影响；同一个 m₁未必对应同一个金属丰度。后面的逐线分析将帮助拆开这些原因。</p>
+<p>阅读：§12.2《The Strömgren colors》，表12.1–12.2及图12.3–12.4。带宽表的历史记法与具体滤光响应应按所用系统核对。</p>
+</section>
+<section class="lesson-section" id="identification"><div class="section-heading"><span class="section-number">05</span><h2>谱线识别与多重线系</h2><button class="feedback-link" type="button" data-feedback="identification" data-label="谱线识别与多重线系">反馈</button></div><p>定量分析前，必须知道一条线属于哪种元素、哪个电离阶段和哪次跃迁。原书利用与恒星谱经同一摄谱仪记录的<strong>比较光谱</strong>（comparison spectrum）：已知实验室线的波长提供位置—波长关系，再插值得到恒星线波长。候选线的波长相近，只能提供初筛；有限分辨率、测量误差和混线使一个位置可能对应多个候选跃迁。若整个谱存在共同多普勒位移，应在一致的波长参考系中进行比较。</p>
+<p><strong>多重线系</strong>（multiplet）是两个原子谱项的精细结构能级之间的一组跃迁。多电子原子中，给定轨道总角动量 L 和总自旋 S 的谱项，按总角动量 J 分成邻近能级；不是若干不同元素恰好挤在同一波长的总称。同一多重线系的下能级激发能近似相等，LTE 下相应布居主要按统计权重 g 分配，因此其相对吸收能力受已知的 gf 控制。f 是无量纲振子强度，g 是能级简并的统计权重，这里的 g 与表面重力 g 的含义不同。</p>
+<p>识别时要检查该候选多重线系的其他可测成员及预期的强弱关系。例如某个候选跃迁预言还有三条更强的同系线，在覆盖相应波长、信噪比充分且没有明显混线时，这些线都缺失，会反对该识别。反过来，所有成员大致吻合能增加可信度，但不取消混线等不确定性。弱线区 Wλ近似正比于 gf；饱和后强弱关系须经过生长曲线，不可要求等值宽度比始终等于 gf 比。原子表中的“禁戒”跃迁意味着跃迁概率很低，不能把示意能级图中的所有连线都当作强可见线。</p>
+<p>正确的识别使我们能够查找波长、激发能、统计权重和 gf；这些数据随后决定生长曲线点的相对位置。错误识别或错误 gf 会直接传播到丰度，增加观测精度也不能自动补救原子数据错误。</p>
+<p>阅读：§12.3.1《Line identification》，图12.5–12.6；§12.3.2关于振子强度数据的讨论。</p>
+</section>
+<section class="lesson-section" id="curve-fitting"><div class="section-heading"><span class="section-number">06</span><h2>同一多重线系的生长曲线与多普勒宽度</h2><button class="feedback-link" type="button" data-feedback="curve-fitting" data-label="同一多重线系的生长曲线与多普勒宽度">反馈</button></div><p><strong>等值宽度</strong> Wλ是归一化吸收缺口对波长的积分，单位与波长相同。第10章的生长曲线给出 Wλ随吸收量的变化：弱线区近似线性，线心饱和后增长变慢，足够强时翼部继续扩大。由一个 Wλ推断布居，必须知道该线处于哪一区，还需要线宽、连续吸收和大气结构的约束。</p>
+<p>同一小波长区内，原书以 Y=log₁₀[Wλ/(Δλ<sub>D</sub> R<sub>c</sub>)]作为归一化纵坐标。Δλ<sub>D</sub>是局部多普勒宽度，R<sub>c</sub> 是该区强线能达到的最大归一化中心深度；它与源函数结构有关，也随波长改变，不是恒等于1。相邻线的横坐标包含吸收布居乘 gf 和共同的大气因子。对同一多重线系，近似相等的激发能使布居按 g 分配，因此横坐标差可以直接由原书式(12.12)确定：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="同多重线两条线在生长曲线的横坐标差等于gf乘积之比的十进对数"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>−</mo><msub><mi>X</mi><mi>j</mi></msub><mo>=</mo><msub><mi>log</mi><mn>10</mn></msub><mfrac><msub><mrow><mo>(</mo><mi>g</mi><mi>f</mi><mo>)</mo></mrow><mi>i</mi></msub><msub><mrow><mo>(</mo><mi>g</mi><mi>f</mi><mo>)</mo></mrow><mi>j</mi></msub></mfrac></mrow></math></p>
+<p>这使许多线构成一个相对横距已经确定的点群。保持横距，把点群整体移动到理论生长曲线上，才决定布居所需的绝对横坐标。比如两线的 gf 比为10，则其横距为1；只有都在弱线区、且局部背景等条件近似共同，Wλ之比才也近似10。横移给出的布居还含连续吸收和源函数梯度决定的共同因子，不能脱离大气模型直接宣布元素总丰度。</p>
+<div class="activity explorer" id="growth-review" data-explorer="growth"><div class="activity-head"><button class="feedback-link" data-feedback="growth-review" data-label="等值宽度与谱线生长曲线" type="button">反馈</button></div><h3>等值宽度与谱线生长曲线</h3><p class="prediction">先保持宽度和翼权重固定，增加吸收原子相对数 Q，观察 W 从近线性增长变为缓慢增长，再出现翼部增强；随后比较共同放大轮廓宽度或减小翼权重的效果。</p><div class="lab-layout"><div class="lab-plot"><svg viewBox="0 0 700 360" role="img" aria-label="等值宽度与谱线生长曲线的交互图表"></svg><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls"><label class="lab-control">吸收原子数 × 振子强度的相对对数 <output data-out="logAmount">1 </output><input data-param="logAmount" aria-label="吸收原子数 × 振子强度的相对对数" type="range" min="-2" max="4" step="0.1" value="1"></label><label class="lab-control">轮廓宽度 / 参考宽度 <output data-out="width">1 </output><input data-param="width" aria-label="轮廓宽度 / 参考宽度" type="range" min="0.5" max="2" step="0.1" value="1"></label><label class="lab-control">洛伦兹翼的示意权重 <output data-out="wing">0.05 </output><input data-param="wing" aria-label="洛伦兹翼的示意权重" type="range" min="0" max="0.25" step="0.01" value="0.05"></label></div></div><p class="caption">原创无量纲教学模型：归一化吸收轮廓由高斯核和洛伦兹翼按滑块权重相加，线深 R=0.75[1−exp(−Qφ/宽度)]，Q=10 的所选对数次方；W 为线深积分，单位是参考宽度。实线为当前参数的数值积分，虚线为弱线斜率参考，圆点为当前 Q。宽度滑块会让核与翼的物理尺度一起变化，不能单独代表固定阻尼下的微观湍动；翼权重也不是物理 Voigt 参数 α。曲线不是观测数据或精确恒星大气合成谱。</p></div>
+
+<p>先保持宽度和翼权重不变，把相对吸收量从弱线区增到饱和区，观察等值宽度不再按相同比例增长；再改变共同轮廓宽度。这个原创模型用于理解反演为什么会受饱和影响。活动同时改变核、翼尺度，不能把其宽度滑块直接当作只改变微湍动的实验，也不能从活动读数求具体恒星的丰度。</p>
+<h3>弱线与强线一起求宽度</h3>
+<p>弱线的 Wλ主要约束吸收粒子量与 f 的乘积，对局部轮廓宽度不敏感；只有强线时，不同 Δλ<sub>D</sub> 可以给同一 Wλ对应很不同的布居。教材因此用一个多重线系中的弱线固定横向位置，再用饱和线检查 Δλ<sub>D</sub>。如果实际存在微湍动，却只采用较小的纯热宽度，那么饱和线等值宽度相对弱线偏大，不能只靠增加元素数目解释；需要增大局部 Δλ<sub>D</sub>，重新检查整个点群的拟合。</p>
+<p>R<sub>c</sub>可在高分辨率、慢自转星的强线中估计；快速自转和低分辨率使直接读线心困难，教材建议参考相似慢转星，但这一做法本身带来模型误差。仪器和整盘自转造成的外部卷积可以改变观测线形；在连续背景平缓且完整积分时，它们不等同于形成线的局部微湍动，也不能仅凭观测总宽度替代 Δλ<sub>D</sub>。Δλ<sub>D</sub>对同元素、同小波长区的多重线系可共用近似值，不同原子质量或不同波长需重新处理。</p>
+<p>阅读：§12.3.2《Fitting the lines of one multiplet on the curve of growth》、§12.3.3《Determination of Δλ<sub>D</sub>》，图12.7–12.9。</p>
+</section>
+<section class="lesson-section" id="excitation-ionization"><div class="section-heading"><span class="section-number">07</span><h2>激发温度与电离温度</h2><button class="feedback-link" type="button" data-feedback="excitation-ionization" data-label="激发温度与电离温度">反馈</button></div><p>生长曲线先确定的是<strong>某个下能级中的粒子数</strong>，还没有包括其他激发态或其他电离阶段。为了得到元素总数，先比较同一种原子或离子的多个多重线系。若波长区及背景因子近似共同，该因子在布居比中抵消。不同下能级 n、s 的比值定义原书式(12.13)中的<strong>激发温度</strong>（excitation temperature）T<sub>exc</sub>：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="能级n与s布居比等于统计权重比乘以负的激发能差除以玻尔兹曼常数和激发温度的指数"><mrow><mfrac><msub><mi>N</mi><mi>n</mi></msub><msub><mi>N</mi><mi>s</mi></msub></mfrac><mo>=</mo><mfrac><msub><mi>g</mi><mi>n</mi></msub><msub><mi>g</mi><mi>s</mi></msub></mfrac><msup><mi>e</mi><mrow><mo>−</mo><mfrac><mrow><msub><mi>χ</mi><mi>n</mi></msub><mo>−</mo><msub><mi>χ</mi><mi>s</mi></msub></mrow><mrow><mi>k</mi><msub><mi>T</mi><mi>exc</mi></msub></mrow></mfrac></mrow></msup></mrow></math></p>
+<p>χ是相对基态的激发能，kT 与 χ须用同一能量单位。取十进对数，若 χ用 eV、T用 K，原书用 Θ≈5040 K/T<sub>exc</sub>，得到 log₁₀(Nn/gn)−log₁₀(Ns/gs)=−Θ(χn−χs)。5040来自1/(k ln10)在这些单位下的数值；不是一种独立大气参数。高激发能级的相对布居对温度更敏感，各多重线系之间所需的横移因而测量 T<sub>exc</sub>。若许多激发能不同的多重线系不能用共同 T<sub>exc</sub>解释，应检查混线、gf、形成深度及 LTE，而不是强制把各线移到同一位置。</p>
+<p>有 T<sub>exc</sub> 后，可用布居分布把该电离阶段中未直接观测的激发态计入总数。再对另一个电离阶段作同样分析，例如 Fe I（中性铁）与 Fe II（一次电离铁）；它们的总数比、电子密度和 Saha 关系共同约束<strong>电离温度</strong>（ionization temperature）T<sub>ion</sub>。一个电离比一般不能单独确定 T<sub>ion</sub>和 nₑ，因为升温促电离、提高 nₑ促复合都能改变比值。</p>
+<p>若同时得到 Fe II/Fe I 和 Ti II/Ti I 两个电离比，可将两条 Saha 方程相除。式(12.21)写成</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="两元素电离比之比等于电离配分函数比之比乘电离能差对应的温度指数"><mrow><mfrac><msub><mi>r</mi><mi>Fe</mi></msub><msub><mi>r</mi><mi>Ti</mi></msub></mfrac><mo>=</mo><mfrac><msub><mi>Q</mi><mi>Fe</mi></msub><msub><mi>Q</mi><mi>Ti</mi></msub></mfrac><msup><mi>e</mi><mrow><mo>−</mo><mfrac><mrow><msub><mi>χ</mi><mrow><mi>ion</mi><mo>,</mo><mi>Fe</mi></mrow></msub><mo>−</mo><msub><mi>χ</mi><mrow><mi>ion</mi><mo>,</mo><mi>Ti</mi></mrow></msub></mrow><mrow><mi>k</mi><msub><mi>T</mi><mi>ion</mi></msub></mrow></mfrac></mrow></msup></mrow></math></p>
+<p>rFe、rTi分别为各元素一次电离总数与中性总数之比，Q为该元素电离态与中性态的配分函数比，配分函数统计该阶段所有激发能级的贡献，通常也依赖 T。共同的电子密度及 Saha 温度前因子在相除时抵消；先求 T<sub>ion</sub>，再代回任一 Saha 方程求 nₑ，随后 P<sub>e</sub>=nₑkT。若两电离能接近，指数对 T变化不敏感，测量小误差会放大成温度大误差。实测还要求两元素的两个电离阶段都能见到足够的线，这限制了可选元素。</p>
+<p>T<sub>exc</sub>、T<sub>ion</sub>和氢诊断温度对不同大气深度的权重并不完全相同，LTE 下也不要求小数点上完全一致。但经过观测及模型检查后仍有显著不一致，说明简化 LTE解释需要重新评估。温度的一致性是检验依据，而不是把三个诊断定义成同一数字。</p>
+<p>阅读：§12.3.4–12.3.5、§12.3.7，式(12.13)–(12.15)、(12.21)，图12.10。</p>
+</section>
+<section class="lesson-section" id="kinetic-widths"><div class="section-heading"><span class="section-number">08</span><h2>原子质量依赖与动理学温度</h2><button class="feedback-link" type="button" data-feedback="kinetic-widths" data-label="原子质量依赖与动理学温度">反馈</button></div><p><strong>动理学温度</strong>（kinetic temperature；现用译本称“动力学温度”）T<sub>kin</sub>描述粒子的热运动。局部高斯多普勒参考速度 ξ的定义是轮廓中 exp[−(v/ξ)²]的宽度参数，因此热项为2kT/m，而非一维速度方差 kT/m。若各元素处在同一代表气层且共同微湍动也用该高斯宽度约定，原书式(12.16)–(12.19)可以写成单粒子质量形式：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="多普勒相对宽度等于参考速度除光速"><mrow><mfrac><msub><mi>Δλ</mi><mi>D</mi></msub><mi>λ</mi></mfrac><mo>=</mo><mfrac><mi>ξ</mi><mi>c</mi></mfrac></mrow></math>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="速度宽度平方等于二倍玻尔兹曼常数乘动理学温度除单粒子质量，加共同微湍动宽度平方"><mrow><msup><mi>ξ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>k</mi><msub><mi>T</mi><mi>kin</mi></msub></mrow><mi>m</mi></mfrac><mo>+</mo><msubsup><mi>ξ</mi><mi>turb</mi><mn>2</mn></msubsup></mrow></math></p>
+<p>m为单个原子或离子质量，kg；ξ、ξ<sub>turb</sub>用 m s⁻¹，T<sub>kin</sub>用 K，Δλ<sub>D</sub>和 λ须用同一长度单位。原书用气体常数与原子量表达相同关系，本课取 m≈A m<sub>u</sub>，其中 A为无量纲相对原子质量、mu为原子质量单位，以免把它与第9章整团气体的平均分子量混用。</p>
+<p>热项随1/m变化，共同微湍动项与原子质量无关。把两种元素的 ξ²相减，微湍动抵消，于是式(12.20)等价于</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="动理学温度等于两元素速度宽度平方差除以二倍玻尔兹曼常数和两单粒子质量倒数之差"><mrow><msub><mi>T</mi><mi>kin</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi>ξ</mi><mn>2</mn><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>k</mi><mo>(</mo><mn>1</mn><mo>/</mo><msub><mi>m</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn><mo>/</mo><msub><mi>m</mi><mn>2</mn></msub><mo>)</mo></mrow></mfrac></mrow></math></p>
+<p>若粒子1更轻，则热模型要求 ξ₁²&gt;ξ₂²，使温度为正。反向或明显不一致的结果应检查误差与共同形成层假设。注意比较的是<strong>速度宽度</strong> cΔλ<sub>D</sub>/λ，而不是不同波长处未经换算的 Δλ<sub>D</sub>。</p>
+<div class="activity explorer" id="mass-width-lab" data-lesson-activity="linewidths"><div class="activity-head"><button class="feedback-link" data-feedback="mass-width-lab" data-label="原子质量、热运动与微湍动宽度" type="button">反馈</button></div><h3>原子质量、热运动与微湍动宽度</h3><p class="prediction">先改变温度，观察总宽度平方对1/A的斜率；再改变共同微湍动，观察截距与三种元素的速度宽度。</p><div class="lab-layout"><div class="lab-plot"><p class="caption">实线与标记：总宽度平方；虚线：纯热项；点线：共同微湍动项。○ C；□ Ti；◇ Fe。</p><svg viewBox="0 0 700 360" role="img" aria-label="原子质量、热运动与微湍动宽度"></svg><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls"><label class="lab-control">动理学温度 <output data-out="T">8000 K</output><input data-param="T" data-unit="K" aria-label="动理学温度（K）" type="range" min="4000" max="14000" step="100" value="8000"></label><label class="lab-control">共同微湍动宽度 <output data-out="turb">2 km/s</output><input data-param="turb" data-unit="km/s" aria-label="共同微湍动宽度（km/s）" type="range" min="0" max="8" step="0.1" value="2"></label></div></div><p class="caption">同一等温代表气层、高斯局部多普勒模型，ξ²为热项2kT/(A mᵤ)与共同微湍动宽度平方之和。A取C=12、Ti=48、Fe=56；质量近似为A mᵤ。ξ是exp[−(v/ξ)²]的宽度参数，不是一维标准差。纵轴单位(km/s)²，固定范围0–100；读数用共同参考波长500 nm换算多普勒宽度。不是实际谱线或观测拟合，不含阻尼、自转、仪器及形成深度差异。</p></div>
+
+<p>活动画 ξ²对1/A的关系，改变 T<sub>kin</sub>观察斜率，改变 ξ<sub>turb</sub>观察截距；C、Ti、Fe的标记分别显示轻、中、重原子的读数。在 T<sub>kin</sub>固定时把 ξ<sub>turb</sub>调大，三者 ξ²之差仍由热项决定，但总速度宽度的相对差别缩小，精确测量更困难。活动用共同参考波长500 nm换算 Δλ<sub>D</sub>，以便公平比较；不是三条实际元素谱线，也不包括仪器卷积、自转、阻尼或形成深度差异。观测中的 gf和 Wλ误差还会传到拟合宽度，这也是教材所述方法的实际限制。</p>
+<p>阅读：§12.3.6《The determination of the kinetic temperature》，式(12.16)–(12.20)。</p>
+</section>
+<section class="lesson-section" id="abundance-feedback"><div class="section-heading"><span class="section-number">09</span><h2>连续吸收反馈与丰度反演</h2><button class="feedback-link" type="button" data-feedback="abundance-feedback" data-label="连续吸收反馈与丰度反演">反馈</button></div><p>现在把各诊断合起来看：谱线强度包含激发、电离、展宽，以及线与连续吸收之比。热 B 型星中，氢翼 Rλ∝(N₂/N₃)nₑ；在固定 nₑ时，升温使较高 n=3 的相对布居增加，N₂/N₃下降，Balmer 翼减弱。这包含共同连续吸收的变化，不能简单归因于“氢全部消失”。同样，在某些 A、B 型大气中用氦替换一部分氢后，电子压强与结构改变，教材模型反而可能给更强氢翼；氢极少、连续吸收转由氦等主导时，这个解释不再适用。</p>
+<p>对 H⁻ 连续吸收占优的 G 型大气，低重力可使电子密度降低、H⁻背景变弱，从而让金属线相对更强。仅比较超巨星与主序星的线深，就宣布超巨星金属更多，会忽略第9章的压力与连续吸收关系。</p>
+<p>原书进一步讨论太阳型星的 Fe II线。若铁主要一次电离，AFe=NFe/NH近似 NFe⁺/NH，则固定温度因子时</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="铁二线深度与铁一次电离数除以氢数和电子密度乘积成正比，即与铁丰度除电子密度成正比"><mrow><msub><mi>R</mi><mi>λ</mi></msub><mo>(</mo><mtext>Fe II</mtext><mo>)</mo><mo>∝</mo><mfrac><msub><mi>N</mi><mrow><mi>Fe</mi><mo>+</mo></mrow></msub><mrow><msub><mi>N</mi><mi>H</mi></msub><msub><mi>n</mi><mi>e</mi></msub></mrow></mfrac><mo>≈</mo><mfrac><msub><mi>A</mi><mi>Fe</mi></msub><msub><mi>n</mi><mi>e</mi></msub></mfrac></mrow></math></p>
+<p>若所有金属丰度共同改变，且金属电离仍提供主要电子，近似有 nₑ∝AFe NH。于是 AFe 在上式分子和分母中近似抵消，Rλ∝1/NH。教材强调 Fe II线对总体金属丰度的响应可以很弱；真实大气中 NH、温度和形成层也会改变，因此这个抵消并不意味着谱线完全不携带丰度信息。它也不能用于只改变铁、其他电子供体完全不变的任意情况。</p>
+<p>实际分析需要迭代：先用氢与颜色估计参数，按可靠 gf拟合各元素线和激发、电离状态，再改变元素组成并更新连续吸收、电子密度与大气结构，最后检查所有诊断是否一致。只增加线吸收、冻结连续背景的大气模型，会把丰度作用算错。</p>
+<p>阅读：§12.3.8《Dependence of some line strengths on temperature, gravity and element abundances》，式(12.22)–(12.26)。</p>
+</section>
+<section class="lesson-section" id="abundance-scales"><div class="section-heading"><span class="section-number">10</span><h2>数目丰度、质量分数与星族</h2><button class="feedback-link" type="button" data-feedback="abundance-scales" data-label="数目丰度、质量分数与星族">反馈</button></div><p><strong>数目丰度</strong>描述每个元素有多少个核，<strong>质量分数</strong>描述它占总质量多少。恒星的氢、氦、其余重元素质量分数分别记为 X、Y、Z，按定义 X+Y+Z=1。质量分数需要按每个核的质量加权，不能把“10%的氦核”直接写成 Y=0.10。忽略金属时，若氦核占氢与氦总核数的比例为 fHe，则</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="忽略金属时氦质量分数等于四倍氦核总数比例，除以一减氦核比例加四倍氦核比例"><mrow><mi>Y</mi><mo>=</mo><mfrac><mrow><mn>4</mn><msub><mi>f</mi><mi>He</mi></msub></mrow><mrow><mn>1</mn><mo>−</mo><msub><mi>f</mi><mi>He</mi></msub><mo>+</mo><mn>4</mn><msub><mi>f</mi><mi>He</mi></msub></mrow></mfrac></mrow></math></p>
+<p>fHe=0.10给 Y≈0.31，这是式(12.27)的约定。前面压强例子的 NHe/NH=0.10则给 fHe=0.10/1.10、Y≈0.286；两个“10%”的分母不同，不能不加说明地交换。计入金属时应把金属的质量也加入分母。</p>
+<p>原书表12.3采用<strong>对数数目丰度</strong>：把氢定为12，各元素数值相当于 logε(E)=12+log₁₀(NE/NH)。加12只是显示零点，氢的实际数密度不是10¹²的固定值。两颗星同一元素的数值相差1，元素/氢之比相差10倍。例如教材表中太阳铁为7.6，HD 19445为5.7；在该表的分析结果中，后者铁/氢之比约为前者10<sup>−1.9</sup>，即约1/79。表中括号表示不确定值，问号表示缺少测定，不能当作零丰度。</p>
+<h3>教材中的星族比较及其限度</h3>
+<p>原书的<strong>星族 I</strong>（Population I）附近样本以氢、氦为主，C、N、O、Ne 是较丰富的重元素；按数目金属只有痕量，但因每个重核质量更大，Z仍可达百分比量级。原书采用的粗略典型质量分数为 X≈0.67、Y≈0.31、Z≈0.02。这些是该教材样本与分析约定中的历史估计，不作为所有恒星或现今丰度测量的统一常数。</p>
+<p>教材的<strong>星族 II</strong>（Population II）样本常表现为贫金属、高速星或色—星等图中的亚矮星，整体仍主要由氢、氦构成。原书概述其金属丰度比常见星族 I样本低约3至200倍，表12.3提供具体且带不确定性的个例；它也指出较轻重元素与铁族、C/N/O比例并非始终一起缩放。光谱强度受大气参数影响，星族比较需要定量丰度分析，不能只凭“弱线”确定化学组成。</p>
+<p>原书讨论的分析精度，在温度差很大的星间通常为约2倍因子，在温度与重力近似相同的仔细相对分析中约为25%；这些是教材所述方法和当时资料的误差尺度，不是所有仪器与分析方法的普适上限。热星的氦光球线可用于丰度分析，冷星光球缺少可用氦线时，不能直接照搬；色球氦线的 NLTE增加困难，需要间接约束。卷三将利用 X、Y、Z讨论恒星结构、演化和元素来源。</p>
+<p>阅读：§12.4.1《Population I stars》、§12.4.2《Element abundances in Population II stars》，表12.3、式(12.27)。</p>
+</section>
+<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">11</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><p>习题先检验氢诊断和颜色指数，再把多重线系、饱和、激发、电离与原子质量关系连接起来，最后辨认丰度归一化和连续吸收反馈的适用条件。数值题是独立教学情境。</p>
+<div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-hot-cool" data-question="q-hot-cool"><fieldset><legend><span class="eyebrow">01 / 单选</span>对 H⁻ 主导长波连续吸收的正常冷星，在本课 LTE 弱翼近似下，怎样联立 Balmer 线翼与跳跃约束 T 和 <math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="nₑ"><msub><mi>n</mi><mi>e</mi></msub></math>？</legend><label class="option"><input type="radio" name="q-hot-cool" value="A" required><span>先由线翼主要约束 T，再由跳跃约束 <math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="nₑ"><msub><mi>n</mi><mi>e</mi></msub></math></span></label><label class="option"><input type="radio" name="q-hot-cool" value="B" required><span>先由跳跃单独确定 T，线翼永远只测 <math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="nₑ"><msub><mi>n</mi><mi>e</mi></msub></math></span></label><label class="option"><input type="radio" name="q-hot-cool" value="C" required><span>两项都只由总氢丰度决定</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-hot-cool" data-label="对 H⁻ 主导长波连续吸收的正常冷星，在本课 LTE 弱翼近似下，怎样联立 Balmer 线翼与跳跃约束 T 和 nₑ？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#hydrogen-diagnostics">回看相关概念 ↑</a></form><form class="quiz-card" id="q-normal-limit" data-question="q-normal-limit"><fieldset><legend><span class="eyebrow">02 / 单选</span>某 O 型星的谱线有强发射核，电子散射也显著。怎样使用本章正常 LTE 大气的氢诊断表？</legend><label class="option"><input type="radio" name="q-normal-limit" value="A" required><span>无条件套用，因为谱线同属氢</span></label><label class="option"><input type="radio" name="q-normal-limit" value="B" required><span>先检查源函数、散射和大气结构，不能直接按该表反演</span></label><label class="option"><input type="radio" name="q-normal-limit" value="C" required><span>把发射核设成负的元素丰度就能恢复正常模型</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-normal-limit" data-label="某 O 型星的谱线有强发射核，电子散射也显著。怎样使用本章正常 LTE 大气的氢诊断表？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#hydrogen-diagnostics">回看相关概念 ↑</a></form><form class="quiz-card" id="q-pressure" data-question="q-pressure"><fieldset><legend><span class="eyebrow">03 / 单选</span>氢完全电离、氦中性且 NHe/NH=0.10 的模型中，测得电子压强为 Pₑ。气体总压强近似为多少？</legend><label class="option"><input type="radio" name="q-pressure" value="A" required><span>Pₑ，因为只有电子提供气体压强</span></label><label class="option"><input type="radio" name="q-pressure" value="B" required><span>1.1Pₑ，因为不应计入质子</span></label><label class="option"><input type="radio" name="q-pressure" value="C" required><span>2.1Pₑ，因为还要计入质子与中性氦</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-pressure" data-label="氢完全电离、氦中性且 NHe/NH=0.10 的模型中，测得电子压强为 Pₑ。气体总压强近似为多少？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#pressure-gravity">回看相关概念 ↑</a></form><form class="quiz-card" id="q-column-mass" data-question="q-column-mass"><fieldset><legend><span class="eyebrow">04 / 单选</span>已得到代表层气体压强，想通过气体压强除以上覆柱质量估计重力。上覆柱质量必须是什么？</legend><label class="option"><input type="radio" name="q-column-mass" value="A" required><span>整颗恒星总质量，单位 kg</span></label><label class="option"><input type="radio" name="q-column-mass" value="B" required><span>该层上方单位面积柱质量，单位 kg m⁻²</span></label><label class="option"><input type="radio" name="q-column-mass" value="C" required><span>该层电子数密度，单位 m⁻³</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-column-mass" data-label="已得到代表层气体压强，想通过气体压强除以上覆柱质量估计重力。上覆柱质量必须是什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#pressure-gravity">回看相关概念 ↑</a></form><form class="quiz-card" id="q-c1-sign" data-question="q-c1-sign"><fieldset><legend><span class="eyebrow">05 / 单选</span>一组已标定 uvby 星等中，保持 v、b、y不变，只让 u波段因吸收增强而通量减小。c₁怎样变化？</legend><label class="option"><input type="radio" name="q-c1-sign" value="A" required><span>增加，因为 u星等增加</span></label><label class="option"><input type="radio" name="q-c1-sign" value="B" required><span>减小，因为通量减小必使星等减小</span></label><label class="option"><input type="radio" name="q-c1-sign" value="C" required><span>不变，因为 c₁不包含 u</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-c1-sign" data-label="一组已标定 uvby 星等中，保持 v、b、y不变，只让 u波段因吸收增强而通量减小。c₁怎样变化？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#stromgren">回看相关概念 ↑</a></form><form class="quiz-card" id="q-metal-index" data-question="q-metal-index"><fieldset><legend><span class="eyebrow">06 / 单选</span>两个温度颜色相近的目标 m₁不同，是否足以唯一说明金属丰度不同？</legend><label class="option"><input type="radio" name="q-metal-index" value="A" required><span>足以，m₁只含金属核总数</span></label><label class="option"><input type="radio" name="q-metal-index" value="B" required><span>足以，饱和线的吸收不受局部速度场影响</span></label><label class="option"><input type="radio" name="q-metal-index" value="C" required><span>不足，还应检查微湍动、磁场、连续背景和标定等影响</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-metal-index" data-label="两个温度颜色相近的目标 m₁不同，是否足以唯一说明金属丰度不同？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#stromgren">回看相关概念 ↑</a></form><form class="quiz-card" id="q-identify" data-question="q-identify"><fieldset><legend><span class="eyebrow">07 / 单选</span>某候选谱线与观测波长吻合，但其同多重线系三条预计更强的可测成员，在完整覆盖且信噪比充分、无明显混线的谱中都未见。最合理的下一步是什么？</legend><label class="option"><input type="radio" name="q-identify" value="A" required><span>因波长接近即可确认，不再检查</span></label><label class="option"><input type="radio" name="q-identify" value="B" required><span>将这个候选识别视为可疑，并检查其他候选及原子数据</span></label><label class="option"><input type="radio" name="q-identify" value="C" required><span>把缺失成员都解释成独立元素，不需要相关跃迁</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-identify" data-label="某候选谱线与观测波长吻合，但其同多重线系三条预计更强的可测成员，在完整覆盖且信噪比充分、无明显混线的谱中都未见。最合理的下一步是什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#identification">回看相关概念 ↑</a></form><form class="quiz-card" id="q-gf-spacing" data-question="q-gf-spacing"><fieldset><legend><span class="eyebrow">08 / 单选</span>同一多重线系两条线的 gf比为100，且它们处于不同的生长曲线区段。由此一定能得到什么？</legend><label class="option"><input type="radio" name="q-gf-spacing" value="A" required><span>近似共同条件下横坐标差为2，但等值宽度比不一定为100</span></label><label class="option"><input type="radio" name="q-gf-spacing" value="B" required><span>任何饱和程度下等值宽度比都为100</span></label><label class="option"><input type="radio" name="q-gf-spacing" value="C" required><span>横坐标差为100，与对数无关</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-gf-spacing" data-label="同一多重线系两条线的 gf比为100，且它们处于不同的生长曲线区段。由此一定能得到什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#curve-fitting">回看相关概念 ↑</a></form><form class="quiz-card" id="q-micro-fit" data-question="q-micro-fit"><fieldset><legend><span class="eyebrow">09 / 单选</span>同一多重线系的弱线已固定吸收量，采用纯热多普勒宽度时饱和线等值宽度系统性偏大。优先应检查什么？</legend><label class="option"><input type="radio" name="q-micro-fit" value="A" required><span>只增大布居直到强线吻合，忽略弱线</span></label><label class="option"><input type="radio" name="q-micro-fit" value="B" required><span>局部微湍动是否使实际 多普勒宽度更大，并共同重拟合弱强线</span></label><label class="option"><input type="radio" name="q-micro-fit" value="C" required><span>把观测自转总宽度直接当作所有元素共同的热宽度</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-micro-fit" data-label="同一多重线系的弱线已固定吸收量，采用纯热多普勒宽度时饱和线等值宽度系统性偏大。优先应检查什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#curve-fitting">回看相关概念 ↑</a></form><form class="quiz-card" id="q-excitation" data-question="q-excitation"><fieldset><legend><span class="eyebrow">10 / 单选</span>教学例子中同一电离阶段两下能级满足 χ₂−χ₁=2 eV，且经统计权重校正后 (N₂/g₂)/(N₁/g₁)=0.01。用 Θ=5040 K/激发温度，得到 激发温度约多少？</legend><label class="option"><input type="radio" name="q-excitation" value="A" required><span>2520 K</span></label><label class="option"><input type="radio" name="q-excitation" value="B" required><span>10080 K</span></label><label class="option"><input type="radio" name="q-excitation" value="C" required><span>5040 K</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-excitation" data-label="教学例子中同一电离阶段两下能级满足 χ₂−χ₁=2 eV，且经统计权重校正后 (N₂/g₂)/(N₁/g₁)=0.01。用 Θ=5040 K/激发温度，得到 激发温度约多少？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#excitation-ionization">回看相关概念 ↑</a></form><form class="quiz-card" id="q-ion-degeneracy" data-question="q-ion-degeneracy"><fieldset><legend><span class="eyebrow">11 / 单选</span>为什么只测得 Fe II/Fe I总数比时，通常还需要电子密度等约束才能求电离温度？</legend><label class="option"><input type="radio" name="q-ion-degeneracy" value="A" required><span>因为 Saha电离比同时依赖温度和电子密度</span></label><label class="option"><input type="radio" name="q-ion-degeneracy" value="B" required><span>因为 Fe I与 Fe II一定属于两个不同化学元素</span></label><label class="option"><input type="radio" name="q-ion-degeneracy" value="C" required><span>因为电离比完全不随温度改变</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-ion-degeneracy" data-label="为什么只测得 Fe II/Fe I总数比时，通常还需要电子密度等约束才能求电离温度？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#excitation-ionization">回看相关概念 ↑</a></form><form class="quiz-card" id="q-saha-pair" data-question="q-saha-pair"><fieldset><legend><span class="eyebrow">12 / 单选</span>利用两元素的 Saha方程相除求 电离温度时，在其他测量条件相当下，为何不希望二者电离能几乎相同？</legend><label class="option"><input type="radio" name="q-saha-pair" value="A" required><span>电离能相同会产生无限强的谱线</span></label><label class="option"><input type="radio" name="q-saha-pair" value="B" required><span>指数中的能量差太小，温度敏感度低，误差容易放大</span></label><label class="option"><input type="radio" name="q-saha-pair" value="C" required><span>相除后电子密度必变成两倍</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-saha-pair" data-label="利用两元素的 Saha方程相除求 电离温度时，在其他测量条件相当下，为何不希望二者电离能几乎相同？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#excitation-ionization">回看相关概念 ↑</a></form><form class="quiz-card" id="q-mass-width" data-question="q-mass-width"><fieldset><legend><span class="eyebrow">13 / 单选</span>C 与 Fe处于同一代表气层，共有同一个高斯微湍动宽度。固定温度增大微湍动，ξ²(C)−ξ²(Fe)怎样变化？</legend><label class="option"><input type="radio" name="q-mass-width" value="A" required><span>按同一微湍动模型保持不变，但总速度宽度的相对差异变小</span></label><label class="option"><input type="radio" name="q-mass-width" value="B" required><span>必增加四倍，因为微湍动只作用于碳</span></label><label class="option"><input type="radio" name="q-mass-width" value="C" required><span>变成零，因为热运动被删除</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-mass-width" data-label="C 与 Fe处于同一代表气层，共有同一个高斯微湍动宽度。固定温度增大微湍动，ξ²(C)−ξ²(Fe)怎样变化？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#kinetic-widths">回看相关概念 ↑</a></form><form class="quiz-card" id="q-three-temperatures" data-question="q-three-temperatures"><fieldset><legend><span class="eyebrow">14 / 单选</span>经过混线、原子数据和形成深度检查，多个激发态给出显著不同的 激发温度。最合理的解释是什么？</legend><label class="option"><input type="radio" name="q-three-temperatures" value="A" required><span>任何大气都必须如此，因此没有诊断意义</span></label><label class="option"><input type="radio" name="q-three-temperatures" value="B" required><span>只要把它们都命名为有效温度，物理差异就消失</span></label><label class="option"><input type="radio" name="q-three-temperatures" value="C" required><span>共同 LTE布居近似需要重新检查，温度一致性可以作为检验</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-three-temperatures" data-label="经过混线、原子数据和形成深度检查，多个激发态给出显著不同的 激发温度。最合理的解释是什么？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#excitation-ionization">回看相关概念 ↑</a></form><form class="quiz-card" id="q-background-cancel" data-question="q-background-cancel"><fieldset><legend><span class="eyebrow">15 / 单选</span>在本课太阳型星近似中，Fe主要一次电离，所有金属共同缩放并主导电子供给，固定温度因子及 NH，且 <math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="nₑ"><msub><mi>n</mi><mi>e</mi></msub></math>∝AFe NH。Fe II线深 Rλ∝AFe/<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="nₑ"><msub><mi>n</mi><mi>e</mi></msub></math>对共同丰度缩放的一阶响应如何？</legend><label class="option"><input type="radio" name="q-background-cancel" value="A" required><span>必与 AFe成正比，不需要改变背景</span></label><label class="option"><input type="radio" name="q-background-cancel" value="B" required><span>共同 AFe因子近似抵消，响应可以很弱</span></label><label class="option"><input type="radio" name="q-background-cancel" value="C" required><span>必与 AFe平方成正比</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-background-cancel" data-label="在本课太阳型星近似中，Fe主要一次电离，所有金属共同缩放并主导电子供给，固定温度因子及 NH，且 nₑ∝AFe NH。Fe II线深 Rλ∝AFe/nₑ对共同丰度缩放的一阶响应如何？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#abundance-feedback">回看相关概念 ↑</a></form><form class="quiz-card" id="q-helium-fraction" data-question="q-helium-fraction"><fieldset><legend><span class="eyebrow">16 / 单选</span>忽略金属、每个氦核质量约为氢核4倍，且 NHe/NH=0.25。氦质量分数 Y是多少？</legend><label class="option"><input type="radio" name="q-helium-fraction" value="A" required><span>0.25</span></label><label class="option"><input type="radio" name="q-helium-fraction" value="B" required><span>0.80</span></label><label class="option"><input type="radio" name="q-helium-fraction" value="C" required><span>0.50</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-helium-fraction" data-label="忽略金属、每个氦核质量约为氢核4倍，且 NHe/NH=0.25。氦质量分数 Y是多少？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#abundance-scales">回看相关概念 ↑</a></form><form class="quiz-card" id="q-log-abundance" data-question="q-log-abundance"><fieldset><legend><span class="eyebrow">17 / 单选</span>两目标同一元素采用 logε(E)=12+log₁₀(NE/NH)。甲为6.8、乙为5.8。甲的元素/氢数目比是乙的多少倍？</legend><label class="option"><input type="radio" name="q-log-abundance" value="A" required><span>10倍</span></label><label class="option"><input type="radio" name="q-log-abundance" value="B" required><span>约1.17倍，因为6.8/5.8≈1.17</span></label><label class="option"><input type="radio" name="q-log-abundance" value="C" required><span>1倍，因为两者氢都被定为12</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-log-abundance" data-label="两目标同一元素采用 logε(E)=12+log₁₀(NE/NH)。甲为6.8、乙为5.8。甲的元素/氢数目比是乙的多少倍？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#abundance-scales">回看相关概念 ↑</a></form><form class="quiz-card" id="q-population" data-question="q-population"><fieldset><legend><span class="eyebrow">18 / 单选</span>按原书星族 II样本的讨论，哪项说法最恰当？</legend><label class="option"><input type="radio" name="q-population" value="A" required><span>贫金属意味着星中没有氢和氦</span></label><label class="option"><input type="radio" name="q-population" value="B" required><span>仍以氢氦为主，金属总体偏低；具体元素相对比例及误差需分别分析</span></label><label class="option"><input type="radio" name="q-population" value="C" required><span>任意恒星弱线都能唯一确认星族 II，不需大气参数</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-population" data-label="按原书星族 II样本的讨论，哪项说法最恰当？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#abundance-scales">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，Introduction to Stellar Astrophysics，Volume 2: Stellar Atmospheres（1989年初版，1993年修订重印、1997年重印，现用2003年数字印刷本），第12章 Spectrum analysis，§12.1–12.4、§12.3.1–12.3.8，式(12.1)–(12.27)，表12.1–12.3。</li><li>《恒星天体物理学导论》第二卷现用中文译本，第12章《光谱分析》，§12.1《巴尔末跃变和氢线》、§12.2《斯特龙根颜色》、§12.3《生长曲线分析》、§12.4《观测到的元素丰度》。</li></ul><a href="../volume2.html">返回第二卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><button class="highlight-mode-toggle" type="button" data-highlight-mode-toggle hidden aria-label="退出连续高亮模式" title="退出连续高亮模式"><span aria-hidden="true">✎</span></button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v2-ch12","version":"1.0.0","updated":"2026-10-02","title":"光谱分析：大气参数、线宽与元素丰度","summary":"联立 Balmer 跳跃、氢线翼和金属多重线系，区分温度、电子密度、微湍动与化学丰度的作用。","scope":"《恒星天体物理学导论》第二卷《恒星大气》 · 第12章全章","demo":false,"study":true,"sources":["Erika Böhm-Vitense，Introduction to Stellar Astrophysics，Volume 2: Stellar Atmospheres（1989年初版，1993年修订重印、1997年重印，现用2003年数字印刷本），第12章 Spectrum analysis，§12.1–12.4、§12.3.1–12.3.8，式(12.1)–(12.27)，表12.1–12.3。","《恒星天体物理学导论》第二卷现用中文译本，第12章《光谱分析》，§12.1《巴尔末跃变和氢线》、§12.2《斯特龙根颜色》、§12.3《生长曲线分析》、§12.4《观测到的元素丰度》。"]},"quizzes":[{"id":"q-hot-cool","type":"choice","concept":"hydrogen-diagnostics","question":"对 H⁻ 主导长波连续吸收的正常冷星，在本课 LTE 弱翼近似下，怎样联立 Balmer 线翼与跳跃约束 T 和 nₑ？","options":[{"id":"A","text":"先由线翼主要约束 T，再由跳跃约束 nₑ"},{"id":"B","text":"先由跳跃单独确定 T，线翼永远只测 nₑ"},{"id":"C","text":"两项都只由总氢丰度决定"}],"answer":"A","explanation":"冷星的 H⁻ 连续吸收和 Stark 翼都含显式 nₑ因子，在线/连续比中近似抵消，线翼主要约束 T；跳跃在已知 T 后约束 nₑ。B 把热 B 型近似无条件移到冷星；C 忽略激发、电离和背景吸收。","explanationHTML":"冷星的 H⁻ 连续吸收和 Stark 翼都含显式 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math>因子，在线/连续比中近似抵消，线翼主要约束 T；跳跃在已知 T 后约束 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math>。B 把热 B 型近似无条件移到冷星；C 忽略激发、电离和背景吸收。"},{"id":"q-normal-limit","type":"choice","concept":"hydrogen-diagnostics","question":"某 O 型星的谱线有强发射核，电子散射也显著。怎样使用本章正常 LTE 大气的氢诊断表？","options":[{"id":"A","text":"无条件套用，因为谱线同属氢"},{"id":"B","text":"先检查源函数、散射和大气结构，不能直接按该表反演"},{"id":"C","text":"把发射核设成负的元素丰度就能恢复正常模型"}],"answer":"B","explanation":"正常诊断表依赖吸收机制、LTE源函数及弱翼近似，题设给出需要检查这些条件的证据。A 将同元素误当同形成条件；C 把源函数或结构异常误解为负粒子数，丰度不能这样解释。","explanationHTML":"正常诊断表依赖吸收机制、LTE源函数及弱翼近似，题设给出需要检查这些条件的证据。A 将同元素误当同形成条件；C 把源函数或结构异常误解为负粒子数，丰度不能这样解释。"},{"id":"q-pressure","type":"choice","concept":"pressure-gravity","question":"氢完全电离、氦中性且 NHe/NH=0.10 的模型中，测得电子压强为 Pₑ。气体总压强近似为多少？","options":[{"id":"A","text":"Pₑ，因为只有电子提供气体压强"},{"id":"B","text":"1.1Pₑ，因为不应计入质子"},{"id":"C","text":"2.1Pₑ，因为还要计入质子与中性氦"}],"answer":"C","explanation":"电子和质子各为 nₑ，中性氦为0.1nₑ，总数2.1nₑ；理想气体各粒子都贡献压强。A 漏掉离子和原子；B 漏掉与电子等数的质子。系数仅适用于题设组成和电离状态。","explanationHTML":"电子和质子各为 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math>，中性氦为0.1\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math>，总数2.1\u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math>；理想气体各粒子都贡献压强。A 漏掉离子和原子；B 漏掉与电子等数的质子。系数仅适用于题设组成和电离状态。"},{"id":"q-column-mass","type":"choice","concept":"pressure-gravity","question":"已得到代表层气体压强，想通过气体压强除以上覆柱质量估计重力。上覆柱质量必须是什么？","options":[{"id":"A","text":"整颗恒星总质量，单位 kg"},{"id":"B","text":"该层上方单位面积柱质量，单位 kg m⁻²"},{"id":"C","text":"该层电子数密度，单位 m⁻³"}],"answer":"B","explanation":"静力压强等于单位面积上覆重量，压强除以柱质量才具有加速度单位。A 缺少面积且误用整星质量；C 把粒子数密度当柱质量，不满足物理定义和量纲。","explanationHTML":"静力压强等于单位面积上覆重量，压强除以柱质量才具有加速度单位。A 缺少面积且误用整星质量；C 把粒子数密度当柱质量，不满足物理定义和量纲。"},{"id":"q-c1-sign","type":"choice","concept":"stromgren","question":"一组已标定 uvby 星等中，保持 v、b、y不变，只让 u波段因吸收增强而通量减小。c₁怎样变化？","options":[{"id":"A","text":"增加，因为 u星等增加"},{"id":"B","text":"减小，因为通量减小必使星等减小"},{"id":"C","text":"不变，因为 c₁不包含 u"}],"answer":"A","explanation":"星等随通量减小而增大，c₁=u−2v+b，因此题设下 c₁增加。B 颠倒通量与星等关系；C 忽略 c₁的定义。此题固定其他波段，不代表真实参数变化只影响 u。","explanationHTML":"星等随通量减小而增大，c₁=u−2v+b，因此题设下 c₁增加。B 颠倒通量与星等关系；C 忽略 c₁的定义。此题固定其他波段，不代表真实参数变化只影响 u。"},{"id":"q-metal-index","type":"choice","concept":"stromgren","question":"两个温度颜色相近的目标 m₁不同，是否足以唯一说明金属丰度不同？","options":[{"id":"A","text":"足以，m₁只含金属核总数"},{"id":"B","text":"足以，饱和线的吸收不受局部速度场影响"},{"id":"C","text":"不足，还应检查微湍动、磁场、连续背景和标定等影响"}],"answer":"C","explanation":"m₁综合许多金属线，其解释受到强线饱和、局部展宽及连续吸收等条件限制。A 把间接颜色诊断当成粒子计数；B 与微湍动能改变饱和线等值宽度的关系相反。","explanationHTML":"m₁综合许多金属线，其解释受到强线饱和、局部展宽及连续吸收等条件限制。A 把间接颜色诊断当成粒子计数；B 与微湍动能改变饱和线等值宽度的关系相反。"},{"id":"q-identify","type":"choice","concept":"identification","question":"某候选谱线与观测波长吻合，但其同多重线系三条预计更强的可测成员，在完整覆盖且信噪比充分、无明显混线的谱中都未见。最合理的下一步是什么？","options":[{"id":"A","text":"因波长接近即可确认，不再检查"},{"id":"B","text":"将这个候选识别视为可疑，并检查其他候选及原子数据"},{"id":"C","text":"把缺失成员都解释成独立元素，不需要相关跃迁"}],"answer":"B","explanation":"多重线系的成员及强弱关系提供独立识别检验，题设排除了最直接的观测遗漏。A 只利用位置而忽略跃迁关联；C 任意拆开同系跃迁，不能解释候选预言。","explanationHTML":"多重线系的成员及强弱关系提供独立识别检验，题设排除了最直接的观测遗漏。A 只利用位置而忽略跃迁关联；C 任意拆开同系跃迁，不能解释候选预言。"},{"id":"q-gf-spacing","type":"choice","concept":"curve-fitting","question":"同一多重线系两条线的 gf比为100，且它们处于不同的生长曲线区段。由此一定能得到什么？","options":[{"id":"A","text":"近似共同条件下横坐标差为2，但等值宽度比不一定为100"},{"id":"B","text":"任何饱和程度下等值宽度比都为100"},{"id":"C","text":"横坐标差为100，与对数无关"}],"answer":"A","explanation":"横距由 log₁₀(gf比)给出，即2；饱和使等值宽度的响应不再线性。B 将弱线比例推广到强线；C 将线性比值当作对数距离。","explanationHTML":"横距由 log₁₀(gf比)给出，即2；饱和使等值宽度的响应不再线性。B 将弱线比例推广到强线；C 将线性比值当作对数距离。"},{"id":"q-micro-fit","type":"choice","concept":"curve-fitting","question":"同一多重线系的弱线已固定吸收量，采用纯热多普勒宽度时饱和线等值宽度系统性偏大。优先应检查什么？","options":[{"id":"A","text":"只增大布居直到强线吻合，忽略弱线"},{"id":"B","text":"局部微湍动是否使实际 多普勒宽度更大，并共同重拟合弱强线"},{"id":"C","text":"把观测自转总宽度直接当作所有元素共同的热宽度"}],"answer":"B","explanation":"额外局部多普勒宽度会减轻线心饱和、增强饱和线的等值宽度。A 破坏已由弱线约束的吸收量；C 混同整盘卷积与形成线的局部热/微湍动宽度。","explanationHTML":"额外局部多普勒宽度会减轻线心饱和、增强饱和线的等值宽度。A 破坏已由弱线约束的吸收量；C 混同整盘卷积与形成线的局部热/微湍动宽度。"},{"id":"q-excitation","type":"choice","concept":"excitation-ionization","question":"教学例子中同一电离阶段两下能级满足 χ₂−χ₁=2 eV，且经统计权重校正后 (N₂/g₂)/(N₁/g₁)=0.01。用 Θ=5040 K/激发温度，得到 激发温度约多少？","options":[{"id":"A","text":"2520 K"},{"id":"B","text":"10080 K"},{"id":"C","text":"5040 K"}],"answer":"C","explanation":"log₁₀0.01=−2=−Θ×2，因此Θ=1、激发温度≈5040 K。A 多除了一次激发能差；B 误把能量差乘到最终温度上。题设已校正统计权重，不能再加入未知 g比。","explanationHTML":"log₁₀0.01=−2=−Θ×2，因此Θ=1、激发温度≈5040 K。A 多除了一次激发能差；B 误把能量差乘到最终温度上。题设已校正统计权重，不能再加入未知 g比。"},{"id":"q-ion-degeneracy","type":"choice","concept":"excitation-ionization","question":"为什么只测得 Fe II/Fe I总数比时，通常还需要电子密度等约束才能求电离温度？","options":[{"id":"A","text":"因为 Saha电离比同时依赖温度和电子密度"},{"id":"B","text":"因为 Fe I与 Fe II一定属于两个不同化学元素"},{"id":"C","text":"因为电离比完全不随温度改变"}],"answer":"A","explanation":"温度与电子密度都进入 Saha平衡，一个比值一般不能同时决定二者。B 把电离阶段误作元素；C 删除电离能和温度因子的作用。两元素联立又需足够不同的电离能和可测电离阶段。","explanationHTML":"温度与电子密度都进入 Saha平衡，一个比值一般不能同时决定二者。B 把电离阶段误作元素；C 删除电离能和温度因子的作用。两元素联立又需足够不同的电离能和可测电离阶段。"},{"id":"q-saha-pair","type":"choice","concept":"excitation-ionization","question":"利用两元素的 Saha方程相除求 电离温度时，在其他测量条件相当下，为何不希望二者电离能几乎相同？","options":[{"id":"A","text":"电离能相同会产生无限强的谱线"},{"id":"B","text":"指数中的能量差太小，温度敏感度低，误差容易放大"},{"id":"C","text":"相除后电子密度必变成两倍"}],"answer":"B","explanation":"两元素比值对温度的主要指数敏感度来自电离能差，差太小使温度约束脆弱。A 把能量差误作线强发散；C 忽略共同电子密度因子已相消。配分函数的温度依赖仍需处理。","explanationHTML":"两元素比值对温度的主要指数敏感度来自电离能差，差太小使温度约束脆弱。A 把能量差误作线强发散；C 忽略共同电子密度因子已相消。配分函数的温度依赖仍需处理。"},{"id":"q-mass-width","type":"choice","concept":"kinetic-widths","question":"C 与 Fe处于同一代表气层，共有同一个高斯微湍动宽度。固定温度增大微湍动，ξ²(C)−ξ²(Fe)怎样变化？","options":[{"id":"A","text":"按同一微湍动模型保持不变，但总速度宽度的相对差异变小"},{"id":"B","text":"必增加四倍，因为微湍动只作用于碳"},{"id":"C","text":"变成零，因为热运动被删除"}],"answer":"A","explanation":"共同微湍动宽度平方在平方差中抵消，差值由热项和质量倒数之差决定；总宽度增加使相对差异更难测。B 违反共同微湍动条件；C 将相对差别缩小误作热项消失。","explanationHTML":"共同微湍动宽度平方在平方差中抵消，差值由热项和质量倒数之差决定；总宽度增加使相对差异更难测。B 违反共同微湍动条件；C 将相对差别缩小误作热项消失。"},{"id":"q-three-temperatures","type":"choice","concept":"excitation-ionization","question":"经过混线、原子数据和形成深度检查，多个激发态给出显著不同的 激发温度。最合理的解释是什么？","options":[{"id":"A","text":"任何大气都必须如此，因此没有诊断意义"},{"id":"B","text":"只要把它们都命名为有效温度，物理差异就消失"},{"id":"C","text":"共同 LTE布居近似需要重新检查，温度一致性可以作为检验"}],"answer":"C","explanation":"LTE同层布居由共同局部温度支配；经其他检查仍显著不一致，可提示近似不足。A 否定布居一致性检验；B 混同由总通量定义的有效温度与由激发定义的温度，改名不能解决物理差异。","explanationHTML":"LTE同层布居由共同局部温度支配；经其他检查仍显著不一致，可提示近似不足。A 否定布居一致性检验；B 混同由总通量定义的有效温度与由激发定义的温度，改名不能解决物理差异。"},{"id":"q-background-cancel","type":"choice","concept":"abundance-feedback","question":"在本课太阳型星近似中，Fe主要一次电离，所有金属共同缩放并主导电子供给，固定温度因子及 NH，且 nₑ∝AFe NH。Fe II线深 Rλ∝AFe/nₑ对共同丰度缩放的一阶响应如何？","options":[{"id":"A","text":"必与 AFe成正比，不需要改变背景"},{"id":"B","text":"共同 AFe因子近似抵消，响应可以很弱"},{"id":"C","text":"必与 AFe平方成正比"}],"answer":"B","explanation":"代入电子供给关系后 Rλ∝1/NH，题设固定 NH时共同丰度因子近似消去。A 冻结了随金属变化的 H⁻连续背景；C 无依据地重复计算丰度因子。真实结构也会改变，此近似不能解释成丰度永远不可测。","explanationHTML":"代入电子供给关系后 Rλ∝1/NH，题设固定 NH时共同丰度因子近似消去。A 冻结了随金属变化的 H⁻连续背景；C 无依据地重复计算丰度因子。真实结构也会改变，此近似不能解释成丰度永远不可测。"},{"id":"q-helium-fraction","type":"choice","concept":"abundance-scales","question":"忽略金属、每个氦核质量约为氢核4倍，且 NHe/NH=0.25。氦质量分数 Y是多少？","options":[{"id":"A","text":"0.25"},{"id":"B","text":"0.80"},{"id":"C","text":"0.50"}],"answer":"C","explanation":"每1个氢核对应0.25个氦核，氦质量为4×0.25=1，总质量为1+1=2，Y=0.50。A 把核数比当质量分数；B 用错误的总质量分母。题目给的是氦/氢比，不是氦占总核数的比例。","explanationHTML":"每1个氢核对应0.25个氦核，氦质量为4×0.25=1，总质量为1+1=2，Y=0.50。A 把核数比当质量分数；B 用错误的总质量分母。题目给的是氦/氢比，不是氦占总核数的比例。"},{"id":"q-log-abundance","type":"choice","concept":"abundance-scales","question":"两目标同一元素采用 logε(E)=12+log₁₀(NE/NH)。甲为6.8、乙为5.8。甲的元素/氢数目比是乙的多少倍？","options":[{"id":"A","text":"10倍"},{"id":"B","text":"约1.17倍，因为6.8/5.8≈1.17"},{"id":"C","text":"1倍，因为两者氢都被定为12"}],"answer":"A","explanation":"差值为1，数目比的比值为10¹=10，显示零点12在差中抵消。B 直接相除对数数值；C 将共同归一化误作元素丰度相同。","explanationHTML":"差值为1，数目比的比值为10¹=10，显示零点12在差中抵消。B 直接相除对数数值；C 将共同归一化误作元素丰度相同。"},{"id":"q-population","type":"choice","concept":"abundance-scales","question":"按原书星族 II样本的讨论，哪项说法最恰当？","options":[{"id":"A","text":"贫金属意味着星中没有氢和氦"},{"id":"B","text":"仍以氢氦为主，金属总体偏低；具体元素相对比例及误差需分别分析"},{"id":"C","text":"任意恒星弱线都能唯一确认星族 II，不需大气参数"}],"answer":"B","explanation":"教材的贫金属比较涉及重元素/氢比，并保留轻重元素和C/N/O比例差异。A 颠倒主要组成；C 忽略温度、重力、连续吸收和展宽对线强的影响。教材历史范围不应当作所有恒星的固定数值。","explanationHTML":"教材的贫金属比较涉及重元素/氢比，并保留轻重元素和C/N/O比例差异。A 颠倒主要组成；C 忽略温度、重力、连续吸收和展宽对线强的影响。教材历史范围不应当作所有恒星的固定数值。"}],"quizHash":"11193cee5126038cc916d2b9f0bb4e19b1b600461e528918f70376be7085f86b","sourceHash":"263f7ceaa435ae045c90dd45c2038bb2153d7d36eaae999eb206513d62d8de10","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
+'use strict';
+const data=JSON.parse(document.getElementById('lesson-data').textContent);
+const storageKey=`stellar:${data.meta.id}:${data.meta.version}:${data.quizHash}`;
+let answers={};
+try{const stored=JSON.parse(localStorage.getItem(storageKey)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))answers=stored;}catch{}
+function save(){try{localStorage.setItem(storageKey,JSON.stringify(answers));}catch{}}
+function stats(){let done=0,correct=0;for(const q of data.quizzes){if(q.options.some(o=>o.id===answers[q.id])){done++;if(answers[q.id]===q.answer)correct++;}}for(const el of document.querySelectorAll('[data-answered]'))el.textContent=done;for(const el of document.querySelectorAll('[data-correct]'))el.textContent=correct;}
+function showAnswer(form,q,value){const note=form.querySelector('.answer-note');const right=value===q.answer;note.hidden=false;note.classList.toggle('wrong',!right);note.replaceChildren();const verdict=document.createElement('strong');verdict.textContent=right?'✓ 回答正确。':'✗ 回答有误。';note.append(verdict,document.createTextNode(' '));const explanation=document.createElement('span');explanation.innerHTML=q.explanationHTML;note.append(explanation);}
+for(const q of data.quizzes){const form=document.getElementById(q.id);const value=answers[q.id];if(q.options.some(o=>o.id===value)){form.querySelector(`input[value="${value}"]`).checked=true;showAnswer(form,q,value);}form.addEventListener('submit',event=>{event.preventDefault();const value=new FormData(form).get(q.id);if(!q.options.some(o=>o.id===value))return;answers[q.id]=value;save();showAnswer(form,q,value);stats();});form.addEventListener('change',()=>{delete answers[q.id];form.querySelector('.answer-note').hidden=true;save();stats();});}
+stats();
+for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEventListener('click',()=>{answers={};save();for(const form of document.querySelectorAll('[data-question]')){form.reset();form.querySelector('.answer-note').hidden=true;}stats();});
+const highlightTools=document.querySelector('.highlight-tools');
+if(highlightTools){
+ const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const addHighlight=highlightTools.querySelector('[data-highlight-add]');
+ const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
+ const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
+ const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
+ const importHighlights=highlightTools.querySelector('[data-highlight-import]');
+ const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
+ const blockSelector='p,li,blockquote,td';
+ const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
+ const maxHighlights=500;
+ let storageAvailable=true;
+ let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
+ let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
+ function cleanHighlight(item){
+  if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
+  if(!item.quote.trim()||item.quote.length>10000)return null;
+  return {id:item.id.slice(0,100),sectionId:item.sectionId.slice(0,200),quote:item.quote,blockText:typeof item.blockText==='string'?item.blockText.slice(0,30000):'',start:Number.isInteger(item.start)?item.start:null,end:Number.isInteger(item.end)?item.end:null,prefix:typeof item.prefix==='string'?item.prefix.slice(-160):'',suffix:typeof item.suffix==='string'?item.suffix.slice(0,160):'',version:typeof item.version==='string'?item.version:'',sourceHash:typeof item.sourceHash==='string'?item.sourceHash:'',createdAt:typeof item.createdAt==='string'?item.createdAt:new Date().toISOString(),status:'stale'};
+ }
+ try{
+  const stored=JSON.parse(localStorage.getItem(highlightKey)||'null');
+  const items=Array.isArray(stored)?stored:stored?.lessonId===data.meta.id?stored.items:[];
+  if(Array.isArray(items))highlightState.items=items.map(cleanHighlight).filter(Boolean).slice(0,maxHighlights);
+ }catch{storageAvailable=false;}
+ function saveHighlights(){
+  try{localStorage.setItem(highlightKey,JSON.stringify(highlightState));return true;}
+  catch{storageAvailable=false;return false;}
+ }
+ function nodeElement(node){return node?.nodeType===Node.ELEMENT_NODE?node:node?.parentElement;}
+ function blockFor(node){
+  const block=nodeElement(node)?.closest(blockSelector);
+  return block&&!block.closest(excludedSelector)&&block.closest('.lesson-section')?block:null;
+ }
+ function intersects(range,node){try{return range.intersectsNode(node);}catch{return false;}}
+ function marksFor(range){
+  if(!range)return[];
+  const ids=new Set();
+  for(const mark of document.querySelectorAll('mark.stellar-highlight[data-highlight-id]'))if(intersects(range,mark))ids.add(mark.dataset.highlightId);
+  return [...ids];
+ }
+ function selectionInfo(range){
+  if(!range||range.collapsed)return null;
+  const block=blockFor(range.startContainer);
+  if(!block||blockFor(range.endContainer)!==block||!range.toString().trim())return null;
+  for(const node of block.querySelectorAll('math,a,code,pre'))if(intersects(range,node))return null;
+  return {block,range};
+ }
+ function boundaryOffset(block,container,offset){
+  const before=document.createRange();
+  before.selectNodeContents(block);
+  try{before.setEnd(container,offset);return before.toString().length;}catch{return -1;}
+ }
+ function makeHighlight(info){
+  const {block,range}=info,start=boundaryOffset(block,range.startContainer,range.startOffset),end=boundaryOffset(block,range.endContainer,range.endOffset),blockText=block.textContent||'',quote=blockText.slice(start,end);
+  if(start<0||end<=start||!quote.trim())return null;
+  const section=block.closest('.lesson-section');
+  return {id:typeof crypto?.randomUUID==='function'?crypto.randomUUID():`h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,sectionId:section.id,quote,blockText,start,end,prefix:blockText.slice(Math.max(0,start-160),start),suffix:blockText.slice(end,end+160),version:data.meta.version,sourceHash:data.sourceHash,createdAt:new Date().toISOString(),status:'active'};
+ }
+ function selectableTextNodes(block){
+  const walker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while(node=walker.nextNode())nodes.push(node);
+  return nodes;
+ }
+ function wrapOffsets(block,start,end,id){
+  const nodes=selectableTextNodes(block),ranges=[];
+  let cursor=0;
+  for(const node of nodes){
+   const length=node.nodeValue.length,nodeStart=cursor,nodeEnd=cursor+length;cursor=nodeEnd;
+   const localStart=Math.max(start-nodeStart,0),localEnd=Math.min(end-nodeStart,length);
+   if(localEnd<=localStart||node.parentElement?.closest('mark,a,code,pre,math'))continue;
+   ranges.push({node,localStart,localEnd});
+  }
+  if(!ranges.length)return false;
+  for(let i=ranges.length-1;i>=0;i--){
+   const part=ranges[i],range=document.createRange();range.setStart(part.node,part.localStart);range.setEnd(part.node,part.localEnd);
+   const mark=document.createElement('mark');mark.className='stellar-highlight';mark.dataset.highlightId=id;mark.title='选择后可取消高亮';
+   mark.append(range.extractContents());range.insertNode(mark);
+  }
+  return true;
+ }
+ function unwrapHighlight(id){
+  for(const mark of [...document.querySelectorAll('mark.stellar-highlight[data-highlight-id]')].filter(mark=>mark.dataset.highlightId===id))mark.replaceWith(...mark.childNodes);
+ }
+ function clearRenderedHighlights(){for(const mark of [...document.querySelectorAll('mark.stellar-highlight')])mark.replaceWith(...mark.childNodes);}
+ function findPositions(text,quote){
+  const positions=[];let from=0;
+  while(quote&&from<=text.length){const position=text.indexOf(quote,from);if(position<0)break;positions.push(position);from=position+Math.max(quote.length,1);}
+  return positions;
+ }
+ function contextMatches(text,start,item){
+  return (!item.prefix||text.slice(Math.max(0,start-item.prefix.length),start).endsWith(item.prefix))&&(!item.suffix||text.slice(start+item.quote.length,start+item.quote.length+item.suffix.length).startsWith(item.suffix));
+ }
+ function locateHighlight(item){
+  const section=document.getElementById(item.sectionId);if(!section)return null;
+  let blocks=[...section.querySelectorAll(blockSelector)].filter(block=>!block.closest(excludedSelector));
+  const exact=item.blockText?blocks.filter(block=>block.textContent===item.blockText):[];
+  if(exact.length)blocks=exact;
+  const matches=[];
+  for(const block of blocks){
+   const text=block.textContent||'',positions=findPositions(text,item.quote);
+   for(const start of positions)if(contextMatches(text,start,item))matches.push({block,start,end:start+item.quote.length});
+  }
+  if(matches.length===1)return matches[0];
+  if(Number.isInteger(item.start)&&Number.isInteger(item.end)){
+   const exactPosition=matches.find(match=>match.start===item.start&&match.end===item.end);
+   if(exactPosition)return exactPosition;
+  }
+  return null;
+ }
+ function restoreHighlights(){
+  clearRenderedHighlights();
+  const applied=[];
+  for(const item of highlightState.items){
+   const match=locateHighlight(item);
+   const overlaps=match&&applied.some(previous=>previous.block===match.block&&match.start<previous.end&&previous.start<match.end);
+   if(!match||overlaps||!wrapOffsets(match.block,match.start,match.end,item.id)){item.status='stale';continue;}
+   item.status='active';item.version=data.meta.version;item.sourceHash=data.sourceHash;applied.push(match);
+  }
+  highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
+ }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  addHighlight.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+  addHighlight.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  refreshHighlightUI();
+ }
+ function refreshHighlightUI(){
+  const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
+  clearHighlights.disabled=highlightState.items.length===0;
+  if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
+ }
+ function updateHighlightSelection(){
+  const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
+  addHighlight.disabled=false;
+  removeHighlight.hidden=ids.length===0;
+  removeHighlight.disabled=ids.length===0;
+ }
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return false;
+  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
+ document.addEventListener('selectionchange',()=>{
+  const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
+  updateHighlightSelection();
+ });
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
+ addHighlight.addEventListener('click',()=>{
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
+ });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
+ removeHighlight.addEventListener('click',()=>{
+  const ids=marksFor(pendingRange);if(!ids.length)return;
+  for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
+  saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ clearHighlights.addEventListener('click',()=>{
+  clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ exportHighlights.addEventListener('click',()=>{
+  const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+ });
+ importHighlights.addEventListener('change',async()=>{
+  const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
+  try{
+   const payload=JSON.parse(await file.text());
+   if(payload?.lessonId!==data.meta.id||!Array.isArray(payload.items))throw Error('课程不匹配或文件格式不正确');
+   const merged=new Map(highlightState.items.map(item=>[item.id,item]));
+   for(const item of payload.items.map(cleanHighlight).filter(Boolean))merged.set(item.id,item);
+   highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
+  }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
+ });
+ restoreHighlights();
+}
+const quizReturn=document.querySelector('[data-return-to-quiz]');
+let reviewForm=null;
+const visibleQuestions=new Set();
+function updateQuizReturn(){quizReturn.hidden=!reviewForm||visibleQuestions.has(reviewForm);}
+const quizObserver=new IntersectionObserver(entries=>{
+ for(const entry of entries){if(entry.isIntersecting)visibleQuestions.add(entry.target);else visibleQuestions.delete(entry.target);}
+ updateQuizReturn();
+});
+for(const form of document.querySelectorAll('[data-question]'))quizObserver.observe(form);
+for(const [index,link] of [...document.querySelectorAll('.concept-link')].entries())link.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ reviewForm=link.closest('[data-question]');
+ quizReturn.textContent=`返回课后题 · 第 ${index+1} 题 ↓`;
+ updateQuizReturn();
+});
+quizReturn.addEventListener('click',()=>{
+ if(!reviewForm)return;
+ const form=reviewForm;
+ reviewForm=null;updateQuizReturn();
+ // Replace the concept anchor so reload stays at the question and Back still works.
+ history.replaceState(history.state,'','#'+form.id);
+ form.setAttribute('tabindex','-1');
+ form.focus({preventScroll:true});
+ form.scrollIntoView({block:'start'});
+});
+for(const activity of document.querySelectorAll('[data-parallax]')){const slider=activity.querySelector('input');function update(){const d=Number(slider.value),p=1/d,x=350+Math.log(d)*65;activity.querySelector('[data-distance]').textContent=d;activity.querySelector('[data-parallax-value]').textContent=p.toFixed(3)+'″';activity.querySelector('[data-full-angle]').textContent=(2*p).toFixed(3)+'″';activity.querySelector('[data-star]').setAttribute('cx',x);activity.querySelector('[data-star-label]').setAttribute('x',x-14);for(const ray of activity.querySelectorAll('[data-ray]'))ray.setAttribute('x2',x);}slider.addEventListener('input',update);update();}
+const dialog=document.getElementById('feedback-dialog');let opener=null;
+for(const button of document.querySelectorAll('[data-feedback]'))button.addEventListener('click',()=>{
+ opener=button;const target=button.dataset.feedback,label=button.dataset.label;
+ dialog.querySelector('[data-feedback-context]').textContent=label;
+ dialog.querySelector('[data-feedback-status]').textContent='';
+ const location=dialog.querySelector('[data-feedback-location]');
+ location.value=`${data.meta.scope} | ${data.meta.id} | 更新于 ${data.meta.updated||"未标注"} | ${target}\n${label}\n内容指纹：${data.sourceHash}`;
+ const url=data.feedback?.formUrl;dialog.querySelector('[data-feedback-ready]').hidden=!url;dialog.querySelector('[data-feedback-unavailable]').hidden=!!url;
+ const link=dialog.querySelector('[data-feedback-form-link]');if(url)link.href=url;else link.removeAttribute('href');
+ dialog.showModal();
+});
+ dialog.querySelector('[data-close-feedback]').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>opener?.focus());
+ dialog.querySelector('[data-copy-location]').addEventListener('click',async()=>{const location=dialog.querySelector('[data-feedback-location]');try{await navigator.clipboard.writeText(location.value);dialog.querySelector('[data-feedback-status]').textContent='已复制课程位置。';}catch{location.focus();location.select();dialog.querySelector('[data-feedback-status]').textContent='请复制已选中的课程位置。';}});
+})();
+
+/* Pure teaching models. Units and approximations are exposed beside each activity. */
+const StellarPhysics=(()=>{
+ const h=6.62607015e-34,c=299792458,k=1.380649e-23,sigma=5.670374419e-8;
+ const planck=(nm,T)=>{const l=nm*1e-9;return 2*h*c*c/(l**5*Math.expm1(h*c/(l*k*T)));};
+ const planckNu=(hz,T)=>2*h*hz**3/(c*c*Math.expm1(h*hz/(k*T)));
+ const magnitude=(ratio)=>-2.5*Math.log10(ratio);
+ const apparent=(M,d,A=0)=>M+5*Math.log10(d/10)+A;
+ const luminosity=(R,T)=>R*R*(T/5800)**4;
+ const color=(T)=>magnitude((planck(440,T)/planck(550,T))/(planck(440,10000)/planck(550,10000)));
+ const hydrogen=(T,ne)=>{const excited=4*Math.exp(-10.2*1.602176634e-19/(k*T));/* Z_I=2(1+excited), Z_II=1; the leading Saha factor 2 cancels the ground-state weight 2. */const ratio=(2*Math.PI*9.1093837e-31*k*T/(h*h))**1.5/ne*Math.exp(-13.6*1.602176634e-19/(k*T))/(1+excited);return {neutral:1/(1+ratio),excited:excited/(1+excited),lower:excited/(1+excited)/(1+ratio)};};
+ const slab=(I0,S,tau)=>({transmitted:I0*Math.exp(-tau),emitted:S*(-Math.expm1(-tau)),total:I0*Math.exp(-tau)+S*(-Math.expm1(-tau))});
+ const lineTau=(x,tc,tl)=>tc+tl*Math.exp(-x*x/2);
+ // z increases inward, total continuum depth 8; S(z)=1+g(z/8-1/2).
+ // Constant source within each cell, exact formal propagation from back to front.
+ const stratified=(factor,g,N=240)=>{let I=1+g/2;const dt=8*factor/N;for(let i=N-1;i>=0;i--){const z=(i+.5)/N;I=slab(I,1+g*(z-.5),dt).total;}return I;};
+ const limb=(mu,a,b,q=0)=>a+b*mu+2*q*mu*mu;
+ const grey=(tau,Teff)=>Teff*(.75*(tau+2/3))**.25;
+ const hydrogenEdge=n=>h*c/(13.6*1.602176634e-19/(n*n))*1e9;
+ // Fixed grey background; Eddington-Barbier estimate only, no equilibrium iteration.
+ const formation=(r,T,wave)=>{const tau=2/(3*r),temp=grey(tau,T);return {tau,temp,ratio:planck(wave,temp)/planck(wave,T)};};
+ const rosselandTwo=(a,b,w)=>1/(w/a+(1-w)/b);
+ const scaleHeight=(T,g,mu)=>k*T/(mu*1.6735575e-27*g);
+ // kappa = kappa0 * (P/P0)^n; surface P=0, tau=0.
+ const pressure=(tau,g,n,kappa0=.01,P0=10000)=>P0*((n+1)*g*tau/(kappa0*P0))**(1/(n+1));
+ // Illustrative normalized Gaussian core plus Lorentz wing, not an exact Voigt function.
+ const growthShape=(u,wing)=>((1-wing)*Math.exp(-u*u)/Math.sqrt(Math.PI)+wing/(Math.PI*(1+u*u)));
+ const growthResidual=(u,amount,width,wing,limit=.75)=>limit*(-Math.expm1(-amount/width*growthShape(u,wing)));
+ const growthWidth=(amount,width,wing,limit=.75)=>{
+  // Extend the Lorentz tail until its optical depth is below 0.002.
+  // Beyond the endpoint, use the first two optically thin tail terms.
+  const C=amount*wing/(Math.PI*width),end=Math.max(120,Math.sqrt(C/.002));
+  const count=Math.ceil(end/.1),step=end/count;let sum=0;
+  for(let i=0;i<count;i++)sum+=growthResidual((i+.5)*step,amount,width,wing,limit)*step;
+  const a=Math.atan(1/end),b=(a-end/(1+end*end))/2;
+  return 2*width*(sum+limit*(C*a-C*C*b/2));
+ };
+ // Inglis-Teller (original textbook Eq. 11.1): electron density in cm^-3.
+ const inglisTeller=upper=>10**(23.26-7.5*Math.log10(upper));
+ return {formation,rosselandTwo,scaleHeight,pressure,limb,grey,hydrogenEdge,slab,lineTau,stratified,hydrogen,growthShape,growthResidual,growthWidth,inglisTeller,planck,planckNu,magnitude,apparent,luminosity,color,sigma};
+})();
+if(typeof module!=='undefined')module.exports=StellarPhysics;
+
+(()=>{
+ const P=StellarPhysics,NS='http://www.w3.org/2000/svg';
+ function node(svg,tag,attrs={},text){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));if(text!==undefined)n.textContent=text;svg.append(n);return n;}
+ const line=(s,x1,y1,x2,y2,color='#7b8d9a',extra={})=>node(s,'line',{x1,y1,x2,y2,stroke:color,'stroke-width':2,...extra});
+ const label=(s,x,y,t,extra={})=>node(s,'text',{x,y,...extra},t);
+ function axes(s,xlabel,ylabel,xmax=1,ymax=1){line(s,65,300,660,300);line(s,65,300,65,40);label(s,355,345,xlabel,{'text-anchor':'middle'});label(s,65,23,ylabel);return {x:v=>65+595*v/xmax,y:v=>300-250*v/ymax};}
+ function curve(s,points,color='#eab76f',dash=false){node(s,'path',{d:points.map(([x,y],i)=>`${i?'L':'M'}${x.toFixed(2)} ${y.toFixed(2)}`).join(' '),fill:'none',stroke:color,'stroke-width':3,...(dash?{'stroke-dasharray':'7 6'}:{})});}
+ const fmt=(n,d=2)=>Number(n).toFixed(d);
+ const scientific=(n,d=2)=>{const [mantissa,exponent]=n.toExponential(d).split('e');const sup={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return mantissa+' × 10'+String(Number(exponent)).split('').map(c=>sup[c]).join('');};
+ for(const lab of document.querySelectorAll('[data-explorer]')){
+  const svg=lab.querySelector('svg'),result=lab.querySelector('.lab-result');
+  function update(){
+   const v={};for(const input of lab.querySelectorAll('[data-param]')){v[input.dataset.param]=input.tagName==='SELECT'?input.value:Number(input.value);const out=lab.querySelector(`[data-out="${input.dataset.param}"]`);if(out)out.textContent=input.value+(input.dataset.param==='T'?' K':input.dataset.param==='d'?' pc':input.dataset.param==='R'?' R☉':'');}
+   svg.replaceChildren();let text='';
+   switch(lab.dataset.explorer){
+    case 'nongrey':{const a=axes(svg,'参考光学深度（向内）','T / T₀',3,1.5);for(const x of [0,1,2,3])label(svg,a.x(x),322,x,{'text-anchor':'middle'});for(const y of [.5,1,1.5])label(svg,58,a.y(y)+5,y,{'text-anchor':'end'});curve(svg,Array.from({length:101},(_,i)=>[a.x(i*.03),a.y(P.grey(i*.03,1))]));const f=P.formation(v.r,v.T,v.wave);line(svg,a.x(f.tau),40,a.x(f.tau),300,'#8ccac8',{'stroke-dasharray':'8 5'});node(svg,'circle',{cx:a.x(f.tau),cy:a.y(f.temp/v.T),r:6,fill:'#fff1c9'});text=`r=${fmt(v.r)}：τλ=2/3 对应 τR=${fmt(f.tau,3)}，T=${fmt(f.temp,0)} K。在 ${v.wave} nm，出射通量 / 同温度参数灰模型通量 ≈ ${fmt(f.ratio,3)}。此比值只比较同一个波长。`;break;}
+    case 'rosseland':{const R=P.rosselandTwo(v.a,v.b,v.w),A=v.w*v.a+(1-v.w)*v.b;for(const [i,name,value]of [[0,'波段 A',v.a],[1,'波段 B',v.b],[2,'Rosseland',R],[3,'算术平均',A]]){const y=65+i*62;label(svg,145,y+20,name,{'text-anchor':'end'});node(svg,'rect',{x:160,y,width:420*value/10,height:27,fill:i===2?'#eab76f':'#8ccac8'});label(svg,170+420*value/10,y+20,fmt(value,2));}label(svg,350,335,'各不透明度 / κ₀；共同线性标尺',{'text-anchor':'middle'});text=`κR/κ₀=${fmt(R,3)}，算术平均=${fmt(A,3)}。A 波段承担 ${fmt(100*(v.w/v.a)*R,1)}% 的扩散通量，B 波段承担 ${fmt(100*((1-v.w)/v.b)*R,1)}%。`;break;}
+    case 'scaleheight':{const a=axes(svg,'向外高度 z / km','压强 P / P₀',1000,1);for(const x of [0,200,400,600,800,1000])label(svg,a.x(x),322,x,{'text-anchor':'middle'});for(const y of [0,.5,1])label(svg,58,a.y(y)+5,y,{'text-anchor':'end'});const H=P.scaleHeight(v.T,v.g,v.mu)/1000,H0=P.scaleHeight(6000,270,1.3)/1000;for(const [hh,col,dash]of [[H0,'#8ccac8',true],[H,'#eab76f',false]])curve(svg,Array.from({length:201},(_,i)=>[a.x(i*5),a.y(Math.exp(-i*5/hh))]),col,dash);text=`H=${fmt(H,1)} km；向外上升一个 H，P/P₀=e⁻¹≈0.368。在 z=200 km，P/P₀=${fmt(Math.exp(-200/H),3)}。${H>1000?'当前标高超出图中 1000 km 的横轴范围。':''}`;break;}
+    case 'pressure':{const a=axes(svg,'向内光学深度','气体压强 / kPa',2,85);for(const x of [0,.5,1,1.5,2])label(svg,a.x(x),322,x,{'text-anchor':'middle'});for(const y of [0,20,40,60,80])label(svg,58,a.y(y)+5,y,{'text-anchor':'end'});for(const [g,col,dash]of [[100,'#8ccac8',true],[v.g,'#eab76f',false]])curve(svg,Array.from({length:101},(_,i)=>[a.x(i/50),a.y(P.pressure(i/50,g,v.n)/1000)]),col,dash);const p=P.pressure(v.tau,v.g,v.n),p0=P.pressure(v.tau,100,v.n);node(svg,'circle',{cx:a.x(v.tau),cy:a.y(p/1000),r:6,fill:'#fff1c9'});text=`τR=${fmt(v.tau,1)}：P=${fmt(p/1000,3)} kPa；相对 g=100 m s⁻² 的压强比=${fmt(p/p0,3)}。重力指数 1/(n+1)=${fmt(1/(v.n+1),3)}。`;break;}
+
+    case 'limb':{const a=axes(svg,'方向余弦 μ（近边缘 → 中心）','强度 / Iᵣ',1,3.5);for(const x of [0,.2,.4,.6,.8,1])label(svg,a.x(x),322,x,{'text-anchor':'middle'});for(const y of [0,1,2,3])label(svg,55,a.y(y)+5,y,{'text-anchor':'end'});curve(svg,Array.from({length:101},(_,i)=>[a.x(i/100),a.y(P.limb(i/100,.4,v.b,v.q))]));curve(svg,Array.from({length:101},(_,i)=>{const m=i/100;return[a.x(m),a.y(.4+v.b*m+v.q*m*m)];}),'#8ccac8',true);const I=P.limb(v.mu,.4,v.b,v.q);node(svg,'circle',{cx:a.x(v.mu),cy:a.y(I),r:6,fill:'#fff1c9'});text=`μ=${fmt(v.mu)}，出射 I/Iᵣ=${fmt(I,3)}；S(τ=μ)/Iᵣ=${fmt(.4+v.b*v.mu+v.q*v.mu*v.mu,3)}。差值 qμ²=${fmt(v.q*v.mu*v.mu,3)}；F/(πIᵣ)=${fmt(.4+2*v.b/3+v.q,3)}。`;break;}
+    case 'grey':{const a=axes(svg,'向内光学深度 τ','温度 / K',5,15000);for(const t of [0,1,2,3,4,5])label(svg,a.x(t),322,t,{'text-anchor':'middle'});for(const y of [0,5000,10000,15000])label(svg,58,a.y(y)+5,y,{'text-anchor':'end'});for(const [T,col,dash]of [[6000,'#8ccac8',true],[v.T,'#eab76f',false]])curve(svg,Array.from({length:201},(_,i)=>[a.x(i/40),a.y(P.grey(i/40,T))]),col,dash);line(svg,a.x(2/3),40,a.x(2/3),300,'#edf0e9',{'stroke-dasharray':'2 5'});node(svg,'circle',{cx:a.x(v.tau),cy:a.y(P.grey(v.tau,v.T)),r:6,fill:'#fff1c9'});text=`τ=${fmt(v.tau)}：T=${fmt(P.grey(v.tau,v.T),0)} K；T / 有效温度 =${fmt(P.grey(v.tau,1),3)}。表面 T(0)=${fmt(P.grey(0,v.T),0)} K；每层净通量 F=${scientific(P.sigma*v.T**4)} W m⁻²。`;break;}
+    case 'edges':{const E=1239.841984/v.wave,threshold=13.6/v.n**2,y=e=>290-e/26*240;line(svg,110,290,640,290);for(const [e,name,col,dash]of [[threshold,'电离阈值','#8ccac8','8 5'],[E,'光子能量','#eab76f','']]){line(svg,120,y(e),620,y(e),col,{'stroke-dasharray':dash});label(svg,130,name==='电离阈值'?35:65,`${name} ${fmt(e,4)} eV`);}label(svg,110,335,'能量向上增大；实线为光子，虚线为电离阈值');text=`n=${v.n}，阈值波长 ${fmt(P.hydrogenEdge(v.n),1)} nm；当前光子 ${fmt(E,4)} eV：${E>=threshold?'能量足以电离，超出的能量可成为电子动能':'能量不足以从此能级电离'}。初始能级的粒子数仍决定吸收贡献。`;break;}
+    case 'projection':{const c=Math.cos(v.theta*Math.PI/180),sn=Math.sin(v.theta*Math.PI/180),len=72*v.area,cx=355,cy=172;
+ for(const y of [100,140,180,220,260]){line(svg,55,y,200,y,'#eab76f');node(svg,'path',{d:`M190 ${y-5} L200 ${y} L190 ${y+5}`,fill:'none',stroke:'#eab76f'});}
+ line(svg,cx-sn*len,cy+c*len,cx+sn*len,cy-c*len,'#c9e4e1',{'stroke-width':7});line(svg,cx,cy,cx+105*c,cy+105*sn,'#91aaa8',{'stroke-dasharray':'5 5'});
+ line(svg,540,cy-c*len,540,cy+c*len,'#eab76f',{'stroke-width':6});for(const k of [-1,1])line(svg,cx+k*sn*len,cy-k*c*len,540,cy-k*c*len,'#718686',{'stroke-dasharray':'3 5','stroke-width':1});
+ node(svg,'path',{d:`M${cx+35} ${cy} A35 35 0 0 1 ${cx+35*c} ${cy+35*sn}`,fill:'none',stroke:'#91aaa8'});label(svg,cx+112*c,cy+112*sn+18,'法线');label(svg,55,48,'固定方向的光线 →');label(svg,cx-60,335,'接收面 A');label(svg,500,335,'投影 A cosθ');label(svg,385,60,`θ = ${v.theta}°`);text=`投影面积 / A₀ = ${fmt(v.area*c,3)}；接收能量 E/E₀ = ${fmt(v.area*c,3)}。比强度保持不变。`;lab.querySelector('[data-out=theta]').textContent=v.theta+'°';break;}
+    case 'transfer':{const a=axes(svg,'沿光路累计光学深度 τ','比强度 / Iᵣ',8,2.15);for(const y of [0,.5,1,1.5,2]){label(svg,55,a.y(y)+5,y,{'text-anchor':'end'});line(svg,65,a.y(y),660,a.y(y),'#34475a',{'stroke-width':1});}for(const n of [0,2,4,6,8])label(svg,a.x(n),322,n,{'text-anchor':'middle'});
+ line(svg,65,a.y(v.S),660,a.y(v.S),'#849aac',{'stroke-dasharray':'10 4 2 4','stroke-width':1});label(svg,665,a.y(v.S)+4,'S');
+ for(const [key,color,dash]of [['transmitted','#8ccac8','9 6'],['emitted','#e49d79','2 5'],['total','#eab76f','']]){const pts=Array.from({length:161},(_,i)=>[a.x(i/20),a.y(P.slab(v.I0,v.S,i/20)[key])]);curve(svg,pts,color);svg.lastChild.setAttribute('stroke-dasharray',dash);}
+ line(svg,a.x(v.tau),40,a.x(v.tau),300,'#edf0e9',{'stroke-dasharray':'3 6','stroke-width':1});const t=P.slab(v.I0,v.S,v.tau);node(svg,'circle',{cx:a.x(v.tau),cy:a.y(t.total),r:6,fill:'#fff1c9'});text=`τ=${fmt(v.tau)}：透射背景 ${fmt(t.transmitted,3)} + 气层发射 ${fmt(t.emitted,3)} = 出射总强度 ${fmt(t.total,3)}（均除以 Iᵣ）。背景保留 ${fmt(100*Math.exp(-v.tau),1)}%。`;break;}
+    case 'lineformation':{const a=axes(svg,'离线心的距离 x / 固定线宽','出射比强度 / Iᵣ',10,2.15);a.x=x=>65+(x+5)*59.5;for(const y of [0,.5,1,1.5,2]){label(svg,55,a.y(y)+5,y,{'text-anchor':'end'});line(svg,65,a.y(y),660,a.y(y),'#34475a',{'stroke-width':1});}for(const x of [-4,-2,0,2,4])label(svg,a.x(x),322,x,{'text-anchor':'middle'});
+ const cont=P.slab(v.I0,v.S,v.continuum).total,center=P.slab(v.I0,v.S,v.continuum+v.lineDepth).total;
+ line(svg,65,a.y(cont),660,a.y(cont),'#8ccac8',{'stroke-dasharray':'8 6'});curve(svg,Array.from({length:301},(_,i)=>{const x=-5+i/30;return[a.x(x),a.y(P.slab(v.I0,v.S,P.lineTau(x,v.continuum,v.lineDepth)).total)];}));node(svg,'circle',{cx:a.x(0),cy:a.y(center),r:5,fill:'#fff1c9'});
+    const diff=center-cont;label(svg,85,50,'实线：含谱线　虚线：连续谱');text=`线心 τ=${fmt(v.continuum+v.lineDepth)}；连续谱 I꜀/Iᵣ=${fmt(cont,3)}，线心 Iₗ/Iᵣ=${fmt(center,3)}。差值 ${diff>=0?'+':''}${fmt(diff,3)}：${Math.abs(diff)<1e-5?'谱线对比消失':diff<0?'吸收线':'发射线'}。`;break;}
+    case 'growth':{const x=q=>65+(q+2)*595/6,y=w=>300-(w+3)*250/5.4;
+     line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,'log₁₀ Q（相对吸收原子数 × f）',{'text-anchor':'middle'});label(svg,65,23,'log₁₀(W / 参考宽度)');
+     for(const q of [-2,-1,0,1,2,3,4])label(svg,x(q),322,q,{'text-anchor':'middle'});for(const w of [-3,-2,-1,0,1,2])label(svg,55,y(w)+5,w,{'text-anchor':'end'});
+     const samples=Array.from({length:81},(_,i)=>{const q=-2+6*i/80;return[x(q),y(Math.log10(P.growthWidth(10**q,v.width,v.wing)))];});curve(svg,samples);
+     curve(svg,Array.from({length:40},(_,i)=>{const q=-2+3.5*i/39;return[x(q),y(Math.log10(.75*10**q))];}),'#8ccac8',true);
+     const Q=10**v.logAmount,W=P.growthWidth(Q,v.width,v.wing),R=P.growthResidual(0,Q,v.width,v.wing),slope=Math.log(P.growthWidth(Q*1.1,v.width,v.wing)/P.growthWidth(Q/1.1,v.width,v.wing))/Math.log(1.1**2);
+     node(svg,'circle',{cx:x(v.logAmount),cy:y(Math.log10(W)),r:7,fill:'#fff1c9'});label(svg,350,55,'实线：当前模型　虚线：弱线线性参考',{'text-anchor':'middle'});
+     text=`Q=${fmt(Q,Q<1?3:1)}；W/参考宽度=${fmt(W,3)}；中心线深=${fmt(R,3)}（上限 0.75）；局部增长斜率 d log W/d log Q≈${fmt(slope,2)}。在极弱线斜率接近 1，中心饱和后小于 1。`;break;}
+    case 'inglisteller':{const x=n=>65+(n-7)*595/13,y=d=>300-(d-13)*250/5;
+     line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,'最后可分辨线的上能级 nᵤ',{'text-anchor':'middle'});label(svg,65,23,'log₁₀(nₑ / cm⁻³)');
+     for(const n of [7,9,12,15,18,20])label(svg,x(n),322,n,{'text-anchor':'middle'});for(const d of [13,14,15,16,17,18])label(svg,55,y(d)+5,d,{'text-anchor':'end'});
+     curve(svg,Array.from({length:131},(_,i)=>{const n=7+i/10;return[x(n),y(Math.log10(P.inglisTeller(n)))];}));const ne=P.inglisTeller(v.upper);node(svg,'circle',{cx:x(v.upper),cy:y(Math.log10(ne)),r:7,fill:'#fff1c9'});
+     label(svg,355,58,'Hα: n=3   Hβ: n=4   Hγ: n=5',{'text-anchor':'middle'});text=`nᵤ=${v.upper} 时，log₁₀(nₑ/cm⁻³)=${fmt(Math.log10(ne),3)}，nₑ≈${scientific(ne,2)} cm⁻³ = ${scientific(ne*1e6,2)} m⁻³。nᵤ 越大，按此近似推得的电子密度越低。`;break;}
+    case 'stratification':{const x=z=>75+z/8*575,y=S=>280-(S-.1)/1.8*205;line(svg,75,280,650,280);line(svg,75,280,75,55);label(svg,75,25,'源函数 S / Iᵣ');label(svg,350,337,'连续谱光深 z（向内增大）',{'text-anchor':'middle'});for(const n of [0,2,4,6,8])label(svg,x(n),305,n,{'text-anchor':'middle'});for(const n of [.5,1,1.5])label(svg,60,y(n)+5,n,{'text-anchor':'end'});
+ curve(svg,[[x(0),y(1-v.gradient/2)],[x(8),y(1+v.gradient/2)]],'#eab76f');for(const [z,col,dash,t]of [[1,'#8ccac8','8 5','连续谱 z=1'],[1/v.opacity,'#e49d79','2 5','线心 z=1/r']]){line(svg,x(z),70,x(z),280,col,{'stroke-dasharray':dash});node(svg,'circle',{cx:x(z),cy:y(1+v.gradient*(z/8-.5)),r:5,fill:col});label(svg,345,t.startsWith('连续')?60:86,t,{fill:col});}
+ const ic=P.stratified(1,v.gradient),il=P.stratified(v.opacity,v.gradient);text=`连续谱出射 ${fmt(ic,4)}；线心出射 ${fmt(il,4)}（均除以 Iᵣ）。${Math.abs(ic-il)<1e-6?'两者相等，谱线消失。':il<ic?'线心更暗：吸收线。':'线心更亮：发射线。'}竖线仅标记光深为 1 的位置；实际数值累加了全部层的贡献。`;break;}
+    case 'brightness':{const ratio=v.L*(10/v.d)**2,dm=P.magnitude(ratio);node(svg,'circle',{cx:110,cy:145,r:35,fill:'#eab76f'});label(svg,110,205,`L = ${fmt(v.L,1)} L₀`,{'text-anchor':'middle'});const x=240+v.d*3.6;line(svg,160,145,x-20,145,'#eab76f',{'stroke-dasharray':'6 7'});node(svg,'rect',{x:x-10,y:100,width:18,height:90,fill:'#8ccac8'});label(svg,x,220,'探测器',{'text-anchor':'middle'});label(svg,(x+145)/2,122,`${v.d} pc`,{'text-anchor':'middle'});label(svg,65,270,'接收到的通量 / 参考通量');node(svg,'rect',{x:65,y:285,width:595,height:17,fill:'#34475a'});node(svg,'rect',{x:65,y:285,width:595*Math.min(ratio,1),height:17,fill:'#eab76f'});label(svg,65,335,ratio>1?'柱条封顶于参考通量；完整数值见下方。':'固定标尺：满格 = 参考通量');text=`通量比 ${fmt(ratio,3)}　｜　星等差 Δm = ${fmt(dm)}。${dm>0?'看起来更暗，星等变大。':dm<0?'看起来更亮，星等变小。':'与参考一样亮。'}`;break;}
+    case 'color':{const a=axes(svg,'波长 / nm','归一化 Bλ',900,1.1),max=P.planck(2.897771955e6/v.T,v.T);for(const [nm,col,name]of [[440,'#81a5ec','B'],[550,'#88c7ac','V']]){node(svg,'rect',{x:a.x(nm-15),y:40,width:a.x(30)-65,height:260,fill:col,opacity:.25});label(svg,a.x(nm),65,`${name} 窗`,{'text-anchor':'middle'});}curve(svg,Array.from({length:240},(_,i)=>{const nm=100+i*800/239;return[a.x(nm),a.y(P.planck(nm,v.T)/max)];}));for(const n of [200,400,600,800])label(svg,a.x(n),322,n,{'text-anchor':'middle'});text=`蓝/绿窄窗通量比 ${fmt(P.planck(440,v.T)/P.planck(550,v.T))}　｜　教学色指数 ${fmt(P.color(v.T))}。数值依赖这里选择的零点与窄窗。`;break;}
+    case 'airmass':{const a=axes(svg,'大气质量 X','m − m₀ / mag（向上增大）',3,2);curve(svg,[[a.x(0),a.y(0)],[a.x(3),a.y(v.k*3)]]);for(const x of [1,2,3]){node(svg,'circle',{cx:a.x(x),cy:a.y(v.k*x),r:5,fill:'#83bbb8'});label(svg,a.x(x),323,x,{'text-anchor':'middle'});}node(svg,'circle',{cx:a.x(v.X),cy:a.y(v.k*v.X),r:8,fill:'#eab76f'});label(svg,80,278,'X=0：外推到大气外');for(const y of [0.5,1,1.5,2])label(svg,56,a.y(y)+5,fmt(y,1),{'text-anchor':'end'});text=`当前 m = ${fmt(8+v.k*v.X)}　｜　扣除 kX = ${fmt(v.k*v.X)}　→　m₀ = 8.00。地面天顶约 X=1，仍有消光。`;break;}
+    case 'cmd':{const x=n=>90+(n+.4)/2.4*540,y=n=>45+(n+5)/23*250;line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,'颜色 B − V（示意）',{'text-anchor':'middle'});label(svg,65,23,v.axis==='M'?'绝对星等 Mᵥ（上方更亮）':'视星等 mᵥ（上方更亮）');for(const m of [-5,0,5,10,15]){label(svg,55,y(m)+5,m,{'text-anchor':'end'});line(svg,65,y(m),660,y(m),'#34475a',{'stroke-width':1});}for(const b of [0,0.5,1,1.5])label(svg,x(b),322,b,{'text-anchor':'middle'});const shift=v.axis==='m'?5*Math.log10(v.d/10):0;for(let i=0;i<18;i++){const b=v.group==='main'?-.25+i*.105:v.group==='giant'?.7+i*.045:-.25+i*.065;const M=v.group==='main'?-3+i*.88:v.group==='giant'?-2.4+i*.15:10.3+i*.16;node(svg,'circle',{cx:x(b),cy:y(M+shift),r:5,fill:b<.4?'#a9cafa':b<.9?'#f2d9a0':'#e79d76'});}text=`距离模数 ${fmt(5*Math.log10(v.d/10))} mag。${v.axis==='M'?'已统一到 10 pc，调整距离不会移动这些点。':'距离变远，所有点向下移动相同星等；颜色不因纯几何稀释而变化。'}`;break;}
+    case 'hydrogen':{const ne=10**v.ne,a=axes(svg,'温度 / K','H I 的 n=2 占全部氢比例 / 本曲线峰值',25000,1.1),samples=Array.from({length:300},(_,i)=>{const t=4000+i*21000/299;return[t,P.hydrogen(t,ne).lower];}),max=Math.max(...samples.map(p=>p[1]));curve(svg,samples.map(([t,n])=>[a.x(t),a.y(n/max)]));const h=P.hydrogen(v.T,ne);node(svg,'circle',{cx:a.x(v.T),cy:a.y(h.lower/max),r:7,fill:'#fff1c9'});for(const t of [5000,10000,15000,20000,25000])label(svg,a.x(t),322,t,{'text-anchor':'middle'});text=`中性氢占比 ${(100*h.neutral).toFixed(2)}%　｜　中性氢内 n=2 占比 ${scientific(h.excited,2)}　｜　全部氢中的 n=2 占比 ${scientific(h.lower,2)}。改变电子密度也会移动峰。`;break;}
+    case 'spectra':{const types=['O','B','A','F','G','K','M'],features=['He II 显著；氢线较弱','He I 显著；氢线增强','巴耳末线最显著','金属线逐渐显著；氢线减弱','金属线丰富；氢线更弱','中性金属特征显著','分子带显著；氢线弱'];const j=v.type,a=axes(svg,'波长 / nm','相对连续谱（示意）',710,1.15);a.x=nm=>65+(nm-380)/330*595;const H=[.12,.35,.78,.53,.3,.17,.07][j],met=[.03,.05,.08,.22,.36,.52,.45][j],he=[.1,.55,0,0,0,0,0][j];const dips=[[434,H,2.5],[486,H,3],[656,H*.8,3],[447,he,2],[454,j===0?.6:j===1?.1:0,2],[527,met,3],[589,met,3]];const pts=Array.from({length:601},(_,i)=>{const l=380+i*330/600;let f=1;for(const [center,amp,w]of dips)f-=amp*Math.exp(-.5*((l-center)/w)**2);if(j===6)f-=.42*Math.exp(-.5*((l-620)/18)**2)+.35*Math.exp(-.5*((l-685)/13)**2);return[a.x(l),a.y(Math.max(.02,f))];});curve(svg,pts);for(const nm of [400,500,600,700])label(svg,a.x(nm),322,nm,{'text-anchor':'middle'});for(const [nm,t]of [[434,'Hγ'],[486,'Hβ'],[656,'Hα']])label(svg,a.x(nm),55,t,{'text-anchor':'middle'});if(j<2)label(svg,a.x(j===0?454:447),83,j===0?'He II':'He I',{'text-anchor':'middle'});label(svg,90,105,types[j],{'font-size':40,fill:'#eab76f'});text=`${types[j]} 型：${features[j]}。O → B → A → F → G → K → M 是由热到冷的序列；这些线深只是定性提示。`;lab.querySelector('[data-out=type]').textContent=types[j];break;}
+    case 'blackbody':{const isL=v.density==='lambda',xmax=isL?2500:2000,f=(x,T)=>isL?P.planck(x,T):P.planckNu(x*1e12,T),peak=T=>isL?2.897771955e6/T:5.87892576e10*T/1e12,scale=v.scale==='normalized',unit=f(peak(6000),6000);const a=axes(svg,isL?'波长 λ / nm':'频率 ν / THz',scale?'各曲线按自己的峰归一化':'强度 / 6000 K 峰值（对数刻度）',xmax,scale?1.07:6);if(!scale){for(const [v,t]of [[0,'10⁻⁴'],[2,'10⁻²'],[4,'1'],[6,'10²']])label(svg,56,a.y(v)+5,t,{'text-anchor':'end'});}for(const [T,col,dash]of [[6000,'#849aac',true],[v.T,'#eab76f',false]]){const norm=scale?f(peak(T),T):unit;curve(svg,Array.from({length:400},(_,i)=>{const x=20+i*(xmax-20)/399;const ratio=f(x,T)/norm;return[a.x(x),a.y(scale?ratio:Math.max(0,Math.min(6,Math.log10(ratio)+4)))];}),col,dash);}for(const n of (isL?[500,1000,1500,2000,2500]:[400,800,1200,1600,2000]))label(svg,a.x(n),322,n,{'text-anchor':'middle'});line(svg,a.x(peak(v.T)),50,a.x(peak(v.T)),300,'#eab76f',{'stroke-dasharray':'3 5','stroke-width':1});text=`峰位置 ${fmt(peak(v.T),1)} ${isL?'nm':'THz'}　｜　总表面流量为 6000 K 的 ${fmt((v.T/6000)**4)} 倍。${scale?'峰高已归一化，不能由图中峰高判断总能量。':'同一标尺下，升温使各波长或频率处的强度都增大。'}`;break;}
+    case 'temperature':{const r=25*v.R;node(svg,'circle',{cx:350,cy:155,r,fill:v.T<5000?'#df986e':v.T<8000?'#edd4a1':'#accbed'});line(svg,350,155,350+r,155,'#142235');label(svg,350,155+r+30,`R = ${fmt(v.R,1)} R☉`,{'text-anchor':'middle'});label(svg,65,325,'圆盘半径随 R 成比例；每单位面积的能量输出由 T_eff 决定。');text=`表面流量 σT⁴ = ${scientific(P.sigma*v.T**4,3)} W m⁻²　｜　光度 L/L☉ = ${fmt(P.luminosity(v.R,v.T))}。`;break;}
+   }
+   result.textContent=text;
+   if(['nongrey','rosseland','scaleheight','pressure'].includes(lab.dataset.explorer)){
+    const pattern=/([κτ])([Rλ])/g;let start=0;result.replaceChildren();
+    for(const match of text.matchAll(pattern)){result.append(text.slice(start,match.index),match[1]);const sub=document.createElement('sub');sub.textContent=match[2];result.append(sub);start=match.index+match[0].length;}result.append(text.slice(start));
+   }
+   svg.setAttribute('aria-label',lab.querySelector('h3').textContent+'。'+text);
+  }
+  for(const c of lab.querySelectorAll('[data-param]'))c.addEventListener('input',update);update();
+ }
+ // Native anchors also reveal a target inside an optional explanation.
+ function reveal(){const id=decodeURIComponent(location.hash.slice(1));let target=document.getElementById(id);if(!target)return;for(let parent=target.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;}
+ window.addEventListener('hashchange',reveal);reveal();
+})();
+
+// Native SVG and controls only. No evaluation of strings or external requests.
+const StellarActivityUI=(()=>{
+ const NS='http://www.w3.org/2000/svg';
+ function node(svg,tag,attrs={},text){const n=document.createElementNS(NS,tag);for(const [key,value]of Object.entries(attrs))n.setAttribute(key,String(value));if(text!==undefined)n.textContent=text;svg.append(n);return n;}
+ const line=(svg,x1,y1,x2,y2,color='#7b8d9a',extra={})=>node(svg,'line',{x1,y1,x2,y2,stroke:color,'stroke-width':2,...extra});
+ const label=(svg,x,y,text,extra={})=>node(svg,'text',{x,y,...extra},text);
+ function axes(svg,xlabel,ylabel,xmax=1,ymax=1){line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,xlabel,{'text-anchor':'middle'});label(svg,65,23,ylabel);return {x:value=>65+595*value/xmax,y:value=>300-250*value/ymax};}
+ function curve(svg,points,color='#eab76f',dash=false){return node(svg,'path',{d:points.map(([x,y],i)=>`${i?'L':'M'}${Number(x).toFixed(2)} ${Number(y).toFixed(2)}`).join(' '),fill:'none',stroke:color,'stroke-width':3,...(dash?{'stroke-dasharray':'7 6'}:{})});}
+ const fmt=(value,digits=2)=>Number(value).toFixed(digits);
+ const scientific=(value,digits=2)=>{const [mantissa,exponent]=Number(value).toExponential(digits).split('e');const supers={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return mantissa+' × 10'+String(Number(exponent)).split('').map(c=>supers[c]).join('');};
+ function values(lab){const result={};const outputs=[...lab.querySelectorAll('[data-out]')];for(const input of lab.querySelectorAll('[data-param]')){const key=input.dataset.param;result[key]=input.tagName==='SELECT'?input.value:Number(input.value);const output=outputs.find(output=>output.dataset.out===key);if(output)output.textContent=input.value+(input.dataset.unit?' '+input.dataset.unit:'');}return result;}
+ function mount(type,update){for(const lab of document.querySelectorAll(`[data-lesson-activity="${type}"]`)){const svg=lab.querySelector('svg'),result=lab.querySelector('.lab-result');const refresh=()=>{svg.replaceChildren();const text=update({lab,svg,result,values:values(lab)});if(typeof text==='string')result.textContent=text;svg.setAttribute('aria-label',lab.querySelector('h3').textContent+'。'+result.textContent);};for(const input of lab.querySelectorAll('[data-param]'))input.addEventListener('input',refresh);refresh();}}
+ return Object.freeze({node,line,label,axes,curve,fmt,scientific,values,mount});
+})();
+
+(()=>{
+ const U=StellarActivityUI,k=1.380649e-23,mu=1.66053906660e-27,c=299792458;
+ U.mount('linewidths',({lab,svg,values:v})=>{
+  lab.querySelector('.lab-layout').style.gridTemplateColumns='minmax(0,1fr)';
+  Object.assign(lab.querySelector('.lab-controls').style,{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,240px),1fr))',borderLeft:'0',paddingLeft:'0',borderTop:'1px solid #405165',paddingTop:'12px'});
+  svg.setAttribute('viewBox','0 0 700 390');
+  const slope=2*k*v.T/mu/1e6,intercept=v.turb*v.turb;
+  const a=U.axes(svg,'1 / A（无量纲）','ξ² / (km/s)²',.1,100);
+  for(const value of [0,.05,.1])U.label(svg,a.x(value),340,U.fmt(value,2),{'text-anchor':'middle'});
+  for(const value of [0,25,50,75,100]){U.label(svg,56,a.y(value)+5,String(value),{'text-anchor':'end'});if(value)U.line(svg,65,a.y(value),660,a.y(value),'#34475a',{'stroke-width':1});}
+  U.curve(svg,[[a.x(0),a.y(0)],[a.x(.1),a.y(slope*.1)]],'#8ccac8',true);
+  U.line(svg,a.x(0),a.y(intercept),a.x(.1),a.y(intercept),'#b9c3cc',{'stroke-dasharray':'2 6'});
+  U.curve(svg,[[a.x(0),a.y(intercept)],[a.x(.1),a.y(slope*.1+intercept)]],'#eab76f');
+  const elements=[['C',12,'circle'],['Ti',48,'rect'],['Fe',56,'diamond']];
+  const readings=[];
+  for(const [name,A,shape]of elements){
+   const thermal2=slope/A,total2=thermal2+intercept,xi=Math.sqrt(total2),x=a.x(1/A),y=a.y(total2);
+   if(shape==='circle')U.node(svg,'circle',{cx:x,cy:y,r:6,fill:'#eab76f',stroke:'#142538','stroke-width':1});
+   else if(shape==='rect')U.node(svg,'rect',{x:x-6,y:y-6,width:12,height:12,fill:'#eab76f',stroke:'#142538','stroke-width':1});
+   else U.node(svg,'path',{d:'M'+x+' '+(y-7)+'L'+(x+7)+' '+y+'L'+x+' '+(y+7)+'L'+(x-7)+' '+y+'Z',fill:'#eab76f',stroke:'#142538','stroke-width':1});
+   const lx=name==='C'?x+28:name==='Ti'?260:110,ly=name==='C'?y-12:name==='Ti'?y-40:y-18;
+   U.line(svg,x,y,lx,ly,'#9aaebb',{'stroke-width':1});U.label(svg,lx,ly-5,name,{'text-anchor':'middle'});
+   readings.push(name+'：ξ='+U.fmt(xi,2)+' km/s，多普勒宽度='+U.fmt(500*xi*1000/c,4)+' nm');
+  }
+  const difference=slope*(1/12-1/56);
+  const labels=svg.querySelectorAll('text');labels[0].setAttribute('y','375');labels[1].setAttribute('y','30');
+  const scaleLabels=()=>{for(const label of svg.querySelectorAll('text'))label.style.fontSize=(svg.getBoundingClientRect().width<500?32:20)+'px';};
+  scaleLabels();
+  if(!lab.linewidthResizeObserver){lab.linewidthResizeObserver=new ResizeObserver(scaleLabels);lab.linewidthResizeObserver.observe(svg);}
+  return '斜率 2kT/mᵤ='+U.fmt(slope,2)+' (km/s)²；截距 共同微湍动宽度平方='+U.fmt(intercept,2)+' (km/s)²。'+readings.join('；')+'。ξ²(C)−ξ²(Fe)='+U.fmt(difference,2)+' (km/s)²；固定温度时该差不随共同微湍动改变。';
+ });
+})();</script></body></html>

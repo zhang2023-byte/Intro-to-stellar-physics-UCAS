@@ -1,9 +1,13 @@
 import {dependency} from './deps.mjs';
 import {ROOT,parseLesson} from './build.mjs';
 import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import assert from 'node:assert/strict';
+const allIDs=fs.readdirSync(path.join(ROOT,'lessons')).filter(f=>f.endsWith('.md')).map(f=>f.slice(0,-3)).sort(),requestedIDs=process.argv.slice(2);
+for(const id of requestedIDs)assert.ok(/^v[23]-ch\d{2}$/.test(id)&&allIDs.includes(id),'Unknown lesson ID: '+id);
+assert.equal(new Set(requestedIDs).size,requestedIDs.length,'Duplicate lesson IDs are not allowed');
+const ids=requestedIDs.length?requestedIDs:allIDs;
 const pw=await dependency('playwright'),{chromium}=pw.default??pw;
-const records=path.join(ROOT,'archive/work-records.local');fs.mkdirSync(records,{recursive:true});
-const scratch=fs.mkdtempSync(path.join(records,'stellar-continuous-')),ids=fs.readdirSync(path.join(ROOT,'lessons')).filter(f=>f.endsWith('.md')).map(f=>f.slice(0,-3)).sort();
+const records=process.env.STELLAR_BROWSER_RECORDS?path.resolve(process.env.STELLAR_BROWSER_RECORDS):path.join(ROOT,'archive/work-records.local');fs.mkdirSync(records,{recursive:true});
+const scratch=fs.mkdtempSync(path.join(records,'stellar-continuous-'));
 const server=http.createServer((req,res)=>{const p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(p==='/favicon.ico'){res.writeHead(204);res.end();return;}const f=path.resolve(ROOT,'site',p.replace(/^\/stellar-course\//,''));if(!p.startsWith('/stellar-course/')||!f.startsWith(path.join(ROOT,'site')+path.sep)||!fs.existsSync(f)){res.writeHead(404);res.end();return;}res.setHeader('Content-Type','text/html;charset=utf-8');res.end(fs.readFileSync(f));});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;let browser;const errors=[],outbound=[];
 async function verifyQuizReturn(page,data,index,{keyboard=false,capture=''}={}){
@@ -22,7 +26,7 @@ async function verifyQuizReturn(page,data,index,{keyboard=false,capture=''}={}){
  const position=await back.boundingBox(),viewport=page.viewportSize();
  assert.ok(position.x>=0&&position.y>=0&&position.x+position.width<=viewport.width&&position.y+position.height<=viewport.height,'返回按钮位于屏幕内');
  if(capture)await page.screenshot({path:path.join(scratch,capture+'.png')});
- if(keyboard){await back.focus();assert.ok(await back.evaluate(e=>e.matches(':focus-visible')&&getComputedStyle(e).outlineStyle!=='none'));await page.keyboard.press('Enter');}else await back.click();
+ if(keyboard){await back.focus();assert.ok(await back.evaluate(e=>e.matches(':focus-visible')&&getComputedStyle(e).outlineStyle!=='none'),q.id+' return button visible focus');await page.keyboard.press('Enter');}else await back.click();
  await page.waitForFunction(id=>{
   const r=document.getElementById(id).getBoundingClientRect(),atEnd=Math.abs(document.documentElement.scrollHeight-innerHeight-scrollY)<2;
   return r.top>=0&&r.top<innerHeight&&(r.top<100||atEnd)&&document.activeElement.id===id;
@@ -44,7 +48,7 @@ try{
    const cover=page.locator('.book-link[href="'+volume+'.html"]');await cover.focus();await page.keyboard.press('Enter');
    await page.waitForURL('**/'+volume+'.html');
    assert.equal(await page.locator('.chapter-row').count(),volume==='volume2'?16:20);
-   assert.equal(await page.locator('.start-learning').count(),ids.filter(id=>id.startsWith(volume==='volume2'?'v2-':'v3-')).length);
+   assert.equal(await page.locator('.start-learning').count(),allIDs.filter(id=>id.startsWith(volume==='volume2'?'v2-':'v3-')).length);
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    await page.screenshot({path:path.join(scratch,volume+'-'+size.width+'.png')});
   }
@@ -73,16 +77,22 @@ try{
 
  // Exercise native keyboard behavior and verify visible focus on every teaching control.
  for(const slider of await page.locator('[data-explorer] input[type=range]').all()){
-  await slider.fill(await slider.getAttribute('min'));await slider.dispatchEvent('input');await slider.focus();
+  await slider.fill(await slider.getAttribute('min'));await slider.dispatchEvent('input');await slider.scrollIntoViewIfNeeded();await slider.focus();
+  // Reach the control through native keyboard navigation; programmatic focus after
+  // mouse-driven checks does not consistently switch Chrome's focus-visible mode.
+  await slider.press('Tab');await page.keyboard.press('Shift+Tab');
+  assert.ok(await slider.evaluate(e=>document.activeElement===e),id+' keyboard navigation returns to '+await slider.getAttribute('data-param'));
   const before=await slider.inputValue();await slider.press('ArrowRight');assert.notEqual(await slider.inputValue(),before,id+' '+await slider.getAttribute('data-param')+' active='+await page.evaluate(()=>document.activeElement.outerHTML));
-  assert.ok(await slider.evaluate(e=>e.matches(':focus-visible')&&getComputedStyle(e).outlineStyle!=='none'));
+  assert.ok(await slider.evaluate(e=>e.matches(':focus-visible')&&getComputedStyle(e).outlineStyle!=='none'),id+' visible focus: '+await slider.getAttribute('data-param'));
  }
  // Native macOS select popup did not respond in headless Chrome; report it as unverified.
  // Selection/input rendering is covered by selectOption in the activity checks above.
- const firstSummary=page.locator('.lesson-section summary').first();await firstSummary.focus();
+ const firstSummary=page.locator('.lesson-section summary').first();await firstSummary.scrollIntoViewIfNeeded();await firstSummary.focus();
+ await firstSummary.press('Tab');await page.keyboard.press('Shift+Tab');
+ assert.ok(await firstSummary.evaluate(e=>document.activeElement===e),id+' keyboard navigation returns to summary');
  const wasOpen=await firstSummary.evaluate(e=>e.parentElement.open);await page.keyboard.press('Space');
  assert.notEqual(await firstSummary.evaluate(e=>e.parentElement.open),wasOpen);
- assert.ok(await firstSummary.evaluate(e=>getComputedStyle(e).outlineStyle!=='none'));
+ assert.ok(await firstSummary.evaluate(e=>e.matches(':focus-visible')&&getComputedStyle(e).outlineStyle!=='none'),id+' summary visible focus');
  const firstForm=page.locator('#'+data.quizzes[0].id);await firstForm.locator('input').first().focus();await page.keyboard.press('Space');
  // Radio group is one Tab stop; Tab reaches submit, Enter checks the selected answer.
  await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.type),'submit');await page.keyboard.press('Enter');assert.ok(await firstForm.locator('.answer-note').isVisible());
@@ -91,7 +101,7 @@ try{
  }
  await page.evaluate(()=>document.documentElement.style.zoom='2');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),id+' 200% zoom overflow');
- await page.locator('#overview').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(scratch,id+'-zoom200.png')});
+ await page.locator('#'+data.sections[0].id).scrollIntoViewIfNeeded();await page.screenshot({path:path.join(scratch,id+'-zoom200.png')});
  await verifyQuizReturn(page,data,0,{keyboard:true,capture:id+'-return-zoom200'});
  await page.evaluate(()=>document.documentElement.style.zoom='');
  await page.setViewportSize({width:390,height:844});await page.goto(origin+'/stellar-course/lessons/'+id+'.html');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:path.join(scratch,id+'-mobile.png')});await page.locator('#exercises').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(scratch,id+'-quiz-mobile.png')});await verifyQuizReturn(page,data,data.quizzes.length-1,{capture:id+'-return-mobile'});for(const lab of await page.locator('[data-explorer]').all()){await lab.screenshot({path:path.join(scratch,id+'-'+await lab.getAttribute('id')+'-mobile.png')});}await page.setViewportSize({width:1440,height:1000});
@@ -157,5 +167,5 @@ try{
  }
  const noJS=await browser.newContext({javaScriptEnabled:false});const plain=await noJS.newPage();
  await plain.goto(origin+'/stellar-course/lessons/'+ids[0]+'.html');const plainLink=plain.locator('.concept-link').first();const target=await plainLink.getAttribute('href');await plainLink.click();assert.equal(new URL(plain.url()).hash,target);assert.equal(await plain.locator('[data-return-to-quiz]').isVisible(),false);await noJS.close();
- assert.deepEqual(errors,[]);assert.deepEqual(outbound,[]);console.log(JSON.stringify({status:'passed',chapters:ids.length,questions:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).quizzes.length,0),activities:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).activities.length,0),wrongAnswerRetry:'all',reviewReturn:'all questions; mobile; keyboard; zoom; Back/Forward; blank-area clicks; no-JS links',keyboard:'sliders-card-and-quiz',nativeSelectKeyboard:'not-verified-in-headless-macOS',zoom:'200-percent-CSS-zoom',feedback:JSON.parse(fs.readFileSync(path.join(ROOT,'tools/feedback.json'),'utf8')).formUrl?'link-configured-submission-not-tested':'pending-feishu-authorization',screenshots:scratch,errors,outbound},null,2));
+ assert.deepEqual(errors,[]);assert.deepEqual(outbound,[]);console.log(JSON.stringify({status:'passed',scope:requestedIDs.length?'selected-lessons':'all-lessons',lessonIDs:ids,chapters:ids.length,questions:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).quizzes.length,0),activities:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).activities.length,0),wrongAnswerRetry:'all',reviewReturn:'all questions; mobile; keyboard; zoom; Back/Forward; blank-area clicks; no-JS links',keyboard:'sliders-card-and-quiz',nativeSelectKeyboard:'not-verified-in-headless-macOS',zoom:'200-percent-CSS-zoom',feedback:JSON.parse(fs.readFileSync(path.join(ROOT,'tools/feedback.json'),'utf8')).formUrl?'link-configured-submission-not-tested':'pending-feishu-authorization',screenshots:scratch,errors,outbound},null,2));
 }finally{if(browser)await browser.close();await new Promise(r=>server.close(r));}
