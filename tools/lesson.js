@@ -13,6 +13,7 @@ for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEvent
 const highlightTools=document.querySelector('.highlight-tools');
 if(highlightTools){
  const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const coarsePointer=window.matchMedia?.('(pointer: coarse)')?.matches;
  const addHighlight=highlightTools.querySelector('[data-highlight-add]');
  const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
  const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
@@ -20,6 +21,8 @@ if(highlightTools){
  const pdfExport=highlightTools.querySelector('[data-pdf-export]');
  const importHighlights=highlightTools.querySelector('[data-highlight-import]');
  const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const helpToggle=highlightTools.querySelector('[data-highlight-help-toggle]');
+ const helpPanel=highlightTools.querySelector('[data-highlight-help]');
  const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
  const blockSelector='p,li,blockquote,td';
  const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
@@ -171,7 +174,7 @@ if(highlightTools){
   saveHighlights();clearSelection();refreshHighlightUI();return true;
  }
  function queueAutoHighlight(){
-  cancelAutoHighlight();if(!markingMode)return;
+  cancelAutoHighlight();if(!markingMode||coarsePointer)return;
   autoHighlightTimer=window.setTimeout(()=>{
    autoHighlightTimer=0;
    if(markingMode)applyPendingHighlight();
@@ -182,22 +185,27 @@ if(highlightTools){
   if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
   else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
   updateHighlightSelection();
+  scheduleBubbleUpdate();
  });
- for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport,helpToggle])button.addEventListener('pointerdown',event=>event.preventDefault());
  highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
  addHighlight.addEventListener('click',()=>{
+  if(coarsePointer){applyPendingHighlight();return;}
   if(markingMode){setMarkingMode(false);clearSelection();return;}
   setMarkingMode(true);
   applyPendingHighlight();
  });
  highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
- removeHighlight.addEventListener('click',()=>{
-  const ids=marksFor(pendingRange);if(!ids.length)return;
+ function cancelHighlightIds(ids){
   for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
   saveHighlights();clearSelection();refreshHighlightUI();
- });
+ }
+ removeHighlight.addEventListener('click',()=>cancelHighlightIds(marksFor(pendingRange)));
+ let clearArmed=false,clearTimer=0;
+ function disarmClear(){if(!clearArmed)return;clearArmed=false;window.clearTimeout(clearTimer);clearTimer=0;clearHighlights.textContent='清空高亮';clearHighlights.removeAttribute('data-clear-armed');}
  clearHighlights.addEventListener('click',()=>{
-  clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+  if(!clearArmed){clearArmed=true;clearHighlights.textContent='确认清空？';clearHighlights.setAttribute('data-clear-armed','');clearTimer=window.setTimeout(disarmClear,4000);return;}
+  disarmClear();clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
  });
  exportHighlights.addEventListener('click',()=>{
   const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
@@ -212,6 +220,7 @@ if(highlightTools){
  }
  pdfExport.addEventListener('click',()=>{
   cancelAutoHighlight();
+  hideHighlightBubble();
   const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
   details.forEach(detail=>{detail.open=true;});
   document.title=name;
@@ -233,6 +242,80 @@ if(highlightTools){
    highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
   }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
  });
+ const highlightBubble=document.createElement('div');
+ highlightBubble.className='highlight-bubble';
+ highlightBubble.setAttribute('data-highlight-bubble','');
+ highlightBubble.hidden=true;
+ const bubbleAdd=document.createElement('button');
+ bubbleAdd.type='button';
+ bubbleAdd.textContent='高亮';
+ bubbleAdd.setAttribute('aria-label','高亮选中文字');
+ bubbleAdd.setAttribute('data-highlight-bubble-add','');
+ const bubbleButton=document.createElement('button');
+ bubbleButton.type='button';
+ bubbleButton.textContent='取消高亮';
+ bubbleButton.setAttribute('aria-label','取消选中的高亮');
+ bubbleButton.setAttribute('data-highlight-bubble-remove','');
+ highlightBubble.append(bubbleAdd,bubbleButton);
+ document.body.append(highlightBubble);
+ let bubbleIds=[],bubbleTimer=0;
+ function hideHighlightBubble(){window.clearTimeout(bubbleTimer);bubbleTimer=0;bubbleIds=[];highlightBubble.hidden=true;}
+ function showHighlightBubble(ids,rect,anchor,addable){
+  bubbleIds=ids;
+  bubbleAdd.hidden=!addable;
+  bubbleButton.hidden=ids.length===0;
+  highlightBubble.hidden=false;
+  const width=highlightBubble.offsetWidth||180,height=highlightBubble.offsetHeight||40;
+  let x,y;
+  if(coarsePointer){
+   x=(anchor?.x??rect.left+rect.width/2)-width/2;
+   y=rect.bottom+8;
+   if(y+height>window.innerHeight-8)y=rect.top-height-56;
+  }else if(anchor){
+   x=anchor.x-width-6;y=anchor.y-height-6;
+  }else{
+   x=rect.left+rect.width/2-width/2;
+   y=rect.top-height-8;
+   if(y<8)y=rect.bottom+8;
+  }
+  y=Math.max(8,Math.min(y,Math.max(8,window.innerHeight-height-8)));
+  x=Math.max(8,Math.min(x,Math.max(8,window.innerWidth-width-8)));
+  highlightBubble.style.left=Math.round(x)+'px';highlightBubble.style.top=Math.round(y)+'px';
+ }
+ let pointerAnchor=null;
+ document.addEventListener('pointerup',event=>{if(event.pointerType!=='touch')pointerAnchor={x:event.clientX,y:event.clientY};},true);
+ function scheduleBubbleUpdate(){
+  window.clearTimeout(bubbleTimer);
+  bubbleTimer=window.setTimeout(()=>{
+   bubbleTimer=0;
+   const range=pendingRange;
+   const ids=range&&!range.collapsed?marksFor(range):[];
+   const info=ids.length?null:selectionInfo(range);
+   const addable=!!info&&!markingMode;
+   if(ids.length||addable)showHighlightBubble(ids,range.getBoundingClientRect(),coarsePointer?null:pointerAnchor,addable);
+   else hideHighlightBubble();
+  },280);
+ }
+ bubbleAdd.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleAdd.addEventListener('click',()=>{hideHighlightBubble();applyPendingHighlight();});
+ bubbleButton.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleButton.addEventListener('click',()=>{const ids=bubbleIds;hideHighlightBubble();cancelHighlightIds(ids);});
+ document.addEventListener('contextmenu',event=>{
+  const mark=event.target?.closest?.('mark.stellar-highlight[data-highlight-id]');
+  if(!mark)return;
+  event.preventDefault();
+  const range=document.createRange();range.selectNodeContents(mark);
+  pendingRange=range;
+  const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+  updateHighlightSelection();
+  showHighlightBubble([mark.dataset.highlightId],mark.getBoundingClientRect(),{x:event.clientX,y:event.clientY});
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){hideHighlightBubble();hideHelpPanel();disarmClear();}});
+ window.addEventListener('scroll',hideHighlightBubble,{passive:true,capture:true});
+ window.addEventListener('resize',hideHighlightBubble,{passive:true});
+ function hideHelpPanel(){if(helpPanel.hidden)return;helpPanel.hidden=true;helpToggle.setAttribute('aria-expanded','false');}
+ helpToggle.addEventListener('click',()=>{helpPanel.hidden=!helpPanel.hidden;helpToggle.setAttribute('aria-expanded',String(!helpPanel.hidden));});
+ document.addEventListener('click',event=>{if(!helpPanel.hidden&&!highlightTools.contains(event.target))hideHelpPanel();});
  restoreHighlights();
 }
 const quizReturn=document.querySelector('[data-return-to-quiz]');

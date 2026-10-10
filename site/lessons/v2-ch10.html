@@ -40,12 +40,18 @@ td math{white-space:nowrap}
 .answer-note strong{display:block;margin-bottom:.35em}
 @media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
 
-.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;flex-wrap:wrap}
+.highlight-help{flex-basis:100%;max-width:820px;margin-top:2px;padding:12px 16px;border:1px solid var(--line);border-left:3px solid #b8793e;border-radius:5px;background:#f9faf6}
+.highlight-help h3{margin:0 0 8px;font-size:15px}
+.highlight-help ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.highlight-help li{font-size:13px;line-height:1.75;color:#3f4d59}
+.highlight-help strong{color:#213c51}
 .highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
 .highlight-tools .secondary{min-height:40px;padding:7px 12px}
 .highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
 .highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
 .highlight-tools button:disabled{opacity:.45}
+.highlight-tools [data-clear-armed]{background:#a3572d;border-color:#7c3f1d;color:#fff;font-weight:600}
 .highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
 .highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
@@ -60,14 +66,21 @@ mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3p
 .highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
 @media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
 
+.highlight-bubble{position:fixed;z-index:26;display:flex;gap:8px}
+.highlight-bubble button{min-height:40px;padding:7px 14px;border:1px solid #9b681f;border-radius:8px;background:#fdf3d7;color:#39280f;font-size:13px;cursor:pointer;box-shadow:0 5px 18px #39280f3d}
+.highlight-bubble button:hover{background:#f2cf72}
+.highlight-bubble button:focus-visible{outline:3px solid #8b541f;outline-offset:2px}
+@media(max-width:700px){.highlight-bubble button{min-height:44px}}
+@media(pointer:coarse){.highlight-mode-toggle{display:none!important}}
+
 @media print{
- .highlight-tools,.highlight-mode-toggle{display:none!important}
+ .highlight-tools,.highlight-mode-toggle,.highlight-bubble{display:none!important}
  .lesson-section details:not([open]){display:block}
  .lesson-section details{break-inside:avoid}
  mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
-</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-30</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>谱线深度、等值宽度与形成层</a><a href="#weak-lines"><small>02</small>弱谱线的深度由吸收比与源函数梯度共同决定</a><a href="#atomic-opacity"><small>03</small>吸收粒子数、振子强度与自然阻尼</a><a href="#doppler-voigt"><small>04</small>热运动的高斯核与 Voigt 轮廓</a><a href="#other-broadening"><small>05</small>微观湍动、宏观湍动、自转和仪器</a><a href="#weak-equivalent"><small>06</small>弱线等值宽度与激发温度</a><a href="#saturation"><small>07</small>线心饱和与表层源函数的限制</a><a href="#growth-curve"><small>08</small>生长曲线连接等值宽度与吸收原子数</a><a href="#exercises"><small>09</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>谱线形成、展宽与生长曲线</h1><p class="lead">从形成深度与弱线深度出发，理解原子吸收轮廓、运动致宽、饱和及等值宽度随吸收原子数的变化。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 10 章</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button></div><span data-highlight-status role="status" aria-live="polite"></span></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>谱线深度、等值宽度与形成层</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="谱线深度、等值宽度与形成层">反馈</button></div><!-- 编写提纲：前置第4–6章的辐射转移/源函数分层、第7章激发电离、第8章非灰吸收及第9章压强。形成层和温度梯度→弱线深度；原子数×截面→自然/热/Voigt轮廓；微观与宏观运动→线形和面积的区别；弱线等值宽度→激发温度；饱和→生长曲线三段及宽度/源函数/阻尼的退化，供第11章Stark展宽及第12章光谱分析使用。习题按这些联系覆盖。 -->
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-09-30</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume2.html">← 第二卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>谱线深度、等值宽度与形成层</a><a href="#weak-lines"><small>02</small>弱谱线的深度由吸收比与源函数梯度共同决定</a><a href="#atomic-opacity"><small>03</small>吸收粒子数、振子强度与自然阻尼</a><a href="#doppler-voigt"><small>04</small>热运动的高斯核与 Voigt 轮廓</a><a href="#other-broadening"><small>05</small>微观湍动、宏观湍动、自转和仪器</a><a href="#weak-equivalent"><small>06</small>弱线等值宽度与激发温度</a><a href="#saturation"><small>07</small>线心饱和与表层源函数的限制</a><a href="#growth-curve"><small>08</small>生长曲线连接等值宽度与吸收原子数</a><a href="#exercises"><small>09</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>谱线形成、展宽与生长曲线</h1><p class="lead">从形成深度与弱线深度出发，理解原子吸收轮廓、运动致宽、饱和及等值宽度随吸收原子数的变化。</p><div class="hero-meta"><span>《恒星天体物理学导论》第二卷《恒星大气》 · 第 10 章</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button><button class="secondary" type="button" data-highlight-help-toggle aria-expanded="false" aria-controls="highlight-help">使用说明</button></div><span data-highlight-status role="status" aria-live="polite"></span><div class="highlight-help" id="highlight-help" data-highlight-help hidden><h3>高亮与导出 · 使用说明</h3><ul><li><strong>添加高亮</strong>——电脑：选中正文文字，稍停浮出「高亮」，点按生效；或点 ✎ 进入连续高亮模式，拖选停止约半秒自动打光，再点 ✎ 退出。手机：长按选中并拖动手柄调整，松手后点「高亮」。</li><li><strong>取消高亮</strong>——选中已有高亮文字（电脑可拖选或右键点它，手机长按后调整），点浮出的「取消高亮」。</li><li><strong>保存</strong>——高亮只保存在本机浏览器，按课程分开，最多 500 条；公式、代码与链接不可选中。</li><li><strong>备份</strong>——「导出高亮」得到 JSON 文件，「导入高亮」可合并恢复；「清空高亮」删除本课全部高亮，不可撤销。</li><li><strong>导出 PDF</strong>——调起浏览器打印：自动展开折叠内容并保留当前交互图状态与高亮，在打印窗口选择「另存为 PDF」。</li></ul></div></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>谱线深度、等值宽度与形成层</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="谱线深度、等值宽度与形成层">反馈</button></div><!-- 编写提纲：前置第4–6章的辐射转移/源函数分层、第7章激发电离、第8章非灰吸收及第9章压强。形成层和温度梯度→弱线深度；原子数×截面→自然/热/Voigt轮廓；微观与宏观运动→线形和面积的区别；弱线等值宽度→激发温度；饱和→生长曲线三段及宽度/源函数/阻尼的退化，供第11章Stark展宽及第12章光谱分析使用。习题按这些联系覆盖。 -->
 
 <p>连续谱告诉我们大气怎样发光；谱线则把特定能级的原子或离子标记出来。要由一条吸收线推回粒子数，必须先回答三个问题：线为什么比邻近连续谱暗，线形为什么有核与翼，以及线的总吸收会怎样随吸收原子数改变。本章依次建立<strong>线深与等值宽度、弱线形成关系、原子吸收轮廓、运动与仪器致宽、饱和及生长曲线</strong>，为下一章的氢线和再下一章的光谱分析提供工具。</p>
 <p>图像中的纵轴常是波长通量密度 F<sub>λ</sub>，单位例如 W m⁻² nm⁻¹；F<sub>c</sub> 是同一条线附近估计的连续谱通量密度。定义归一化线深（residual depth）R<sub>λ</sub> 和等值宽度（equivalent width）W<sub>λ</sub>：</p>
@@ -179,6 +192,7 @@ for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEvent
 const highlightTools=document.querySelector('.highlight-tools');
 if(highlightTools){
  const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const coarsePointer=window.matchMedia?.('(pointer: coarse)')?.matches;
  const addHighlight=highlightTools.querySelector('[data-highlight-add]');
  const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
  const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
@@ -186,6 +200,8 @@ if(highlightTools){
  const pdfExport=highlightTools.querySelector('[data-pdf-export]');
  const importHighlights=highlightTools.querySelector('[data-highlight-import]');
  const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const helpToggle=highlightTools.querySelector('[data-highlight-help-toggle]');
+ const helpPanel=highlightTools.querySelector('[data-highlight-help]');
  const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
  const blockSelector='p,li,blockquote,td';
  const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
@@ -337,7 +353,7 @@ if(highlightTools){
   saveHighlights();clearSelection();refreshHighlightUI();return true;
  }
  function queueAutoHighlight(){
-  cancelAutoHighlight();if(!markingMode)return;
+  cancelAutoHighlight();if(!markingMode||coarsePointer)return;
   autoHighlightTimer=window.setTimeout(()=>{
    autoHighlightTimer=0;
    if(markingMode)applyPendingHighlight();
@@ -348,22 +364,27 @@ if(highlightTools){
   if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
   else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
   updateHighlightSelection();
+  scheduleBubbleUpdate();
  });
- for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport])button.addEventListener('pointerdown',event=>event.preventDefault());
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport,helpToggle])button.addEventListener('pointerdown',event=>event.preventDefault());
  highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
  addHighlight.addEventListener('click',()=>{
+  if(coarsePointer){applyPendingHighlight();return;}
   if(markingMode){setMarkingMode(false);clearSelection();return;}
   setMarkingMode(true);
   applyPendingHighlight();
  });
  highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
- removeHighlight.addEventListener('click',()=>{
-  const ids=marksFor(pendingRange);if(!ids.length)return;
+ function cancelHighlightIds(ids){
   for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
   saveHighlights();clearSelection();refreshHighlightUI();
- });
+ }
+ removeHighlight.addEventListener('click',()=>cancelHighlightIds(marksFor(pendingRange)));
+ let clearArmed=false,clearTimer=0;
+ function disarmClear(){if(!clearArmed)return;clearArmed=false;window.clearTimeout(clearTimer);clearTimer=0;clearHighlights.textContent='清空高亮';clearHighlights.removeAttribute('data-clear-armed');}
  clearHighlights.addEventListener('click',()=>{
-  clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+  if(!clearArmed){clearArmed=true;clearHighlights.textContent='确认清空？';clearHighlights.setAttribute('data-clear-armed','');clearTimer=window.setTimeout(disarmClear,4000);return;}
+  disarmClear();clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
  });
  exportHighlights.addEventListener('click',()=>{
   const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
@@ -378,6 +399,7 @@ if(highlightTools){
  }
  pdfExport.addEventListener('click',()=>{
   cancelAutoHighlight();
+  hideHighlightBubble();
   const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
   details.forEach(detail=>{detail.open=true;});
   document.title=name;
@@ -399,6 +421,80 @@ if(highlightTools){
    highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
   }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
  });
+ const highlightBubble=document.createElement('div');
+ highlightBubble.className='highlight-bubble';
+ highlightBubble.setAttribute('data-highlight-bubble','');
+ highlightBubble.hidden=true;
+ const bubbleAdd=document.createElement('button');
+ bubbleAdd.type='button';
+ bubbleAdd.textContent='高亮';
+ bubbleAdd.setAttribute('aria-label','高亮选中文字');
+ bubbleAdd.setAttribute('data-highlight-bubble-add','');
+ const bubbleButton=document.createElement('button');
+ bubbleButton.type='button';
+ bubbleButton.textContent='取消高亮';
+ bubbleButton.setAttribute('aria-label','取消选中的高亮');
+ bubbleButton.setAttribute('data-highlight-bubble-remove','');
+ highlightBubble.append(bubbleAdd,bubbleButton);
+ document.body.append(highlightBubble);
+ let bubbleIds=[],bubbleTimer=0;
+ function hideHighlightBubble(){window.clearTimeout(bubbleTimer);bubbleTimer=0;bubbleIds=[];highlightBubble.hidden=true;}
+ function showHighlightBubble(ids,rect,anchor,addable){
+  bubbleIds=ids;
+  bubbleAdd.hidden=!addable;
+  bubbleButton.hidden=ids.length===0;
+  highlightBubble.hidden=false;
+  const width=highlightBubble.offsetWidth||180,height=highlightBubble.offsetHeight||40;
+  let x,y;
+  if(coarsePointer){
+   x=(anchor?.x??rect.left+rect.width/2)-width/2;
+   y=rect.bottom+8;
+   if(y+height>window.innerHeight-8)y=rect.top-height-56;
+  }else if(anchor){
+   x=anchor.x-width-6;y=anchor.y-height-6;
+  }else{
+   x=rect.left+rect.width/2-width/2;
+   y=rect.top-height-8;
+   if(y<8)y=rect.bottom+8;
+  }
+  y=Math.max(8,Math.min(y,Math.max(8,window.innerHeight-height-8)));
+  x=Math.max(8,Math.min(x,Math.max(8,window.innerWidth-width-8)));
+  highlightBubble.style.left=Math.round(x)+'px';highlightBubble.style.top=Math.round(y)+'px';
+ }
+ let pointerAnchor=null;
+ document.addEventListener('pointerup',event=>{if(event.pointerType!=='touch')pointerAnchor={x:event.clientX,y:event.clientY};},true);
+ function scheduleBubbleUpdate(){
+  window.clearTimeout(bubbleTimer);
+  bubbleTimer=window.setTimeout(()=>{
+   bubbleTimer=0;
+   const range=pendingRange;
+   const ids=range&&!range.collapsed?marksFor(range):[];
+   const info=ids.length?null:selectionInfo(range);
+   const addable=!!info&&!markingMode;
+   if(ids.length||addable)showHighlightBubble(ids,range.getBoundingClientRect(),coarsePointer?null:pointerAnchor,addable);
+   else hideHighlightBubble();
+  },280);
+ }
+ bubbleAdd.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleAdd.addEventListener('click',()=>{hideHighlightBubble();applyPendingHighlight();});
+ bubbleButton.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleButton.addEventListener('click',()=>{const ids=bubbleIds;hideHighlightBubble();cancelHighlightIds(ids);});
+ document.addEventListener('contextmenu',event=>{
+  const mark=event.target?.closest?.('mark.stellar-highlight[data-highlight-id]');
+  if(!mark)return;
+  event.preventDefault();
+  const range=document.createRange();range.selectNodeContents(mark);
+  pendingRange=range;
+  const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+  updateHighlightSelection();
+  showHighlightBubble([mark.dataset.highlightId],mark.getBoundingClientRect(),{x:event.clientX,y:event.clientY});
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){hideHighlightBubble();hideHelpPanel();disarmClear();}});
+ window.addEventListener('scroll',hideHighlightBubble,{passive:true,capture:true});
+ window.addEventListener('resize',hideHighlightBubble,{passive:true});
+ function hideHelpPanel(){if(helpPanel.hidden)return;helpPanel.hidden=true;helpToggle.setAttribute('aria-expanded','false');}
+ helpToggle.addEventListener('click',()=>{helpPanel.hidden=!helpPanel.hidden;helpToggle.setAttribute('aria-expanded',String(!helpPanel.hidden));});
+ document.addEventListener('click',event=>{if(!helpPanel.hidden&&!highlightTools.contains(event.target))hideHelpPanel();});
  restoreHighlights();
 }
 const quizReturn=document.querySelector('[data-return-to-quiz]');

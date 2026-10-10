@@ -40,12 +40,18 @@ td math{white-space:nowrap}
 .answer-note strong{display:block;margin-bottom:.35em}
 @media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
 
-.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;flex-wrap:wrap}
+.highlight-help{flex-basis:100%;max-width:820px;margin-top:2px;padding:12px 16px;border:1px solid var(--line);border-left:3px solid #b8793e;border-radius:5px;background:#f9faf6}
+.highlight-help h3{margin:0 0 8px;font-size:15px}
+.highlight-help ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.highlight-help li{font-size:13px;line-height:1.75;color:#3f4d59}
+.highlight-help strong{color:#213c51}
 .highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
 .highlight-tools .secondary{min-height:40px;padding:7px 12px}
 .highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
 .highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
 .highlight-tools button:disabled{opacity:.45}
+.highlight-tools [data-clear-armed]{background:#a3572d;border-color:#7c3f1d;color:#fff;font-weight:600}
 .highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
 .highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
@@ -60,8 +66,15 @@ mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3p
 .highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
 @media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
 
+.highlight-bubble{position:fixed;z-index:26;display:flex;gap:8px}
+.highlight-bubble button{min-height:40px;padding:7px 14px;border:1px solid #9b681f;border-radius:8px;background:#fdf3d7;color:#39280f;font-size:13px;cursor:pointer;box-shadow:0 5px 18px #39280f3d}
+.highlight-bubble button:hover{background:#f2cf72}
+.highlight-bubble button:focus-visible{outline:3px solid #8b541f;outline-offset:2px}
+@media(max-width:700px){.highlight-bubble button{min-height:44px}}
+@media(pointer:coarse){.highlight-mode-toggle{display:none!important}}
+
 @media print{
- .highlight-tools,.highlight-mode-toggle{display:none!important}
+ .highlight-tools,.highlight-mode-toggle,.highlight-bubble{display:none!important}
  .lesson-section details:not([open]){display:block}
  .lesson-section details{break-inside:avoid}
  mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
