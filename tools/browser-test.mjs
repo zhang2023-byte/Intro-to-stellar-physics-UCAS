@@ -142,13 +142,26 @@ try{
   await page.locator('mark.stellar-highlight').first().evaluate(element=>{
    const range=document.createRange();range.selectNodeContents(element);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
   });
-  await page.locator('[data-highlight-remove]').click();
+  await page.locator('[data-highlight-bubble-remove]').waitFor({state:'visible'});
+  await page.locator('[data-highlight-bubble-remove]').click();
   assert.equal(await page.locator('mark.stellar-highlight').count(),1);
+  await page.locator('mark.stellar-highlight').first().click({button:'right'});
+  await page.locator('[data-highlight-bubble-remove]').waitFor({state:'visible'});
+  await page.keyboard.press('Escape');
+  await page.locator('[data-highlight-bubble]').waitFor({state:'hidden'});
   await page.locator('mark.stellar-highlight').first().evaluate(element=>{
    const range=document.createRange();range.selectNodeContents(element);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);document.dispatchEvent(new Event('selectionchange'));
   });
   await page.locator('[data-highlight-remove]').click();
   assert.equal(await page.locator('mark.stellar-highlight').count(),0);
+  await page.locator('[data-highlight-help-toggle]').click();
+  await page.locator('[data-highlight-help]').waitFor({state:'visible'});
+  await page.keyboard.press('Escape');
+  await page.locator('[data-highlight-help]').waitFor({state:'hidden'});
+  await page.locator('[data-highlight-help-toggle]').click();
+  await page.locator('[data-highlight-help]').waitFor({state:'visible'});
+  await page.locator('#intensity > p').first().click();
+  await page.locator('[data-highlight-help]').waitFor({state:'hidden'});
   await page.setViewportSize({width:390,height:844});
   await page.evaluate(()=>localStorage.removeItem('stellar:highlights:v2-ch04'));
   await page.reload();
@@ -162,6 +175,13 @@ try{
   const penBox=await mobilePen.boundingBox(),mobileViewport=page.viewportSize();
   assert.ok(penBox.x>=0&&penBox.y>=0&&penBox.x+penBox.width<=mobileViewport.width&&penBox.y+penBox.height<=mobileViewport.height,'手机高亮按钮位于屏幕内');
   await mobilePen.click();await mobilePen.waitFor({state:'hidden'});
+  const clearButton=page.locator('[data-highlight-clear]');
+  await clearButton.click();
+  assert.equal(await clearButton.textContent(),'确认清空？');
+  assert.equal(await page.locator('mark.stellar-highlight').count(),1,'武装态不应立即清空');
+  await clearButton.click();
+  assert.equal(await page.locator('mark.stellar-highlight').count(),0);
+  assert.equal(await clearButton.textContent(),'清空高亮');
   await page.setViewportSize({width:1440,height:1000});
  }
  }
