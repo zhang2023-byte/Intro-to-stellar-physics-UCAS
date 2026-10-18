@@ -1,5 +1,6 @@
 import {dependency} from './deps.mjs';
 import {ROOT,parseLesson} from './build.mjs';
+import {verifyParagraphHighlights} from './highlight-browser-checks.mjs';
 import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import assert from 'node:assert/strict';
 const allIDs=fs.readdirSync(path.join(ROOT,'lessons')).filter(f=>f.endsWith('.md')).map(f=>f.slice(0,-3)).sort(),requestedIDs=process.argv.slice(2);
 for(const id of requestedIDs)assert.ok(/^v[23]-ch\d{2}$/.test(id)&&allIDs.includes(id),'Unknown lesson ID: '+id);
@@ -185,6 +186,7 @@ try{
   await page.setViewportSize({width:1440,height:1000});
  }
  }
+ if(ids.includes('v2-ch04'))await verifyParagraphHighlights(browser,origin,scratch);
  const noJS=await browser.newContext({javaScriptEnabled:false});const plain=await noJS.newPage();
  await plain.goto(origin+'/stellar-course/lessons/'+ids[0]+'.html');const plainLink=plain.locator('.concept-link').first();const target=await plainLink.getAttribute('href');await plainLink.click();assert.equal(new URL(plain.url()).hash,target);assert.equal(await plain.locator('[data-return-to-quiz]').isVisible(),false);await noJS.close();
  assert.deepEqual(errors,[]);assert.deepEqual(outbound,[]);console.log(JSON.stringify({status:'passed',scope:requestedIDs.length?'selected-lessons':'all-lessons',lessonIDs:ids,chapters:ids.length,questions:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).quizzes.length,0),activities:ids.reduce((n,id)=>n+parseLesson(fs.readFileSync(path.join(ROOT,'lessons',id+'.md'),'utf8')).activities.length,0),wrongAnswerRetry:'all',reviewReturn:'all questions; mobile; keyboard; zoom; Back/Forward; blank-area clicks; no-JS links',keyboard:'sliders-card-and-quiz',nativeSelectKeyboard:'not-verified-in-headless-macOS',zoom:'200-percent-CSS-zoom',feedback:JSON.parse(fs.readFileSync(path.join(ROOT,'tools/feedback.json'),'utf8')).formUrl?'link-configured-submission-not-tested':'pending-feishu-authorization',screenshots:scratch,errors,outbound},null,2));
