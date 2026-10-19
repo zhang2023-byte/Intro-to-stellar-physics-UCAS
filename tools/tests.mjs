@@ -12,6 +12,15 @@ test('修改版本或题目会隔离浏览器答题数据',()=>{const a=parseLes
 test('嵌入 JSON 的尖括号不会关闭 script 标签',()=>{const d=parseLesson(source({title:'说明 </script> 测试'}));const h=renderLesson(d,`${ROOT}/lessons`);assert.ok(h.includes('\\u003c/script>'));assert.equal((h.match(/<script\b/g)||[]).length,2);validateHTML(h);});
 test('已生成 HTML 与当前 Markdown 一致，首页无失效课程链接',()=>{const r=checkAll();assert.ok(r.length>=1);assert.deepEqual(r.map(x=>x.id),fs.readdirSync(`${ROOT}/lessons`).filter(f=>f.endsWith('.md')).map(f=>f.slice(0,-3)).sort());});
 import vm from 'node:vm';
+test('跨章阅读链接指向已存在的课程和小节',()=>{
+ for(const name of fs.readdirSync(`${ROOT}/lessons`).filter(name=>name.endsWith('.md'))){
+  const source=fs.readFileSync(`${ROOT}/lessons/${name}`,'utf8');
+  for(const [,id,section] of source.matchAll(/\]\((v[23]-ch\d{2})\.html(?:#([\w-]+))?\)/g)){
+   const target=`${ROOT}/lessons/${id}.md`;assert.ok(fs.existsSync(target),`${name}: ${id}`);
+   if(section)assert.ok(parseLesson(fs.readFileSync(target,'utf8')).sections.some(s=>s.id===section),`${name}: ${id}#${section}`);
+  }
+ }
+});
 const physics=vm.runInNewContext(fs.readFileSync(`${ROOT}/tools/physics.js`,'utf8')+'\nStellarPhysics');
 test('定量活动满足距离、星等、颜色与温度比例关系',()=>{assert.equal(physics.apparent(2,10),2);assert.equal(physics.apparent(2,100),7);assert.equal(physics.magnitude(100),-5);assert.ok(Math.abs(physics.color(10000))<1e-12);assert.ok(physics.color(4000)>physics.color(12000));assert.equal(physics.luminosity(2,5800),4);assert.equal(physics.luminosity(1,11600),16);});
 test('Planck谱密度变换、数值峰值与全谱积分保持物理一致',()=>{const c=299792458,T=6000,nm=500,l=nm*1e-9;assert.ok(Math.abs(physics.planckNu(c/l,T)/(physics.planck(nm,T)*l*l/c)-1)<1e-12);let peakL=0,maxL=0,peakN=0,maxN=0;for(let x=100;x<2000;x+=.5){const a=physics.planck(x,T),b=physics.planckNu(x*1e12,T);if(a>maxL){maxL=a;peakL=x;}if(b>maxN){maxN=b;peakN=x;}}assert.ok(Math.abs(peakL*T/2.897771955e6-1)<.002);assert.ok(Math.abs(peakN*1e12/T/5.87892576e10-1)<.002);assert.ok(Math.abs(peakL*1e-9*peakN*1e12/c-1)>.3);let integral=0;const dlog=Math.log(1e6)/20000;for(let i=0;i<20000;i++){const nm=Math.exp((i+.5)*dlog);integral+=physics.planck(nm,T)*nm*1e-9*dlog;}assert.ok(Math.abs(Math.PI*integral/(physics.sigma*T**4)-1)<.0001);});

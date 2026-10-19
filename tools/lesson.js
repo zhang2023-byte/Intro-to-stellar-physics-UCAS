@@ -60,10 +60,27 @@ if(highlightTools){
  }
  function selectionInfo(range){
   if(!range||range.collapsed)return null;
-  const block=blockFor(range.startContainer);
-  if(!block||blockFor(range.endContainer)!==block||!range.toString().trim())return null;
-  for(const node of block.querySelectorAll('math,a,code,pre'))if(intersects(range,node))return null;
-  return {block,range};
+  const first=blockFor(range.startContainer),last=blockFor(range.endContainer);
+  if(!first||!last||!range.toString().trim())return null;
+  const section=first.closest('.lesson-section');
+  if(last.closest('.lesson-section')!==section)return null;
+  // Keep each paragraph independently anchored in the existing backup format.
+  // Reject mixed selections in full: never silently skip a formula or control.
+  for(const node of section.querySelectorAll(excludedSelector+',h1,h2,h3,summary,button,input,select,textarea,svg,img'))if(intersects(range,node))return null;
+  if(first===last)return {parts:[{block:first,range}]};
+  if(first.tagName!=='P'||last.tagName!=='P')return null;
+  const blocks=[...section.querySelectorAll('p')].filter(block=>intersects(range,block));
+  const parts=[];
+  for(const block of blocks){
+   if(block.closest(excludedSelector))return null;
+   const part=document.createRange();part.selectNodeContents(block);
+   if(block===first)part.setStart(range.startContainer,range.startOffset);
+   if(block===last)part.setEnd(range.endContainer,range.endOffset);
+   if(part.toString().trim())parts.push({block,range:part});
+  }
+  // Between paragraph endpoints there may also be a list or a quotation.
+  for(const node of section.querySelectorAll('li,blockquote,td'))if(intersects(range,node))return null;
+  return parts.length?{parts}:null;
  }
  function boundaryOffset(block,container,offset){
   const before=document.createRange();
@@ -149,8 +166,9 @@ if(highlightTools){
    highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
    highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
   }
-  addHighlight.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
-  addHighlight.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  const label=coarsePointer?'高亮选中文字':active?'退出连续高亮模式':'进入连续高亮模式';
+  addHighlight.setAttribute('aria-label',label);
+  addHighlight.title=label;
   refreshHighlightUI();
  }
  function refreshHighlightUI(){
@@ -165,12 +183,24 @@ if(highlightTools){
   addHighlight.disabled=false;
   removeHighlight.hidden=ids.length===0;
   removeHighlight.disabled=ids.length===0;
+  refreshHighlightUI();
+  if(range&&!range.collapsed&&!info&&!ids.length&&blockFor(range.startContainer))highlightStatus.textContent='请选择同一小节内的普通正文段落，避开公式、链接、代码和交互区域。';
  }
  function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
  function applyPendingHighlight(){
   const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
-  const item=makeHighlight(info);if(!item||!wrapOffsets(info.block,item.start,item.end,item.id))return false;
-  highlightState.items.push(item);if(highlightState.items.length>maxHighlights)highlightState.items=highlightState.items.slice(-maxHighlights);
+  const items=info.parts.map(makeHighlight);
+  if(items.some(item=>!item||item.quote.length>10000||item.blockText.length>30000)){
+   highlightStatus.textContent='选中文字过长，请缩小选区后重试。';return false;
+  }
+  if(highlightState.items.length+items.length>maxHighlights){
+   highlightStatus.textContent='本课高亮最多保存 500 条，请先导出备份并取消部分高亮，再重试。';return false;
+  }
+  for(let i=0;i<items.length;i++)if(!wrapOffsets(info.parts[i].block,items[i].start,items[i].end,items[i].id)){
+   for(const item of items)unwrapHighlight(item.id);
+   highlightStatus.textContent='本次高亮未保存，请重新选择后重试。';return false;
+  }
+  highlightState.items.push(...items);
   saveHighlights();clearSelection();refreshHighlightUI();return true;
  }
  function queueAutoHighlight(){
@@ -316,6 +346,7 @@ if(highlightTools){
  function hideHelpPanel(){if(helpPanel.hidden)return;helpPanel.hidden=true;helpToggle.setAttribute('aria-expanded','false');}
  helpToggle.addEventListener('click',()=>{helpPanel.hidden=!helpPanel.hidden;helpToggle.setAttribute('aria-expanded',String(!helpPanel.hidden));});
  document.addEventListener('click',event=>{if(!helpPanel.hidden&&!highlightTools.contains(event.target))hideHelpPanel();});
+ setMarkingMode(false);
  restoreHighlights();
 }
 const quizReturn=document.querySelector('[data-return-to-quiz]');
