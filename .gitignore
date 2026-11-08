@@ -1,6 +1,8 @@
 # Private files and local archive
 /archive/
 /.codex/
+/.zcode/
+/.playwright-mcp/
 .env
 .env.*
 !.env.example

@@ -14,7 +14,8 @@ if [ ! -x "$stellar_node" ]; then
   exit 1
 fi
 case "${1:-}" in
-  test) exec "$stellar_node" --test tools/tests.mjs ;;
+  test) exec "$stellar_node" --test tools/tests.mjs tools/review-tests.mjs ;;
+  prose|style) exec "$stellar_node" tools/review.mjs "$@" ;;
   browser-test) exec "$stellar_node" tools/browser-test.mjs ;;
   *) exec "$stellar_node" tools/build.mjs "$@" ;;
 esac

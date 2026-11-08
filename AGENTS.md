@@ -9,9 +9,10 @@
 - 网页反馈分析、修改、PR 审核和收尾：`.agents/skills/stellar-lesson-revise/SKILL.md`。
 - 助教新建课程：`.agents/skills/stellar-lesson-create/SKILL.md`。
 - 助教修订译本与 PDF：`.agents/skills/stellar-textbook-revise/SKILL.md`。
+- 正文讲解、算例、交互说明或解析的写法：`.agents/skills/stellar-lesson-create/references/explanation-guide.md`，制作和修订共用；范本章为 `lessons/v2-ch07.md`；跨章符号按同目录 `notation.md`。
 - 助教明确要求复盘协作：`.agents/skills/stellar-collaboration-retrospective/SKILL.md`；学生任务不自动触发。
 
-README 是人员入门；`textbooks/pdf/README.md` 管教材入口；`tools/FORMAT.md` 管源码格式、构建和技术检查；当前任务 skill 管操作步骤。相同规则只在所属位置维护。当前明确指令与本文件优先于尚未同步的流程；发现影响当前任务的冲突时指出，不自行扩展权限。
+以上入口都可由任何 Agent 或模型按文件内容执行，不依赖某一会话的记忆。README 是人员入门；`textbooks/pdf/README.md` 管教材入口；`tools/FORMAT.md` 管源码格式、构建和技术检查；当前任务 skill 管操作步骤。相同规则只在所属位置维护。当前明确指令与本文件优先于尚未同步的流程；发现影响当前任务的冲突时指出，不自行扩展权限。
 
 ## 通用边界
 
@@ -27,4 +28,4 @@ README 是人员入门；`textbooks/pdf/README.md` 管教材入口；`tools/FORM
 
 学生只在正常 PR 或反馈说明中记录遇到的问题，不承担例行 skill 改进。助教需要时明确触发协作复盘。
 
-任何 skill 新增、修改或删除，须在 `archive/skill-updates.local/` 准备候选和可审阅差异，单独列出涉及文件、内容与适用范围，并明确询问是否保存；只有助教明确同意后才写入正式 skill。项目实施授权不代替此项审批，等待审批不阻止其余已授权工作。
+任何 skill 新增、修改或删除，直接在工作区的正式文件中修改，由 `git diff` 供助教审阅；向助教单独列出涉及文件、内容与适用范围。助教明确同意前不提交、不推送，未获同意的部分按助教意见修改或还原。项目实施授权不代替此项审批，等待审批不阻止其余已授权工作。

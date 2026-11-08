@@ -6,7 +6,9 @@
   "scripts": {
     "build": "node build.mjs all",
     "check": "node build.mjs check",
-    "test": "node --test tests.mjs",
+    "test": "node --test tests.mjs review-tests.mjs",
+    "prose": "node review.mjs prose",
+    "style": "node review.mjs style",
     "browser-test": "node browser-test.mjs"
   },
   "dependencies": {"marked": "17.0.5"},

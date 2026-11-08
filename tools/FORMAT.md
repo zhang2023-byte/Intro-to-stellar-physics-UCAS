@@ -2,6 +2,8 @@
 
 一课一份 `lessons/<ID>.md`。用 `./tools/course build <ID>` 构建本课并更新首页；`all` 构建全部；`index` 只更新首页；`check` 核对源码与输出；`test` 跑工具测试。在项目根执行。
 
+审读辅助命令只读源码、不改输出：`prose <ID>` 把公式和图示换成无障碍说明，并展开题目，输出可通读的正文，供人工审读和 Agent 读取，免得直接读大段 MathML；`style <ID|all>` 列出讲解写法的启发式信号和全卷指标，例如告诫堆叠、编写说明进入正文、小节缺少数值、交互说明先给出读数、解析过短。信号只用于提示，不作为构建或合并门槛。写法要求见制作 skill 的 references/explanation-guide.md。npm 用户可运行 `npm --prefix tools run prose -- <ID>`。
+
 ## 安装与本地预览
 
 首次配置和克隆步骤见 [README](../README.md#新成员开始)。在项目根目录执行 `npm --prefix tools ci` 安装锁定依赖；Node.js 最低版本为 20，自动检查配置使用 24。

@@ -36,6 +36,7 @@ npm --prefix tools test
 | --- | --- |
 | 通用边界与任务选择 | [AGENTS.md](AGENTS.md) |
 | 本地预览、检查命令和课程文件格式 | [tools/FORMAT.md](tools/FORMAT.md) |
+| 讲解写法、符号约定与范本 | [讲解写法](.agents/skills/stellar-lesson-create/references/explanation-guide.md)、[符号约定](.agents/skills/stellar-lesson-create/references/notation.md)，范本 `lessons/v2-ch07.md` |
 | 原版与译本 PDF | [textbooks/pdf/README.md](textbooks/pdf/README.md) |
 | 助教新建课程 | [制作 skill](.agents/skills/stellar-lesson-create/SKILL.md) |
 | 助教修订教材 | [教材 skill](.agents/skills/stellar-textbook-revise/SKILL.md) |
