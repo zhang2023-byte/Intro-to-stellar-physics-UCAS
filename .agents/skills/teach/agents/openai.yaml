@@ -1,0 +1,5 @@
+interface:
+  display_name: "Teach"
+  short_description: "Learn stellar astrophysics from this course"
+policy:
+  allow_implicit_invocation: true

@@ -1,5 +1,6 @@
-# Private files and local archive
+# Private files, learner workspace and local archive
 /archive/
+/study/
 /.codex/
 /.zcode/
 /.playwright-mcp/

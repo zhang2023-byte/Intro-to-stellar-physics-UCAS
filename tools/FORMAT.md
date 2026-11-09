@@ -36,6 +36,10 @@ npm --prefix tools test
 
 `.github/workflows/pages.yml` 在 main 的 site/ 或发布工作流变化后部署；上传已生成的 site/，不在发布时构建。部署是否成功须核对本次提交的实际运行结果。分支交付、人工审核和反馈收尾按网页修订 skill。
 
+## 学习时工作区
+
+`study/` 是学习者本机工作区，已被 `.gitignore` 忽略，不属于课程源码：`build`、`check`、`test` 不读取它，`site/` 不发布它。学习网页只需自包含、离线可打开，不受本文件 `lessons/` 格式约束；教学流程见 [teach skill](../.agents/skills/teach/SKILL.md)。
+
 ## 元数据
 
 文件从一个 `lesson` 代码块开始，内容为 JSON，不使用 YAML 依赖：
