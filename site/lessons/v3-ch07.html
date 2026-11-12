@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>外部对流区的深度</title><style>:root{--paper:#f7f5ef;--ink:#203635;--muted:#647773;--teal:#176b64;--line:#d9e0d8;--wash:#edf1e8;--warm:#a3572d;--serif:"Iowan Old Style","Palatino Linotype","Songti SC","Noto Serif CJK SC",serif;--sans:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 var(--sans)}button,input,select,textarea{font:inherit}a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:5px}button,a,input,textarea,select{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}button:disabled{cursor:default}.topbar{max-width:1400px;margin:auto;padding:23px 42px;border-bottom:1px solid var(--line);display:flex;gap:16px;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.12em}.topbar a{text-decoration:none}.page-grid{max-width:1350px;margin:auto;padding:0 42px;display:grid;grid-template-columns:205px minmax(0,1fr);gap:60px}.sidebar{position:sticky;top:25px;align-self:start;padding-top:55px}.eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}.sidebar nav{display:flex;flex-direction:column}.sidebar nav a{display:flex;gap:13px;text-decoration:none;padding:10px 0;font-size:13px}.sidebar nav small{color:var(--muted);font-variant-numeric:tabular-nums}.sidebar-note{margin-top:45px;font-size:12px;color:var(--muted)}main{min-width:0}.hero{padding:54px 0 43px;border-bottom:1px solid var(--line)}h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35}h1{font-size:clamp(36px,5vw,66px);letter-spacing:-.045em;margin:18px 0 24px}h2{font-size:28px;margin:0}h3{font-size:21px;margin-top:30px}.lead{font-size:19px;max-width:680px;color:#536a66}.hero-meta{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:25px;font-size:11px;color:var(--muted)}.lesson-section{padding:43px 0;border-bottom:1px solid var(--line)}.section-heading{display:flex;gap:15px;align-items:baseline;margin-bottom:23px}.section-heading h2{flex:1}.section-number{font:italic 20px var(--serif);color:var(--teal)}.feedback-link{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;gap:7px;min-height:44px;padding:8px 15px;border:1px solid #ae762c;border-radius:8px;background:#f2c879;color:#39280f;font-size:14px;font-weight:700;line-height:1.5;white-space:nowrap;text-decoration:none;box-shadow:0 2px 4px #39280f18}.feedback-link::before{content:"";width:16px;height:14px;box-sizing:border-box;border:2px solid currentColor;border-radius:5px 5px 5px 0}.feedback-link:hover{background:#eab65b;border-color:#80551e}.feedback-link:focus-visible{outline:3px solid #986118;outline-offset:4px}.explorer .feedback-link:focus-visible{outline-color:#fff3ce}.lesson-section p{margin:15px 0}.lesson-section li{margin:9px 0}strong{font-weight:650}blockquote{margin:24px 0;padding:13px 23px;background:var(--wash);border-left:3px solid var(--teal)}blockquote p{margin:5px 0!important}table{border-collapse:collapse;width:100%;font-size:14px;margin:23px 0}th,td{border-bottom:1px solid var(--line);padding:14px 12px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}code{font-size:.9em;background:#edf0e9;padding:2px 5px;border-radius:3px}pre{overflow:auto}math[display="block"]{font-size:1.7em;padding:22px 10px;margin:22px 0;background:var(--wash);overflow:auto}img,svg{max-width:100%;height:auto}.activity{background:#e9efea;border:1px solid #d2ded4;padding:23px;border-radius:4px;margin:25px 0}.activity-head{display:flex;justify-content:space-between;gap:15px}.slider-label{display:block;margin-top:20px;font-size:14px}.slider-label output{font-size:26px;color:var(--teal);font-weight:650;margin-left:10px}.slider-label input{display:block;width:100%;accent-color:var(--teal);margin-top:15px;min-height:32px}.activity svg{display:block;width:100%;margin:18px 0 0}.activity svg text{font:13px var(--sans);fill:var(--ink)}.readouts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ccd9ce;padding-top:17px;gap:20px}.readouts span{display:block;font-size:12px;color:var(--muted)}.readouts strong{font:34px var(--serif);font-variant-numeric:tabular-nums}.caption{font-size:12px;color:var(--muted);line-height:1.7}.quiz-summary{font-size:13px;padding:12px 0;color:var(--teal)}.quiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:15px 0 22px}.quiz-card{background:#fffdf8;border:1px solid var(--line);padding:22px;min-width:0}.quiz-card fieldset{border:0;padding:0;margin:0;min-width:0}.quiz-card legend{font-size:16px;font-weight:550;padding:0;margin-bottom:17px}.quiz-card legend .eyebrow{margin-bottom:9px}.option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--paper);margin:7px 0;font-size:14px;cursor:pointer;border:1px solid transparent}.option:has(input:checked){border-color:var(--teal);background:#edf3eb}.option input{accent-color:var(--teal);margin:7px 0 0;flex-shrink:0}.quiz-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin-top:18px}.primary,.secondary{padding:8px 18px;border:1px solid var(--teal);border-radius:2px;font-size:13px}.primary{background:var(--teal);color:white}.primary:hover{background:#10594f}.secondary{background:transparent;color:var(--teal)}.answer-note{font-size:13px;padding:12px 14px;margin:16px 0 8px;border-left:3px solid var(--teal);background:var(--wash)}.answer-note.wrong{border-color:var(--warm);background:#f7ece1}.concept-link{display:block;font-size:11px;margin-top:14px}.sources{padding:32px 0 45px;font-size:12px;color:var(--muted)}.sources h2{font-size:19px}.sources li{margin:12px 0}.sources ul{padding-left:18px}.home{max-width:1080px;padding:0 42px;margin:auto}.home .hero{padding:70px 0 50px}.home h1{font-size:clamp(44px,7vw,86px)}.course-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:25px;margin:35px 0}.course-card{padding:28px;border:1px solid var(--line);border-top:3px solid var(--teal);background:#fffdf8}.course-card h2 a{text-decoration:none}.course-card>p{font-size:15px}.course-card>a{font-size:13px}dialog{border:1px solid var(--line);border-radius:5px;padding:28px;width:min(620px,calc(100% - 24px));max-height:90vh;color:var(--ink);background:var(--paper)}dialog::backdrop{background:#142b29aa}dialog h2{font-size:25px}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.dialog-heading button{border:0;background:transparent;font-size:28px;padding:0 6px}dialog label{display:block;margin:14px 0;font-size:13px}dialog textarea,dialog select{display:block;width:100%;margin-top:6px;border:1px solid #bbc9bc;background:#fffdf8;padding:10px;color:var(--ink);font-size:14px;border-radius:2px}dialog textarea{resize:vertical}.dialog-actions{display:flex;flex-wrap:wrap;gap:12px}dialog [data-feedback-context]{font-size:12px;color:var(--muted);overflow-wrap:anywhere}[data-feedback-status]{font-size:13px}.skip{position:absolute;left:20px;top:-100px;padding:10px;background:white;z-index:5}.skip:focus{top:10px}[hidden]{display:none!important}@media(max-width:1000px){.page-grid{grid-template-columns:155px minmax(0,1fr);gap:30px;padding:0 25px}.quiz-grid{grid-template-columns:1fr}.section-heading{flex-wrap:wrap}.section-heading h2{font-size:25px}}@media(max-width:700px){body{font-size:16px}.topbar{padding:16px 20px;font-size:10px}.page-grid{display:block;padding:0 20px}.sidebar{position:static;padding-top:20px}.sidebar>.eyebrow,.sidebar-note{display:none}.sidebar nav{flex-direction:row;gap:14px;overflow-x:auto;padding-bottom:8px}.sidebar nav a{font-size:11px;white-space:nowrap;padding:5px 0}.sidebar nav small{display:none}.hero{padding:24px 0 30px}.hero-meta{gap:8px 14px}.lead{font-size:17px}.lesson-section{padding:30px 0}.section-heading{gap:10px;margin-bottom:18px}.section-heading h2{font-size:24px}.section-heading>.feedback-link{margin-left:30px}.quiz-card{padding:18px}.activity{padding:15px}.readouts strong{font-size:29px}table{font-size:12px}th,td{padding:9px 6px;overflow-wrap:anywhere}.home{padding:0 20px}.home .hero{padding:45px 0 30px}dialog{padding:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.sidebar,.feedback-link,.quiz-actions,.topbar,.concept-link,[data-reset-quiz]{display:none}.page-grid{display:block;padding:0}.quiz-grid{display:block}.quiz-card{break-inside:avoid;margin:10px 0}body{background:white}.hero{padding:10px 0}dialog{display:none}}
+/* Self-study: warm reading paper, dark instrument panels, no external fonts. */
+:root{--paper:#f4f1e9;--ink:#253443;--teal:#315f78;--muted:#667480;--line:#d7d8d3;--wash:#e9ece9}
+.hero h1{max-width:900px}.hero .eyebrow{color:#9a6936}.hero{padding-bottom:28px}.study-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}.step-pager{display:flex;justify-content:space-between;padding:24px 0}.step-pager button:disabled{opacity:.35}.sidebar nav a[aria-current]{color:#213c51;font-weight:700;border-right:3px solid #b8793e}.lesson-section{padding-top:30px}.lesson-section>p{max-width:780px}.explorer{background:#142538;color:#e2ebef;border:0;border-radius:10px;padding:26px;margin:24px 0}.explorer .eyebrow{color:#e9b770}.explorer h3{font-size:27px;margin:10px 0}.explorer .prediction{color:#d3dfe5;font-size:15px;max-width:680px}.lab-layout{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:center}.lab-plot{min-width:0}.explorer svg text{fill:#c6d4de;font-size:14px}.explorer .caption{color:#a8bac8;font-size:11px}.lab-controls{border-left:1px solid #405165;padding-left:20px}.lab-control{font-size:12px;display:block;margin:15px 0 25px}.lab-control output{display:block;color:#eab76f;font-size:24px;font-variant-numeric:tabular-nums}.lab-control input{display:block;width:100%;accent-color:#eab76f;min-height:32px;margin-top:8px}.lab-control select{background:#24394c;color:#e1e9ef;width:100%;padding:8px 5px;border:1px solid #526575;font-size:12px;margin-top:8px}.lab-result{border-top:1px solid #405165;padding-top:16px;font-size:14px;color:#e9c58d;min-height:65px}.lesson-section details{border:1px solid #c8d3da;border-left:3px solid #537b95;border-radius:5px;padding:16px 20px;background:#f9faf8;margin:22px 0;font-size:15px}.lesson-section summary{font-weight:650;color:#315f78;cursor:pointer;line-height:1.7}.lesson-section details[open] summary{margin-bottom:14px}.lesson-section details p{max-width:760px}.read-book{background:#e9e4d8;border-radius:4px;padding:15px 20px;font-size:14px}.read-book strong{color:#845a32}.takeaway{font-family:var(--serif);font-size:22px;border-left:3px solid #bf8c50;padding:5px 20px;margin:24px 0}.sources{border-top:1px solid var(--line)}.quiz-grid{grid-template-columns:1fr}.quiz-card{border-radius:5px}.quiz-summary{font-size:12px}.hero-meta{font-size:12px}.course-card{border-top-color:#a67b47}.course-card h2{font-size:25px}@media(min-width:1200px){.page-grid{grid-template-columns:185px minmax(0,1fr);gap:45px;max-width:1440px}.hero h1{font-size:58px}}
+@media(max-width:850px){.lab-layout{grid-template-columns:1fr}.lab-controls{border-left:0;border-top:1px solid #405165;padding:10px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}.lab-control{margin:10px 0}.explorer{padding:18px}.lab-result{min-height:0}.explorer svg text{font-size:16px}}
+@media(max-width:700px){.study-controls{font-size:11px;gap:8px}.study-controls button{white-space:nowrap;padding:6px 10px}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #b8793e}.explorer h3{font-size:23px}.explorer .prediction{font-size:14px}.lab-controls{grid-template-columns:1fr}.lab-control output{display:inline;font-size:20px;margin-left:12px}.lesson-section details{padding:13px 15px}.takeaway{font-size:20px}.lab-result{font-size:13px}.hero h1{font-size:36px}}
+@media print{.lesson-section[hidden]{display:block!important}.study-controls,.step-pager{display:none}}
+
+.hero{padding-top:30px}.hero h1{margin:12px 0 16px}.study-controls{padding:12px 0}.explorer svg{margin-top:10px}@media(max-width:700px){.explorer svg text{font-size:23px}.explorer svg{min-height:175px}.hero{padding-top:20px}.hero h1{font-size:34px}math[display="block"]{font-size:1.18em}}
+
+.activity-head{justify-content:flex-end}.dialog-actions a.primary{text-decoration:none;display:inline-block}.hero-meta{margin-top:16px}.home .hero{padding:30px 0}.home h1{font-size:48px}.topbar{letter-spacing:0}.sidebar{padding-top:30px}
+
+/* Reading and keyboard access for lesson revision 1.2.0. */
+summary:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;font-size:1.18em}
+.lesson-section p,.lesson-section li{overflow-wrap:anywhere}
+@media(max-width:700px){math[display="block"]{font-size:1em}}
+
+/* Keep review links compact and offer a direct return to the originating question. */
+.concept-link{display:flex;align-items:center;width:fit-content;max-width:100%;min-height:44px;padding:8px 10px;margin-top:18px;font-size:13px;line-height:1.5;border-radius:4px}
+.concept-link:hover{background:var(--wash)}
+.quiz-return{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:10;max-width:calc(100vw - 32px);min-height:44px;padding:11px 18px;border:1px solid var(--teal);border-radius:8px;background:var(--teal);color:#fff;font-size:14px;font-weight:600;line-height:1.5;box-shadow:0 4px 16px #20363533}
+.quiz-return:hover{background:#10594f}
+.quiz-card:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}
+@media print{.quiz-return,.concept-link{display:none}}
+
+/* Book covers and a quiet, paper-like table of contents. */
+.library-home{max-width:1180px;margin:auto;padding:0 48px}.library-heading{display:grid;grid-template-columns:1.15fr 1fr;column-gap:80px;padding:58px 0 46px;border-bottom:1px solid var(--line)}.library-kicker{font-size:12px;color:#876037;letter-spacing:.12em;margin:0 0 20px}.library-heading .library-kicker{grid-column:1/-1}.library-heading h1{font-size:clamp(40px,5vw,64px);line-height:1.23;letter-spacing:.03em;margin:0}.library-intro{align-self:end;max-width:370px;font-size:16px;color:var(--muted);margin:0 0 6px}.bookshelf{display:grid;grid-template-columns:1fr 1fr;gap:100px;padding:55px 35px 65px}.book-entry{min-width:0}.book-link{display:block;text-decoration:none;max-width:310px;margin:auto}.book-cover{position:relative;isolation:isolate;aspect-ratio:1055/1491;background:#090d12;color:#faf3e7;box-shadow:inset 5px 0 5px #ffffff20,10px 12px 0 -7px #d8d1c3,18px 23px 30px -16px #1c253366;border-radius:2px 5px 5px 2px;overflow:hidden}.book-cover:after{content:"";position:absolute;inset:0;box-shadow:inset 6px 0 8px #ffffff16;pointer-events:none;border-left:3px solid #ffffff17}.book-cover img{display:block;position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}.cover-title{padding:27px 23px 22px;background:linear-gradient(#05090ded,#05090d7a,transparent);line-height:1.5}.cover-title>span:first-child{display:block;font-family:var(--serif);font-size:16px;letter-spacing:.05em}.cover-title strong{display:block;font-family:var(--serif);font-size:29px;font-weight:500;margin:7px 0}.cover-volume{font-size:12px;color:#e9bd7e;letter-spacing:.2em}.cover-author{position:absolute;bottom:0;left:0;right:0;padding:32px 23px 21px;background:linear-gradient(transparent,#05090dcc);font-size:11px;letter-spacing:.03em}.book-link{transition:transform .2s}.book-link:hover{transform:translateY(-5px)}.book-description{max-width:360px;margin:26px auto 0}.book-description h2{font-size:23px}.book-description p{font-size:14px;color:var(--muted);margin:12px 0 16px}.catalog-link{font-size:14px;text-decoration:none;border-bottom:1px solid #a78c6a;padding-bottom:5px}.catalog-link span{margin-left:15px}.library-footer{padding:30px 0 45px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:45px}.library-footer h2{font-size:21px}.library-footer p{font-size:13px;color:var(--muted);margin:0}.volume-layout{max-width:1230px;margin:auto;padding:45px 45px 0;display:grid;grid-template-columns:260px minmax(0,1fr);gap:75px}.volume-book{align-self:start;position:sticky;top:35px}.volume-book>p{font-size:12px;color:var(--muted);margin-top:23px}.volume-book .cover-title{padding:23px 19px}.volume-book .cover-title strong{font-size:25px}.volume-book .cover-title>span:first-child{font-size:14px}.volume-heading{padding:5px 0 25px;border-bottom:2px solid #9c7c54}.volume-heading h1{font-size:44px;margin:0 0 20px;letter-spacing:0}.volume-heading>p:last-child{font-size:15px;color:var(--muted);margin-bottom:0}.chapter-list{list-style:none;margin:0;padding:0}.chapter-row{display:grid;grid-template-columns:36px minmax(0,1fr) 84px;gap:16px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);scroll-margin-top:25px}.chapter-number{font:italic 23px var(--serif);color:#9b8569;align-self:start;line-height:1.4}.chapter-row h2{font-size:21px;line-height:1.5}.chapter-row p{font-size:13px;color:var(--muted);margin:8px 0 0}.start-learning{font-size:12px;text-decoration:none;white-space:nowrap;color:#375d71}.chapter-pending{font-size:12px;color:#77796f;text-align:right}.chapter-row.available{background:linear-gradient(90deg,#e8e6de50,transparent)}.directory-link{display:block;font-size:13px;text-decoration:none;padding:0 0 17px;border-bottom:1px solid var(--line)}.nav-heading{font-size:11px;color:var(--muted);letter-spacing:.12em;margin:20px 0 10px}.sidebar nav a{border-radius:3px;padding:8px 9px;margin:2px 0;line-height:1.55}.sidebar nav a:hover{background:#e7e6df}.sidebar nav a[aria-current]{background:#e8e5da;border-right:3px solid #a88048}.topbar>span:last-child{flex-shrink:0}.topbar{font-size:12px;letter-spacing:0}
+@media(max-width:900px){.bookshelf{gap:55px;padding-left:0;padding-right:0}.library-heading{gap:25px}.volume-layout{grid-template-columns:190px minmax(0,1fr);gap:35px;padding:35px 25px 0}.volume-book .cover-title strong{font-size:21px}.volume-book .cover-title>span:first-child{font-size:11px}.volume-book .cover-title{padding:18px 14px}.chapter-row{grid-template-columns:27px minmax(0,1fr);gap:8px 13px}.start-learning,.chapter-pending{grid-column:2;text-align:left}.volume-heading h1{font-size:35px}}
+@media(max-width:700px){.library-home{padding:0 24px}.library-heading{display:block;padding:35px 0}.library-heading h1{font-size:41px}.library-intro{margin-top:23px;font-size:14px}.bookshelf{grid-template-columns:1fr;gap:48px;padding:35px 6px 45px}.book-link{max-width:280px}.book-description{max-width:300px}.library-footer{display:block;padding-top:25px}.library-footer p{margin-top:14px}.volume-layout{display:block;padding:25px 20px 0}.volume-book{position:static;display:none}.volume-heading h1{font-size:34px}.volume-heading .library-kicker{margin-bottom:12px}.chapter-row{padding:20px 0}.chapter-row h2{font-size:21px}.topbar{padding:16px 20px;gap:15px;align-items:flex-start}.topbar a{line-height:1.5}.topbar span{font-size:10px}.directory-link{padding-bottom:12px}.nav-heading{display:none}.sidebar nav{flex-direction:row;flex-wrap:wrap;gap:4px 8px;overflow:visible;margin-top:12px}.sidebar nav a{white-space:normal;font-size:12px;padding:6px 8px;background:#ece9df}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #a88048}.sidebar{padding-top:20px}.sidebar nav small{display:inline}.library-kicker{letter-spacing:.06em}}
+@media(prefers-reduced-motion:reduce){.book-link{transition:none}}
+
+.topbar .github-project{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-shrink:0;min-height:44px;padding:8px 14px;border:1px solid #24292f;border-radius:8px;background:#24292f;color:#fff;font-size:13px;font-weight:600;line-height:1.5;text-decoration:none}.github-project svg{flex-shrink:0}.topbar .github-project:hover{background:#414851;border-color:#414851}.topbar .github-project:focus-visible{outline:3px solid #a88048;outline-offset:4px}
+
+/* Keep scientific symbols legible in prose, tables and exercises. */
+math{font-family:"STIX Two Math","Cambria Math",math;line-height:1.5}
+td math,.quiz-card math{font-size:1.08em}
+td math{white-space:nowrap}
+.answer-note strong{display:block;margin-bottom:.35em}
+@media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
+
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;flex-wrap:wrap}
+.highlight-help{flex-basis:100%;max-width:820px;margin-top:2px;padding:12px 16px;border:1px solid var(--line);border-left:3px solid #b8793e;border-radius:5px;background:#f9faf6}
+.highlight-help h3{margin:0 0 8px;font-size:15px}
+.highlight-help ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.highlight-help li{font-size:13px;line-height:1.75;color:#3f4d59}
+.highlight-help strong{color:#213c51}
+.highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
+.highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-tools [data-clear-armed]{background:#a3572d;border-color:#7c3f1d;color:#fff;font-weight:600}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch;flex-wrap:wrap}.highlight-actions{flex-wrap:wrap}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}.highlight-add-button{width:46px}}
+
+.highlight-mode-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:25;width:52px;height:52px;padding:0;border:1px solid #9b681f;border-radius:50%;background:#f2cf72;color:#39280f;box-shadow:0 5px 18px #39280f3d;font-size:30px;line-height:1}
+.highlight-mode-toggle span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-mode-toggle:hover{background:#eab65b;border-color:#80551e}
+.highlight-mode-toggle:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+.highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
+@media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
+
+.highlight-bubble{position:fixed;z-index:26;display:flex;gap:8px}
+.highlight-bubble button{min-height:40px;padding:7px 14px;border:1px solid #9b681f;border-radius:8px;background:#fdf3d7;color:#39280f;font-size:13px;cursor:pointer;box-shadow:0 5px 18px #39280f3d}
+.highlight-bubble button:hover{background:#f2cf72}
+.highlight-bubble button:focus-visible{outline:3px solid #8b541f;outline-offset:2px}
+@media(max-width:700px){.highlight-bubble button{min-height:44px}}
+@media(pointer:coarse){.highlight-mode-toggle{display:none!important}}
+
+@media print{
+ .highlight-tools,.highlight-mode-toggle,.highlight-bubble{display:none!important}
+ .lesson-section details:not([open]){display:block}
+ .lesson-section details{break-inside:avoid}
+ mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-11-12</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume3.html">← 第三卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>同一个太阳，两个相差百倍的深度</a><a href="#onset"><small>02</small>电离划出的区间</a><a href="#efficiency"><small>03</small>效率决定深度</a><a href="#teff"><small>04</small>冷星为什么更深</a><a href="#abundance"><small>05</small>氦和金属改变什么</a><a href="#lithium"><small>06</small>用锂量出对流区底</a><a href="#exercises"><small>07</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>外部对流区的深度</h1><p class="lead">从“同一个太阳，深度怎么会差 100 倍”出发，看电离怎样圈出对流不稳定区，比较三种对流效率下的温度分层，用式 (7.2) 算出冷星更深的原因，最后用锂的两条燃烧线把太阳的对流区底卡在 2.0–2.4×10⁶ K。</p><div class="hero-meta"><span>《恒星天体物理学导论》第三卷《恒星结构与演化》 · 第 7 章</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button><button class="secondary" type="button" data-highlight-help-toggle aria-expanded="false" aria-controls="highlight-help">使用说明</button></div><span data-highlight-status role="status" aria-live="polite"></span><div class="highlight-help" id="highlight-help" data-highlight-help hidden><h3>高亮与导出 · 使用说明</h3><ul><li><strong>添加高亮</strong>——电脑：选中正文文字，稍停浮出「高亮」，点按生效；或点 ✎ 进入连续高亮模式，拖选停止约半秒自动打光，再点 ✎ 退出。手机：长按选中并拖动手柄调整，松手后点「高亮」或顶部 ✎；手机不启用自动连续高亮，避免调整选区时误操作。</li><li><strong>取消高亮</strong>——选中已有高亮文字（电脑可拖选或右键点它，手机长按后调整），点浮出的「取消高亮」。</li><li><strong>保存</strong>——高亮只保存在本机浏览器，按课程分开，最多 500 条。同一小节内可跨普通段落选择，每段分别保存和取消；选区应避开公式、代码、链接、标题、列表和交互区域。包含这些内容时请缩小选区。</li><li><strong>备份</strong>——「导出高亮」得到 JSON 文件，「导入高亮」可合并恢复；「清空高亮」删除本课全部高亮，不可撤销。</li><li><strong>导出 PDF</strong>——调起浏览器打印：自动展开折叠内容并保留当前交互图状态与高亮，在打印窗口选择「另存为 PDF」。</li></ul></div></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>同一个太阳，两个相差百倍的深度</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="同一个太阳，两个相差百倍的深度">反馈</button></div><p>1931 年，Unsöld 计算太阳外部对流区的深度，得到 2000 km。六年后 Biermann 算同一个问题，得到 200 000 km。相差 100 倍。</p>
+<p>两人的物理没有分歧：都认为氢电离让气体变得不稳定，对流区从大气上层一直延伸到某个深度才停。分歧在于他们假定的温度分层——一个用辐射平衡，一个用绝热。</p>
+<p>这个例子点出了本章要处理的问题：对流区的下边界不是一个由温度和成分直接算出的位置。它取决于对流本身能把多少能量搬走，而这件事又取决于一个尚未定论的参数。本章沿教材的顺序回答四个问题：</p>
+<ul>
+<li>对流在哪里开始、在哪里结束？什么量决定这个边界？</li>
+<li>同样的星，为什么深度能差 100 倍？</li>
+<li>冷星为什么更深？</li>
+<li>观测怎样把深度定下来，并反过来给出参数？</li>
+</ul>
+<h3>前置知识与本章联系</h3>
+<ul>
+<li><a href="v2-ch14.html#stability">第 14 章：对流不稳定性</a>——判据 ∇rad&gt;∇ad、浮力与温度梯度的关系，本章直接使用。</li>
+<li><a href="v2-ch14.html#ionization">第 14 章：电离与对流</a>——电离怎样降低绝热梯度，是本章第 2 节的出发点。</li>
+<li><a href="v2-ch14.html#mixing-length">第 14 章：混合长度</a>——特征长度 l 的来历，本章最后要用观测定它。</li>
+<li><a href="v2-ch06.html#grey-law">第 6 章：灰大气</a>——式 (7.2) 的来源。</li>
+</ul>
+<p>教材第 5 章给出对流不稳定性判据，第 6 章给出对流能量传输的混合长理论。本章不重推这两部分，只把它们的结论用到恒星外层。</p>
+<!-- 编写提纲（1.0.0 新建）：驱动问题＝同一个太阳，深度为什么会差 100 倍、观测又怎样把它定下来。四步：电离圈出不稳定的区间（Saha 算电离完成温度）→ 效率决定交点深度（Unsöld 2000 km 与 Biermann 200 000 km）→ 式 (7.2) 给出冷星更深的起点 → 锂的两条燃烧线把太阳底部卡在 2.0–2.4×10⁶ K 并反推 l≈H。前置：v2-ch14 判据与混合长、v2-ch06 灰大气。后用：教材第 8 章能量产生、第 11 章对流区对结构的影响（均无课件，不建链接）。限制：图 7.1 是示意，真实边界由 ∇rad 与 ∇ad 比较决定，太阳数值由锂给出。 --></section>
+<section class="lesson-section" id="onset"><div class="section-heading"><span class="section-number">02</span><h2>电离划出的区间</h2><button class="feedback-link" type="button" data-feedback="onset" data-label="电离划出的区间">反馈</button></div><p>太阳大气里，氢在 T≈6000 K、P<sub>g</sub>≈10⁵ dyn cm⁻² 的地方开始电离。为什么电离一开始，对流就出现？</p>
+<p>两件事同时发生。电离要吸走一部分热量，把它存成电子的束缚能，于是同样的加热下温度升得少：绝热温度梯度 ∇ad 从单原子气体的 0.4 降到更小的值。同时自由电子多起来，H⁻ 和金属的吸收增强，吸收系数 κ 变大。∇ad 变小、κ 变大，两边一挤，辐射温度梯度 ∇rad 就超过了绝热线，气团被推上去之后会继续上升。</p>
+<p>电离完成以后，两个效应都反过来。氢和氦都电离完了，没有潜热可以吸收，∇ad 回到 0.4；能在连续谱中吸收的束缚电子被移走，κ 随之急剧下降。再往深处，氢和氦已经不再贡献束缚-自由吸收，不透明度的主角换成尚未完全电离的重元素，它们的平均 κ 在高温下大致按 T<sup>−2.5</sup> 缓慢减小。∇rad 于是重新落到 ∇ad 以下，对流停下。所以教材把外部对流区的下边界定在“最丰富元素的电离基本完成”的层。</p>
+<p>这个“基本完成”要多热？由 Saha 方程给出：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Saha方程：电离粒子数与中性粒子数之比，等于二倍配分函数之比、乘自由电子的态密度因子、乘电离能的指数因子，再除以电子密度"><mrow><mfrac><msup><mi>N</mi><mo>+</mo></msup><mi>N</mi></mfrac><mo>=</mo><mn>2</mn><mfrac><msup><mi>u</mi><mo>+</mo></msup><mi>u</mi></mfrac><msup><mrow><mo>(</mo><mfrac><mrow><mn>2</mn><mi>π</mi><msub><mi>m</mi><mi>e</mi></msub><mi>kT</mi></mrow><msup><mi>h</mi><mn>2</mn></msup></mfrac><mo>)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><msup><mi>e</mi><mrow><mo>−</mo><msub><mi>χ</mi><mtext>ion</mtext></msub><mo>/</mo><mi>kT</mi></mrow></msup><mfrac><mn>1</mn><msub><mi>n</mi><mi>e</mi></msub></mfrac></mrow></math></p>
+<p>三个因子各管一件事。e<sup>−χ<sub>ion</sub>/kT</sup> 管能量够不够，χ<sub>ion</sub> 是再拿走一个电子所需的能量。括号项是自由电子的态密度：每立方米里能容纳多少个自由电子态，随 T 升高按 T<sup>3/2</sup> 增大。分母 n<sub>e</sub> 是电子密度：电子越多，离子抓住一个电子复合得越快，同样的温度下电离度反而更低。</p>
+<p>代入太阳对流区顶部附近的条件 P<sub>g</sub>=10⁵ dyn cm⁻²，算氦要多热才达到 99% 电离。氦的电离能 24.6 eV；He⁺ 只有一个电子，能级与氢相似，配分函数之比 u(He⁺)/u(He)≈2，所以方程开头的系数是 2×2=4。这个压强下氦几乎全部一次电离，每个氦原子贡献一个电子，粒子总数约为 3N(He)，因此 n<sub>e</sub>≈P<sub>g</sub>/(3kT)。</p>
+<p>取 T=2.4×10⁴ K：指数 e<sup>−24.6/2.07</sup>=6.8×10⁻⁶，态数因子 (2πm<sub>e</sub>kT/h²)<sup>3/2</sup>=9.0×10²⁷ m⁻³，乘 4 得 3.6×10²⁸ m⁻³，再乘指数得 2.4×10²³ m⁻³。而 n<sub>e</sub>=10⁴ Pa/(3×1.38×10⁻²³×2.4×10⁴)=1.0×10²² m⁻³。两者之比 24，对应电离度 24/25≈96%。</p>
+<table>
+<thead>
+<tr>
+<th>T（K）</th>
+<th>2.0×10⁴</th>
+<th>2.2×10⁴</th>
+<th>2.4×10⁴</th>
+<th>2.65×10⁴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>氦的电离度</td>
+<td>63%</td>
+<td>88%</td>
+<td>96%</td>
+<td>99%</td>
+</tr>
+</tbody></table>
+<p>所以“电离完成”要 2.6×10⁴ K 上下，是电离起点 6000 K 的四倍多。这个温度还随压强升高：压强越大，电子密度越大，越难电离，要更高的温度才达到同样的电离度。同样算一遍，P<sub>g</sub>=10⁶ dyn cm⁻² 时需要约 3.2×10⁴ K。</p>
+<p>图 7.1 里那条“完全电离”的界线随深度向右上方倾斜，画的就是这件事：越深，压强越高，需要的温度越高。</p>
+<p>阅读：Volume 3 §7.1，式 (7.1)，图 7.1。</p>
+</section>
+<section class="lesson-section" id="efficiency"><div class="section-heading"><span class="section-number">03</span><h2>效率决定深度</h2><button class="feedback-link" type="button" data-feedback="efficiency" data-label="效率决定深度">反馈</button></div><p>现在把两件事画在同一张图上：横轴是深度，纵轴是温度。温度分层 T(z) 从表面往里升；电离完成所需的温度 T<sub>i</sub>(z) 也随深度升高，因为压强越高越难电离。两者的交点就是下边界——在这条线以上气体还没有完全电离，对流不稳定；以下稳定。</p>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="示意图：辐射平衡、低效对流、高效对流三种温度分层曲线，与一条直线的电离完成温度线在不同深度相交，对流越高效交点越深">
+<line x1="85" y1="345" x2="680" y2="345" stroke="#8fa39a" stroke-width="2"/>
+<line x1="85" y1="345" x2="85" y2="45" stroke="#8fa39a" stroke-width="2"/>
+<text x="380" y="386" fill="#203635" font-size="16" text-anchor="middle">深度 z →（越深，压强与温度越高）</text>
+<text x="38" y="200" fill="#203635" font-size="16" text-anchor="middle" transform="rotate(-90 38 200)">温度 T →</text>
+<path d="M100 252 L660 78" fill="none" stroke="#7b5e2f" stroke-width="3" stroke-dasharray="11 7"/>
+<text x="104" y="244" fill="#4a3a1c" font-size="15">T<tspan baseline-shift="sub" font-size="11">i</tspan>(z)</text>
+<path d="M85 335 C150 318 225 175 285 60" fill="none" stroke="#a3572d" stroke-width="3"/>
+<path d="M85 335 C190 312 330 190 440 72" fill="none" stroke="#526d91" stroke-width="3"/>
+<path d="M85 335 C260 320 470 215 630 62" fill="none" stroke="#176b64" stroke-width="3"/>
+<circle cx="194" cy="223" r="6" fill="#a3572d"/>
+<circle cx="330" cy="180" r="6" fill="#526d91"/>
+<circle cx="588" cy="101" r="6" fill="#176b64"/>
+<line x1="194" y1="223" x2="194" y2="345" stroke="#a3572d" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="330" y1="180" x2="330" y2="345" stroke="#526d91" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="588" y1="101" x2="588" y2="345" stroke="#176b64" stroke-width="1.5" stroke-dasharray="4 5"/>
+<text x="194" y="368" fill="#a3572d" font-size="16" text-anchor="middle">d₀</text>
+<text x="330" y="368" fill="#526d91" font-size="16" text-anchor="middle">d₁</text>
+<text x="588" y="368" fill="#176b64" font-size="16" text-anchor="middle">d₂</text>
+<text x="298" y="52" fill="#a3572d" font-size="15">辐射平衡</text>
+<text x="453" y="64" fill="#526d91" font-size="15">低效对流</text>
+<text x="618" y="50" fill="#176b64" font-size="15" text-anchor="end">高效对流</text>
+</svg>
+<figcaption>示意图，不按比例。长虚线是电离完成所需的温度 T<sub>i</sub>(z)，它随深度（即压强）升高得慢；三条实线是同一颗星在三种对流效率下的温度分层，都从同一表面温度出发，温度随深度上升得比电离线快，于是在不同深度越过它，交点就是下边界。</figcaption>
+</figure>
+
+<p>对流能量输运把热量搬走，维持同样的辐射流量就不需要那么陡的温度梯度。温度随深度增加得慢，T(z) 更平缓，与 T<sub>i</sub>(z) 的交点就落到更深处、压强更高的地方。图中三种情形分别对应辐射平衡（最陡，d₀）、低效对流（d₁）和接近绝热的高效对流（最平，d₂）。</p>
+<p>开头的两个数就是这两个极端。Unsöld 假定温度分层保持辐射平衡，得到 2000 km；Biermann 假定绝热分层，得到 200 000 km。真实恒星在两者之间：对流只能搬走一部分能量，温度梯度落在绝热梯度与辐射梯度之间，深度也就落在 2000 km 与 200 000 km 之间。</p>
+<p>深度还取决于特征长度 l。l 越大，同样的温差能搬走更多热量，温度梯度越接近绝热，对流区越深。反过来说，如果能测出深度，就能定出 l。接下来先看深度怎样随温度和成分变化，第 6 节再回到 l。</p>
+<p>阅读：Volume 3 §7.1，图 7.1。</p>
+</section>
+<section class="lesson-section" id="teff"><div class="section-heading"><span class="section-number">04</span><h2>冷星为什么更深</h2><button class="feedback-link" type="button" data-feedback="teff" data-label="冷星为什么更深">反馈</button></div><p>温度分层从哪里来？第 3 章把辐射通量与温度梯度连起来：F<sub>r</sub>=(4/3)dB/dτ。对通量不随深度变化的大气，积分得 B=(3/4)Fτ+常数；再用 B=σ<sub>SB</sub>T⁴/π，就得到式 (7.2)：</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="温度四次方等于四分之三倍有效温度四次方乘光学深度，加上表面处的温度四次方"><mrow><msup><mi>T</mi><mn>4</mn></msup><mo>=</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><msubsup><mi>T</mi><mtext>eff</mtext><mn>4</mn></msubsup><mi>τ</mi><mo>+</mo><msup><mi>T</mi><mn>4</mn></msup><mo>(</mo><mn>0</mn><mo>)</mo></mrow></math></p>
+<p>其中 T⁴(0)≈½T<sub>eff</sub>⁴。这个式子只说一件事：光学深度 τ 处的温度由 T<sub>eff</sub> 和 τ 决定。同一个 τ，T<sub>eff</sub> 越低，温度越低。</p>
+<p>把 6000 K 代进去，看它出现在多深。取 T⁴(0)=½T<sub>eff</sub>⁴，式 (7.2) 变成 (6000/T<sub>eff</sub>)⁴=0.75τ+0.5。</p>
+<p>太阳（T<sub>eff</sub>=5800 K）：(6000/5800)⁴=1.15，τ=(1.15−0.5)/0.75≈0.86。
+一颗 4500 K 的星：(6000/4500)⁴=3.16，τ=(3.16−0.5)/0.75≈3.5。</p>
+<p>同样的 6000 K，冷星要在四倍的光学深度处才达到。</p>
+<p>光学深度还不等于几何深度。τ=∫κρdz，κ 越小，同样的 τ 要走过更长的路程。冷星大气温度低，κ 也小，所以 τ 大四倍、每单位路程的 τ 又增长得慢，几何深度还要更深。到了那里，气体压强更高。</p>
+<p>压强高为什么意味着对流更深？上升气泡受到的浮力正比于周围气体的密度，密度大，同样的超温就能带动更大的热流；反过来说，要搬走同样的通量，需要的超温更小，温度梯度更接近绝热。所以在高压强的层里对流更高效，温度分层更平，与电离完成线的交点更深。这就是教材的链条：冷星 → 同一温度出现在更大压强处 → 对流更高效 → 对流区更深。</p>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-label="示意图：热星与冷星的温度分层在同一压强—温度图上比较，冷星的温度分层更低，与电离完成线的交点落在更大压强、更深的位置">
+<line x1="90" y1="300" x2="670" y2="300" stroke="#8fa39a" stroke-width="2"/>
+<line x1="90" y1="300" x2="90" y2="50" stroke="#8fa39a" stroke-width="2"/>
+<text x="380" y="352" fill="#203635" font-size="16" text-anchor="middle">气体压强 P<tspan baseline-shift="sub" font-size="11">g</tspan> →（越往右越深）</text>
+<text x="40" y="180" fill="#203635" font-size="16" text-anchor="middle" transform="rotate(-90 40 180)">温度 T →</text>
+<path d="M110 250 L650 80" fill="none" stroke="#7b5e2f" stroke-width="3" stroke-dasharray="11 7"/>
+<text x="648" y="68" fill="#4a3a1c" font-size="15" text-anchor="end">电离完成温度</text>
+<path d="M100 282 Q220 235 340 178 Q400 130 450 96" fill="none" stroke="#a3572d" stroke-width="3"/>
+<path d="M112 296 Q300 245 520 121 Q575 100 610 88" fill="none" stroke="#176b64" stroke-width="3"/>
+<circle cx="340" cy="178" r="6" fill="#a3572d"/>
+<circle cx="520" cy="121" r="6" fill="#176b64"/>
+<line x1="340" y1="178" x2="340" y2="300" stroke="#a3572d" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="520" y1="121" x2="520" y2="300" stroke="#176b64" stroke-width="1.5" stroke-dasharray="4 5"/>
+<text x="340" y="322" fill="#a3572d" font-size="15" text-anchor="middle">z<tspan baseline-shift="sub" font-size="11">l,1</tspan></text>
+<text x="520" y="322" fill="#176b64" font-size="15" text-anchor="middle">z<tspan baseline-shift="sub" font-size="11">l,2</tspan></text>
+<text x="170" y="100" fill="#a3572d" font-size="15">热星：电离早，交点浅</text>
+<text x="360" y="288" fill="#176b64" font-size="15">冷星：交点更深</text>
+</svg>
+<figcaption>示意图，不按比例。两条实线是同一压强下温度不同的两颗星：热星整体更高，冷星更低。电离完成线随压强上升，因此冷星的交点落在更大压强处，对流区更深。</figcaption>
+</figure>
+
+<p>热星反过来。T<sub>eff</sub>=7600 K 的星，表面温度约为 0.84×7600≈6400 K，已经高过 6000 K，氢在大气最外层就开始电离。可那里压强低、密度小，对流几乎搬不动能量，温度分层与辐射平衡没有区别，对流区薄得看不出来。教材说 A9/F0 型星（约 7600 K）的对流区几乎消失；早 F 型星的对流起点最高能到 τ≈0.2，再往上压强太低，对流不再有效。</p>
+<div class="activity explorer" id="convdepth-lab" data-lesson-activity="convdepth"><div class="activity-head"><button class="feedback-link" data-feedback="convdepth-lab" data-label="温度分层与 6000 K 的交点" type="button">反馈</button></div><h3>温度分层与 6000 K 的交点</h3><p class="prediction">先预测：把有效温度从 5800 K 降到 4500 K，6000 K 出现在更大还是更小的气体压强处？再把吸收系数调大，同一颗星的交点向哪边移？</p><div class="lab-layout"><div class="lab-plot"><p class="caption">金色实线：当前温度分层；灰色虚线：参考星（5800 K、κ=1）；青色虚线：6000 K 水平线；圆点：交点，即氢开始明显电离的层。</p><svg viewBox="0 0 700 360" role="img" aria-label="温度随气体压强变化的曲线，与 6000 K 水平线的交点给出氢开始明显电离的位置"></svg><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls"><label class="lab-control">有效温度 <output data-out="Teff">5800 K</output><input data-param="Teff" data-unit="K" aria-label="有效温度（K）" type="range" min="4000" max="8000" step="100" value="5800"></label><label class="lab-control">吸收系数 κ（cm² g⁻¹） <output data-out="kappa">1 </output><input data-param="kappa" data-unit="" aria-label="吸收系数 κ（cm² g⁻¹）" type="range" min="0.2" max="2" step="0.1" value="1"></label></div></div><p class="caption">灰大气近似：取式 (7.2)，表面处的温度四次方取有效温度四次方的一半；静力平衡下气体压强等于 gτ/κ，g=2.74×10⁴ cm s⁻²、κ 为常数。只描述外层大气的辐射平衡分层；对流区内部温度梯度更平，实际对流区比这里给出的更深。</p></div>
+
+<p>读数里的 τ 与 P<sub>g</sub> 由 P<sub>g</sub>=gτ/κ 换算：改变 κ 时曲线沿横轴平移，改变温度时曲线整体抬高或压低。曲线只描述外层大气的辐射平衡分层，对流区内部的实际温度梯度比它更平。</p>
+<p>阅读：Volume 3 §7.2，式 (7.2)，图 7.2。</p>
+</section>
+<section class="lesson-section" id="abundance"><div class="section-heading"><span class="section-number">05</span><h2>氦和金属改变什么</h2><button class="feedback-link" type="button" data-feedback="abundance" data-label="氦和金属改变什么">反馈</button></div><p>氦丰度提高，大气中的气体压强和电子压强都更高。氦的电离要更高温度才完成，而更高温度出现在更深处，所以富氦星的对流区更深。</p>
+<p>前一节的算例已经给出了方向：P<sub>g</sub> 从 10⁵ 升到 10⁶ dyn cm⁻²，氦 99% 电离所需的温度从 2.7×10⁴ K 升到 3.2×10⁴ K。氦丰度提高让气体压强和电子压强一起上升，电离完成的位置就被推到更深处。</p>
+<p>金属丰度的影响分两段，方向相反。</p>
+<p>薄的对流区里，金属主要提供电子。金属丰度降低，电子压强下降，H⁻ 随之减少，κ 也下降。同样的 τ 对应更大的气体压强，对流更高效，对流区变深。</p>
+<p>厚的对流区深处，温度到几十万度，重元素的吸收成了不透明度的主角。金属丰度降低使 κ 下降；∇rad 大致正比于 κ，κ 减半，∇rad 也减半。原本只比 ∇ad 高出一点点的层就退回稳定，对流区变浅。Spite 和 Spite (1982) 观测到的正是后一种：贫金属恒星的对流区比太阳丰度的恒星更浅。</p>
+<p>同一个贫金属星，外层想变深、深处想变浅，最后看哪一段占先，取决于对流区本来有多厚。</p>
+<p>阅读：Volume 3 §7.3。</p>
+</section>
+<section class="lesson-section" id="lithium"><div class="section-heading"><span class="section-number">06</span><h2>用锂量出对流区底</h2><button class="feedback-link" type="button" data-feedback="lithium" data-label="用锂量出对流区底">反馈</button></div><p>前面所有计算都依赖一个没有定论的参数 l。这里有一条来自观测的约束。</p>
+<p>对流区的物质在很短的时间里就被搅匀：太阳的对流区混合一遍约一个月，比太阳年龄 4.5×10⁹ 年短得多。混合把表面物质带到深处，也把深处物质带上来。底部还有超射：下沉的气泡带着负的温度差冲过边界，冲进去的距离大概是一个压强标高或更小，速度随深度指数衰减，之后才与下面的物质缓慢混合。</p>
+<p>锂对温度很敏感。Li⁶ 在 T&gt;2×10⁶ K 时与质子反应，生成 He⁴ 和 He³；Li⁷ 要稍高一些，T&gt;2.4×10⁶ K 时与质子反应生成两个 He⁴。如果对流区一直延伸到 2×10⁶ K 的层，表面的 Li⁶ 就会被带下去，在远短于太阳年龄的时间里烧掉。</p>
+<p>观测给出两条很硬的限制。第一，太阳光谱里没有 Li⁶，所以对流区必须至少延伸到 2×10⁶ K。第二，太阳还有一条微弱的 Li⁷ 线，丰度约为陨石和年轻 T Tauri 星的 1/100；如果对流区本身到了 2.4×10⁶ K，Li⁷ 会在一个月量级的对流时标内烧光，表面一点不剩。所以对流区本身没有到 2.4×10⁶ K，那 100 倍的亏损来自超射引起的缓慢混合，时间尺度约 10⁹ 年。</p>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-label="示意图：锂的燃烧温度标尺，二百万开尔文烧毁锂六，二百四十万开尔文烧毁锂七，太阳对流区底落在两者之间，混合长度的两种计算分别给出二百万与三百万开尔文">
+<line x1="70" y1="170" x2="690" y2="170" stroke="#8fa39a" stroke-width="2"/>
+<text x="380" y="290" fill="#203635" font-size="16" text-anchor="middle">对流区底的温度（百万开尔文）</text>
+<rect x="225" y="150" width="124" height="40" rx="4" fill="#edf4ee" stroke="#357a63" stroke-width="2"/>
+<text x="287" y="140" fill="#19352d" font-size="15" text-anchor="middle">观测窗口</text>
+<line x1="225" y1="150" x2="225" y2="200" stroke="#357a63" stroke-width="2"/>
+<line x1="349" y1="150" x2="349" y2="200" stroke="#357a63" stroke-width="2"/>
+<text x="225" y="222" fill="#19352d" font-size="15" text-anchor="middle">2.0</text>
+<text x="349" y="222" fill="#19352d" font-size="15" text-anchor="middle">2.4</text>
+<line x1="225" y1="70" x2="225" y2="170" stroke="#a3572d" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="225" y="60" fill="#a3572d" font-size="15" text-anchor="middle">Li⁶ 烧毁</text>
+<line x1="349" y1="70" x2="349" y2="170" stroke="#a3572d" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="349" y="60" fill="#a3572d" font-size="15" text-anchor="middle">Li⁷ 烧毁</text>
+<circle cx="225" cy="170" r="7" fill="#176b64"/>
+<text x="150" y="245" fill="#176b64" font-size="15" text-anchor="middle">l = H：底部 2.0</text>
+<circle cx="535" cy="170" r="7" fill="#526d91"/>
+<line x1="535" y1="170" x2="535" y2="110" stroke="#526d91" stroke-width="1.5" stroke-dasharray="4 5"/>
+<text x="560" y="100" fill="#526d91" font-size="15" text-anchor="middle">l = 2H：底部 3.0，Li⁷ 保不住</text>
+<line x1="600" y1="170" x2="600" y2="185" stroke="#8fa39a" stroke-width="2"/>
+<text x="600" y="208" fill="#203635" font-size="15" text-anchor="middle">3.0</text>
+<line x1="70" y1="170" x2="70" y2="185" stroke="#8fa39a" stroke-width="2"/>
+<text x="70" y="208" fill="#203635" font-size="15" text-anchor="middle">1.5</text>
+</svg>
+<figcaption>示意图。横轴只画 1.5–3.0 百万开尔文这一段，这样两条燃烧线只差 20% 的窄窗口才看得出来；竖线是燃烧温度，绿框是同时满足“没有 Li⁶”和“保留 Li⁷”的温度范围。</figcaption>
+</figure>
+
+<p>于是太阳的对流区底被卡在 2.0×10⁶ K 到 2.4×10⁶ K 之间。窗口很窄：两个温度只差 20%，而从对流区顶部的 6000 K 到底部，温度跨了三百多倍。正是这个窄窗口让锂成为灵敏的探针。</p>
+<p>按 l=H 计算，对流区底正好落在 2×10⁶ K，与观测相符；按 l=2H 计算，底部到 3×10⁶ K，Li⁷ 早该烧光，与观测到的 Li⁷ 线不相容。所以太阳的混合长度大约是 l≈H。</p>
+<p>回看第 2 节：图 7.1 把下边界画在电离基本完成的层，那里只有约 2×10⁴ K，比这里的 2×10⁶ K 低两个量级。图 7.1 是示意——真实边界由 ∇rad 与 ∇ad 的比较决定，太阳的数值由锂给出。</p>
+<p>这个办法用在别的星上并不都顺利。比 F0 更冷的主序星，锂都在长时间尺度上被消耗，越冷越快，与对流区更深的图像一致。F 型星却出了问题：计算给出的对流区到不了 2×10⁶ K，超射也到不了 2.4×10⁶ K，而 Boesgaard 和 Tripicco (1986) 观测到 F5 附近的年轻星团恒星锂亏损最大。对这些星，对流混合解释不了锂的消耗，可能要借助自转引起的混合或扩散。</p>
+<p>阅读：Volume 3 §7.4，图 6.7。</p>
+</section>
+<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">07</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><p>先独立作答。解析中的概念链接可返回正文，再回到原题修改答案。</p>
+<div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-criterion" data-question="q-criterion"><fieldset><legend><span class="eyebrow">01 / 单选</span>外部对流区的下边界，按什么判据确定？</legend><label class="option"><input type="radio" name="q-criterion" value="A" required><span>氢和氦完全电离的那一层</span></label><label class="option"><input type="radio" name="q-criterion" value="B" required><span>∇rad 降到与 ∇ad 相等的那一层</span></label><label class="option"><input type="radio" name="q-criterion" value="C" required><span>温度达到 6000 K 的那一层</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-criterion" data-label="外部对流区的下边界，按什么判据确定？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#efficiency">回看相关概念 ↑</a></form><form class="quiz-card" id="q-saha-direction" data-question="q-saha-direction"><fieldset><legend><span class="eyebrow">02 / 单选</span>温度不变，电子密度增大，Saha 方程给出的电离度怎样变化？</legend><label class="option"><input type="radio" name="q-saha-direction" value="A" required><span>增大</span></label><label class="option"><input type="radio" name="q-saha-direction" value="B" required><span>减小</span></label><label class="option"><input type="radio" name="q-saha-direction" value="C" required><span>不变</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-saha-direction" data-label="温度不变，电子密度增大，Saha 方程给出的电离度怎样变化？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#onset">回看相关概念 ↑</a></form><form class="quiz-card" id="q-depth-order" data-question="q-depth-order"><fieldset><legend><span class="eyebrow">03 / 单选</span>同一颗星，温度分层取辐射平衡、低效对流、高效对流三种情形时，下边界深度 d₀、d₁、d₂ 的关系是？</legend><label class="option"><input type="radio" name="q-depth-order" value="A" required><span>d₀&lt;d₁&lt;d₂</span></label><label class="option"><input type="radio" name="q-depth-order" value="B" required><span>d₂&lt;d₁&lt;d₀</span></label><label class="option"><input type="radio" name="q-depth-order" value="C" required><span>d₀&lt;d₂&lt;d₁</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-depth-order" data-label="同一颗星，温度分层取辐射平衡、低效对流、高效对流三种情形时，下边界深度 d₀、d₁、d₂ 的关系是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#efficiency">回看相关概念 ↑</a></form><form class="quiz-card" id="q-factor-100" data-question="q-factor-100"><fieldset><legend><span class="eyebrow">04 / 单选</span>Unsöld 得到 2000 km，Biermann 得到 200 000 km，差别主要来自？</legend><label class="option"><input type="radio" name="q-factor-100" value="A" required><span>两人假定的温度分层不同：辐射平衡给出最浅，绝热给出最深</span></label><label class="option"><input type="radio" name="q-factor-100" value="B" required><span>其中一人把单位换算错了</span></label><label class="option"><input type="radio" name="q-factor-100" value="C" required><span>两人用的太阳年龄不同</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-factor-100" data-label="Unsöld 得到 2000 km，Biermann 得到 200 000 km，差别主要来自？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#efficiency">回看相关概念 ↑</a></form><form class="quiz-card" id="q-tau-4500" data-question="q-tau-4500"><fieldset><legend><span class="eyebrow">05 / 单选</span>取 T⁴(0)=½<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="T_eff"><msub><mi>T</mi><mi>eff</mi></msub></math>⁴，由式 (7.2)，<math xmlns="http://www.w3.org/1998/Math/MathML" displaystyle="true" aria-label="T_eff"><msub><mi>T</mi><mi>eff</mi></msub></math>=4500 K 的恒星在 τ 约为多少处达到 6000 K？</legend><label class="option"><input type="radio" name="q-tau-4500" value="A" required><span>0.86</span></label><label class="option"><input type="radio" name="q-tau-4500" value="B" required><span>3.5</span></label><label class="option"><input type="radio" name="q-tau-4500" value="C" required><span>12</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-tau-4500" data-label="取 T⁴(0)=½T_eff⁴，由式 (7.2)，T_eff=4500 K 的恒星在 τ 约为多少处达到 6000 K？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#teff">回看相关概念 ↑</a></form><form class="quiz-card" id="q-cool-chain" data-question="q-cool-chain"><fieldset><legend><span class="eyebrow">06 / 单选</span>冷星的外部对流区更深，完整的推理链是？</legend><label class="option"><input type="radio" name="q-cool-chain" value="A" required><span>温度低，电离慢，所以对流区深</span></label><label class="option"><input type="radio" name="q-cool-chain" value="B" required><span>温度随 τ 增加得慢，6000 K 出现在更大 τ、更大压强处，那里对流更高效，所以更深</span></label><label class="option"><input type="radio" name="q-cool-chain" value="C" required><span>冷星重力更大，对流传热更快，所以更深</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-cool-chain" data-label="冷星的外部对流区更深，完整的推理链是？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#teff">回看相关概念 ↑</a></form><form class="quiz-card" id="q-a9f0" data-question="q-a9f0"><fieldset><legend><span class="eyebrow">07 / 判断</span>A9/F0 型星（约 7600 K）的对流区几乎消失，是因为对流太深、辐射来不及把能量带走。</legend><label class="option"><input type="radio" name="q-a9f0" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-a9f0" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-a9f0" data-label="A9/F0 型星（约 7600 K）的对流区几乎消失，是因为对流太深、辐射来不及把能量带走。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#teff">回看相关概念 ↑</a></form><form class="quiz-card" id="q-lithium-window" data-question="q-lithium-window"><fieldset><legend><span class="eyebrow">08 / 单选</span>太阳光谱里没有 Li⁶，Li⁷ 却只亏损约 100 倍。这两条观测一起说明对流区底？</legend><label class="option"><input type="radio" name="q-lithium-window" value="A" required><span>恰好到 2×10⁶ K，且完全没有超射混合</span></label><label class="option"><input type="radio" name="q-lithium-window" value="B" required><span>落在 2.0×10⁶ 到 2.4×10⁶ K 之间：对流把 Li⁶ 带到 2×10⁶ K 烧掉，Li⁷ 只被超射的缓慢混合消耗了一部分</span></label><label class="option"><input type="radio" name="q-lithium-window" value="C" required><span>浅于 2×10⁶ K，锂的亏损是太阳形成时就有的</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-lithium-window" data-label="太阳光谱里没有 Li⁶，Li⁷ 却只亏损约 100 倍。这两条观测一起说明对流区底？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#lithium">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Erika Böhm-Vitense，《恒星天体物理学导论》第三卷《恒星结构与演化》（现用中文译本），第 7 章「外部对流区的深度」，§§7.1–7.4。</li><li>Böhm-Vitense, Introduction to Stellar Astrophysics, Volume 3: Stellar Structure and Evolution（原版），第 7 章 §§7.1–7.4；本章式 (7.1)、(7.2) 与图 7.1、7.2 按原版核对。</li></ul><a href="../volume3.html">返回第三卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><button class="highlight-mode-toggle" type="button" data-highlight-mode-toggle hidden aria-label="退出连续高亮模式" title="退出连续高亮模式"><span aria-hidden="true">✎</span></button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v3-ch07","version":"1.0.0","updated":"2026-11-12","title":"外部对流区的深度","summary":"从“同一个太阳，深度怎么会差 100 倍”出发，看电离怎样圈出对流不稳定区，比较三种对流效率下的温度分层，用式 (7.2) 算出冷星更深的原因，最后用锂的两条燃烧线把太阳的对流区底卡在 2.0–2.4×10⁶ K。","scope":"《恒星天体物理学导论》第三卷《恒星结构与演化》 · 第 7 章","demo":false,"sources":["Erika Böhm-Vitense，《恒星天体物理学导论》第三卷《恒星结构与演化》（现用中文译本），第 7 章「外部对流区的深度」，§§7.1–7.4。","Böhm-Vitense, Introduction to Stellar Astrophysics, Volume 3: Stellar Structure and Evolution（原版），第 7 章 §§7.1–7.4；本章式 (7.1)、(7.2) 与图 7.1、7.2 按原版核对。"]},"quizzes":[{"id":"q-criterion","concept":"efficiency","type":"choice","question":"外部对流区的下边界，按什么判据确定？","options":[{"id":"A","text":"氢和氦完全电离的那一层"},{"id":"B","text":"∇rad 降到与 ∇ad 相等的那一层"},{"id":"C","text":"温度达到 6000 K 的那一层"}],"answer":"B","explanation":"选 B。电离只是让 ∇ad 下降、κ 上升，使 ∇rad 有条件超过 ∇ad；边界本身由两个梯度的比较决定。选 A 是把教材图 7.1 的定性图像当成了公式：太阳的对流区底在 2×10⁶ K，那里早已完全电离。选 C 是上边界附近的电离起点，不是下边界。","explanationHTML":"选 B。电离只是让 ∇ad 下降、κ 上升，使 ∇rad 有条件超过 ∇ad；边界本身由两个梯度的比较决定。选 A 是把教材图 7.1 的定性图像当成了公式：太阳的对流区底在 2×10⁶ K，那里早已完全电离。选 C 是上边界附近的电离起点，不是下边界。"},{"id":"q-saha-direction","concept":"onset","type":"choice","question":"温度不变，电子密度增大，Saha 方程给出的电离度怎样变化？","options":[{"id":"A","text":"增大"},{"id":"B","text":"减小"},{"id":"C","text":"不变"}],"answer":"B","explanation":"选 B。式 (7.1) 里 nₑ 在分母上，电子越多，离子抓住电子复合得越快，同温度下电离度越低。选 A 是把“电子多”直接当成“电离多”，把因果方向弄反了；选 C 忽略了 nₑ 这一项，而它正是压强越高、电离完成所需温度越高的原因。","explanationHTML":"选 B。式 (7.1) 里 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math> 在分母上，电子越多，离子抓住电子复合得越快，同温度下电离度越低。选 A 是把“电子多”直接当成“电离多”，把因果方向弄反了；选 C 忽略了 \u003cmath xmlns=\"http://www.w3.org/1998/Math/MathML\" displaystyle=\"true\" aria-label=\"nₑ\">\u003cmsub>\u003cmi>n\u003c/mi>\u003cmi>e\u003c/mi>\u003c/msub>\u003c/math> 这一项，而它正是压强越高、电离完成所需温度越高的原因。"},{"id":"q-depth-order","concept":"efficiency","type":"choice","question":"同一颗星，温度分层取辐射平衡、低效对流、高效对流三种情形时，下边界深度 d₀、d₁、d₂ 的关系是？","options":[{"id":"A","text":"d₀\u003cd₁\u003cd₂"},{"id":"B","text":"d₂\u003cd₁\u003cd₀"},{"id":"C","text":"d₀\u003cd₂\u003cd₁"}],"answer":"A","explanation":"选 A。对流越高效，搬走同样热量所需的温度梯度越小，T(z) 越平缓，与电离完成线的交点越深、压强越高。选 B 把方向弄反了：它默认高效对流对应更陡的分层；选 C 把中间情形与最平的情形颠倒了。","explanationHTML":"选 A。对流越高效，搬走同样热量所需的温度梯度越小，T(z) 越平缓，与电离完成线的交点越深、压强越高。选 B 把方向弄反了：它默认高效对流对应更陡的分层；选 C 把中间情形与最平的情形颠倒了。"},{"id":"q-factor-100","concept":"efficiency","type":"choice","question":"Unsöld 得到 2000 km，Biermann 得到 200 000 km，差别主要来自？","options":[{"id":"A","text":"两人假定的温度分层不同：辐射平衡给出最浅，绝热给出最深"},{"id":"B","text":"其中一人把单位换算错了"},{"id":"C","text":"两人用的太阳年龄不同"}],"answer":"A","explanation":"选 A。两者都是同一套物理，只是把对流效率取到了两个极端：辐射平衡时温度梯度最陡，交点最浅；绝热时最平，交点最深。选 B 把物理差异当成了计算失误；选 C 混淆了恒星演化时标，对流区深度与太阳年龄无关。","explanationHTML":"选 A。两者都是同一套物理，只是把对流效率取到了两个极端：辐射平衡时温度梯度最陡，交点最浅；绝热时最平，交点最深。选 B 把物理差异当成了计算失误；选 C 混淆了恒星演化时标，对流区深度与太阳年龄无关。"},{"id":"q-tau-4500","concept":"teff","type":"choice","question":"取 T⁴(0)=½T_eff⁴，由式 (7.2)，T_eff=4500 K 的恒星在 τ 约为多少处达到 6000 K？","options":[{"id":"A","text":"0.86"},{"id":"B","text":"3.5"},{"id":"C","text":"12"}],"answer":"B","explanation":"选 B。(6000/4500)⁴=3.16=0.75τ+0.5，得 τ=2.66/0.75≈3.5。选 A 是太阳（5800 K）的值，忘了冷星要到更深处才够热；选 C 多半是把 3.16 又乘了一次，式 (7.2) 里温度是四次方关系，不能这样叠加。","explanationHTML":"选 B。(6000/4500)⁴=3.16=0.75τ+0.5，得 τ=2.66/0.75≈3.5。选 A 是太阳（5800 K）的值，忘了冷星要到更深处才够热；选 C 多半是把 3.16 又乘了一次，式 (7.2) 里温度是四次方关系，不能这样叠加。"},{"id":"q-cool-chain","concept":"teff","type":"choice","question":"冷星的外部对流区更深，完整的推理链是？","options":[{"id":"A","text":"温度低，电离慢，所以对流区深"},{"id":"B","text":"温度随 τ 增加得慢，6000 K 出现在更大 τ、更大压强处，那里对流更高效，所以更深"},{"id":"C","text":"冷星重力更大，对流传热更快，所以更深"}],"answer":"B","explanation":"选 B。关键有两步：式 (7.2) 决定温度分层，压强与效率的关系决定深度。选 A 只说出了前一半，“电离慢”本身不说明为什么更深；选 C 把原因归到重力，而冷星的重力并不因此更大，深度也不由对流传热快慢直接决定。","explanationHTML":"选 B。关键有两步：式 (7.2) 决定温度分层，压强与效率的关系决定深度。选 A 只说出了前一半，“电离慢”本身不说明为什么更深；选 C 把原因归到重力，而冷星的重力并不因此更大，深度也不由对流传热快慢直接决定。"},{"id":"q-a9f0","concept":"teff","type":"truefalse","question":"A9/F0 型星（约 7600 K）的对流区几乎消失，是因为对流太深、辐射来不及把能量带走。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。真实原因相反：这类星表面已高过 6000 K，电离在最外层、压强极低处就开始，那里密度太小，对流几乎搬不动能量，温度分层与辐射平衡没有区别，对流区才很薄。把“对流区薄”理解成“对流太强、太深”，是把因果颠倒了。","explanationHTML":"该说法不成立。真实原因相反：这类星表面已高过 6000 K，电离在最外层、压强极低处就开始，那里密度太小，对流几乎搬不动能量，温度分层与辐射平衡没有区别，对流区才很薄。把“对流区薄”理解成“对流太强、太深”，是把因果颠倒了。"},{"id":"q-lithium-window","concept":"lithium","type":"choice","question":"太阳光谱里没有 Li⁶，Li⁷ 却只亏损约 100 倍。这两条观测一起说明对流区底？","options":[{"id":"A","text":"恰好到 2×10⁶ K，且完全没有超射混合"},{"id":"B","text":"落在 2.0×10⁶ 到 2.4×10⁶ K 之间：对流把 Li⁶ 带到 2×10⁶ K 烧掉，Li⁷ 只被超射的缓慢混合消耗了一部分"},{"id":"C","text":"浅于 2×10⁶ K，锂的亏损是太阳形成时就有的"}],"answer":"B","explanation":"选 B。两条限制一起用：没有 Li⁶ 要求底部至少到 2×10⁶ K；还留着 Li⁷ 说明对流区本身没到 2.4×10⁶ K，100 倍亏损来自 10⁹ 年量级的超射混合。选 A 忽略了观测到的 Li⁷ 亏损需要一个慢混合过程；选 C 与“没有 Li⁶”矛盾，浅于 2×10⁶ K 时 Li⁶ 根本不会被烧掉。","explanationHTML":"选 B。两条限制一起用：没有 Li⁶ 要求底部至少到 2×10⁶ K；还留着 Li⁷ 说明对流区本身没到 2.4×10⁶ K，100 倍亏损来自 10⁹ 年量级的超射混合。选 A 忽略了观测到的 Li⁷ 亏损需要一个慢混合过程；选 C 与“没有 Li⁶”矛盾，浅于 2×10⁶ K 时 Li⁶ 根本不会被烧掉。"}],"quizHash":"9c2b49bed57bce19ba2ba5efc6d8c1244faba47a59de6236bad0d84f4b86ba9f","sourceHash":"e12bfc3fd0e49caa7f8cbc4f69043393cc041b46d4b8f80199c4cb2e2f58af60","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
+'use strict';
+const data=JSON.parse(document.getElementById('lesson-data').textContent);
+const storageKey=`stellar:${data.meta.id}:${data.meta.version}:${data.quizHash}`;
+let answers={};
+try{const stored=JSON.parse(localStorage.getItem(storageKey)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))answers=stored;}catch{}
+function save(){try{localStorage.setItem(storageKey,JSON.stringify(answers));}catch{}}
+function stats(){let done=0,correct=0;for(const q of data.quizzes){if(q.options.some(o=>o.id===answers[q.id])){done++;if(answers[q.id]===q.answer)correct++;}}for(const el of document.querySelectorAll('[data-answered]'))el.textContent=done;for(const el of document.querySelectorAll('[data-correct]'))el.textContent=correct;}
+function showAnswer(form,q,value){const note=form.querySelector('.answer-note');const right=value===q.answer;note.hidden=false;note.classList.toggle('wrong',!right);note.replaceChildren();const verdict=document.createElement('strong');verdict.textContent=right?'✓ 回答正确。':'✗ 回答有误。';note.append(verdict,document.createTextNode(' '));const explanation=document.createElement('span');explanation.innerHTML=q.explanationHTML;note.append(explanation);}
+for(const q of data.quizzes){const form=document.getElementById(q.id);const value=answers[q.id];if(q.options.some(o=>o.id===value)){form.querySelector(`input[value="${value}"]`).checked=true;showAnswer(form,q,value);}form.addEventListener('submit',event=>{event.preventDefault();const value=new FormData(form).get(q.id);if(!q.options.some(o=>o.id===value))return;answers[q.id]=value;save();showAnswer(form,q,value);stats();});form.addEventListener('change',()=>{delete answers[q.id];form.querySelector('.answer-note').hidden=true;save();stats();});}
+stats();
+for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEventListener('click',()=>{answers={};save();for(const form of document.querySelectorAll('[data-question]')){form.reset();form.querySelector('.answer-note').hidden=true;}stats();});
+const highlightTools=document.querySelector('.highlight-tools');
+if(highlightTools){
+ const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const coarsePointer=window.matchMedia?.('(pointer: coarse)')?.matches;
+ const addHighlight=highlightTools.querySelector('[data-highlight-add]');
+ const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
+ const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
+ const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
+ const importHighlights=highlightTools.querySelector('[data-highlight-import]');
+ const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const helpToggle=highlightTools.querySelector('[data-highlight-help-toggle]');
+ const helpPanel=highlightTools.querySelector('[data-highlight-help]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
+ const blockSelector='p,li,blockquote,td';
+ const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
+ const maxHighlights=500;
+ let storageAvailable=true;
+ let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
+ let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
+ function cleanHighlight(item){
+  if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
+  if(!item.quote.trim()||item.quote.length>10000)return null;
+  return {id:item.id.slice(0,100),sectionId:item.sectionId.slice(0,200),quote:item.quote,blockText:typeof item.blockText==='string'?item.blockText.slice(0,30000):'',start:Number.isInteger(item.start)?item.start:null,end:Number.isInteger(item.end)?item.end:null,prefix:typeof item.prefix==='string'?item.prefix.slice(-160):'',suffix:typeof item.suffix==='string'?item.suffix.slice(0,160):'',version:typeof item.version==='string'?item.version:'',sourceHash:typeof item.sourceHash==='string'?item.sourceHash:'',createdAt:typeof item.createdAt==='string'?item.createdAt:new Date().toISOString(),status:'stale'};
+ }
+ try{
+  const stored=JSON.parse(localStorage.getItem(highlightKey)||'null');
+  const items=Array.isArray(stored)?stored:stored?.lessonId===data.meta.id?stored.items:[];
+  if(Array.isArray(items))highlightState.items=items.map(cleanHighlight).filter(Boolean).slice(0,maxHighlights);
+ }catch{storageAvailable=false;}
+ function saveHighlights(){
+  try{localStorage.setItem(highlightKey,JSON.stringify(highlightState));return true;}
+  catch{storageAvailable=false;return false;}
+ }
+ function nodeElement(node){return node?.nodeType===Node.ELEMENT_NODE?node:node?.parentElement;}
+ function blockFor(node){
+  const block=nodeElement(node)?.closest(blockSelector);
+  return block&&!block.closest(excludedSelector)&&block.closest('.lesson-section')?block:null;
+ }
+ function intersects(range,node){try{return range.intersectsNode(node);}catch{return false;}}
+ function marksFor(range){
+  if(!range)return[];
+  const ids=new Set();
+  for(const mark of document.querySelectorAll('mark.stellar-highlight[data-highlight-id]'))if(intersects(range,mark))ids.add(mark.dataset.highlightId);
+  return [...ids];
+ }
+ function selectionInfo(range){
+  if(!range||range.collapsed)return null;
+  const first=blockFor(range.startContainer),last=blockFor(range.endContainer);
+  if(!first||!last||!range.toString().trim())return null;
+  const section=first.closest('.lesson-section');
+  if(last.closest('.lesson-section')!==section)return null;
+  // Keep each paragraph independently anchored in the existing backup format.
+  // Reject mixed selections in full: never silently skip a formula or control.
+  for(const node of section.querySelectorAll(excludedSelector+',h1,h2,h3,summary,button,input,select,textarea,svg,img'))if(intersects(range,node))return null;
+  if(first===last)return {parts:[{block:first,range}]};
+  if(first.tagName!=='P'||last.tagName!=='P')return null;
+  const blocks=[...section.querySelectorAll('p')].filter(block=>intersects(range,block));
+  const parts=[];
+  for(const block of blocks){
+   if(block.closest(excludedSelector))return null;
+   const part=document.createRange();part.selectNodeContents(block);
+   if(block===first)part.setStart(range.startContainer,range.startOffset);
+   if(block===last)part.setEnd(range.endContainer,range.endOffset);
+   if(part.toString().trim())parts.push({block,range:part});
+  }
+  // Between paragraph endpoints there may also be a list or a quotation.
+  for(const node of section.querySelectorAll('li,blockquote,td'))if(intersects(range,node))return null;
+  return parts.length?{parts}:null;
+ }
+ function boundaryOffset(block,container,offset){
+  const before=document.createRange();
+  before.selectNodeContents(block);
+  try{before.setEnd(container,offset);return before.toString().length;}catch{return -1;}
+ }
+ function makeHighlight(info){
+  const {block,range}=info,start=boundaryOffset(block,range.startContainer,range.startOffset),end=boundaryOffset(block,range.endContainer,range.endOffset),blockText=block.textContent||'',quote=blockText.slice(start,end);
+  if(start<0||end<=start||!quote.trim())return null;
+  const section=block.closest('.lesson-section');
+  return {id:typeof crypto?.randomUUID==='function'?crypto.randomUUID():`h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,sectionId:section.id,quote,blockText,start,end,prefix:blockText.slice(Math.max(0,start-160),start),suffix:blockText.slice(end,end+160),version:data.meta.version,sourceHash:data.sourceHash,createdAt:new Date().toISOString(),status:'active'};
+ }
+ function selectableTextNodes(block){
+  const walker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while(node=walker.nextNode())nodes.push(node);
+  return nodes;
+ }
+ function wrapOffsets(block,start,end,id){
+  const nodes=selectableTextNodes(block),ranges=[];
+  let cursor=0;
+  for(const node of nodes){
+   const length=node.nodeValue.length,nodeStart=cursor,nodeEnd=cursor+length;cursor=nodeEnd;
+   const localStart=Math.max(start-nodeStart,0),localEnd=Math.min(end-nodeStart,length);
+   if(localEnd<=localStart||node.parentElement?.closest('mark,a,code,pre,math'))continue;
+   ranges.push({node,localStart,localEnd});
+  }
+  if(!ranges.length)return false;
+  for(let i=ranges.length-1;i>=0;i--){
+   const part=ranges[i],range=document.createRange();range.setStart(part.node,part.localStart);range.setEnd(part.node,part.localEnd);
+   const mark=document.createElement('mark');mark.className='stellar-highlight';mark.dataset.highlightId=id;mark.title='选择后可取消高亮';
+   mark.append(range.extractContents());range.insertNode(mark);
+  }
+  return true;
+ }
+ function unwrapHighlight(id){
+  for(const mark of [...document.querySelectorAll('mark.stellar-highlight[data-highlight-id]')].filter(mark=>mark.dataset.highlightId===id))mark.replaceWith(...mark.childNodes);
+ }
+ function clearRenderedHighlights(){for(const mark of [...document.querySelectorAll('mark.stellar-highlight')])mark.replaceWith(...mark.childNodes);}
+ function findPositions(text,quote){
+  const positions=[];let from=0;
+  while(quote&&from<=text.length){const position=text.indexOf(quote,from);if(position<0)break;positions.push(position);from=position+Math.max(quote.length,1);}
+  return positions;
+ }
+ function contextMatches(text,start,item){
+  return (!item.prefix||text.slice(Math.max(0,start-item.prefix.length),start).endsWith(item.prefix))&&(!item.suffix||text.slice(start+item.quote.length,start+item.quote.length+item.suffix.length).startsWith(item.suffix));
+ }
+ function locateHighlight(item){
+  const section=document.getElementById(item.sectionId);if(!section)return null;
+  let blocks=[...section.querySelectorAll(blockSelector)].filter(block=>!block.closest(excludedSelector));
+  const exact=item.blockText?blocks.filter(block=>block.textContent===item.blockText):[];
+  if(exact.length)blocks=exact;
+  const matches=[];
+  for(const block of blocks){
+   const text=block.textContent||'',positions=findPositions(text,item.quote);
+   for(const start of positions)if(contextMatches(text,start,item))matches.push({block,start,end:start+item.quote.length});
+  }
+  if(matches.length===1)return matches[0];
+  if(Number.isInteger(item.start)&&Number.isInteger(item.end)){
+   const exactPosition=matches.find(match=>match.start===item.start&&match.end===item.end);
+   if(exactPosition)return exactPosition;
+  }
+  return null;
+ }
+ function restoreHighlights(){
+  clearRenderedHighlights();
+  const applied=[];
+  for(const item of highlightState.items){
+   const match=locateHighlight(item);
+   const overlaps=match&&applied.some(previous=>previous.block===match.block&&match.start<previous.end&&previous.start<match.end);
+   if(!match||overlaps||!wrapOffsets(match.block,match.start,match.end,item.id)){item.status='stale';continue;}
+   item.status='active';item.version=data.meta.version;item.sourceHash=data.sourceHash;applied.push(match);
+  }
+  highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
+ }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  const label=coarsePointer?'高亮选中文字':active?'退出连续高亮模式':'进入连续高亮模式';
+  addHighlight.setAttribute('aria-label',label);
+  addHighlight.title=label;
+  refreshHighlightUI();
+ }
+ function refreshHighlightUI(){
+  const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
+  clearHighlights.disabled=highlightState.items.length===0;
+  if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
+ }
+ function updateHighlightSelection(){
+  const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
+  addHighlight.disabled=false;
+  removeHighlight.hidden=ids.length===0;
+  removeHighlight.disabled=ids.length===0;
+  refreshHighlightUI();
+  if(range&&!range.collapsed&&!info&&!ids.length&&blockFor(range.startContainer))highlightStatus.textContent='请选择同一小节内的普通正文段落，避开公式、链接、代码和交互区域。';
+ }
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const items=info.parts.map(makeHighlight);
+  if(items.some(item=>!item||item.quote.length>10000||item.blockText.length>30000)){
+   highlightStatus.textContent='选中文字过长，请缩小选区后重试。';return false;
+  }
+  if(highlightState.items.length+items.length>maxHighlights){
+   highlightStatus.textContent='本课高亮最多保存 500 条，请先导出备份并取消部分高亮，再重试。';return false;
+  }
+  for(let i=0;i<items.length;i++)if(!wrapOffsets(info.parts[i].block,items[i].start,items[i].end,items[i].id)){
+   for(const item of items)unwrapHighlight(item.id);
+   highlightStatus.textContent='本次高亮未保存，请重新选择后重试。';return false;
+  }
+  highlightState.items.push(...items);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode||coarsePointer)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
+ document.addEventListener('selectionchange',()=>{
+  const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
+  updateHighlightSelection();
+  scheduleBubbleUpdate();
+ });
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport,helpToggle])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
+ addHighlight.addEventListener('click',()=>{
+  if(coarsePointer){applyPendingHighlight();return;}
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
+ });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
+ function cancelHighlightIds(ids){
+  for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
+  saveHighlights();clearSelection();refreshHighlightUI();
+ }
+ removeHighlight.addEventListener('click',()=>cancelHighlightIds(marksFor(pendingRange)));
+ let clearArmed=false,clearTimer=0;
+ function disarmClear(){if(!clearArmed)return;clearArmed=false;window.clearTimeout(clearTimer);clearTimer=0;clearHighlights.textContent='清空高亮';clearHighlights.removeAttribute('data-clear-armed');}
+ clearHighlights.addEventListener('click',()=>{
+  if(!clearArmed){clearArmed=true;clearHighlights.textContent='确认清空？';clearHighlights.setAttribute('data-clear-armed','');clearTimer=window.setTimeout(disarmClear,4000);return;}
+  disarmClear();clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ exportHighlights.addEventListener('click',()=>{
+  const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  hideHighlightBubble();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+ });
+ importHighlights.addEventListener('change',async()=>{
+  const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
+  try{
+   const payload=JSON.parse(await file.text());
+   if(payload?.lessonId!==data.meta.id||!Array.isArray(payload.items))throw Error('课程不匹配或文件格式不正确');
+   const merged=new Map(highlightState.items.map(item=>[item.id,item]));
+   for(const item of payload.items.map(cleanHighlight).filter(Boolean))merged.set(item.id,item);
+   highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
+  }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
+ });
+ const highlightBubble=document.createElement('div');
+ highlightBubble.className='highlight-bubble';
+ highlightBubble.setAttribute('data-highlight-bubble','');
+ highlightBubble.hidden=true;
+ const bubbleAdd=document.createElement('button');
+ bubbleAdd.type='button';
+ bubbleAdd.textContent='高亮';
+ bubbleAdd.setAttribute('aria-label','高亮选中文字');
+ bubbleAdd.setAttribute('data-highlight-bubble-add','');
+ const bubbleButton=document.createElement('button');
+ bubbleButton.type='button';
+ bubbleButton.textContent='取消高亮';
+ bubbleButton.setAttribute('aria-label','取消选中的高亮');
+ bubbleButton.setAttribute('data-highlight-bubble-remove','');
+ highlightBubble.append(bubbleAdd,bubbleButton);
+ document.body.append(highlightBubble);
+ let bubbleIds=[],bubbleTimer=0;
+ function hideHighlightBubble(){window.clearTimeout(bubbleTimer);bubbleTimer=0;bubbleIds=[];highlightBubble.hidden=true;}
+ function showHighlightBubble(ids,rect,anchor,addable){
+  bubbleIds=ids;
+  bubbleAdd.hidden=!addable;
+  bubbleButton.hidden=ids.length===0;
+  highlightBubble.hidden=false;
+  const width=highlightBubble.offsetWidth||180,height=highlightBubble.offsetHeight||40;
+  let x,y;
+  if(coarsePointer){
+   x=(anchor?.x??rect.left+rect.width/2)-width/2;
+   y=rect.bottom+8;
+   if(y+height>window.innerHeight-8)y=rect.top-height-56;
+  }else if(anchor){
+   x=anchor.x-width-6;y=anchor.y-height-6;
+  }else{
+   x=rect.left+rect.width/2-width/2;
+   y=rect.top-height-8;
+   if(y<8)y=rect.bottom+8;
+  }
+  y=Math.max(8,Math.min(y,Math.max(8,window.innerHeight-height-8)));
+  x=Math.max(8,Math.min(x,Math.max(8,window.innerWidth-width-8)));
+  highlightBubble.style.left=Math.round(x)+'px';highlightBubble.style.top=Math.round(y)+'px';
+ }
+ let pointerAnchor=null;
+ document.addEventListener('pointerup',event=>{if(event.pointerType!=='touch')pointerAnchor={x:event.clientX,y:event.clientY};},true);
+ function scheduleBubbleUpdate(){
+  window.clearTimeout(bubbleTimer);
+  bubbleTimer=window.setTimeout(()=>{
+   bubbleTimer=0;
+   const range=pendingRange;
+   const ids=range&&!range.collapsed?marksFor(range):[];
+   const info=ids.length?null:selectionInfo(range);
+   const addable=!!info&&!markingMode;
+   if(ids.length||addable)showHighlightBubble(ids,range.getBoundingClientRect(),coarsePointer?null:pointerAnchor,addable);
+   else hideHighlightBubble();
+  },280);
+ }
+ bubbleAdd.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleAdd.addEventListener('click',()=>{hideHighlightBubble();applyPendingHighlight();});
+ bubbleButton.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleButton.addEventListener('click',()=>{const ids=bubbleIds;hideHighlightBubble();cancelHighlightIds(ids);});
+ document.addEventListener('contextmenu',event=>{
+  const mark=event.target?.closest?.('mark.stellar-highlight[data-highlight-id]');
+  if(!mark)return;
+  event.preventDefault();
+  const range=document.createRange();range.selectNodeContents(mark);
+  pendingRange=range;
+  const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+  updateHighlightSelection();
+  showHighlightBubble([mark.dataset.highlightId],mark.getBoundingClientRect(),{x:event.clientX,y:event.clientY});
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){hideHighlightBubble();hideHelpPanel();disarmClear();}});
+ window.addEventListener('scroll',hideHighlightBubble,{passive:true,capture:true});
+ window.addEventListener('resize',hideHighlightBubble,{passive:true});
+ function hideHelpPanel(){if(helpPanel.hidden)return;helpPanel.hidden=true;helpToggle.setAttribute('aria-expanded','false');}
+ helpToggle.addEventListener('click',()=>{helpPanel.hidden=!helpPanel.hidden;helpToggle.setAttribute('aria-expanded',String(!helpPanel.hidden));});
+ document.addEventListener('click',event=>{if(!helpPanel.hidden&&!highlightTools.contains(event.target))hideHelpPanel();});
+ setMarkingMode(false);
+ restoreHighlights();
+}
+const quizReturn=document.querySelector('[data-return-to-quiz]');
+let reviewForm=null;
+const visibleQuestions=new Set();
+function updateQuizReturn(){quizReturn.hidden=!reviewForm||visibleQuestions.has(reviewForm);}
+const quizObserver=new IntersectionObserver(entries=>{
+ for(const entry of entries){if(entry.isIntersecting)visibleQuestions.add(entry.target);else visibleQuestions.delete(entry.target);}
+ updateQuizReturn();
+});
+for(const form of document.querySelectorAll('[data-question]'))quizObserver.observe(form);
+for(const [index,link] of [...document.querySelectorAll('.concept-link')].entries())link.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ reviewForm=link.closest('[data-question]');
+ quizReturn.textContent=`返回课后题 · 第 ${index+1} 题 ↓`;
+ updateQuizReturn();
+});
+quizReturn.addEventListener('click',()=>{
+ if(!reviewForm)return;
+ const form=reviewForm;
+ reviewForm=null;updateQuizReturn();
+ // Replace the concept anchor so reload stays at the question and Back still works.
+ history.replaceState(history.state,'','#'+form.id);
+ form.setAttribute('tabindex','-1');
+ form.focus({preventScroll:true});
+ form.scrollIntoView({block:'start'});
+});
+for(const activity of document.querySelectorAll('[data-parallax]')){const slider=activity.querySelector('input');function update(){const d=Number(slider.value),p=1/d,x=350+Math.log(d)*65;activity.querySelector('[data-distance]').textContent=d;activity.querySelector('[data-parallax-value]').textContent=p.toFixed(3)+'″';activity.querySelector('[data-full-angle]').textContent=(2*p).toFixed(3)+'″';activity.querySelector('[data-star]').setAttribute('cx',x);activity.querySelector('[data-star-label]').setAttribute('x',x-14);for(const ray of activity.querySelectorAll('[data-ray]'))ray.setAttribute('x2',x);}slider.addEventListener('input',update);update();}
+const dialog=document.getElementById('feedback-dialog');let opener=null;
+for(const button of document.querySelectorAll('[data-feedback]'))button.addEventListener('click',()=>{
+ opener=button;const target=button.dataset.feedback,label=button.dataset.label;
+ dialog.querySelector('[data-feedback-context]').textContent=label;
+ dialog.querySelector('[data-feedback-status]').textContent='';
+ const location=dialog.querySelector('[data-feedback-location]');
+ location.value=`${data.meta.scope} | ${data.meta.id} | 更新于 ${data.meta.updated||"未标注"} | ${target}\n${label}\n内容指纹：${data.sourceHash}`;
+ const url=data.feedback?.formUrl;dialog.querySelector('[data-feedback-ready]').hidden=!url;dialog.querySelector('[data-feedback-unavailable]').hidden=!!url;
+ const link=dialog.querySelector('[data-feedback-form-link]');if(url)link.href=url;else link.removeAttribute('href');
+ dialog.showModal();
+});
+ dialog.querySelector('[data-close-feedback]').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>opener?.focus());
+ dialog.querySelector('[data-copy-location]').addEventListener('click',async()=>{const location=dialog.querySelector('[data-feedback-location]');try{await navigator.clipboard.writeText(location.value);dialog.querySelector('[data-feedback-status]').textContent='已复制课程位置。';}catch{location.focus();location.select();dialog.querySelector('[data-feedback-status]').textContent='请复制已选中的课程位置。';}});
+})();
+
+
+// Native SVG and controls only. No evaluation of strings or external requests.
+const StellarActivityUI=(()=>{
+ const NS='http://www.w3.org/2000/svg';
+ function node(svg,tag,attrs={},text){const n=document.createElementNS(NS,tag);for(const [key,value]of Object.entries(attrs))n.setAttribute(key,String(value));if(text!==undefined)n.textContent=text;svg.append(n);return n;}
+ const line=(svg,x1,y1,x2,y2,color='#7b8d9a',extra={})=>node(svg,'line',{x1,y1,x2,y2,stroke:color,'stroke-width':2,...extra});
+ const label=(svg,x,y,text,extra={})=>node(svg,'text',{x,y,...extra},text);
+ function axes(svg,xlabel,ylabel,xmax=1,ymax=1){line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,xlabel,{'text-anchor':'middle'});label(svg,65,23,ylabel);return {x:value=>65+595*value/xmax,y:value=>300-250*value/ymax};}
+ function curve(svg,points,color='#eab76f',dash=false){return node(svg,'path',{d:points.map(([x,y],i)=>`${i?'L':'M'}${Number(x).toFixed(2)} ${Number(y).toFixed(2)}`).join(' '),fill:'none',stroke:color,'stroke-width':3,...(dash?{'stroke-dasharray':'7 6'}:{})});}
+ const fmt=(value,digits=2)=>Number(value).toFixed(digits);
+ const scientific=(value,digits=2)=>{const [mantissa,exponent]=Number(value).toExponential(digits).split('e');const supers={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return mantissa+' × 10'+String(Number(exponent)).split('').map(c=>supers[c]).join('');};
+ function values(lab){const result={};const outputs=[...lab.querySelectorAll('[data-out]')];for(const input of lab.querySelectorAll('[data-param]')){const key=input.dataset.param;result[key]=input.tagName==='SELECT'?input.value:Number(input.value);const output=outputs.find(output=>output.dataset.out===key);if(output)output.textContent=input.value+(input.dataset.unit?' '+input.dataset.unit:'');}return result;}
+ function mount(type,update){for(const lab of document.querySelectorAll(`[data-lesson-activity="${type}"]`)){const svg=lab.querySelector('svg'),result=lab.querySelector('.lab-result');const refresh=()=>{svg.replaceChildren();const text=update({lab,svg,result,values:values(lab)});if(typeof text==='string')result.textContent=text;svg.setAttribute('aria-label',lab.querySelector('h3').textContent+'。'+result.textContent);};for(const input of lab.querySelectorAll('[data-param]'))input.addEventListener('input',refresh);refresh();}}
+ return Object.freeze({node,line,label,axes,curve,fmt,scientific,values,mount});
+})();
+
+(()=>{
+ const U=StellarActivityUI,G=2.74e4;
+ const strat=(Teff,kappa,P)=>Teff*Math.pow(.75*kappa*P/G+.5,.25);
+ const cross=(Teff,kappa)=>{
+  const f=P=>strat(Teff,kappa,P)-6000;
+  if(f(1e-3)>=0||f(1e9)<0)return null;
+  let lo=1e-3,hi=1e9;
+  for(let i=0;i<120;i++){const m=Math.sqrt(lo*hi);if(f(m)<0)lo=m;else hi=m;}
+  return Math.sqrt(lo*hi);
+ };
+ U.mount('convdepth',({lab,svg,values:v})=>{
+  const x0=78,x1=650,y0=282,y1=52;
+  const X=P=>x0+(x1-x0)*(Math.log10(P)-3)/3;
+  const Y=T=>y0-(y0-y1)*(T-2000)/28000;
+  U.line(svg,x0,y0,x1,y0,'#7b8d9a',{'stroke-width':2});
+  U.line(svg,x0,y0,x0,y1,'#7b8d9a',{'stroke-width':2});
+  const ticks=[[1000,'10³'],[10000,'10⁴'],[100000,'10⁵'],[1000000,'10⁶']];
+  for(const [P,text] of ticks){
+   if(P>1000)U.line(svg,X(P),y0,X(P),y1,'#34475a',{'stroke-width':1});
+   U.label(svg,X(P),y0+18,text,{'text-anchor':'middle'});
+  }
+  for(const T of [5000,10000,15000,20000,25000,30000]){
+   U.line(svg,x0,Y(T),x1,Y(T),'#34475a',{'stroke-width':1});
+   U.label(svg,x0-8,Y(T)+5,String(T),{'text-anchor':'end'});
+  }
+  U.label(svg,x0-6,38,'温度 T（K）',{'text-anchor':'start'});
+  U.label(svg,364,326,'气体压强（dyn cm⁻²，对数）',{'text-anchor':'middle'});
+  U.line(svg,x0,Y(6000),x1,Y(6000),'#8ccac8',{'stroke-width':2,'stroke-dasharray':'9 6'});
+  const draw=(Teff,kappa,color,dash)=>{
+   const points=[];
+   for(let i=0;i<=90;i++){const P=Math.pow(10,3+3*i/90);points.push([X(P),Y(Math.min(29500,strat(Teff,kappa,P)))]);}
+   U.curve(svg,points,color,dash);
+  };
+  draw(5800,1,'#b9c3cc',true);
+  draw(v.Teff,v.kappa,'#eab76f',false);
+  const Pc=cross(v.Teff,v.kappa);
+  let text;
+  if(Pc){
+   const tau=v.kappa*Pc/G,Pr=cross(5800,1),ratio=Pr?Pc/Pr:1;
+   U.line(svg,X(Pc),Y(6000),X(Pc),y0,'#8ccac8',{'stroke-width':1.5,'stroke-dasharray':'4 5'});
+   U.node(svg,'circle',{cx:X(Pc),cy:Y(6000),r:6,fill:'#eab76f'});
+   text='6000 K 出现在气体压强 '+U.scientific(Pc,1)+' dyn cm⁻²（对应 τ='+U.fmt(tau,2)+'）。参考星（5800 K、κ=1）的交点在 '+U.scientific(Pr,1)+'，本星是它的 '+U.fmt(ratio,2)+' 倍。';
+  }else{
+   U.node(svg,'circle',{cx:x0,cy:Y(strat(v.Teff,v.kappa,1e3)),r:6,fill:'#eab76f'});
+   text='表面温度约 '+Math.round(.84*v.Teff)+' K（即 0.84×'+v.Teff+' K），已高过 6000 K：交点落在表面以外，对流从最外层就开始。';
+  }
+  return text;
+ });
+})();</script></body></html>
