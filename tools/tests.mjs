@@ -165,3 +165,4 @@ test('课程页提供本机高亮工具并使用课程级存储键',()=>{
  assert.match(h,/data-highlight-bubble/);
  assert.match(h,/取消高亮/);
 });
+import './v3-tests.mjs';
