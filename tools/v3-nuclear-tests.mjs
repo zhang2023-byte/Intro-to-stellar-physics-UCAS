@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {gamow,rateRatios,turnoff,catalyst} from './activities/v3-ch08.mjs';
+import {gamow,speedEnergy,cycleStep,waitSeconds,rateRatios,turnoff,catalyst} from './activities/v3-ch08.mjs';
 import {shellProfile,gradient,central} from './activities/v3-ch09.mjs';
 import {homologous,contraction} from './activities/v3-ch10.mjs';
 const near=(a,b,tol=1e-9)=>assert.ok(Math.abs(a-b)<tol*Math.max(1,Math.abs(b)),`${a} != ${b}`);
@@ -11,10 +11,28 @@ test('隧穿核峰值、密度归一化与催化通量守恒',()=>{
  near(turnoff(.3125),4);near(turnoff(10),1);
 });
 test('球壳积分的边界与导数、绝热稳定性和中心正则性',()=>{
+ assert.ok(shellProfile(0,.4).f<shellProfile(5,.4).f&&shellProfile(5,.4).f<shellProfile(20,.4).f);
  for(const k of [0,5,20]){near(shellProfile(k,0).f,0);near(shellProfile(k,1).f,1);assert.ok(shellProfile(k,.5).f>=.125);}
  for(const x of [.1,.4,.9])near(shellProfile(0,x).f,x**3,1e-8);
  const h=1e-4,k=7,x=.4,df=(shellProfile(k,x+h).f-shellProfile(k,x-h).f)/(2*h),dy=(shellProfile(k,.7+h).f-shellProfile(k,.7-h).f)/(2*h);near(df/dy,x*x*Math.exp(-k*x*x)/(.49*Math.exp(-k*.49)),1e-5);
  near(gradient(.4,.5).actual,.5**.4);assert.ok(gradient(.7,.5).actual>gradient(.7,.5).rad);near(central(.01,0).regular,.01);near(central(.01,1e-5).perturbed,.11);
+});
+test('速度轴上的峰与能量解析解一致，零速处贡献为零',()=>{
+ near(speedEnergy(1),2.61,.001);
+ for(const T of [8,14,25]){
+  const z=gamow(T,1),v=Math.sqrt(z.peak/speedEnergy(1));
+  assert.ok(v>0&&v<3.2);near(gamow(T,speedEnergy(v)).kernel,1);near(gamow(T,0).kernel,0);
+ }
+});
+test('CN 播放保留六步的等待次序和瓶颈，不用播放时长估计丰度',()=>{
+ for(const factor of [.1,1,2]){
+  const times=waitSeconds(factor),counts=Array(6).fill(0);
+  near(times[4],82);near(times[3]/times[0],300*factor);
+  for(let j=0;j<10000;j++)counts[cycleStep(j/100,factor).i]++;
+  assert.ok(counts.every(n=>n>0));assert.deepEqual(counts.map((_,i)=>i).sort((a,b)=>counts[a]-counts[b]),[4,1,5,2,0,3]);
+  assert.ok(counts[3]/counts[4]<times[3]/times[4]);
+  assert.equal(cycleStep(0,factor).i,0);assert.equal(cycleStep(100,factor).i,5);
+ }
 });
 test('同源缩放同时满足C D不变与Stefan关系',()=>{
  for(const [alpha,beta] of [[1,3.5],[.5,2.5]])for(const nu of [4,16])for(const M of [.7,1,2])for(const mu of [1,1.2])for(const kappa of [.5,1.5]){
