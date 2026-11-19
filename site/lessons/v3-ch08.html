@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>恒星中的能量产生</title><style>:root{--paper:#f7f5ef;--ink:#203635;--muted:#647773;--teal:#176b64;--line:#d9e0d8;--wash:#edf1e8;--warm:#a3572d;--serif:"Iowan Old Style","Palatino Linotype","Songti SC","Noto Serif CJK SC",serif;--sans:"Avenir Next","PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 var(--sans)}button,input,select,textarea{font:inherit}a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:5px}button,a,input,textarea,select{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}button:disabled{cursor:default}.topbar{max-width:1400px;margin:auto;padding:23px 42px;border-bottom:1px solid var(--line);display:flex;gap:16px;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.12em}.topbar a{text-decoration:none}.page-grid{max-width:1350px;margin:auto;padding:0 42px;display:grid;grid-template-columns:205px minmax(0,1fr);gap:60px}.sidebar{position:sticky;top:25px;align-self:start;padding-top:55px}.eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}.sidebar nav{display:flex;flex-direction:column}.sidebar nav a{display:flex;gap:13px;text-decoration:none;padding:10px 0;font-size:13px}.sidebar nav small{color:var(--muted);font-variant-numeric:tabular-nums}.sidebar-note{margin-top:45px;font-size:12px;color:var(--muted)}main{min-width:0}.hero{padding:54px 0 43px;border-bottom:1px solid var(--line)}h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35}h1{font-size:clamp(36px,5vw,66px);letter-spacing:-.045em;margin:18px 0 24px}h2{font-size:28px;margin:0}h3{font-size:21px;margin-top:30px}.lead{font-size:19px;max-width:680px;color:#536a66}.hero-meta{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:25px;font-size:11px;color:var(--muted)}.lesson-section{padding:43px 0;border-bottom:1px solid var(--line)}.section-heading{display:flex;gap:15px;align-items:baseline;margin-bottom:23px}.section-heading h2{flex:1}.section-number{font:italic 20px var(--serif);color:var(--teal)}.feedback-link{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;gap:7px;min-height:44px;padding:8px 15px;border:1px solid #ae762c;border-radius:8px;background:#f2c879;color:#39280f;font-size:14px;font-weight:700;line-height:1.5;white-space:nowrap;text-decoration:none;box-shadow:0 2px 4px #39280f18}.feedback-link::before{content:"";width:16px;height:14px;box-sizing:border-box;border:2px solid currentColor;border-radius:5px 5px 5px 0}.feedback-link:hover{background:#eab65b;border-color:#80551e}.feedback-link:focus-visible{outline:3px solid #986118;outline-offset:4px}.explorer .feedback-link:focus-visible{outline-color:#fff3ce}.lesson-section p{margin:15px 0}.lesson-section li{margin:9px 0}strong{font-weight:650}blockquote{margin:24px 0;padding:13px 23px;background:var(--wash);border-left:3px solid var(--teal)}blockquote p{margin:5px 0!important}table{border-collapse:collapse;width:100%;font-size:14px;margin:23px 0}th,td{border-bottom:1px solid var(--line);padding:14px 12px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}code{font-size:.9em;background:#edf0e9;padding:2px 5px;border-radius:3px}pre{overflow:auto}math[display="block"]{font-size:1.7em;padding:22px 10px;margin:22px 0;background:var(--wash);overflow:auto}img,svg{max-width:100%;height:auto}.activity{background:#e9efea;border:1px solid #d2ded4;padding:23px;border-radius:4px;margin:25px 0}.activity-head{display:flex;justify-content:space-between;gap:15px}.slider-label{display:block;margin-top:20px;font-size:14px}.slider-label output{font-size:26px;color:var(--teal);font-weight:650;margin-left:10px}.slider-label input{display:block;width:100%;accent-color:var(--teal);margin-top:15px;min-height:32px}.activity svg{display:block;width:100%;margin:18px 0 0}.activity svg text{font:13px var(--sans);fill:var(--ink)}.readouts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #ccd9ce;padding-top:17px;gap:20px}.readouts span{display:block;font-size:12px;color:var(--muted)}.readouts strong{font:34px var(--serif);font-variant-numeric:tabular-nums}.caption{font-size:12px;color:var(--muted);line-height:1.7}.quiz-summary{font-size:13px;padding:12px 0;color:var(--teal)}.quiz-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:15px 0 22px}.quiz-card{background:#fffdf8;border:1px solid var(--line);padding:22px;min-width:0}.quiz-card fieldset{border:0;padding:0;margin:0;min-width:0}.quiz-card legend{font-size:16px;font-weight:550;padding:0;margin-bottom:17px}.quiz-card legend .eyebrow{margin-bottom:9px}.option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--paper);margin:7px 0;font-size:14px;cursor:pointer;border:1px solid transparent}.option:has(input:checked){border-color:var(--teal);background:#edf3eb}.option input{accent-color:var(--teal);margin:7px 0 0;flex-shrink:0}.quiz-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center;margin-top:18px}.primary,.secondary{padding:8px 18px;border:1px solid var(--teal);border-radius:2px;font-size:13px}.primary{background:var(--teal);color:white}.primary:hover{background:#10594f}.secondary{background:transparent;color:var(--teal)}.answer-note{font-size:13px;padding:12px 14px;margin:16px 0 8px;border-left:3px solid var(--teal);background:var(--wash)}.answer-note.wrong{border-color:var(--warm);background:#f7ece1}.concept-link{display:block;font-size:11px;margin-top:14px}.sources{padding:32px 0 45px;font-size:12px;color:var(--muted)}.sources h2{font-size:19px}.sources li{margin:12px 0}.sources ul{padding-left:18px}.home{max-width:1080px;padding:0 42px;margin:auto}.home .hero{padding:70px 0 50px}.home h1{font-size:clamp(44px,7vw,86px)}.course-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:25px;margin:35px 0}.course-card{padding:28px;border:1px solid var(--line);border-top:3px solid var(--teal);background:#fffdf8}.course-card h2 a{text-decoration:none}.course-card>p{font-size:15px}.course-card>a{font-size:13px}dialog{border:1px solid var(--line);border-radius:5px;padding:28px;width:min(620px,calc(100% - 24px));max-height:90vh;color:var(--ink);background:var(--paper)}dialog::backdrop{background:#142b29aa}dialog h2{font-size:25px}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.dialog-heading button{border:0;background:transparent;font-size:28px;padding:0 6px}dialog label{display:block;margin:14px 0;font-size:13px}dialog textarea,dialog select{display:block;width:100%;margin-top:6px;border:1px solid #bbc9bc;background:#fffdf8;padding:10px;color:var(--ink);font-size:14px;border-radius:2px}dialog textarea{resize:vertical}.dialog-actions{display:flex;flex-wrap:wrap;gap:12px}dialog [data-feedback-context]{font-size:12px;color:var(--muted);overflow-wrap:anywhere}[data-feedback-status]{font-size:13px}.skip{position:absolute;left:20px;top:-100px;padding:10px;background:white;z-index:5}.skip:focus{top:10px}[hidden]{display:none!important}@media(max-width:1000px){.page-grid{grid-template-columns:155px minmax(0,1fr);gap:30px;padding:0 25px}.quiz-grid{grid-template-columns:1fr}.section-heading{flex-wrap:wrap}.section-heading h2{font-size:25px}}@media(max-width:700px){body{font-size:16px}.topbar{padding:16px 20px;font-size:10px}.page-grid{display:block;padding:0 20px}.sidebar{position:static;padding-top:20px}.sidebar>.eyebrow,.sidebar-note{display:none}.sidebar nav{flex-direction:row;gap:14px;overflow-x:auto;padding-bottom:8px}.sidebar nav a{font-size:11px;white-space:nowrap;padding:5px 0}.sidebar nav small{display:none}.hero{padding:24px 0 30px}.hero-meta{gap:8px 14px}.lead{font-size:17px}.lesson-section{padding:30px 0}.section-heading{gap:10px;margin-bottom:18px}.section-heading h2{font-size:24px}.section-heading>.feedback-link{margin-left:30px}.quiz-card{padding:18px}.activity{padding:15px}.readouts strong{font-size:29px}table{font-size:12px}th,td{padding:9px 6px;overflow-wrap:anywhere}.home{padding:0 20px}.home .hero{padding:45px 0 30px}dialog{padding:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.sidebar,.feedback-link,.quiz-actions,.topbar,.concept-link,[data-reset-quiz]{display:none}.page-grid{display:block;padding:0}.quiz-grid{display:block}.quiz-card{break-inside:avoid;margin:10px 0}body{background:white}.hero{padding:10px 0}dialog{display:none}}
+/* Self-study: warm reading paper, dark instrument panels, no external fonts. */
+:root{--paper:#f4f1e9;--ink:#253443;--teal:#315f78;--muted:#667480;--line:#d7d8d3;--wash:#e9ece9}
+.hero h1{max-width:900px}.hero .eyebrow{color:#9a6936}.hero{padding-bottom:28px}.study-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}.step-pager{display:flex;justify-content:space-between;padding:24px 0}.step-pager button:disabled{opacity:.35}.sidebar nav a[aria-current]{color:#213c51;font-weight:700;border-right:3px solid #b8793e}.lesson-section{padding-top:30px}.lesson-section>p{max-width:780px}.explorer{background:#142538;color:#e2ebef;border:0;border-radius:10px;padding:26px;margin:24px 0}.explorer .eyebrow{color:#e9b770}.explorer h3{font-size:27px;margin:10px 0}.explorer .prediction{color:#d3dfe5;font-size:15px;max-width:680px}.lab-layout{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:center}.lab-plot{min-width:0}.explorer svg text{fill:#c6d4de;font-size:14px}.explorer .caption{color:#a8bac8;font-size:11px}.lab-controls{border-left:1px solid #405165;padding-left:20px}.lab-control{font-size:12px;display:block;margin:15px 0 25px}.lab-control output{display:block;color:#eab76f;font-size:24px;font-variant-numeric:tabular-nums}.lab-control input{display:block;width:100%;accent-color:#eab76f;min-height:32px;margin-top:8px}.lab-control select{background:#24394c;color:#e1e9ef;width:100%;padding:8px 5px;border:1px solid #526575;font-size:12px;margin-top:8px}.lab-result{border-top:1px solid #405165;padding-top:16px;font-size:14px;color:#e9c58d;min-height:65px}.lesson-section details{border:1px solid #c8d3da;border-left:3px solid #537b95;border-radius:5px;padding:16px 20px;background:#f9faf8;margin:22px 0;font-size:15px}.lesson-section summary{font-weight:650;color:#315f78;cursor:pointer;line-height:1.7}.lesson-section details[open] summary{margin-bottom:14px}.lesson-section details p{max-width:760px}.read-book{background:#e9e4d8;border-radius:4px;padding:15px 20px;font-size:14px}.read-book strong{color:#845a32}.takeaway{font-family:var(--serif);font-size:22px;border-left:3px solid #bf8c50;padding:5px 20px;margin:24px 0}.sources{border-top:1px solid var(--line)}.quiz-grid{grid-template-columns:1fr}.quiz-card{border-radius:5px}.quiz-summary{font-size:12px}.hero-meta{font-size:12px}.course-card{border-top-color:#a67b47}.course-card h2{font-size:25px}@media(min-width:1200px){.page-grid{grid-template-columns:185px minmax(0,1fr);gap:45px;max-width:1440px}.hero h1{font-size:58px}}
+@media(max-width:850px){.lab-layout{grid-template-columns:1fr}.lab-controls{border-left:0;border-top:1px solid #405165;padding:10px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}.lab-control{margin:10px 0}.explorer{padding:18px}.lab-result{min-height:0}.explorer svg text{font-size:16px}}
+@media(max-width:700px){.study-controls{font-size:11px;gap:8px}.study-controls button{white-space:nowrap;padding:6px 10px}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #b8793e}.explorer h3{font-size:23px}.explorer .prediction{font-size:14px}.lab-controls{grid-template-columns:1fr}.lab-control output{display:inline;font-size:20px;margin-left:12px}.lesson-section details{padding:13px 15px}.takeaway{font-size:20px}.lab-result{font-size:13px}.hero h1{font-size:36px}}
+@media print{.lesson-section[hidden]{display:block!important}.study-controls,.step-pager{display:none}}
+
+.hero{padding-top:30px}.hero h1{margin:12px 0 16px}.study-controls{padding:12px 0}.explorer svg{margin-top:10px}@media(max-width:700px){.explorer svg text{font-size:23px}.explorer svg{min-height:175px}.hero{padding-top:20px}.hero h1{font-size:34px}math[display="block"]{font-size:1.18em}}
+
+.activity-head{justify-content:flex-end}.dialog-actions a.primary{text-decoration:none;display:inline-block}.hero-meta{margin-top:16px}.home .hero{padding:30px 0}.home h1{font-size:48px}.topbar{letter-spacing:0}.sidebar{padding-top:30px}
+
+/* Reading and keyboard access for lesson revision 1.2.0. */
+summary:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+math[display="block"]{display:block;max-width:100%;overflow-x:auto;font-size:1.18em}
+.lesson-section p,.lesson-section li{overflow-wrap:anywhere}
+@media(max-width:700px){math[display="block"]{font-size:1em}}
+
+/* Keep review links compact and offer a direct return to the originating question. */
+.concept-link{display:flex;align-items:center;width:fit-content;max-width:100%;min-height:44px;padding:8px 10px;margin-top:18px;font-size:13px;line-height:1.5;border-radius:4px}
+.concept-link:hover{background:var(--wash)}
+.quiz-return{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:10;max-width:calc(100vw - 32px);min-height:44px;padding:11px 18px;border:1px solid var(--teal);border-radius:8px;background:var(--teal);color:#fff;font-size:14px;font-weight:600;line-height:1.5;box-shadow:0 4px 16px #20363533}
+.quiz-return:hover{background:#10594f}
+.quiz-card:focus-visible{outline:3px solid #bd7b3c;outline-offset:4px}
+@media print{.quiz-return,.concept-link{display:none}}
+
+/* Book covers and a quiet, paper-like table of contents. */
+.library-home{max-width:1180px;margin:auto;padding:0 48px}.library-heading{display:grid;grid-template-columns:1.15fr 1fr;column-gap:80px;padding:58px 0 46px;border-bottom:1px solid var(--line)}.library-kicker{font-size:12px;color:#876037;letter-spacing:.12em;margin:0 0 20px}.library-heading .library-kicker{grid-column:1/-1}.library-heading h1{font-size:clamp(40px,5vw,64px);line-height:1.23;letter-spacing:.03em;margin:0}.library-intro{align-self:end;max-width:370px;font-size:16px;color:var(--muted);margin:0 0 6px}.bookshelf{display:grid;grid-template-columns:1fr 1fr;gap:100px;padding:55px 35px 65px}.book-entry{min-width:0}.book-link{display:block;text-decoration:none;max-width:310px;margin:auto}.book-cover{position:relative;isolation:isolate;aspect-ratio:1055/1491;background:#090d12;color:#faf3e7;box-shadow:inset 5px 0 5px #ffffff20,10px 12px 0 -7px #d8d1c3,18px 23px 30px -16px #1c253366;border-radius:2px 5px 5px 2px;overflow:hidden}.book-cover:after{content:"";position:absolute;inset:0;box-shadow:inset 6px 0 8px #ffffff16;pointer-events:none;border-left:3px solid #ffffff17}.book-cover img{display:block;position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}.cover-title{padding:27px 23px 22px;background:linear-gradient(#05090ded,#05090d7a,transparent);line-height:1.5}.cover-title>span:first-child{display:block;font-family:var(--serif);font-size:16px;letter-spacing:.05em}.cover-title strong{display:block;font-family:var(--serif);font-size:29px;font-weight:500;margin:7px 0}.cover-volume{font-size:12px;color:#e9bd7e;letter-spacing:.2em}.cover-author{position:absolute;bottom:0;left:0;right:0;padding:32px 23px 21px;background:linear-gradient(transparent,#05090dcc);font-size:11px;letter-spacing:.03em}.book-link{transition:transform .2s}.book-link:hover{transform:translateY(-5px)}.book-description{max-width:360px;margin:26px auto 0}.book-description h2{font-size:23px}.book-description p{font-size:14px;color:var(--muted);margin:12px 0 16px}.catalog-link{font-size:14px;text-decoration:none;border-bottom:1px solid #a78c6a;padding-bottom:5px}.catalog-link span{margin-left:15px}.library-footer{padding:30px 0 45px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:45px}.library-footer h2{font-size:21px}.library-footer p{font-size:13px;color:var(--muted);margin:0}.volume-layout{max-width:1230px;margin:auto;padding:45px 45px 0;display:grid;grid-template-columns:260px minmax(0,1fr);gap:75px}.volume-book{align-self:start;position:sticky;top:35px}.volume-book>p{font-size:12px;color:var(--muted);margin-top:23px}.volume-book .cover-title{padding:23px 19px}.volume-book .cover-title strong{font-size:25px}.volume-book .cover-title>span:first-child{font-size:14px}.volume-heading{padding:5px 0 25px;border-bottom:2px solid #9c7c54}.volume-heading h1{font-size:44px;margin:0 0 20px;letter-spacing:0}.volume-heading>p:last-child{font-size:15px;color:var(--muted);margin-bottom:0}.chapter-list{list-style:none;margin:0;padding:0}.chapter-row{display:grid;grid-template-columns:36px minmax(0,1fr) 84px;gap:16px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);scroll-margin-top:25px}.chapter-number{font:italic 23px var(--serif);color:#9b8569;align-self:start;line-height:1.4}.chapter-row h2{font-size:21px;line-height:1.5}.chapter-row p{font-size:13px;color:var(--muted);margin:8px 0 0}.start-learning{font-size:12px;text-decoration:none;white-space:nowrap;color:#375d71}.chapter-pending{font-size:12px;color:#77796f;text-align:right}.chapter-row.available{background:linear-gradient(90deg,#e8e6de50,transparent)}.directory-link{display:block;font-size:13px;text-decoration:none;padding:0 0 17px;border-bottom:1px solid var(--line)}.nav-heading{font-size:11px;color:var(--muted);letter-spacing:.12em;margin:20px 0 10px}.sidebar nav a{border-radius:3px;padding:8px 9px;margin:2px 0;line-height:1.55}.sidebar nav a:hover{background:#e7e6df}.sidebar nav a[aria-current]{background:#e8e5da;border-right:3px solid #a88048}.topbar>span:last-child{flex-shrink:0}.topbar{font-size:12px;letter-spacing:0}
+@media(max-width:900px){.bookshelf{gap:55px;padding-left:0;padding-right:0}.library-heading{gap:25px}.volume-layout{grid-template-columns:190px minmax(0,1fr);gap:35px;padding:35px 25px 0}.volume-book .cover-title strong{font-size:21px}.volume-book .cover-title>span:first-child{font-size:11px}.volume-book .cover-title{padding:18px 14px}.chapter-row{grid-template-columns:27px minmax(0,1fr);gap:8px 13px}.start-learning,.chapter-pending{grid-column:2;text-align:left}.volume-heading h1{font-size:35px}}
+@media(max-width:700px){.library-home{padding:0 24px}.library-heading{display:block;padding:35px 0}.library-heading h1{font-size:41px}.library-intro{margin-top:23px;font-size:14px}.bookshelf{grid-template-columns:1fr;gap:48px;padding:35px 6px 45px}.book-link{max-width:280px}.book-description{max-width:300px}.library-footer{display:block;padding-top:25px}.library-footer p{margin-top:14px}.volume-layout{display:block;padding:25px 20px 0}.volume-book{position:static;display:none}.volume-heading h1{font-size:34px}.volume-heading .library-kicker{margin-bottom:12px}.chapter-row{padding:20px 0}.chapter-row h2{font-size:21px}.topbar{padding:16px 20px;gap:15px;align-items:flex-start}.topbar a{line-height:1.5}.topbar span{font-size:10px}.directory-link{padding-bottom:12px}.nav-heading{display:none}.sidebar nav{flex-direction:row;flex-wrap:wrap;gap:4px 8px;overflow:visible;margin-top:12px}.sidebar nav a{white-space:normal;font-size:12px;padding:6px 8px;background:#ece9df}.sidebar nav a[aria-current]{border-right:0;border-bottom:2px solid #a88048}.sidebar{padding-top:20px}.sidebar nav small{display:inline}.library-kicker{letter-spacing:.06em}}
+@media(prefers-reduced-motion:reduce){.book-link{transition:none}}
+
+.topbar .github-project{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-shrink:0;min-height:44px;padding:8px 14px;border:1px solid #24292f;border-radius:8px;background:#24292f;color:#fff;font-size:13px;font-weight:600;line-height:1.5;text-decoration:none}.github-project svg{flex-shrink:0}.topbar .github-project:hover{background:#414851;border-color:#414851}.topbar .github-project:focus-visible{outline:3px solid #a88048;outline-offset:4px}
+
+/* Keep scientific symbols legible in prose, tables and exercises. */
+math{font-family:"STIX Two Math","Cambria Math",math;line-height:1.5}
+td math,.quiz-card math{font-size:1.08em}
+td math{white-space:nowrap}
+.answer-note strong{display:block;margin-bottom:.35em}
+@media(max-width:700px){.lesson-section table{font-size:14px}.quiz-card math{font-size:1em}}
+
+.highlight-tools{display:flex;align-items:center;gap:9px 14px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;flex-wrap:wrap}
+.highlight-help{flex-basis:100%;max-width:820px;margin-top:2px;padding:12px 16px;border:1px solid var(--line);border-left:3px solid #b8793e;border-radius:5px;background:#f9faf6}
+.highlight-help h3{margin:0 0 8px;font-size:15px}
+.highlight-help ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.highlight-help li{font-size:13px;line-height:1.75;color:#3f4d59}
+.highlight-help strong{color:#213c51}
+.highlight-actions{display:flex;align-items:center;gap:9px 10px;flex-wrap:nowrap}
+.highlight-tools .secondary{min-height:40px;padding:7px 12px}
+.highlight-add-button{width:42px;padding:7px 0!important;font-size:25px;line-height:1}
+.highlight-add-button span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-tools button:disabled{opacity:.45}
+.highlight-tools [data-clear-armed]{background:#a3572d;border-color:#7c3f1d;color:#fff;font-weight:600}
+.highlight-file{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.highlight-file input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.highlight-tools [data-highlight-status]{color:var(--muted);min-height:24px;line-height:1.7;flex:1 1 auto}
+mark.stellar-highlight{padding:0 .08em;border-radius:2px;background:#f2cf72;color:inherit;box-shadow:0 0 0 1px #b27b2b33}
+mark.stellar-highlight:focus-visible{outline:3px solid #8b541f;outline-offset:3px}
+@media(max-width:700px){.highlight-tools{align-items:stretch;flex-wrap:wrap}.highlight-actions{flex-wrap:wrap}.highlight-tools [data-highlight-status]{flex-basis:100%}.highlight-tools .secondary{min-height:44px}.highlight-add-button{width:46px}}
+
+.highlight-mode-toggle{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:25;width:52px;height:52px;padding:0;border:1px solid #9b681f;border-radius:50%;background:#f2cf72;color:#39280f;box-shadow:0 5px 18px #39280f3d;font-size:30px;line-height:1}
+.highlight-mode-toggle span{display:block;transform:rotate(-18deg) translateY(-1px)}
+.highlight-mode-toggle:hover{background:#eab65b;border-color:#80551e}
+.highlight-mode-toggle:focus-visible{outline:3px solid #8b541f;outline-offset:4px}
+.highlight-mode-active .quiz-return{bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px))}
+@media(max-width:700px){.highlight-mode-toggle{width:50px;height:50px;font-size:29px}.highlight-mode-active .quiz-return{bottom:max(78px,calc(env(safe-area-inset-bottom) + 62px))}}
+
+.highlight-bubble{position:fixed;z-index:26;display:flex;gap:8px}
+.highlight-bubble button{min-height:40px;padding:7px 14px;border:1px solid #9b681f;border-radius:8px;background:#fdf3d7;color:#39280f;font-size:13px;cursor:pointer;box-shadow:0 5px 18px #39280f3d}
+.highlight-bubble button:hover{background:#f2cf72}
+.highlight-bubble button:focus-visible{outline:3px solid #8b541f;outline-offset:2px}
+@media(max-width:700px){.highlight-bubble button{min-height:44px}}
+@media(pointer:coarse){.highlight-mode-toggle{display:none!important}}
+
+@media print{
+ .highlight-tools,.highlight-mode-toggle,.highlight-bubble{display:none!important}
+ .lesson-section details:not([open]){display:block}
+ .lesson-section details{break-inside:avoid}
+ mark.stellar-highlight{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body><a class="skip" href="#main">跳到正文</a><header class="topbar"><a href="../index.html">UCAS 恒星内部结构与演化</a><span>更新于 2026-11-19</span></header><div class="page-grid"><aside class="sidebar"><a class="directory-link" href="../volume3.html">← 第三卷目录</a><p class="nav-heading">本章目录</p><nav aria-label="章节"><a href="#overview"><small>01</small>核反应、恒星寿命与星团年龄</a><a href="#budget"><small>02</small>太阳的能量预算与质量亏损</a><a href="#tunneling"><small>03</small>库仑势垒与量子隧穿</a><a href="#pp-chain"><small>04</small>质子–质子链与中微子损失</a><a href="#cn-cycle"><small>05</small>碳氮循环与平衡丰度</a><a href="#triple-alpha"><small>06</small>三重 α 反应与元素合成</a><a href="#rates"><small>07</small>产能率对温度、密度与组成的依赖</a><a href="#lifetime"><small>08</small>主序寿命与星团转折</a><a href="#exercises"><small>09</small>习题</a></nav></aside><main id="main"><header class="hero"><h1>恒星中的能量产生</h1><p class="lead">从太阳的能量预算出发，理解量子隧穿、pp 链、碳氮循环与三重 α 反应，再用产能率、平衡丰度和主序寿命解释恒星与星团。</p><div class="hero-meta"><span>第三卷 · 第 8 章 · §§8.1–8.10</span></div><div class="highlight-tools" aria-label="正文高亮工具"><div class="highlight-actions"><button class="secondary highlight-add-button" type="button" data-highlight-add title="进入连续高亮模式" aria-label="进入连续高亮模式"><span aria-hidden="true">✎</span></button><button class="secondary" type="button" data-highlight-remove hidden>取消高亮</button><button class="secondary" type="button" data-highlight-clear disabled>清空高亮</button><button class="secondary" type="button" data-highlight-export>导出高亮</button><label class="secondary highlight-file">导入高亮<input type="file" accept="application/json,.json" data-highlight-import></label><button class="secondary" type="button" data-pdf-export>导出 PDF</button><button class="secondary" type="button" data-highlight-help-toggle aria-expanded="false" aria-controls="highlight-help">使用说明</button></div><span data-highlight-status role="status" aria-live="polite"></span><div class="highlight-help" id="highlight-help" data-highlight-help hidden><h3>高亮与导出 · 使用说明</h3><ul><li><strong>添加高亮</strong>——电脑：选中正文文字，稍停浮出「高亮」，点按生效；或点 ✎ 进入连续高亮模式，拖选停止约半秒自动打光，再点 ✎ 退出。手机：长按选中并拖动手柄调整，松手后点「高亮」或顶部 ✎；手机不启用自动连续高亮，避免调整选区时误操作。</li><li><strong>取消高亮</strong>——选中已有高亮文字（电脑可拖选或右键点它，手机长按后调整），点浮出的「取消高亮」。</li><li><strong>保存</strong>——高亮只保存在本机浏览器，按课程分开，最多 500 条。同一小节内可跨普通段落选择，每段分别保存和取消；选区应避开公式、代码、链接、标题、列表和交互区域。包含这些内容时请缩小选区。</li><li><strong>备份</strong>——「导出高亮」得到 JSON 文件，「导入高亮」可合并恢复；「清空高亮」删除本课全部高亮，不可撤销。</li><li><strong>导出 PDF</strong>——调起浏览器打印：自动展开折叠内容并保留当前交互图状态与高亮，在打印窗口选择「另存为 PDF」。</li></ul></div></div></header><section class="lesson-section" id="overview"><div class="section-heading"><span class="section-number">01</span><h2>核反应、恒星寿命与星团年龄</h2><button class="feedback-link" type="button" data-feedback="overview" data-label="核反应、恒星寿命与星团年龄">反馈</button></div><!-- 全章提纲：核心为能量预算、隧穿、反应网络、单位质量产能、稳态丰度和寿命；前置为第2章位力定理、热运动和核电荷；顺序为总量够不够→如何反应→反应多快→观测用途；后用于第9章 ε 和第10章 ν。每节给出可重算的数值，不将示意速率作为绝对核反应率。 -->
+
+<p>太阳每秒向外辐射约 4×10<sup>26</sup> J。要让它持续发光数十亿年，内部必须有足够的燃料，而且燃料释放能量的速度要与表面损失相配。本章先检查能量总量，再讨论核反应为什么能在恒星温度下发生。</p>
+<p>核心内容包括能量源的比较、量子隧穿、三类聚变过程，以及产能率对温度和密度的依赖。知道这些之后，我们就能继续计算反应区的核素比例，并从主序转折估计星团年龄。这里的“燃烧”指核聚变，与氧参与的化学燃烧不同。</p>
+<p>前置知识见<a href="v3-ch02.html">第 2 章的流体静力平衡与位力定理</a>。本章得到的每单位质量产能率 ε，将进入<a href="v3-ch09.html#shells">第 9 章的光度方程</a>。</p>
+<!-- 小节提纲：问题=收缩能支持多久；图像=辐射不断取走能量；推导=E/L与质量亏损；算例=太阳1.26e44 J；承接=位力到核燃料；限制=燃料比例为量级估计。 --></section>
+<section class="lesson-section" id="budget"><div class="section-heading"><span class="section-number">02</span><h2>太阳的能量预算与质量亏损</h2><button class="feedback-link" type="button" data-feedback="budget" data-label="太阳的能量预算与质量亏损">反馈</button></div><p>太阳仅靠引力收缩，能维持今天的光度多久？先把已经辐射的能量与可能储存的能量放在同一单位下比较。</p>
+<p>取太阳质量 M=2×10<sup>30</sup> kg、半径 R=7×10<sup>8</sup> m，G=6.67×10<sup>−11</sup> m<sup>3</sup> kg<sup>−1</sup> s<sup>−2</sup>。引力能的尺度 GM<sup>2</sup>/R≈3.8×10<sup>41</sup> J。若全部按 L=4×10<sup>26</sup> W 释放，可支持约 3×10<sup>7</sup> 年；考虑位力定理要求一部分能量留在内部，能够维持辐射的时间还会缩短。因此收缩可以解释早期供能，却不足以解释数十亿年的稳定发光。</p>
+<p>作为对照，按 4.5×10<sup>9</sup> 年、每年约 3×10<sup>7</sup> s 估算，太阳已辐射约 5.4×10<sup>43</sup> J。这个数比 GM<sup>2</sup>/R 大约 140 倍。化学反应改变的是电子的结合状态，单位质量可释放的能量更小，因而也不够。</p>
+<p>核聚变改变了原子核的结合状态。四个氢转变为一个氦时，产物总质量比原料小；这部分<strong>质量亏损</strong>（mass defect）约占所消耗氢质量的 0.7%。由 E=Δmc<sup>2</sup>，单位氢质量可释放约 0.007c<sup>2</sup>≈6.3×10<sup>14</sup> J/kg，其中一部分由中微子带走。</p>
+<p>依教材的粗估，令可参与主序供能的燃料质量为 0.1M，则</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="可用核能约等于零点一乘恒星质量乘零点零零七乘光速平方；主序寿命约为该能量除以光度"><mrow><msub><mi>E</mi><mtext>核</mtext></msub><mo>≈</mo><mn>0.1</mn><mi>M</mi><mo>×</mo><mn>0.007</mn><msup><mi>c</mi><mn>2</mn></msup><mo>，</mo><msub><mi>t</mi><mtext>MS</mtext></msub><mo>≈</mo><mfrac><msub><mi>E</mi><mtext>核</mtext></msub><mi>L</mi></mfrac></mrow></math></p>
+<p>太阳的可用核能约为 1.26×10<sup>44</sup> J，除以光度得到 3.15×10<sup>17</sup> s，约 10<sup>10</sup> 年。这个数量级终于足够大。更细的计算还要指定初始氢丰度、真正参与燃烧的核心质量以及中微子损失，不能把整颗星都当成可随时使用的纯氢燃料。</p>
+<p>阅读：Volume 3 §§8.1–8.2、§8.10，式 (8.15)–(8.16)。</p>
+<!-- 小节提纲：问题=热运动低于势垒如何反应；图像=波函数穿过禁阻区；推导=exp(-b/sqrt E)与热因子乘积求峰；算例=14MK kT1.21keV、E0约5.64；承接=能量够到反应是否快；限制=穿透不含核内过程。 --></section>
+<section class="lesson-section" id="tunneling"><div class="section-heading"><span class="section-number">03</span><h2>库仑势垒与量子隧穿</h2><button class="feedback-link" type="button" data-feedback="tunneling" data-label="库仑势垒与量子隧穿">反馈</button></div><p>两个带正电的核越靠近，静电排斥越强。按经典图像，粒子必须先翻过库仑势垒，才能进入核力起作用的距离。教材估计的势垒能量约为 10<sup>3</sup> keV，而 T≈10<sup>7</sup> K 时 kT 只有约 1 keV，两者相差三个数量级。</p>
+<p>量子力学给出了另一种到达核附近的方式。<strong>隧穿</strong>（tunnelling）指粒子具有穿过经典禁阻区的非零概率；在这一区域，波函数振幅衰减，经过的势垒越宽，衰减越强。因此低能粒子也可能到达核附近，只是概率很小。</p>
+<p>要找出哪些粒子最可能参与反应，需要同时考虑两件事。慢粒子多，却很难穿过势垒；快粒子容易穿过势垒，在热分布中却很少。因此，反应贡献最大的粒子既不是最慢的，也不是最快的。教材图 8.2 在同一条速度轴上画出这两种趋势，它们的乘积在中间隆起，称为 <strong>Gamow 峰</strong>。</p>
+<details><summary>教材外补充：怎样用能量估算峰的位置？</summary>
+<p>先考虑一对质子。用 m<sub>r</sub> 表示约化质量（对两个质子，它等于单个质子质量的一半）。相对动能 E=m<sub>r</sub>v<sup>2</sup>/2，因此速度的倒数为 √(m<sub>r</sub>/2)/√E。把它代入式（8.4），与速度无关的常数可以合写为 b；这样穿透因子就是 exp(−b/√E)。若用 keV 量能量，对质子对有 b≈22.2 keV<sup>1/2</sup>。</p>
+<p>再看热运动。能量越高，热因子 exp(−E/kT) 越小；穿透因子却随能量增加。暂时只保留这两个指数因子，不考虑屏蔽、共振及核因子的能量变化。把它们相乘，指数相加，就得到不同能量的相对贡献 K：</p>
+
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="相对贡献 K 正比于 exp 括号负 E 除以 kT 减 b 除以根号 E"><mrow><mi>K</mi><mrow><mo>(</mo><mi>E</mi><mo>)</mo></mrow><mo>∝</mo><mi>exp</mi><mo>(</mo><mo>−</mo><mfrac><mi>E</mi><mrow><mi>k</mi><mi>T</mi></mrow></mfrac><mo>−</mo><mfrac><mi>b</mi><msqrt><mi>E</mi></msqrt></mfrac><mo>)</mo></mrow></math></p>
+<p>哪一个能量使 K 最大？先对 K 取自然对数。因为对数随 K 单调增加，二者在同一能量达到最大值。第一项 −E/(kT) 对 E 的导数是 −1/(kT)，第二项 −bE<sup>−1/2</sup> 的导数是 b/(2E<sup>3/2</sup>)。</p>
+<p>在峰处，两项导数大小相等，方向相反。因此 E<sub>0</sub><sup>3/2</sup>=bkT/2；两边再取 2/3 次方，就得到峰值能量：</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="峰值能量等于 bkT 除以二的三分之二次方"><mrow><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>b</mi><mi>k</mi><mi>T</mi></mrow><mn>2</mn></mfrac><mo>)</mo></mrow><mfrac><mn>2</mn><mn>3</mn></mfrac></msup></mrow></math>
+<p>低于这个能量时，穿透因子的增长占上风，导数为正；高于它时，热因子的衰减占上风，导数为负。因此找到的是峰而不是谷。</p>
+<p>例如 T=1.4×10<sup>7</sup> K 时，kT≈1.21 keV。代入得 E<sub>0</sub>≈5.64 keV，约为 kT 的 4.7 倍。可见，总体上稀少的高能粒子，对反应的贡献反而更大。</p>
+</details>
+
+<div class="activity explorer v3lab" style="background:#10191d;border-radius:6px;border-top:3px solid #7de0bd" id="gamow-window" data-lesson-activity="v3gamow"><div class="activity-head"><button class="feedback-link" data-feedback="gamow-window" data-label="Gamow 峰：在哪一段速度上相遇？" type="button">反馈</button></div><h3>Gamow 峰：在哪一段速度上相遇？</h3><p class="prediction">升温后，哪条曲线会把峰推向更高速度？先移动探针，比较三条曲线，再调高温度，看峰的位置怎样变。</p><div class="lab-layout" style="display:block"><div class="lab-plot"><p class="caption" style="font-size:13px;line-height:1.8">蓝色虚线：热运动因子；红色点线：穿透因子；绿色实线：二者的乘积。三条曲线各除以自己在图示范围内的最大值，比较峰位和形状，不比较绝对高度。金色竖线是探针。</p><svg viewBox="0 0 700 360" role="img" aria-label="Gamow 峰：在哪一段速度上相遇？"></svg><div style="display:flex;gap:10px;margin:16px 0"><button type="button" data-play aria-label="播放动画" title="播放动画" style="width:46px;height:46px;border:1px solid #7de0bd;border-radius:50%;background:#7de0bd;color:#10191d;font-size:19px">▶</button><button type="button" data-restart aria-label="重置动画" title="重置动画" style="width:46px;height:46px;border:1px solid #74878a;border-radius:50%;background:transparent;color:#eef4f5;font-size:24px">↺</button></div><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls" style="border-left:0;padding-left:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 22px"><label class="lab-control">温度 / 百万 K <output data-out="T">14 </output><input data-param="T" data-unit="" aria-label="温度 / 百万 K" type="range" min="8" max="25" step="0.5" value="14"></label><label class="lab-control">相对速度 / 千 km/s <output data-out="v">1.47 </output><input data-param="v" data-unit="" aria-label="相对速度 / 千 km/s" type="range" min="0" max="3.2" step="0.01" value="1.47"></label></div></div><p class="caption" style="font-size:13px;line-height:1.8">参照教材图 8.2，用速度展示两个指数因子的竞争。这里画的是热运动的指数因子，不是三维速率分布；绿色曲线先乘原始因子，再归一化。横轴是质子对的相对速度，读数按约化质量换算为动能。图中没有计算绝对反应率。</p></div>
+
+<p>升温后，热运动分布的高能部分增加，峰的位置也向高能移动。不过，到达核附近仍不保证反应完成。pp 反应还需要把一个质子转变为中子，这一步涉及弱相互作用，正是下一节长等待时间的来源。</p>
+<p>阅读：Volume 3 §§8.3–8.4，式 (8.4)–(8.6)、图 8.2。教材用速度说明峰为何存在；补充推导则用相对动能估算峰的位置。</p>
+<!-- 小节提纲：问题=四个质子怎样变成氦；图像=逐次反应和不同出口；推导=两次前两步消去中间核；算例=14Gyr/6s/1Myr；承接=隧穿到净产能；限制=反应时间依赖条件。 --></section>
+<section class="lesson-section" id="pp-chain"><div class="section-heading"><span class="section-number">04</span><h2>质子–质子链与中微子损失</h2><button class="feedback-link" type="button" data-feedback="pp-chain" data-label="质子–质子链与中微子损失">反馈</button></div><p>在太阳内部条件下，两个质子相遇后形成氘的过程很慢。教材给出的单个质子等待时间约为 1.4×10<sup>10</sup> 年，而氘一旦形成，接着俘获质子只需约 6 秒。两步相差极大，所以氘不会在核心大量积累。</p>
+<p><strong>质子–质子链</strong>（proton–proton chain，pp chain）的 ppI 分支按以下顺序进行。p 表示质子，D 表示氘核，γ 表示光子，ν 表示中微子。</p>
+<table>
+<thead>
+<tr>
+<th>反应</th>
+<th>为形成一个 <sup>4</sup>He 所需次数</th>
+<th>教材的单核等待时间估计</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p+p → D+e<sup>+</sup>+ν</td>
+<td>2</td>
+<td>约 1.4×10<sup>10</sup> 年</td>
+</tr>
+<tr>
+<td>D+p → <sup>3</sup>He+γ</td>
+<td>2</td>
+<td>约 6 秒</td>
+</tr>
+<tr>
+<td><sup>3</sup>He+<sup>3</sup>He → <sup>4</sup>He+2p</td>
+<td>1</td>
+<td>约 10<sup>6</sup> 年</td>
+</tr>
+</tbody></table>
+<p>把各步相加，两个氘和两个 <sup>3</sup>He 都在中间被产生、随后被消耗。前两步共使用 6 个质子，末步返还 2 个，因此净消耗 4 个质子，生成一个 <sup>4</sup>He、两个正电子和两个中微子。正电子随后与电子湮灭，相关能量也属于总能量收支。</p>
+<p><sup>3</sup>He 还可以与已有的 <sup>4</sup>He 反应，走向 ppII 或 ppIII。两者先形成 <sup>7</sup>Be，然后分别经电子俘获或质子俘获继续反应：</p>
+<table>
+<thead>
+<tr>
+<th>分支</th>
+<th>后续反应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ppII</td>
+<td><sup>3</sup>He+<sup>4</sup>He→<sup>7</sup>Be+γ；<sup>7</sup>Be+e<sup>−</sup>→<sup>7</sup>Li+ν；<sup>7</sup>Li+p→2<sup>4</sup>He</td>
+</tr>
+<tr>
+<td>ppIII</td>
+<td><sup>3</sup>He+<sup>4</sup>He→<sup>7</sup>Be+γ；<sup>7</sup>Be+p→<sup>8</sup>B+γ；<sup>8</sup>B→<sup>8</sup>Be+e<sup>+</sup>+ν；<sup>8</sup>Be→2<sup>4</sup>He</td>
+</tr>
+</tbody></table>
+<p>这些分支最终都把氢转为氦，但中微子带走的能量不同。中微子很容易逃离恒星，所以它带走的能量不能用来维持内部温度。教材的代表性估计为 ppI 损失 1.9%、ppII 损失 3.9%、ppIII 损失 27.3%；例如总能量取 100 单位，留给恒星的部分分别约为 98.1、96.1 和 72.7。分支比例与上述等待时间都随温度、密度和组成改变。</p>
+<p>阅读：Volume 3 §8.4，式 (8.7)–(8.8)。</p>
+<!-- 小节提纲：问题=碳是否燃料与为何氮积累；图像=闭合催化循环、慢步前排队；推导=通量Nj/τj相等；算例=300与3.33；承接=pp到催化与丰度；限制=稳态且封闭主循环。 --></section>
+<section class="lesson-section" id="cn-cycle"><div class="section-heading"><span class="section-number">05</span><h2>碳氮循环与平衡丰度</h2><button class="feedback-link" type="button" data-feedback="cn-cycle" data-label="碳氮循环与平衡丰度">反馈</button></div><p>温度升高后，带更多电荷的核也能以可观的速率俘获质子。碳、氮等核于是可以参与另一条氢转氦的路径。它们在过程中变换身份，最后又回到起点，这就是<strong>碳氮循环</strong>（carbon–nitrogen cycle，CN cycle）；包含氧支路时常称 CNO 循环。</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>反应</th>
+<th>教材参考等待时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><sup>12</sup>C+p → <sup>13</sup>N+γ</td>
+<td>10<sup>6</sup> 年</td>
+</tr>
+<tr>
+<td>2</td>
+<td><sup>13</sup>N → <sup>13</sup>C+e<sup>+</sup>+ν</td>
+<td>14 分钟</td>
+</tr>
+<tr>
+<td>3</td>
+<td><sup>13</sup>C+p → <sup>14</sup>N+γ</td>
+<td>3×10<sup>5</sup> 年</td>
+</tr>
+<tr>
+<td>4</td>
+<td><sup>14</sup>N+p → <sup>15</sup>O+γ</td>
+<td>3×10<sup>8</sup> 年</td>
+</tr>
+<tr>
+<td>5</td>
+<td><sup>15</sup>O → <sup>15</sup>N+e<sup>+</sup>+ν</td>
+<td>82 秒</td>
+</tr>
+<tr>
+<td>6</td>
+<td><sup>15</sup>N+p → <sup>12</sup>C+<sup>4</sup>He</td>
+<td>10<sup>4</sup> 年</td>
+</tr>
+</tbody></table>
+<p>沿表走一圈，<sup>12</sup>C 被恢复，净效果仍是 4p→<sup>4</sup>He，并伴随正电子和中微子。因此这里的碳是催化核，氢才是净消耗的燃料。另一个出口从 <sup>15</sup>N 俘获质子形成 <sup>16</sup>O 开始，接着经过 <sup>17</sup>F、<sup>17</sup>O，最终回到 <sup>14</sup>N；它能改变氧同位素的比例。下面先考虑封闭的 CN 主循环。</p>
+<p>为什么稳态时 <sup>14</sup>N 比 <sup>12</sup>C 多得多？先注意表中 <sup>14</sup>N 等待发生下一步反应的时间最长。若各步每秒通过的核数相同，等待越久的一种核就必须有越多的数量。</p>
+<p>用 Nⱼ 表示某种核的数量，τⱼ 表示平均等待时间，每秒发生下一步反应的数量为 Nⱼ/τⱼ。<strong>平衡丰度</strong>（equilibrium abundance）在这里指每种核的产生率等于消耗率，而不是所有核数量相等。于是</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="稳态时碳十二数量除以一百万年，等于碳十三数量除以三十万年，也等于氮十四数量除以三亿年"><mrow><mfrac><mrow><mi>N</mi><mo>(</mo><mtext>¹²C</mtext><mo>)</mo></mrow><mrow><msup><mn>10</mn><mn>6</mn></msup><mtext>年</mtext></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>N</mi><mo>(</mo><mtext>¹³C</mtext><mo>)</mo></mrow><mrow><mn>3</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mtext>年</mtext></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>N</mi><mo>(</mo><mtext>¹⁴N</mtext><mo>)</mo></mrow><mrow><mn>3</mn><mo>×</mo><msup><mn>10</mn><mn>8</mn></msup><mtext>年</mtext></mrow></mfrac></mrow></math></p>
+<p>因此 N(<sup>14</sup>N)/N(<sup>12</sup>C)=300，N(<sup>14</sup>N)/N(<sup>13</sup>C)=1000，而 N(<sup>12</sup>C)/N(<sup>13</sup>C)=10<sup>6</sup>/(3×10<sup>5</sup>)≈3.33。这些数字来自 T≈1.4×10<sup>7</sup> K 的参考反应时间。温度变化后，应重新计算各步速率。</p>
+<div class="activity explorer v3lab" style="background:#10191d;border-radius:6px;border-top:3px solid #7de0bd" id="catalyst-cycle" data-lesson-activity="v3catalyst"><div class="activity-head"><button class="feedback-link" data-feedback="catalyst-cycle" data-label="碳氮循环：催化核回到起点" type="button">反馈</button></div><h3>碳氮循环：催化核回到起点</h3><p class="prediction">核在哪一步等得最久？播放一圈，看亮点何时停留，再改变氮-14 的等待时间，对比稳态丰度。</p><div class="lab-layout" style="display:block"><div class="lab-plot"><p class="caption" style="font-size:13px;line-height:1.8">金点标记当前步骤；环下方给出该步的实际平均等待时间。右侧横条按对数绘制，数字是稳态数量的百分比。</p><svg viewBox="0 0 700 360" role="img" aria-label="碳氮循环：催化核回到起点"></svg><div style="display:flex;gap:10px;margin:16px 0"><button type="button" data-play aria-label="播放动画" title="播放动画" style="width:46px;height:46px;border:1px solid #7de0bd;border-radius:50%;background:#7de0bd;color:#10191d;font-size:19px">▶</button><button type="button" data-restart aria-label="重置动画" title="重置动画" style="width:46px;height:46px;border:1px solid #74878a;border-radius:50%;background:transparent;color:#eef4f5;font-size:24px">↺</button></div><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls" style="border-left:0;padding-left:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 22px"><label class="lab-control">演示进度 <output data-out="phase">0 %</output><input data-param="phase" data-unit="%" aria-label="演示进度（%）" type="range" min="0" max="100" step="0.1" value="0"></label><label class="lab-control">氮-14 等待时间 / 教材值 <output data-out="factor">1 </output><input data-param="factor" data-unit="" aria-label="氮-14 等待时间 / 教材值" type="range" min="0.1" max="2" step="0.1" value="1"></label></div></div><p class="caption" style="font-size:13px;line-height:1.8">封闭 CN 主循环，固定质子供应。参考等待时间取自教材 §8.5。为让 82 秒和数亿年都看得见，每步画面时长按 1 加上“等待时间除以 82 秒”的常用对数分配；这不是物理时钟。丰度按真实等待时间计算，不按播放秒数计算。</p></div>
+
+<p>动画中的氮核越难反应，稳态里等待的氮核就越多。这也说明，元素丰度可以保留核反应的痕迹；即使 CN 对总光度贡献不大，经过充分处理的物质仍可能富氮、贫碳。若这些物质后来被带到表面，光谱就有机会反映内部的加工历史。</p>
+<p>阅读：Volume 3 §§8.5、8.9，式 (8.9)–(8.10)。</p>
+<!-- 小节提纲：问题=氦如何跨过不稳定铍；图像=短暂Be8再俘获；推导=7.4MeV减95keV；算例=每同等质量只有约0.1；承接=氢燃烧到合成；限制=不同燃料必须按质量比较。 --></section>
+<section class="lesson-section" id="triple-alpha"><div class="section-heading"><span class="section-number">06</span><h2>三重 α 反应与元素合成</h2><button class="feedback-link" type="button" data-feedback="triple-alpha" data-label="三重 α 反应与元素合成">反馈</button></div><p>氢燃烧留下了氦，但两个氦核结合成的 <sup>8</sup>Be 很不稳定。要继续形成碳，恒星必须在 <sup>8</sup>Be 分裂前让它再俘获一个氦核。这个过程分两步进行，净效果是三个 α 粒子，也就是三个 <sup>4</sup>He 核，变成一个 <sup>12</sup>C，称为<strong>三重 α 反应</strong>（triple-alpha reaction）。</p>
+<p>第一步 <sup>4</sup>He+<sup>4</sup>He⇌<sup>8</sup>Be 需要约 95 keV。第二步 <sup>8</sup>Be+<sup>4</sup>He→<sup>12</sup>C+2γ 释放约 7.4 MeV，所以净释放约 7.4−0.095≈7.3 MeV。它不要求三个氦核在同一瞬间直接相撞，而是利用少量、短暂存在的 <sup>8</sup>Be。</p>
+<p>为何要升到约 10<sup>8</sup> K？可以先比较热运动与第一步的能量代价。此时平均动能 3kT/2≈13 keV，仍低于 95 keV；但热分布的高能尾部已能维持少量 <sup>8</sup>Be，供第二步继续反应。因而不能仅用平均动能小于所需能量，就断定反应不会发生。</p>
+<p>与氢聚变比较时，必须使用相同的燃料质量。一次三重 α 反应使用约 12 个核子，氢转氦使用约 4 个。因此按每 4 个核子计，氦燃烧约释放 7.3/3≈2.4 MeV，而氢燃烧留给恒星的能量约为 25 MeV，前者只有约 10%。在可用燃料质量和光度相同的比较下，氦燃烧能够维持的时间也相应更短。</p>
+<p>碳一旦形成，后续核反应就有了更重的起始核。α 俘获可形成一系列更重的核，但仅不断增加四个核子，无法得到所有同位素。因此教材还引入质子俘获、中子俘获等路径，说明恒星内元素合成需要多种反应共同参与。具体在哪个阶段发生，取决于恒星内部的温度、密度和已有的核素。</p>
+<p>阅读：Volume 3 §§8.6–8.8，式 (8.11)–(8.12)。</p>
+<!-- 小节提纲：问题=每克产能为何一次方密度；图像=两类粒子相遇；推导=每体积ρ²除ρ；算例=1.1的4与16次方；承接=网络到结构方程；限制=局部幂律不定绝对主导。 --></section>
+<section class="lesson-section" id="rates"><div class="section-heading"><span class="section-number">07</span><h2>产能率对温度、密度与组成的依赖</h2><button class="feedback-link" type="button" data-feedback="rates" data-label="产能率对温度、密度与组成的依赖">反馈</button></div><p>同样一克气体，压得更密或加热后，会更快地产生核能吗？先把“每立方米的反应数”与“每千克的产能”分开，才能判断密度的幂次。</p>
+<p>两粒子反应的相遇次数与两种粒子的数密度乘积成正比。固定组成时，各数密度都正比于 ρ，所以单位体积的反应率含 ρ<sup>2</sup>。再除以每立方米的质量 ρ，单位质量的产能率 ε 就只含一个 ρ。</p>
+<p>令 X 为氢质量分数，Z(C,N) 为参与循环的碳氮质量分数。在教材所讨论的温度范围，近似写成</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="每单位质量的pp产能率正比于密度乘氢质量分数平方乘温度四次方；CN产能率正比于密度乘氢质量分数乘碳氮质量分数乘温度十六次方"><mtable><mtr><mtd><msub><mi>ε</mi><mtext>pp</mtext></msub><mo>∝</mo><mi>ρ</mi><msup><mi>X</mi><mn>2</mn></msup><msup><mi>T</mi><mn>4</mn></msup></mtd></mtr><mtr><mtd><msub><mi>ε</mi><mtext>CN</mtext></msub><mo>∝</mo><mi>ρ</mi><mi>X</mi><mi>Z</mi><mo>(</mo><mtext>C,N</mtext><mo>)</mo><msup><mi>T</mi><mn>16</mn></msup></mtd></mtr></mtable></math></p>
+<p>这里 ε 的 SI 单位是 W/kg。固定密度与组成，让温度上升 10%，pp 的产能变为 1.1<sup>4</sup>≈1.46 倍，CN 变为 1.1<sup>16</sup>≈4.59 倍。CN 对温度更敏感，所以恒星中心稍热一些，CN 的相对贡献就可能明显增加。</p>
+<div class="activity explorer v3lab" style="background:#10191d;border-radius:6px;border-top:3px solid #7de0bd" id="rate-sensitivity" data-lesson-activity="v3rates"><div class="activity-head"><button class="feedback-link" data-feedback="rate-sensitivity" data-label="升温 10%：两种核反应的响应" type="button">反馈</button></div><h3>升温 10%：两种核反应的响应</h3><p class="prediction">相同的升温，会让 pp 和 CN 的产能增加相同倍数吗？先改变温度比，再固定温度改变密度，比较两条曲线与当前倍数。</p><div class="lab-layout" style="display:block"><div class="lab-plot"><p class="caption" style="font-size:13px;line-height:1.8">青色实线为 pp，红色虚线为 CN；两者分别除以各自参考态的每单位质量产能率。左右图显示相同数据的曲线与横条。</p><svg viewBox="0 0 700 360" role="img" aria-label="升温 10%：两种核反应的响应"></svg><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls" style="border-left:0;padding-left:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 22px"><label class="lab-control">T / T参考 <output data-out="T">1 </output><input data-param="T" data-unit="" aria-label="T / T参考" type="range" min="0.8" max="1.2" step="0.005" value="1"></label><label class="lab-control">ρ / ρ参考 <output data-out="rho">1 </output><input data-param="rho" data-unit="" aria-label="ρ / ρ参考" type="range" min="0.5" max="2" step="0.05" value="1"></label></div></div><p class="caption" style="font-size:13px;line-height:1.8">固定组成，局部幂律 εpp∝ρT⁴、εCN∝ρT¹⁶。各自归一化为 1，不表示参考态二者产能相等，也不能据交点判断主导反应。温度指数只适用于教材讨论的局部范围。</p></div>
+
+<p>固定温度再把密度增加一倍，两种每克产能率都增加一倍。若比较每单位体积的功率，则还要乘一次密度，会变成四倍。上述指数是局部近似；判断某颗星里 pp 与 CNO 谁占主导，还需要它们各自的系数和实际组成，不能仅比较 T<sup>4</sup> 与 T<sup>16</sup>。</p>
+<p>阅读：Volume 3 §8.8，式 (8.13)–(8.14)。</p>
+<!-- 小节提纲：问题=更重为何更短命；图像=燃料增长慢于消耗；推导=t∝M/L到M^-2.5；算例=10太阳质量31.6Myr；承接=预算到星团年龄；限制=共同形成、简化质量光度律。 --></section>
+<section class="lesson-section" id="lifetime"><div class="section-heading"><span class="section-number">08</span><h2>主序寿命与星团转折</h2><button class="feedback-link" type="button" data-feedback="lifetime" data-label="主序寿命与星团转折">反馈</button></div><p>大质量星有更多燃料，却往往更早离开主序。原因在于它们每秒消耗的能量增长得更快。沿用前面的可用燃料比例，寿命 t<sub>MS</sub>∝M/L；再采用教材的近似质量–光度关系 L∝M<sup>3.5</sup>，就得到 t<sub>MS</sub>∝M<sup>−2.5</sup>。</p>
+<p>对 10M<sub>⊙</sub> 的星，燃料约增加 10 倍，光度却增加到 10<sup>3.5</sup>≈3162 倍，因此寿命是太阳的 10/3162≈0.00316，约 3.2×10<sup>7</sup> 年。这一比较也表明，只看燃料总量会得到错误的寿命判断。</p>
+<p>在共同形成的星团里，高质量星先耗尽核心的氢，离开主序。随着星团变老，仍留在主序上的最高质量不断降低。主序开始弯离的部位称为<strong>主序转折</strong>（main-sequence turnoff）；由该处恒星的寿命，就能估计星团年龄。</p>
+<div class="activity explorer v3lab" style="background:#10191d;border-radius:6px;border-top:3px solid #7de0bd" id="cluster-turnoff" data-lesson-activity="v3turnoff"><div class="activity-head"><button class="feedback-link" data-feedback="cluster-turnoff" data-label="星团年龄与主序转折质量" type="button">反馈</button></div><h3>星团年龄与主序转折质量</h3><p class="prediction">星团变老时，主序上首先消失的是低质量星还是高质量星？增加年龄，观察虚线所标的转折质量和仍留在主序上的点。</p><div class="lab-layout" style="display:block"><div class="lab-plot"><p class="caption" style="font-size:13px;line-height:1.8">亮点表示模型中仍处于主序的恒星；空圈表示已经离开主序的位置，并非演化后的真实位置。金色虚线标记转折质量。</p><svg viewBox="0 0 700 360" role="img" aria-label="星团年龄与主序转折质量"></svg><div style="display:flex;gap:10px;margin:16px 0"><button type="button" data-play aria-label="播放动画" title="播放动画" style="width:46px;height:46px;border:1px solid #7de0bd;border-radius:50%;background:#7de0bd;color:#10191d;font-size:19px">▶</button><button type="button" data-restart aria-label="重置动画" title="重置动画" style="width:46px;height:46px;border:1px solid #74878a;border-radius:50%;background:transparent;color:#eef4f5;font-size:24px">↺</button></div><div class="lab-result" aria-live="polite"></div></div><div class="lab-controls" style="border-left:0;padding-left:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 22px"><label class="lab-control">星团年龄 <output data-out="age">1 十亿年</output><input data-param="age" data-unit="十亿年" aria-label="星团年龄（十亿年）" type="range" min="0.03" max="10" step="0.01" value="1"></label></div></div><p class="caption" style="font-size:13px;line-height:1.8">共同形成、同组成的理想星团，假定全部已到主序，取一颗太阳质量的主序寿命为 10 Gyr，寿命与质量的 −2.5 次方成正比。横轴为质量，纵轴为主序光度，以太阳光度为单位，按质量的 3.5 次方计算；均为对数轴。未计算真实等龄线、主序前收缩、双星或质量损失；动画时间直接对应年龄滑块。</p></div>
+
+<p>将寿命关系反过来，转折质量 M<sub>转折</sub>/M<sub>⊙</sub>≈(10 Gyr/t)<sup>0.4</sup>。例如 t=1 Gyr 时得到约 2.51M<sub>⊙</sub>。真实观测先给出颜色和亮度，需要借助恒星模型把它们换成转折质量；年轻星团中的低质量星还可能未到达主序。因此动画只检验主序寿命随质量变化的结果，不替代完整等龄线拟合。</p>
+<p>下一章会把这里的 ε 放进球壳的能量收支，计算光度如何从中心向外累积。</p>
+<p>阅读：Volume 3 §8.10，式 (8.15)–(8.18)、图 8.4–8.5。</p>
+</section>
+<section class="lesson-section" id="exercises"><div class="section-heading"><span class="section-number">09</span><h2>习题</h2><button class="feedback-link" type="button" data-feedback="exercises" data-label="习题">反馈</button></div><div class="quiz-summary" role="status" aria-live="polite">全章已答 <span data-answered>0</span> 题 · 答对 <span data-correct>0</span> 题</div><div class="quiz-grid"><form class="quiz-card" id="q-fuel" data-question="q-fuel"><fieldset><legend><span class="eyebrow">01 / 单选</span>在光度不变且中微子损失比例相同的估算中，可用氢燃料从 0.1M 减少到 0.05M，主序寿命怎样变化？</legend><label class="option"><input type="radio" name="q-fuel" value="A" required><span>减半</span></label><label class="option"><input type="radio" name="q-fuel" value="B" required><span>不变</span></label><label class="option"><input type="radio" name="q-fuel" value="C" required><span>加倍</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-fuel" data-label="在光度不变且中微子损失比例相同的估算中，可用氢燃料从 0.1M 减少到 0.05M，主序寿命怎样变化？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#budget">回看相关概念 ↑</a></form><form class="quiz-card" id="q-tunnel" data-question="q-tunnel"><fieldset><legend><span class="eyebrow">02 / 判断</span>粒子能够穿透库仑势垒，就足以确定 pp 反应的绝对发生率。</legend><label class="option"><input type="radio" name="q-tunnel" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-tunnel" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-tunnel" data-label="粒子能够穿透库仑势垒，就足以确定 pp 反应的绝对发生率。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#tunneling">回看相关概念 ↑</a></form><form class="quiz-card" id="q-pp" data-question="q-pp"><fieldset><legend><span class="eyebrow">03 / 单选</span>ppI 链前两步各发生两次，一共用了 6 个质子，为何净消耗仍是 4 个？</legend><label class="option"><input type="radio" name="q-pp" value="A" required><span>两个质子转变成中微子</span></label><label class="option"><input type="radio" name="q-pp" value="B" required><span>两个 ³He 反应时返还 2 个质子</span></label><label class="option"><input type="radio" name="q-pp" value="C" required><span>质量亏损直接消掉两个质子</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-pp" data-label="ppI 链前两步各发生两次，一共用了 6 个质子，为何净消耗仍是 4 个？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#pp-chain">回看相关概念 ↑</a></form><form class="quiz-card" id="q-cn" data-question="q-cn"><fieldset><legend><span class="eyebrow">04 / 单选</span>封闭循环的稳态中，核 A 等待时间为核 B 的 20 倍。两处反应通量相同，则 核 A 与核 B 的数量比 为多少？</legend><label class="option"><input type="radio" name="q-cn" value="A" required><span>1</span></label><label class="option"><input type="radio" name="q-cn" value="B" required><span>1/20</span></label><label class="option"><input type="radio" name="q-cn" value="C" required><span>20</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-cn" data-label="封闭循环的稳态中，核 A 等待时间为核 B 的 20 倍。两处反应通量相同，则 核 A 与核 B 的数量比 为多少？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#cn-cycle">回看相关概念 ↑</a></form><form class="quiz-card" id="q-alpha" data-question="q-alpha"><fieldset><legend><span class="eyebrow">05 / 判断</span>用 7.3 MeV 与 25 MeV 直接相比，就能得到氦燃烧和氢燃烧每千克燃料的能量比。</legend><label class="option"><input type="radio" name="q-alpha" value="T" required><span>正确</span></label><label class="option"><input type="radio" name="q-alpha" value="F" required><span>错误</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-alpha" data-label="用 7.3 MeV 与 25 MeV 直接相比，就能得到氦燃烧和氢燃烧每千克燃料的能量比。">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#triple-alpha">回看相关概念 ↑</a></form><form class="quiz-card" id="q-density" data-question="q-density"><fieldset><legend><span class="eyebrow">06 / 单选</span>固定温度和组成，密度增至原来的3倍。pp 每单位质量产能率与每单位体积功率分别变为几倍？</legend><label class="option"><input type="radio" name="q-density" value="A" required><span>3倍与9倍</span></label><label class="option"><input type="radio" name="q-density" value="B" required><span>9倍与9倍</span></label><label class="option"><input type="radio" name="q-density" value="C" required><span>3倍与3倍</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-density" data-label="固定温度和组成，密度增至原来的3倍。pp 每单位质量产能率与每单位体积功率分别变为几倍？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#rates">回看相关概念 ↑</a></form><form class="quiz-card" id="q-age" data-question="q-age"><fieldset><legend><span class="eyebrow">07 / 单选</span>一颗太阳质量的星在主序上停留约 10 Gyr。若主序寿命与质量的 −2.5 次方成正比，转折质量为 4 个太阳质量的同龄星团约有多老？</legend><label class="option"><input type="radio" name="q-age" value="A" required><span>40 Gyr</span></label><label class="option"><input type="radio" name="q-age" value="B" required><span>0.3125 Gyr</span></label><label class="option"><input type="radio" name="q-age" value="C" required><span>2.5 Gyr</span></label></fieldset><div class="quiz-actions"><button class="primary" type="submit">检查答案</button><button class="feedback-link" type="button" data-feedback="q-age" data-label="一颗太阳质量的星在主序上停留约 10 Gyr。若主序寿命与质量的 −2.5 次方成正比，转折质量为 4 个太阳质量的同龄星团约有多老？">反馈</button></div><div class="answer-note" aria-live="polite" hidden></div><a class="concept-link" href="#lifetime">回看相关概念 ↑</a></form></div><button type="button" class="secondary" data-reset-quiz>重新练习本课</button></section><footer class="sources"><h2>教材定位</h2><ul><li>Böhm-Vitense, Introduction to Stellar Astrophysics, Volume 3: Stellar Structure and Evolution, Cambridge University Press，原版第 8 章 §§8.1–8.10，式 (8.4)、(8.7)–(8.18)。</li><li>《恒星天体物理学导论》第三卷《恒星结构与演化》，现用中文译本，第 8 章「恒星中的能量产生」。</li></ul><a href="../volume3.html">返回第三卷目录 ↑</a></footer></main></div><button class="quiz-return" type="button" data-return-to-quiz hidden>返回课后题 ↓</button><button class="highlight-mode-toggle" type="button" data-highlight-mode-toggle hidden aria-label="退出连续高亮模式" title="退出连续高亮模式"><span aria-hidden="true">✎</span></button><dialog id="feedback-dialog"><div class="dialog-heading"><h2>课程反馈</h2><button type="button" data-close-feedback aria-label="关闭反馈">×</button></div><p data-feedback-context></p><p data-feedback-unavailable hidden>反馈问卷尚未开放。</p><div data-feedback-ready hidden><label>课程位置<textarea data-feedback-location readonly rows="3" aria-label="课程位置"></textarea></label><div class="dialog-actions"><button type="button" class="secondary" data-copy-location>复制位置</button><a class="primary" data-feedback-form-link target="_blank" rel="noopener noreferrer">填写飞书问卷</a></div><p class="caption">将课程位置粘贴到问卷，填写姓名和反馈后提交。</p></div><p data-feedback-status role="status"></p></dialog><script type="application/json" id="lesson-data">{"meta":{"id":"v3-ch08","version":"1.1.0","updated":"2026-11-19","title":"恒星中的能量产生","summary":"从太阳的能量预算出发，理解量子隧穿、pp 链、碳氮循环与三重 α 反应，再用产能率、平衡丰度和主序寿命解释恒星与星团。","scope":"第三卷 · 第 8 章 · §§8.1–8.10","sources":["Böhm-Vitense, Introduction to Stellar Astrophysics, Volume 3: Stellar Structure and Evolution, Cambridge University Press，原版第 8 章 §§8.1–8.10，式 (8.4)、(8.7)–(8.18)。","《恒星天体物理学导论》第三卷《恒星结构与演化》，现用中文译本，第 8 章「恒星中的能量产生」。"]},"quizzes":[{"id":"q-fuel","type":"choice","concept":"budget","question":"在光度不变且中微子损失比例相同的估算中，可用氢燃料从 0.1M 减少到 0.05M，主序寿命怎样变化？","options":[{"id":"A","text":"减半"},{"id":"B","text":"不变"},{"id":"C","text":"加倍"}],"answer":"A","explanation":"可用核能正比于燃料质量，寿命为 E/L，因此减半。B 把恒星总质量不变误当成燃料不变；C 把消耗时间与燃料量的关系倒置，只有固定燃料、减小光度才会延长寿命。","explanationHTML":"可用核能正比于燃料质量，寿命为 E/L，因此减半。B 把恒星总质量不变误当成燃料不变；C 把消耗时间与燃料量的关系倒置，只有固定燃料、减小光度才会延长寿命。"},{"id":"q-tunnel","type":"truefalse","concept":"tunneling","question":"粒子能够穿透库仑势垒，就足以确定 pp 反应的绝对发生率。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。隧穿描述粒子到达核附近的概率，pp 还需要通过弱相互作用把质子变成中子。把到达核附近等同于反应完成很容易理解，却遗漏了核内部的转变过程和反应系数。","explanationHTML":"该说法不成立。隧穿描述粒子到达核附近的概率，pp 还需要通过弱相互作用把质子变成中子。把到达核附近等同于反应完成很容易理解，却遗漏了核内部的转变过程和反应系数。"},{"id":"q-pp","type":"choice","concept":"pp-chain","question":"ppI 链前两步各发生两次，一共用了 6 个质子，为何净消耗仍是 4 个？","options":[{"id":"A","text":"两个质子转变成中微子"},{"id":"B","text":"两个 ³He 反应时返还 2 个质子"},{"id":"C","text":"质量亏损直接消掉两个质子"}],"answer":"B","explanation":"末步 ³He+³He→⁴He+2p 返还两个质子，故净消耗 6−2=4。A 把弱相互作用产生的中微子当成整个质子的去向，破坏核子数守恒；C 把约0.7%的质量亏损误读成丢失两个完整核子。","explanationHTML":"末步 ³He+³He→⁴He+2p 返还两个质子，故净消耗 6−2=4。A 把弱相互作用产生的中微子当成整个质子的去向，破坏核子数守恒；C 把约0.7%的质量亏损误读成丢失两个完整核子。"},{"id":"q-cn","type":"choice","concept":"cn-cycle","question":"封闭循环的稳态中，核 A 等待时间为核 B 的 20 倍。两处反应通量相同，则 核 A 与核 B 的数量比 为多少？","options":[{"id":"A","text":"1"},{"id":"B","text":"1/20"},{"id":"C","text":"20"}],"answer":"C","explanation":"每种核的数量除以等待时间，都等于同一个反应通量。因此数量比等于等待时间比，故为20。A 把相同通量误认为相同数量；B 知道慢步反应率小，却忘了稳态需要更多核等待，才能维持相同的总反应数。","explanationHTML":"每种核的数量除以等待时间，都等于同一个反应通量。因此数量比等于等待时间比，故为20。A 把相同通量误认为相同数量；B 知道慢步反应率小，却忘了稳态需要更多核等待，才能维持相同的总反应数。"},{"id":"q-alpha","type":"truefalse","concept":"triple-alpha","question":"用 7.3 MeV 与 25 MeV 直接相比，就能得到氦燃烧和氢燃烧每千克燃料的能量比。","options":[{"id":"T","text":"正确"},{"id":"F","text":"错误"}],"answer":"F","explanation":"该说法不成立。前一个事件消耗约12个核子，后一个消耗约4个；按相同质量比较应算 (7.3/3)/25≈0.10。直接比较事件能量很直观，却漏掉每个事件消耗的燃料量不同。","explanationHTML":"该说法不成立。前一个事件消耗约12个核子，后一个消耗约4个；按相同质量比较应算 (7.3/3)/25≈0.10。直接比较事件能量很直观，却漏掉每个事件消耗的燃料量不同。"},{"id":"q-density","type":"choice","concept":"rates","question":"固定温度和组成，密度增至原来的3倍。pp 每单位质量产能率与每单位体积功率分别变为几倍？","options":[{"id":"A","text":"3倍与9倍"},{"id":"B","text":"9倍与9倍"},{"id":"C","text":"3倍与3倍"}],"answer":"A","explanation":"每克产能 ε∝ρ，故为3倍；每体积功率 ρε∝ρ²，故为9倍。B 把两粒子相遇的密度平方直接套到每克量；C 则忘记同一体积内的质量也增加了3倍。","explanationHTML":"每克产能 ε∝ρ，故为3倍；每体积功率 ρε∝ρ²，故为9倍。B 把两粒子相遇的密度平方直接套到每克量；C 则忘记同一体积内的质量也增加了3倍。"},{"id":"q-age","type":"choice","concept":"lifetime","question":"一颗太阳质量的星在主序上停留约 10 Gyr。若主序寿命与质量的 −2.5 次方成正比，转折质量为 4 个太阳质量的同龄星团约有多老？","options":[{"id":"A","text":"40 Gyr"},{"id":"B","text":"0.3125 Gyr"},{"id":"C","text":"2.5 Gyr"}],"answer":"B","explanation":"4 的 2.5 次方等于 32，所以寿命只有参考星的 1/32，星团年龄约为 10/32=0.3125 Gyr。A 只按燃料量增加寿命而忽略光度；C 只用质量的倒数，低估了光度随质量增加的幅度。","explanationHTML":"4 的 2.5 次方等于 32，所以寿命只有参考星的 1/32，星团年龄约为 10/32=0.3125 Gyr。A 只按燃料量增加寿命而忽略光度；C 只用质量的倒数，低估了光度随质量增加的幅度。"}],"quizHash":"2735687139b58aafb7d643571e326fd358c9bb2867e3f6b679f7855d52f54f47","sourceHash":"d0851bae52d8dfb85d3886ba94da9b5e5089e3a31199a7378741d2476f827a40","feedback":{"formUrl":"https://my.feishu.cn/share/base/shrcnhEk40rTBSe799VcT9i4z8d"}}</script><script>(()=>{
+'use strict';
+const data=JSON.parse(document.getElementById('lesson-data').textContent);
+const storageKey=`stellar:${data.meta.id}:${data.meta.version}:${data.quizHash}`;
+let answers={};
+try{const stored=JSON.parse(localStorage.getItem(storageKey)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))answers=stored;}catch{}
+function save(){try{localStorage.setItem(storageKey,JSON.stringify(answers));}catch{}}
+function stats(){let done=0,correct=0;for(const q of data.quizzes){if(q.options.some(o=>o.id===answers[q.id])){done++;if(answers[q.id]===q.answer)correct++;}}for(const el of document.querySelectorAll('[data-answered]'))el.textContent=done;for(const el of document.querySelectorAll('[data-correct]'))el.textContent=correct;}
+function showAnswer(form,q,value){const note=form.querySelector('.answer-note');const right=value===q.answer;note.hidden=false;note.classList.toggle('wrong',!right);note.replaceChildren();const verdict=document.createElement('strong');verdict.textContent=right?'✓ 回答正确。':'✗ 回答有误。';note.append(verdict,document.createTextNode(' '));const explanation=document.createElement('span');explanation.innerHTML=q.explanationHTML;note.append(explanation);}
+for(const q of data.quizzes){const form=document.getElementById(q.id);const value=answers[q.id];if(q.options.some(o=>o.id===value)){form.querySelector(`input[value="${value}"]`).checked=true;showAnswer(form,q,value);}form.addEventListener('submit',event=>{event.preventDefault();const value=new FormData(form).get(q.id);if(!q.options.some(o=>o.id===value))return;answers[q.id]=value;save();showAnswer(form,q,value);stats();});form.addEventListener('change',()=>{delete answers[q.id];form.querySelector('.answer-note').hidden=true;save();stats();});}
+stats();
+for(const reset of document.querySelectorAll('[data-reset-quiz]'))reset.addEventListener('click',()=>{answers={};save();for(const form of document.querySelectorAll('[data-question]')){form.reset();form.querySelector('.answer-note').hidden=true;}stats();});
+const highlightTools=document.querySelector('.highlight-tools');
+if(highlightTools){
+ const highlightKey=`stellar:highlights:${data.meta.id}`;
+ const coarsePointer=window.matchMedia?.('(pointer: coarse)')?.matches;
+ const addHighlight=highlightTools.querySelector('[data-highlight-add]');
+ const removeHighlight=highlightTools.querySelector('[data-highlight-remove]');
+ const clearHighlights=highlightTools.querySelector('[data-highlight-clear]');
+ const exportHighlights=highlightTools.querySelector('[data-highlight-export]');
+ const pdfExport=highlightTools.querySelector('[data-pdf-export]');
+ const importHighlights=highlightTools.querySelector('[data-highlight-import]');
+ const highlightStatus=highlightTools.querySelector('[data-highlight-status]');
+ const helpToggle=highlightTools.querySelector('[data-highlight-help-toggle]');
+ const helpPanel=highlightTools.querySelector('[data-highlight-help]');
+ const highlightModeToggle=document.querySelector('[data-highlight-mode-toggle]');
+ const blockSelector='p,li,blockquote,td';
+ const excludedSelector='math,a,code,pre,.activity,.quiz-card,.section-heading,.sources';
+ const maxHighlights=500;
+ let storageAvailable=true;
+ let pendingRange=null;
+ let markingMode=false;
+ let autoHighlightTimer=0;
+ let highlightState={schema:1,lessonId:data.meta.id,version:data.meta.version,sourceHash:data.sourceHash,items:[]};
+ function cleanHighlight(item){
+  if(!item||typeof item!=='object'||typeof item.id!=='string'||typeof item.sectionId!=='string'||typeof item.quote!=='string')return null;
+  if(!item.quote.trim()||item.quote.length>10000)return null;
+  return {id:item.id.slice(0,100),sectionId:item.sectionId.slice(0,200),quote:item.quote,blockText:typeof item.blockText==='string'?item.blockText.slice(0,30000):'',start:Number.isInteger(item.start)?item.start:null,end:Number.isInteger(item.end)?item.end:null,prefix:typeof item.prefix==='string'?item.prefix.slice(-160):'',suffix:typeof item.suffix==='string'?item.suffix.slice(0,160):'',version:typeof item.version==='string'?item.version:'',sourceHash:typeof item.sourceHash==='string'?item.sourceHash:'',createdAt:typeof item.createdAt==='string'?item.createdAt:new Date().toISOString(),status:'stale'};
+ }
+ try{
+  const stored=JSON.parse(localStorage.getItem(highlightKey)||'null');
+  const items=Array.isArray(stored)?stored:stored?.lessonId===data.meta.id?stored.items:[];
+  if(Array.isArray(items))highlightState.items=items.map(cleanHighlight).filter(Boolean).slice(0,maxHighlights);
+ }catch{storageAvailable=false;}
+ function saveHighlights(){
+  try{localStorage.setItem(highlightKey,JSON.stringify(highlightState));return true;}
+  catch{storageAvailable=false;return false;}
+ }
+ function nodeElement(node){return node?.nodeType===Node.ELEMENT_NODE?node:node?.parentElement;}
+ function blockFor(node){
+  const block=nodeElement(node)?.closest(blockSelector);
+  return block&&!block.closest(excludedSelector)&&block.closest('.lesson-section')?block:null;
+ }
+ function intersects(range,node){try{return range.intersectsNode(node);}catch{return false;}}
+ function marksFor(range){
+  if(!range)return[];
+  const ids=new Set();
+  for(const mark of document.querySelectorAll('mark.stellar-highlight[data-highlight-id]'))if(intersects(range,mark))ids.add(mark.dataset.highlightId);
+  return [...ids];
+ }
+ function selectionInfo(range){
+  if(!range||range.collapsed)return null;
+  const first=blockFor(range.startContainer),last=blockFor(range.endContainer);
+  if(!first||!last||!range.toString().trim())return null;
+  const section=first.closest('.lesson-section');
+  if(last.closest('.lesson-section')!==section)return null;
+  // Keep each paragraph independently anchored in the existing backup format.
+  // Reject mixed selections in full: never silently skip a formula or control.
+  for(const node of section.querySelectorAll(excludedSelector+',h1,h2,h3,summary,button,input,select,textarea,svg,img'))if(intersects(range,node))return null;
+  if(first===last)return {parts:[{block:first,range}]};
+  if(first.tagName!=='P'||last.tagName!=='P')return null;
+  const blocks=[...section.querySelectorAll('p')].filter(block=>intersects(range,block));
+  const parts=[];
+  for(const block of blocks){
+   if(block.closest(excludedSelector))return null;
+   const part=document.createRange();part.selectNodeContents(block);
+   if(block===first)part.setStart(range.startContainer,range.startOffset);
+   if(block===last)part.setEnd(range.endContainer,range.endOffset);
+   if(part.toString().trim())parts.push({block,range:part});
+  }
+  // Between paragraph endpoints there may also be a list or a quotation.
+  for(const node of section.querySelectorAll('li,blockquote,td'))if(intersects(range,node))return null;
+  return parts.length?{parts}:null;
+ }
+ function boundaryOffset(block,container,offset){
+  const before=document.createRange();
+  before.selectNodeContents(block);
+  try{before.setEnd(container,offset);return before.toString().length;}catch{return -1;}
+ }
+ function makeHighlight(info){
+  const {block,range}=info,start=boundaryOffset(block,range.startContainer,range.startOffset),end=boundaryOffset(block,range.endContainer,range.endOffset),blockText=block.textContent||'',quote=blockText.slice(start,end);
+  if(start<0||end<=start||!quote.trim())return null;
+  const section=block.closest('.lesson-section');
+  return {id:typeof crypto?.randomUUID==='function'?crypto.randomUUID():`h-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`,sectionId:section.id,quote,blockText,start,end,prefix:blockText.slice(Math.max(0,start-160),start),suffix:blockText.slice(end,end+160),version:data.meta.version,sourceHash:data.sourceHash,createdAt:new Date().toISOString(),status:'active'};
+ }
+ function selectableTextNodes(block){
+  const walker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while(node=walker.nextNode())nodes.push(node);
+  return nodes;
+ }
+ function wrapOffsets(block,start,end,id){
+  const nodes=selectableTextNodes(block),ranges=[];
+  let cursor=0;
+  for(const node of nodes){
+   const length=node.nodeValue.length,nodeStart=cursor,nodeEnd=cursor+length;cursor=nodeEnd;
+   const localStart=Math.max(start-nodeStart,0),localEnd=Math.min(end-nodeStart,length);
+   if(localEnd<=localStart||node.parentElement?.closest('mark,a,code,pre,math'))continue;
+   ranges.push({node,localStart,localEnd});
+  }
+  if(!ranges.length)return false;
+  for(let i=ranges.length-1;i>=0;i--){
+   const part=ranges[i],range=document.createRange();range.setStart(part.node,part.localStart);range.setEnd(part.node,part.localEnd);
+   const mark=document.createElement('mark');mark.className='stellar-highlight';mark.dataset.highlightId=id;mark.title='选择后可取消高亮';
+   mark.append(range.extractContents());range.insertNode(mark);
+  }
+  return true;
+ }
+ function unwrapHighlight(id){
+  for(const mark of [...document.querySelectorAll('mark.stellar-highlight[data-highlight-id]')].filter(mark=>mark.dataset.highlightId===id))mark.replaceWith(...mark.childNodes);
+ }
+ function clearRenderedHighlights(){for(const mark of [...document.querySelectorAll('mark.stellar-highlight')])mark.replaceWith(...mark.childNodes);}
+ function findPositions(text,quote){
+  const positions=[];let from=0;
+  while(quote&&from<=text.length){const position=text.indexOf(quote,from);if(position<0)break;positions.push(position);from=position+Math.max(quote.length,1);}
+  return positions;
+ }
+ function contextMatches(text,start,item){
+  return (!item.prefix||text.slice(Math.max(0,start-item.prefix.length),start).endsWith(item.prefix))&&(!item.suffix||text.slice(start+item.quote.length,start+item.quote.length+item.suffix.length).startsWith(item.suffix));
+ }
+ function locateHighlight(item){
+  const section=document.getElementById(item.sectionId);if(!section)return null;
+  let blocks=[...section.querySelectorAll(blockSelector)].filter(block=>!block.closest(excludedSelector));
+  const exact=item.blockText?blocks.filter(block=>block.textContent===item.blockText):[];
+  if(exact.length)blocks=exact;
+  const matches=[];
+  for(const block of blocks){
+   const text=block.textContent||'',positions=findPositions(text,item.quote);
+   for(const start of positions)if(contextMatches(text,start,item))matches.push({block,start,end:start+item.quote.length});
+  }
+  if(matches.length===1)return matches[0];
+  if(Number.isInteger(item.start)&&Number.isInteger(item.end)){
+   const exactPosition=matches.find(match=>match.start===item.start&&match.end===item.end);
+   if(exactPosition)return exactPosition;
+  }
+  return null;
+ }
+ function restoreHighlights(){
+  clearRenderedHighlights();
+  const applied=[];
+  for(const item of highlightState.items){
+   const match=locateHighlight(item);
+   const overlaps=match&&applied.some(previous=>previous.block===match.block&&match.start<previous.end&&previous.start<match.end);
+   if(!match||overlaps||!wrapOffsets(match.block,match.start,match.end,item.id)){item.status='stale';continue;}
+   item.status='active';item.version=data.meta.version;item.sourceHash=data.sourceHash;applied.push(match);
+  }
+  highlightState.version=data.meta.version;highlightState.sourceHash=data.sourceHash;saveHighlights();refreshHighlightUI();
+ }
+ function cancelAutoHighlight(){if(autoHighlightTimer){window.clearTimeout(autoHighlightTimer);autoHighlightTimer=0;}}
+ function setMarkingMode(active){
+  markingMode=active;
+  document.body.classList.toggle('highlight-mode-active',active);
+  if(highlightModeToggle){
+   highlightModeToggle.hidden=!active;
+   highlightModeToggle.setAttribute('aria-pressed',String(active));
+   highlightModeToggle.setAttribute('aria-label',active?'退出连续高亮模式':'进入连续高亮模式');
+   highlightModeToggle.title=active?'退出连续高亮模式':'进入连续高亮模式';
+  }
+  const label=coarsePointer?'高亮选中文字':active?'退出连续高亮模式':'进入连续高亮模式';
+  addHighlight.setAttribute('aria-label',label);
+  addHighlight.title=label;
+  refreshHighlightUI();
+ }
+ function refreshHighlightUI(){
+  const active=highlightState.items.filter(item=>item.status==='active').length,stale=highlightState.items.filter(item=>item.status==='stale').length;
+  clearHighlights.disabled=highlightState.items.length===0;
+  if(!storageAvailable){highlightStatus.textContent='本机保存不可用。';return;}
+  const modeText=markingMode?'；连续高亮已开启':'';
+  highlightStatus.textContent=active||stale?`已保存 ${active} 条高亮${stale?`；${stale} 条位置待核实`:''}${modeText}`:(markingMode?'连续高亮已开启':'暂无高亮');
+ }
+ function updateHighlightSelection(){
+  const range=pendingRange,info=selectionInfo(range),ids=marksFor(range);
+  addHighlight.disabled=false;
+  removeHighlight.hidden=ids.length===0;
+  removeHighlight.disabled=ids.length===0;
+  refreshHighlightUI();
+  if(range&&!range.collapsed&&!info&&!ids.length&&blockFor(range.startContainer))highlightStatus.textContent='请选择同一小节内的普通正文段落，避开公式、链接、代码和交互区域。';
+ }
+ function clearSelection(){cancelAutoHighlight();window.getSelection()?.removeAllRanges();pendingRange=null;updateHighlightSelection();}
+ function applyPendingHighlight(){
+  const info=selectionInfo(pendingRange),ids=marksFor(pendingRange);if(!info||ids.length)return false;
+  const items=info.parts.map(makeHighlight);
+  if(items.some(item=>!item||item.quote.length>10000||item.blockText.length>30000)){
+   highlightStatus.textContent='选中文字过长，请缩小选区后重试。';return false;
+  }
+  if(highlightState.items.length+items.length>maxHighlights){
+   highlightStatus.textContent='本课高亮最多保存 500 条，请先导出备份并取消部分高亮，再重试。';return false;
+  }
+  for(let i=0;i<items.length;i++)if(!wrapOffsets(info.parts[i].block,items[i].start,items[i].end,items[i].id)){
+   for(const item of items)unwrapHighlight(item.id);
+   highlightStatus.textContent='本次高亮未保存，请重新选择后重试。';return false;
+  }
+  highlightState.items.push(...items);
+  saveHighlights();clearSelection();refreshHighlightUI();return true;
+ }
+ function queueAutoHighlight(){
+  cancelAutoHighlight();if(!markingMode||coarsePointer)return;
+  autoHighlightTimer=window.setTimeout(()=>{
+   autoHighlightTimer=0;
+   if(markingMode)applyPendingHighlight();
+  },420);
+ }
+ document.addEventListener('selectionchange',()=>{
+  const selection=window.getSelection(),range=selection?.rangeCount?selection.getRangeAt(0):null;
+  if(range&&!range.collapsed){pendingRange=range.cloneRange();queueAutoHighlight();}
+  else {cancelAutoHighlight();if(!highlightTools.contains(document.activeElement))pendingRange=null;}
+  updateHighlightSelection();
+  scheduleBubbleUpdate();
+ });
+ for(const button of [addHighlight,removeHighlight,clearHighlights,exportHighlights,pdfExport,helpToggle])button.addEventListener('pointerdown',event=>event.preventDefault());
+ highlightModeToggle?.addEventListener('pointerdown',event=>event.preventDefault());
+ addHighlight.addEventListener('click',()=>{
+  if(coarsePointer){applyPendingHighlight();return;}
+  if(markingMode){setMarkingMode(false);clearSelection();return;}
+  setMarkingMode(true);
+  applyPendingHighlight();
+ });
+ highlightModeToggle?.addEventListener('click',()=>{setMarkingMode(false);clearSelection();});
+ function cancelHighlightIds(ids){
+  for(const id of ids){unwrapHighlight(id);highlightState.items=highlightState.items.filter(item=>item.id!==id);}
+  saveHighlights();clearSelection();refreshHighlightUI();
+ }
+ removeHighlight.addEventListener('click',()=>cancelHighlightIds(marksFor(pendingRange)));
+ let clearArmed=false,clearTimer=0;
+ function disarmClear(){if(!clearArmed)return;clearArmed=false;window.clearTimeout(clearTimer);clearTimer=0;clearHighlights.textContent='清空高亮';clearHighlights.removeAttribute('data-clear-armed');}
+ clearHighlights.addEventListener('click',()=>{
+  if(!clearArmed){clearArmed=true;clearHighlights.textContent='确认清空？';clearHighlights.setAttribute('data-clear-armed','');clearTimer=window.setTimeout(disarmClear,4000);return;}
+  disarmClear();clearRenderedHighlights();highlightState.items=[];saveHighlights();clearSelection();refreshHighlightUI();
+ });
+ exportHighlights.addEventListener('click',()=>{
+  const payload={schema:1,lessonId:data.meta.id,title:data.meta.title,version:data.meta.version,sourceHash:data.sourceHash,items:highlightState.items.map(({status,...item})=>item)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${data.meta.id}-highlights.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);
+ });
+ function pdfFilename(){
+  const chapter=data.meta.id.match(/(?:^|-)ch(\d+)$/i)?.[1],now=new Date(),pad=value=>String(value).padStart(2,'0');
+  const stamp=`${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  const name=`第${chapter?Number(chapter):''}章_${data.meta.title}_${stamp}`;
+  return name.replace(/[\\/:*?"<>|]/g,'_').replace(/\s+/g,' ').trim();
+ }
+ pdfExport.addEventListener('click',()=>{
+  cancelAutoHighlight();
+  hideHighlightBubble();
+  const details=[...document.querySelectorAll('details')],states=details.map(detail=>detail.open),oldTitle=document.title,name=pdfFilename();
+  details.forEach(detail=>{detail.open=true;});
+  document.title=name;
+  highlightStatus.textContent=`已准备 ${name}.pdf；请在打印窗口选择“另存为 PDF”。`;
+  const restore=()=>{
+   details.forEach((detail,index)=>{detail.open=states[index];});
+   document.title=oldTitle;refreshHighlightUI();window.removeEventListener('afterprint',restore);
+  };
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+ });
+ importHighlights.addEventListener('change',async()=>{
+  const file=importHighlights.files?.[0];importHighlights.value='';if(!file)return;
+  try{
+   const payload=JSON.parse(await file.text());
+   if(payload?.lessonId!==data.meta.id||!Array.isArray(payload.items))throw Error('课程不匹配或文件格式不正确');
+   const merged=new Map(highlightState.items.map(item=>[item.id,item]));
+   for(const item of payload.items.map(cleanHighlight).filter(Boolean))merged.set(item.id,item);
+   highlightState.items=[...merged.values()].slice(-maxHighlights);restoreHighlights();
+  }catch(error){highlightStatus.textContent=`导入失败：${error.message}`;}
+ });
+ const highlightBubble=document.createElement('div');
+ highlightBubble.className='highlight-bubble';
+ highlightBubble.setAttribute('data-highlight-bubble','');
+ highlightBubble.hidden=true;
+ const bubbleAdd=document.createElement('button');
+ bubbleAdd.type='button';
+ bubbleAdd.textContent='高亮';
+ bubbleAdd.setAttribute('aria-label','高亮选中文字');
+ bubbleAdd.setAttribute('data-highlight-bubble-add','');
+ const bubbleButton=document.createElement('button');
+ bubbleButton.type='button';
+ bubbleButton.textContent='取消高亮';
+ bubbleButton.setAttribute('aria-label','取消选中的高亮');
+ bubbleButton.setAttribute('data-highlight-bubble-remove','');
+ highlightBubble.append(bubbleAdd,bubbleButton);
+ document.body.append(highlightBubble);
+ let bubbleIds=[],bubbleTimer=0;
+ function hideHighlightBubble(){window.clearTimeout(bubbleTimer);bubbleTimer=0;bubbleIds=[];highlightBubble.hidden=true;}
+ function showHighlightBubble(ids,rect,anchor,addable){
+  bubbleIds=ids;
+  bubbleAdd.hidden=!addable;
+  bubbleButton.hidden=ids.length===0;
+  highlightBubble.hidden=false;
+  const width=highlightBubble.offsetWidth||180,height=highlightBubble.offsetHeight||40;
+  let x,y;
+  if(coarsePointer){
+   x=(anchor?.x??rect.left+rect.width/2)-width/2;
+   y=rect.bottom+8;
+   if(y+height>window.innerHeight-8)y=rect.top-height-56;
+  }else if(anchor){
+   x=anchor.x-width-6;y=anchor.y-height-6;
+  }else{
+   x=rect.left+rect.width/2-width/2;
+   y=rect.top-height-8;
+   if(y<8)y=rect.bottom+8;
+  }
+  y=Math.max(8,Math.min(y,Math.max(8,window.innerHeight-height-8)));
+  x=Math.max(8,Math.min(x,Math.max(8,window.innerWidth-width-8)));
+  highlightBubble.style.left=Math.round(x)+'px';highlightBubble.style.top=Math.round(y)+'px';
+ }
+ let pointerAnchor=null;
+ document.addEventListener('pointerup',event=>{if(event.pointerType!=='touch')pointerAnchor={x:event.clientX,y:event.clientY};},true);
+ function scheduleBubbleUpdate(){
+  window.clearTimeout(bubbleTimer);
+  bubbleTimer=window.setTimeout(()=>{
+   bubbleTimer=0;
+   const range=pendingRange;
+   const ids=range&&!range.collapsed?marksFor(range):[];
+   const info=ids.length?null:selectionInfo(range);
+   const addable=!!info&&!markingMode;
+   if(ids.length||addable)showHighlightBubble(ids,range.getBoundingClientRect(),coarsePointer?null:pointerAnchor,addable);
+   else hideHighlightBubble();
+  },280);
+ }
+ bubbleAdd.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleAdd.addEventListener('click',()=>{hideHighlightBubble();applyPendingHighlight();});
+ bubbleButton.addEventListener('pointerdown',event=>event.preventDefault());
+ bubbleButton.addEventListener('click',()=>{const ids=bubbleIds;hideHighlightBubble();cancelHighlightIds(ids);});
+ document.addEventListener('contextmenu',event=>{
+  const mark=event.target?.closest?.('mark.stellar-highlight[data-highlight-id]');
+  if(!mark)return;
+  event.preventDefault();
+  const range=document.createRange();range.selectNodeContents(mark);
+  pendingRange=range;
+  const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+  updateHighlightSelection();
+  showHighlightBubble([mark.dataset.highlightId],mark.getBoundingClientRect(),{x:event.clientX,y:event.clientY});
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){hideHighlightBubble();hideHelpPanel();disarmClear();}});
+ window.addEventListener('scroll',hideHighlightBubble,{passive:true,capture:true});
+ window.addEventListener('resize',hideHighlightBubble,{passive:true});
+ function hideHelpPanel(){if(helpPanel.hidden)return;helpPanel.hidden=true;helpToggle.setAttribute('aria-expanded','false');}
+ helpToggle.addEventListener('click',()=>{helpPanel.hidden=!helpPanel.hidden;helpToggle.setAttribute('aria-expanded',String(!helpPanel.hidden));});
+ document.addEventListener('click',event=>{if(!helpPanel.hidden&&!highlightTools.contains(event.target))hideHelpPanel();});
+ setMarkingMode(false);
+ restoreHighlights();
+}
+const quizReturn=document.querySelector('[data-return-to-quiz]');
+let reviewForm=null;
+const visibleQuestions=new Set();
+function updateQuizReturn(){quizReturn.hidden=!reviewForm||visibleQuestions.has(reviewForm);}
+const quizObserver=new IntersectionObserver(entries=>{
+ for(const entry of entries){if(entry.isIntersecting)visibleQuestions.add(entry.target);else visibleQuestions.delete(entry.target);}
+ updateQuizReturn();
+});
+for(const form of document.querySelectorAll('[data-question]'))quizObserver.observe(form);
+for(const [index,link] of [...document.querySelectorAll('.concept-link')].entries())link.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ reviewForm=link.closest('[data-question]');
+ quizReturn.textContent=`返回课后题 · 第 ${index+1} 题 ↓`;
+ updateQuizReturn();
+});
+quizReturn.addEventListener('click',()=>{
+ if(!reviewForm)return;
+ const form=reviewForm;
+ reviewForm=null;updateQuizReturn();
+ // Replace the concept anchor so reload stays at the question and Back still works.
+ history.replaceState(history.state,'','#'+form.id);
+ form.setAttribute('tabindex','-1');
+ form.focus({preventScroll:true});
+ form.scrollIntoView({block:'start'});
+});
+for(const activity of document.querySelectorAll('[data-parallax]')){const slider=activity.querySelector('input');function update(){const d=Number(slider.value),p=1/d,x=350+Math.log(d)*65;activity.querySelector('[data-distance]').textContent=d;activity.querySelector('[data-parallax-value]').textContent=p.toFixed(3)+'″';activity.querySelector('[data-full-angle]').textContent=(2*p).toFixed(3)+'″';activity.querySelector('[data-star]').setAttribute('cx',x);activity.querySelector('[data-star-label]').setAttribute('x',x-14);for(const ray of activity.querySelectorAll('[data-ray]'))ray.setAttribute('x2',x);}slider.addEventListener('input',update);update();}
+const dialog=document.getElementById('feedback-dialog');let opener=null;
+for(const button of document.querySelectorAll('[data-feedback]'))button.addEventListener('click',()=>{
+ opener=button;const target=button.dataset.feedback,label=button.dataset.label;
+ dialog.querySelector('[data-feedback-context]').textContent=label;
+ dialog.querySelector('[data-feedback-status]').textContent='';
+ const location=dialog.querySelector('[data-feedback-location]');
+ location.value=`${data.meta.scope} | ${data.meta.id} | 更新于 ${data.meta.updated||"未标注"} | ${target}\n${label}\n内容指纹：${data.sourceHash}`;
+ const url=data.feedback?.formUrl;dialog.querySelector('[data-feedback-ready]').hidden=!url;dialog.querySelector('[data-feedback-unavailable]').hidden=!!url;
+ const link=dialog.querySelector('[data-feedback-form-link]');if(url)link.href=url;else link.removeAttribute('href');
+ dialog.showModal();
+});
+ dialog.querySelector('[data-close-feedback]').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>opener?.focus());
+ dialog.querySelector('[data-copy-location]').addEventListener('click',async()=>{const location=dialog.querySelector('[data-feedback-location]');try{await navigator.clipboard.writeText(location.value);dialog.querySelector('[data-feedback-status]').textContent='已复制课程位置。';}catch{location.focus();location.select();dialog.querySelector('[data-feedback-status]').textContent='请复制已选中的课程位置。';}});
+})();
+
+
+// Native SVG and controls only. No evaluation of strings or external requests.
+const StellarActivityUI=(()=>{
+ const NS='http://www.w3.org/2000/svg';
+ function node(svg,tag,attrs={},text){const n=document.createElementNS(NS,tag);for(const [key,value]of Object.entries(attrs))n.setAttribute(key,String(value));if(text!==undefined)n.textContent=text;svg.append(n);return n;}
+ const line=(svg,x1,y1,x2,y2,color='#7b8d9a',extra={})=>node(svg,'line',{x1,y1,x2,y2,stroke:color,'stroke-width':2,...extra});
+ const label=(svg,x,y,text,extra={})=>node(svg,'text',{x,y,...extra},text);
+ function axes(svg,xlabel,ylabel,xmax=1,ymax=1){line(svg,65,300,660,300);line(svg,65,300,65,40);label(svg,355,345,xlabel,{'text-anchor':'middle'});label(svg,65,23,ylabel);return {x:value=>65+595*value/xmax,y:value=>300-250*value/ymax};}
+ function curve(svg,points,color='#eab76f',dash=false){return node(svg,'path',{d:points.map(([x,y],i)=>`${i?'L':'M'}${Number(x).toFixed(2)} ${Number(y).toFixed(2)}`).join(' '),fill:'none',stroke:color,'stroke-width':3,...(dash?{'stroke-dasharray':'7 6'}:{})});}
+ const fmt=(value,digits=2)=>Number(value).toFixed(digits);
+ const scientific=(value,digits=2)=>{const [mantissa,exponent]=Number(value).toExponential(digits).split('e');const supers={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return mantissa+' × 10'+String(Number(exponent)).split('').map(c=>supers[c]).join('');};
+ function values(lab){const result={};const outputs=[...lab.querySelectorAll('[data-out]')];for(const input of lab.querySelectorAll('[data-param]')){const key=input.dataset.param;result[key]=input.tagName==='SELECT'?input.value:Number(input.value);const output=outputs.find(output=>output.dataset.out===key);if(output)output.textContent=input.value+(input.dataset.unit?' '+input.dataset.unit:'');}return result;}
+ function mount(type,update){for(const lab of document.querySelectorAll(`[data-lesson-activity="${type}"]`)){const svg=lab.querySelector('svg'),result=lab.querySelector('.lab-result');const refresh=()=>{svg.replaceChildren();const text=update({lab,svg,result,values:values(lab)});if(typeof text==='string')result.textContent=text;svg.setAttribute('aria-label',lab.querySelector('h3').textContent+'。'+result.textContent);};for(const input of lab.querySelectorAll('[data-param]'))input.addEventListener('input',refresh);refresh();}}
+ return Object.freeze({node,line,label,axes,curve,fmt,scientific,values,mount});
+})();
+
+(()=>{
+ const U=StellarActivityUI, C={mint:'#7de0bd',red:'#ff947e',gold:'#f5d56f',blue:'#9dccff',muted:'#9baeb0'};
+ const text=(s,x,y,t,extra={})=>U.label(s,x,y,t,{'style':'font-size:18px',...extra});
+ const dot=(s,x,y,r,color,extra={})=>U.node(s,'circle',{cx:x,cy:y,r,fill:color,...extra});
+ const panes=s=>[U.node(s,'g',{'data-pane':'left'}),U.node(s,'g',{'data-pane':'right'})];
+ function star(s,x,y,r,color,id){
+  const defs=U.node(s,'defs',{}),g=U.node(defs,'radialGradient',{id,cx:'.35',cy:'.3',r:'.7'});
+  for(const [offset,c] of [['0','#fff5cf'],['.35',color],['1','#3a222a']])U.node(g,'stop',{offset,'stop-color':c});
+  dot(s,x,y,r,'url(#'+id+')',{stroke:color,'stroke-width':1.5});
+  for(let k=0;k<55;k++){const angle=k*2.39996,q=r*.92*Math.sqrt((k+.5)/55);dot(s,x+q*Math.cos(angle),y+q*Math.sin(angle),Math.max(.7,r*.013),k%3?'#fff8df':'#34242b',{opacity:.17});}
+ }
+ const temperatureColor=T=>T<5000?'#ffac72':T<8000?'#ffe5a0':'#a9d9ff';
+ const arrow=(s,x,y,dx,dy,color)=>{U.line(s,x,y,x+dx,y+dy,color,{'stroke-width':4});const n=Math.hypot(dx,dy);if(n>0){const ux=dx/n,uy=dy/n;U.node(s,'path',{d:'M'+(x+dx-10*ux+5*uy)+' '+(y+dy-10*uy-5*ux)+' L'+(x+dx)+' '+(y+dy)+' L'+(x+dx-10*ux-5*uy)+' '+(y+dy-10*uy+5*ux),fill:'none',stroke:color,'stroke-width':3});}};
+ function chart(s,x0,y0,w,h,xmin,xmax,ymin,ymax,xs,ys){
+  const x=v=>x0+w*(v-xmin)/(xmax-xmin),y=v=>y0+h-h*(v-ymin)/(ymax-ymin);
+  for(const n of xs){U.line(s,x(n),y0,x(n),y0+h,'#3e5351',{'stroke-width':1});text(s,x(n),y0+h+24,n,{'text-anchor':'middle'});}
+  for(const n of ys){U.line(s,x0,y(n),x0+w,y(n),'#3e5351',{'stroke-width':1});text(s,x0-10,y(n)+6,n,{'text-anchor':'end'});}
+  return {x,y};
+ }
+ function mountLab(type,draw,animation){
+  for(const lab of document.querySelectorAll('[data-lesson-activity="'+type+'"]')){
+   const svg=lab.querySelector('svg'),result=lab.querySelector('.lab-result'),play=lab.querySelector('[data-play]');
+   let running=false,raf=0,last=0,elapsed=0,position=0;
+   const paint=()=>{svg.replaceChildren();const answer=draw(svg,U.values(lab));result.textContent=answer;svg.setAttribute('aria-label',lab.querySelector('h3').textContent+'。'+answer);
+    const compact=lab.clientWidth<600,right=svg.querySelector('[data-pane="right"]');svg.setAttribute('viewBox',compact&&right?'0 0 350 720':svg.dataset.customBox||'0 0 700 360');
+    if(right)right.setAttribute('transform',compact?'translate(-350 360)':'translate(0 0)');
+    if(compact&&!right&&!svg.dataset.customBox)for(const label of svg.querySelectorAll('text'))label.style.fontSize='26px';
+    svg.style.width='100%';svg.style.maxWidth=svg.dataset.customBox?'620px':'900px';
+   };
+   const stop=()=>{running=false;cancelAnimationFrame(raf);if(play){play.textContent='▶';play.setAttribute('aria-label','播放动画');play.title='播放动画';}result.setAttribute('aria-live','polite');};
+   const step=time=>{if(!running)return;const dt=Math.min((time-last)/1000,.1);last=time;elapsed+=dt;
+    if(elapsed>=.03){const input=lab.querySelector('[data-param="'+animation.key+'"]');let next=position+animation.rate*elapsed;elapsed=0;
+     if(next>Number(input.max)){if(animation.loop)next=Number(input.min);else{next=Number(input.max);stop();}}
+     if(next<Number(input.min)){next=Number(input.min);stop();}position=next;input.value=String(next);paint();}
+    if(running)raf=requestAnimationFrame(step);
+   };
+   for(const input of lab.querySelectorAll('[data-param]'))input.addEventListener('input',()=>{stop();paint();});
+   if(play){play.addEventListener('click',()=>{if(running){stop();return;}const input=lab.querySelector('[data-param="'+animation.key+'"]');if(!animation.loop&&((animation.rate>0&&Number(input.value)>=Number(input.max))||(animation.rate<0&&Number(input.value)<=Number(input.min))))input.value=animation.start;position=Number(input.value);elapsed=0;running=true;last=performance.now();play.textContent='Ⅱ';play.setAttribute('aria-label','暂停动画');play.title='暂停动画';result.setAttribute('aria-live','off');raf=requestAnimationFrame(step);});lab.querySelector('[data-restart]').addEventListener('click',()=>{stop();lab.querySelector('[data-param="'+animation.key+'"]').value=animation.start;paint();});}
+   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});window.addEventListener('pagehide',stop);window.addEventListener('beforeprint',stop);
+   new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)stop();}).observe(lab);
+   let width=0;new ResizeObserver(entries=>{const next=entries[0].contentRect.width;if(Math.abs(next-width)>1){width=next;paint();}}).observe(lab);
+   paint();
+  }
+ }
+
+ const gamow=function gamow(T,E){const kT=.0861733*T,b=22.2,peak=(b*kT/2)**(2/3);return {kT,peak,logThermal:-E/kT,logTunnel:-b/Math.sqrt(E),kernel:Math.exp(-E/kT-b/Math.sqrt(E)+3*peak/kT)};},speedEnergy=function speedEnergy(v){return .25*1.67262192369e-27*(v*1e6)**2/1.602176634e-16;},rateRatios=function rateRatios(T,rho){return {pp:rho*T**4,cn:rho*T**16};},turnoff=function turnoff(age){return (10/age)**.4;},waitSeconds=function waitSeconds(factor){const year=365.25*86400;return [1e6*year,14*60,3e5*year,3e8*year*factor,82,1e4*year];},catalyst=function catalyst(factor){const times=waitSeconds(factor),sum=times.reduce((a,b)=>a+b,0);return times.map(t=>t/sum);},cycleStep=function cycleStep(percent,factor){
+ const times=waitSeconds(factor),weights=times.map(t=>1+Math.log10(t/82));
+ let remaining=percent/100*weights.reduce((a,b)=>a+b,0);
+ for(let i=0;i<weights.length;i++){
+  if(remaining<weights[i]||i===weights.length-1)return {i,progress:Math.min(1,remaining/weights[i]),seconds:times[i]};
+  remaining-=weights[i];
+ }
+};
+ mountLab('v3gamow',(s,v)=>{
+  s.dataset.customBox='0 0 520 320';
+  const a=chart(s,48,55,430,188,0,3.2,0,1,[0,.8,1.6,2.4,3.2],[0,.5,1]),end=gamow(v.T,speedEnergy(3.2));
+  const sample=x=>{const g=gamow(v.T,speedEnergy(x));return [Math.exp(g.logThermal),Math.exp(g.logTunnel-end.logTunnel),g.kernel];};
+  const g=gamow(v.T,speedEnergy(v.v)),peak=Math.sqrt(g.peak/speedEnergy(1));
+  text(s,48,26,'相对高度');text(s,265,301,'相对速度 / 千 km/s',{'text-anchor':'middle'});
+  for(const [i,c,dash] of [[0,C.blue,'8 5'],[1,C.red,'2 5'],[2,C.mint,'']]){
+   const pts=Array.from({length:201},(_,j)=>{const x=3.2*j/200;return [a.x(x),a.y(sample(x)[i])];});
+   const path=U.curve(s,pts,c);if(dash)path.setAttribute('stroke-dasharray',dash);
+  }
+  text(s,a.x(peak),45,'Gamow 峰',{'text-anchor':'middle',fill:C.mint});
+  U.line(s,a.x(v.v),55,a.x(v.v),243,C.gold,{'stroke-dasharray':'4 5'});
+  for(const [i,c] of [[0,C.blue],[1,C.red],[2,C.mint]])dot(s,a.x(v.v),a.y(sample(v.v)[i]),4,c);
+  return '探针动能 '+U.fmt(speedEnergy(v.v),2)+' keV；峰值动能 '+U.fmt(g.peak,2)+' keV（相对速度 '+U.fmt(1000*peak,0)+' km/s）；探针处的乘积为峰值的 '+U.fmt(100*g.kernel,1)+'%。';
+ },{key:'v',rate:.32,start:0,loop:true});
+ mountLab('v3catalyst',(s,v)=>{
+  const [l,r]=panes(s),names=['¹²C','¹³N','¹³C','¹⁴N','¹⁵O','¹⁵N'],reactions=['¹²C + p → ¹³N + γ','¹³N → ¹³C + e⁺ + ν','¹³C + p → ¹⁴N + γ','¹⁴N + p → ¹⁵O + γ','¹⁵O → ¹⁵N + e⁺ + ν','¹⁵N + p → ¹²C + ⁴He'];
+  const f=catalyst(v.factor),step=cycleStep(v.phase,v.factor),n=step.i;
+  const wait=step.seconds<120?step.seconds+' 秒':step.seconds<86400?step.seconds/60+' 分钟':U.fmt(step.seconds/(365.25*86400*10000),0)+' 万年';
+  const points=names.map((_,i)=>[175+112*Math.cos(-Math.PI/2+i*Math.PI/3),155+110*Math.sin(-Math.PI/2+i*Math.PI/3)]);
+  points.forEach((p,i)=>U.line(l,...p,...points[(i+1)%6],C.muted,{'stroke-width':2}));
+  points.forEach((p,i)=>{dot(l,...p,23,i===3?C.red:'#263f43');text(l,p[0],p[1]+6,names[i],{'text-anchor':'middle',fill:i===3?'#10191d':'#eef4f5'});});
+  const p=points[n],q=points[(n+1)%6],t=Math.max(0,(step.progress-.8)*5);
+  dot(l,...p,27,'none',{stroke:C.muted,'stroke-width':1});
+  dot(l,...p,27,'none',{stroke:C.gold,'stroke-width':3,pathLength:100,'stroke-dasharray':(100*step.progress)+' 100',transform:'rotate(-90 '+p.join(' ')+')'});
+  dot(l,p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t-22,5,C.gold);
+  text(l,175,147,'第 '+(n+1)+' 步',{'text-anchor':'middle'});text(l,175,178,'等待 '+wait,{'text-anchor':'middle',fill:C.gold});
+  text(l,175,321,reactions[n],{'text-anchor':'middle'});
+  text(r,380,25,'稳态催化核比例 / %');
+  for(let i=0;i<6;i++){const y=58+i*42,w=200*Math.max(0,Math.log10(f[i])+15)/15;text(r,365,y+6,names[i]);U.line(r,411,y,411+w,y,i===3?C.red:C.mint,{'stroke-width':12});text(r,690,y+6,f[i]>.001?U.fmt(f[i]*100,2):U.scientific(f[i]*100,1),{'text-anchor':'end','style':'font-size:14px'});}
+  text(r,412,329,'横条为对数刻度',{'style':'font-size:16px'});
+  return '第 '+(n+1)+' 步：'+reactions[n]+'，平均等待 '+wait+'。稳态氮-14 与碳-12 的数量比为 '+U.fmt(300*v.factor,0)+'，碳-12 与碳-13 的数量比为 3.33。';
+ },{key:'phase',rate:5,start:0,loop:true});
+ mountLab('v3rates',(s,v)=>{const [l,r]=panes(s),a=chart(l,55,55,265,230,.8,1.2,-2,2,[.8,1,1.2],[-2,0,2]),z=rateRatios(v.T,v.rho);text(l,45,25,'log₁₀(产能率 / 参考值)');text(l,180,330,'T / T参考',{'text-anchor':'middle'});for(const [key,color,dash] of [['pp',C.mint,false],['cn',C.red,true]]){U.curve(l,Array.from({length:81},(_,i)=>{const t=.8+i*.005;return [a.x(t),a.y(Math.log10(rateRatios(t,v.rho)[key]))];}),color,dash);dot(l,a.x(v.T),a.y(Math.log10(z[key])),6,color);}text(r,390,40,'当前响应');for(const [i,key,color] of [[0,'pp',C.mint],[1,'cn',C.red]]){const y=110+i*105;text(r,390,y-28,key==='pp'?'pp 链':'CN 循环');U.line(r,390,y,390+230*z[key]/37,y,color,{'stroke-width':18});text(r,390,y+35,U.fmt(z[key],3)+' 倍');}return 'pp='+U.fmt(z.pp,3)+' 倍；CN='+U.fmt(z.cn,3)+' 倍。密度线性进入每克产能率，而温度对 CN 的影响更强。';});
+ mountLab('v3turnoff',(s,v)=>{const [l,r]=panes(s),m=turnoff(v.age),a=chart(r,405,55,265,230,-.3,1.1,-1.05,3.85,[0,.5,1],[0,2]);text(r,405,25,'log₁₀(L / L⊙)');text(r,525,330,'log₁₀(M / M⊙)',{'text-anchor':'middle'});text(l,175,30,'同龄恒星的主序寿命',{'text-anchor':'middle'});for(let i=0;i<32;i++){const log=-.3+1.4*i/31,M=10**log,alive=M<=m;dot(r,a.x(log),a.y(3.5*log),4,alive?C.mint:'none',{stroke:alive?C.mint:C.muted});const x=40+i%8*38,y=92+Math.floor(i/8)*49;dot(l,x,y,3+Math.log10(M+1)*6,alive?C.gold:'none',{stroke:alive?C.gold:C.muted,opacity:alive?1:.35});}U.line(r,a.x(Math.log10(m)),55,a.x(Math.log10(m)),285,C.gold,{'stroke-dasharray':'5 5'});text(l,175,315,'转折质量 '+U.fmt(m,2)+' M⊙',{'text-anchor':'middle'});return '年龄='+U.fmt(v.age,2)+' Gyr；转折质量='+U.fmt(m,2)+' M⊙。更高质量恒星已耗尽本模型的主序燃料。';},{key:'age',rate:.6,start:.03});
+})();</script></body></html>
